@@ -3,3 +3,4 @@
 ### By: Scott Barnes & Chris Poole  
 The George Washington University  
 School of Engineering & Applied Science
+Department of Mechanical & Aerospace Engineering
