@@ -2,9 +2,9 @@ close all;
 clear all;
 clc;
 
-roll = 0;%pi-pi/27;
-pitch = deg2rad(5);%-pi/27;
-yaw = 0;%-pi/3;
+roll =deg2rad(5); % Gamma
+pitch = deg2rad(5); % Alpha
+yaw = deg2rad(0); % Beta
 
 R = rot_x(pitch)*rot_y(yaw)*rot_z(roll);
 
