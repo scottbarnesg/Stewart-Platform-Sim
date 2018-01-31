@@ -2,11 +2,11 @@ close all;
 clear all;
 clc;
 
-roll = pi-pi/27;
-pitch = -pi/27;
-yaw = -pi/3;
+roll = 0;%pi-pi/27;
+pitch = deg2rad(5);%-pi/27;
+yaw = 0;%-pi/3;
 
-R = rot_x(-pitch)*rot_y(yaw)*rot_z(roll);
+R = rot_x(pitch)*rot_y(yaw)*rot_z(roll);
 
 servo_angles = [pi/2; -pi/2; pi/2; -pi/2; pi/2; -pi/2]; % initial angles
 % servo_angles = zeros(1, 6);
