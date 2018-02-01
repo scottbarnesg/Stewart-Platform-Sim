@@ -2,9 +2,9 @@ close all;
 clear all;
 clc;
 
-roll =deg2rad(0); % Gamma
+roll =deg2rad(10); % Gamma
 pitch = deg2rad(10); % Alpha
-yaw = deg2rad(5); % Beta
+yaw = deg2rad(0); % Beta
 
 R = rot_x(pitch)*rot_y(yaw)*rot_z(roll);
 
@@ -39,10 +39,10 @@ while(run_sim == true)
     % Get Platform State
     quat_plat_state = platform_orientation.signals.values(length(platform_orientation.time), :);
     eul_plat_state = quat_to_eangles(quat_plat_state);
-    trans_plat_state = platform_translation.signals.values(length(platform_translation.time), :)-platform_translation.signals.values(1, :)
+    trans_plat_state = platform_translation.signals.values(length(platform_translation.time), :)-platform_translation.signals.values(1, :);
     actuator_states = motor_states.signals.values(length(platform_orientation.time), :)'; %+repmat(pi,6,1);   
     % Calculate Controller Input
-    servo_angles = controller_v0(eul_plat_state, actuator_states);
+    servo_angles = controller_v0(eul_plat_state, actuator_states, trans_plat_state);
     % Step forward by single time step (determined by solver)
     set_param('PlatformAssem', 'SimulationCommand', 'step');
     % Check for Termination Criteria
