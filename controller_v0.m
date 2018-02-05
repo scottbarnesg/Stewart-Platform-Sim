@@ -8,8 +8,8 @@ function theta = controller_v0(eangles, theta, translation)
     % B = zeros(1, 6); % Dummy Weights (for testing)
     C = 100*ones(1, 6); % Implementation Weights (In Testing)
     % C = zeros(1, 6); % Dummy Weights (for testing)
-    D = 100*[1, 1, 0, 0, 0, 0]; % Implementation Weights (Not Yet Tested)
-    E = 100*[0, 0, 1, 1, 1, 1];
+    D = 80*[1, 1, 0, 0, 0, 0]; % Implementation Weights (Not Yet Tested)
+    E = 50*[0, 0, 1, 1, 1, 1];
     % Velocity Calculation
     d_theta = [A(1)*sin(eangles(3))+B(1)*sin(eangles(1))-C(1)*sin(eangles(2)+D(1)*translation(1)+E(1)*translation(2));
                 A(2)*sin(eangles(3))+B(2)*-sin(eangles(1))-C(2)*sin(eangles(2)+D(2)*translation(1)+E(2)*translation(2));

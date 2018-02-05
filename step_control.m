@@ -2,8 +2,8 @@ close all;
 clear all;
 clc;
 
-roll =deg2rad(10); % Gamma
-pitch = deg2rad(10); % Alpha
+roll =deg2rad(0); % Gamma
+pitch = deg2rad(-20); % Alpha
 yaw = deg2rad(0); % Beta
 
 R = rot_x(pitch)*rot_y(yaw)*rot_z(roll);
@@ -46,7 +46,7 @@ while(run_sim == true)
     % Step forward by single time step (determined by solver)
     set_param('PlatformAssem', 'SimulationCommand', 'step');
     % Check for Termination Criteria
-    if(current_sim_time >= 0.5) % || step_count > 1000)
+    if(current_sim_time >= 2.0) % || step_count > 1000)
         run_sim = false;
         break;
     end
@@ -63,9 +63,11 @@ for i = 1:size(platform_orientation.time, 1)
     alpha(i) = eangles(1)*180/pi;
     beta(i) = eangles(2)*180/pi;
     gamma(i) = eangles(3)*180/pi;
+    x(i) = 1000*(platform_translation.signals.values(i, 1)-platform_translation.signals.values(1, 1));
+    y(i) = 1000*(platform_translation.signals.values(i, 2)-platform_translation.signals.values(1, 2));
 end
-plot(platform_orientation.time, alpha, platform_orientation.time, beta, platform_orientation.time, gamma);
-legend('Alpha','Beta','Gamma');
+plot(platform_orientation.time, alpha, platform_orientation.time, beta, platform_orientation.time, gamma, platform_orientation.time, x, platform_orientation.time, y);
+legend('Alpha','Beta','Gamma', 'X', 'Y');
 xlabel('Time (s)');
 ylabel('Angles (degrees)');
 title('Simulation Results');
