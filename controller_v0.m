@@ -1,3 +1,5 @@
+% Initial Stewart Platform Controller
+
 function theta = controller_v0(eangles, theta, translation)
     % Time Step
     dt=0.001;
@@ -19,6 +21,6 @@ function theta = controller_v0(eangles, theta, translation)
                 A(3)*sin(eangles(3))+B(2)*-sin(eangles(1))-C(3)*sin(eangles(2))+D(3)*translation(1)+E(3)*translation(2);
                 A(4)*-sin(eangles(3))+B(2)*sin(eangles(1))-C(4)*sin(eangles(2))+D(4)*translation(1)+E(4)*translation(2);
                 A(5)*-sin(eangles(3))+B(2)*-sin(eangles(1))-C(5)*sin(eangles(2))+D(5)*translation(1)-E(5)*translation(2);
-                A(6)*sin(eangles(3))+B(2)*sin(eangles(1))-C(6)*sin(eangles(2))+D(6)*translation(1)-E(6)*translation(2)]
+                A(6)*sin(eangles(3))+B(2)*sin(eangles(1))-C(6)*sin(eangles(2))+D(6)*translation(1)-E(6)*translation(2)];
     theta = theta + d_theta*dt;
 end

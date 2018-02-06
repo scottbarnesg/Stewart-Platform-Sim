@@ -1,17 +1,15 @@
-close all;
-clear all;
-clc;
-
+clc; clear; close all;
+%% Set Initial Parameters
 % Set Base's Orientation
-roll = deg2rad(15); % Gamma
-pitch = deg2rad(0); % Alpha
+roll = deg2rad(0); % Gamma
+pitch = deg2rad(15); % Alpha
 yaw = deg2rad(0); % Beta
 % Apply Rotation
 R = rot_x(pitch)*rot_y(yaw)*rot_z(roll);
+% Set Initial Servo Angles
+servo_angles = [pi/2; -pi/2; pi/2; -pi/2; pi/2; -pi/2];
 
-servo_angles = [pi/2; -pi/2; pi/2; -pi/2; pi/2; -pi/2]; % initial angles
-
-% Reset Simulation
+%% Reset Simulation
 for num = 1:6
     path = strcat('PlatformAssem/angle',int2str(num));
     set_param(path, 'Value', num2str(servo_angles(num)));
@@ -19,14 +17,16 @@ end
 set_param('PlatformAssem', 'SimulationCommand', 'step');
 set_param('PlatformAssem', 'SimulationCommand', 'stop');
 
-% Start Simulation
+%% Initialize Simulation
 run_sim = true;
-set_param('PlatformAssem', 'SimulationCommand', 'start'); % starts sim
-set_param('PlatformAssem', 'SimulationCommand', 'pause'); % immediately pauses
+% Start Simulation
+set_param('PlatformAssem', 'SimulationCommand', 'start'); 
+% Pause Simulation (Wait for Input)
+set_param('PlatformAssem', 'SimulationCommand', 'pause');
 step_count = 0;
-tic;
+tic; % Start Timer
 
-% Run Simulation
+%% Run Simulation
 while(run_sim == true)
     % Get Current Simulation Time
     current_sim_time = get_param('PlatformAssem','SimulationTime');
@@ -45,15 +45,15 @@ while(run_sim == true)
     % Step forward by single time step (determined by solver)
     set_param('PlatformAssem', 'SimulationCommand', 'step');
     % Check for Termination Criteria
-    if(current_sim_time >= 2.0) % || step_count > 1000)
+    if(current_sim_time >= 2.5) % || step_count > 1000)
         run_sim = false;
         break;
     end
     disp(current_sim_time);
     step_count = step_count+1;
 end
-toc
-% Plot Results
+toc % End Timer
+%%  Plot Results
 clear alpha beta gamma x y;
 for i = 1:size(platform_orientation.time, 1)
     R_m = quat_to_rot(platform_orientation.signals.values(i, :));
