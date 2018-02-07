@@ -1,9 +1,10 @@
-function [ eangles ] = quat_to_eangles(quat)
-%
-% function [ eangles ] = quat_to_eangles(quat)
-%
+% quat_to_eangles
+% 
 % Input a 4 element quaternion array in the form [qw qx qy qz], output is a
 % 3 element array with Euler angles about the x, y, and z axes.
+% By: Scott Barnes & Chris Poole
+% 
+function [ eangles ] = quat_to_eangles(quat)
 quat_rp = [quat(2), quat(3), quat(4), quat(1)];
 quat_y = [quat(6), quat(7), quat(8), quat(5)];
 

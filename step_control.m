@@ -1,14 +1,15 @@
 clc; clear; close all;
 %% Set Initial Parameters
+t_max = 2.0;
 % Set Base's Orientation
-roll = deg2rad(0); % Gamma
-pitch = deg2rad(15); % Alpha
+roll = deg2rad(18); % Gamma
+pitch = deg2rad(0); % Alpha
 yaw = deg2rad(0); % Beta
 % Apply Rotation
 R = rot_x(pitch)*rot_y(yaw)*rot_z(roll);
 % Set Initial Servo Angles
 servo_angles = [pi/2; -pi/2; pi/2; -pi/2; pi/2; -pi/2];
-
+error_data = [];
 %% Reset Simulation
 for num = 1:6
     path = strcat('PlatformAssem/angle',int2str(num));
@@ -42,10 +43,11 @@ while(run_sim == true)
     actuator_states = motor_states.signals.values(length(platform_orientation.time), :)'; %+repmat(pi,6,1);   
     % Calculate Controller Input
     servo_angles = controller_v0(eul_plat_state, actuator_states, trans_plat_state);
+    % [servo_angles, error_data] = controller_v1(eul_plat_state, actuator_states, trans_plat_state, error_data);
     % Step forward by single time step (determined by solver)
     set_param('PlatformAssem', 'SimulationCommand', 'step');
     % Check for Termination Criteria
-    if(current_sim_time >= 2.5) % || step_count > 1000)
+    if(current_sim_time >= t_max) % || step_count > 1000)
         run_sim = false;
         break;
     end
