@@ -1,0 +1,1274 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<SimscapeMultibodyImportXML version="2.0" xmlns="urn:mathworks:SimscapeMultibody:import" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Created by="" on="02/09/18||20:21:02" using="Simscape Multibody Link Version 5.1" from="SolidWorks 25.2.0"/>
+<ModelUnits mass="kilogram" length="inch"/>
+<DataUnits mass="kilogram" length="meter"/>
+<RootAssembly name="Platform assem" uid="Platform assem" version="1909">
+<AssemblyFile name="Platform assem.SLDASM" type="SolidWorks Assembly"/>
+<InstanceTree>
+<Instance name="bottom platform-1" uid="bottom platform-1" grounded="true" entityUid="bottom platform*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0 0 0</Translation>
+</Transform>
+</Instance>
+<Instance name="servo arm-3" uid="servo arm-3" entityUid="servo arm*:*Default">
+<Transform>
+<Rotation>0.42186039014509569 0.26839115340604663 0.86602540378443871 0.53678230681209282 -0.84372078029019071 0 0.73068362943213394 0.46486711400128489 -0.50000000000000033</Rotation>
+<Translation>0.15118270385378166 0.045684460000000017 -0.028662383133820007</Translation>
+</Transform>
+</Instance>
+<Instance name="servo mount-1" uid="servo mount-1" grounded="true" entityUid="servo mount*:*Default">
+<Transform>
+<Rotation>-1.0000000000000002 0 -4.988900806029679e-16 0 1 0 4.988900806029679e-16 0 -1.0000000000000002</Rotation>
+<Translation>-0.050800000000000019 0.0031749999999999999 0.10205364147220594</Translation>
+</Transform>
+</Instance>
+<Instance name="Servo Motor-1" uid="Servo Motor-1" grounded="true" entityUid="Servo Motor*:*Varsayilan">
+<Transform>
+<Rotation>0 1 4.988900806029679e-16 -1 0 0 0 -4.988900806029679e-16 1</Rotation>
+<Translation>-0.050831000000000008 0.035684459999999994 0.10243425371710388</Translation>
+</Transform>
+</Instance>
+<Instance name="servo mount-7" uid="servo mount-7" grounded="true" entityUid="servo mount*:*Default">
+<Transform>
+<Rotation>-1.0000000000000002 0 -4.988900806029679e-16 0 1 0 4.988900806029679e-16 0 -1.0000000000000002</Rotation>
+<Translation>0.050799999999999984 0.0031749999999999999 0.10205364147220594</Translation>
+</Transform>
+</Instance>
+<Instance name="Servo Motor-7" uid="Servo Motor-7" grounded="true" entityUid="Servo Motor*:*Varsayilan">
+<Transform>
+<Rotation>0 1 4.988900806029679e-16 -1 0 0 0 -4.988900806029679e-16 1</Rotation>
+<Translation>0.050768999999999995 0.035684459999999994 0.10243425371710388</Translation>
+</Transform>
+</Instance>
+<Instance name="servo arm-1" uid="servo arm-1" entityUid="servo arm*:*Default">
+<Transform>
+<Rotation>-0.7027600429288211 0.71142696186093612 -4.9889008060770934e-16 0.71142696186093612 0.7027600429288211 0 3.5060001446490738e-16 -3.5492385434903262e-16 -1</Rotation>
+<Translation>-0.050830999999999987 0.045684460000000003 0.14843425371710389</Translation>
+</Transform>
+</Instance>
+<Instance name="servo arm-2" uid="servo arm-2" entityUid="servo arm*:*Default">
+<Transform>
+<Rotation>0.99719355772114748 -0.074866604300188086 -4.9893331236308116e-16 -0.074866604300188086 -0.99719355772114748 0 -4.9754080025893299e-16 0 -1</Rotation>
+<Translation>0.050769000000000022 0.045684460000000003 0.14843425371710389</Translation>
+</Transform>
+</Instance>
+<Instance name="servo arm-4" uid="servo arm-4" entityUid="servo arm*:*Default">
+<Transform>
+<Rotation>-0.49250427615045633 -0.086252756324165417 0.86602540378443815 -0.17250551264833053 0.98500855230091111 0 -0.85304242923752138 -0.14939415624631192 -0.50000000000000078</Rotation>
+<Translation>0.10041370385378166 0.045684459999999996 -0.1165968705832844</Translation>
+</Transform>
+</Instance>
+<Instance name="servo arm-5" uid="servo arm-5" entityUid="servo arm*:*Default">
+<Transform>
+<Rotation>0.45762884318177766 0.20143446052775474 -0.86602540378443893 0.40286892105550909 -0.91525768636355631 -4.4408920985006262e-16 -0.79263640739981023 -0.34889472002929822 -0.49999999999999967</Rotation>
+<Translation>-0.10038270385378116 0.045684460000000003 -0.11665056415831937</Translation>
+</Transform>
+</Instance>
+<Instance name="Rod assem-14" uid="Rod assem-14" entityUid="Rod assem">
+<Transform>
+<Rotation>0.21017846691435391 0.48383198828208046 0.84954789103413142 -0.82288639116998652 0.55675485747312192 -0.11349896875002662 -0.52790434670759045 -0.67522635893090854 0.5151566411608608</Rotation>
+<Translation>-0.17870261669391871 0.0643957766353664 0.0069326373045747519</Translation>
+</Transform>
+<Instance name="uxcell SA5T ball joint housing-2" uid="uxcell SA5T ball joint housing-2" entityUid="uxcell SA5T ball joint housing*:*Default">
+<Transform>
+<Rotation>-1 -3.4416913763379845e-15 0 3.4416913763379845e-15 -1 0 0 0 1</Rotation>
+<Translation>-4.9751869291014827e-14 0.077500000000002178 -1.6014967130217883e-14</Translation>
+</Transform>
+</Instance>
+<Instance name="uxcell SA5T ball-1" uid="uxcell SA5T ball-1" entityUid="uxcell SA5T ball*:*Default">
+<Transform>
+<Rotation>-0.9712573300166133 0.22348668888351425 -0.081932281677510016 -0.23001265634619211 -0.96977760668561319 0.081397613550354436 -0.061264808900118581 0.097903490555789868 0.99330837594748211</Rotation>
+<Translation>1.7771617510931037e-12 -0.014000000007928656 4.2056358395825555e-12</Translation>
+</Transform>
+</Instance>
+<Instance name="uxcell SA5T ball-2" uid="uxcell SA5T ball-2" entityUid="uxcell SA5T ball*:*Default">
+<Transform>
+<Rotation>-0.82505037361710443 0.56464213559474863 -0.021705752815275203 -0.56085847565903291 -0.81363723957543499 0.15307583956161058 0.068772460154499671 0.13846913405906575 0.98797603596303385</Rotation>
+<Translation>-1.3484352523462917e-12 0.077499999991236676 -4.2926773247131678e-13</Translation>
+</Transform>
+</Instance>
+<Instance name="uxcell SA5T ball joint housing-1" uid="uxcell SA5T ball joint housing-1" entityUid="uxcell SA5T ball joint housing*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>-1.6195378371719471e-14 -0.013999999999995391 -1.659783421814609e-14</Translation>
+</Transform>
+</Instance>
+<Instance name="platform rods-1" uid="platform rods-1" entityUid="platform rods*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0 0 0</Translation>
+</Transform>
+</Instance>
+</Instance>
+<Instance name="upper platform-1" uid="upper platform-1" entityUid="upper platform*:*Default">
+<Transform>
+<Rotation>0.57897319959543758 0.02825853050099977 -0.81485672949552646 0.016194635813315664 0.99880350366507986 0.046144282822848909 0.81518572602879635 -0.039912611043191187 0.5778228236740216</Rotation>
+<Translation>0.0078063963277760426 0.10177333883782216 -0.0047629614262169901</Translation>
+</Transform>
+<VisualProperties>
+<Ambient r="1" g="1" b="1" a="0.5"/>
+<Diffuse r="1" g="1" b="1" a="0.5"/>
+<Specular r="0.5" g="0.5" b="0.5" a="0.5"/>
+<Emissive r="0" g="0" b="0" a="0.5"/>
+<Shininess>0.20000000298023224</Shininess>
+</VisualProperties>
+</Instance>
+<Instance name="Rod assem-1" uid="Rod assem-1" entityUid="Rod assem">
+<Transform>
+<Rotation>0.21947501051076795 -0.37921358686457513 -0.89890365184406817 0.96154506034343246 0.24000773733374645 0.13351922314438533 0.16511152803618273 -0.89364049905834009 0.41730665193873689</Rotation>
+<Translation>0.17619676720662319 0.079721677156983348 -0.0030022806985904363</Translation>
+</Transform>
+<Instance name="uxcell SA5T ball joint housing-2" uid="uxcell SA5T ball joint housing-2" entityUid="uxcell SA5T ball joint housing*:*Default">
+<Transform>
+<Rotation>-0.99999999999999989 -4.0800696154974511e-15 0 4.0800696154974503e-15 -1 1.1102230246251583e-16 0 1.1102230246251562e-16 0.99999999999999989</Rotation>
+<Translation>2.2065682614424986e-13 0.077500000000035124 2.168543122849087e-13</Translation>
+</Transform>
+</Instance>
+<Instance name="platform rods-1" uid="platform rods-1" entityUid="platform rods*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0 0 0</Translation>
+</Transform>
+</Instance>
+<Instance name="uxcell SA5T ball-1" uid="uxcell SA5T ball-1" entityUid="uxcell SA5T ball*:*Default">
+<Transform>
+<Rotation>0.50806519796425631 -0.85458191106100401 -0.10751517058007841 0.84690221572396496 0.51839687323806616 -0.11841164984423994 0.15692798227014695 -0.030893997868820515 0.98712672402093427</Rotation>
+<Translation>-1.7126577933623821e-13 -0.013999999990114455 -3.4190705822112477e-12</Translation>
+</Transform>
+</Instance>
+<Instance name="uxcell SA5T ball joint housing-1" uid="uxcell SA5T ball joint housing-1" entityUid="uxcell SA5T ball joint housing*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>9.4563246122447708e-14 -0.013999999999962966 2.1563306695782103e-13</Translation>
+</Transform>
+</Instance>
+<Instance name="uxcell SA5T ball-2" uid="uxcell SA5T ball-2" entityUid="uxcell SA5T ball*:*Default">
+<Transform>
+<Rotation>0.42640966573492811 -0.90368615690607257 -0.039065672708403075 0.88348148502272916 0.42536127416114422 -0.19628614843141884 0.19399809944909238 0.049184512403205947 0.97976814662949663</Rotation>
+<Translation>-2.0991819393856304e-12 0.077500000008766279 -1.680877659282487e-13</Translation>
+</Transform>
+</Instance>
+</Instance>
+<Instance name="Servo Motor-12" uid="Servo Motor-12" grounded="true" entityUid="Servo Motor*:*Varsayilan">
+<Transform>
+<Rotation>0 -0.50000000000000366 -0.8660254037844366 -1 1.2390370993480708e-16 0 1.1102230246251565e-16 0.8660254037844366 -0.50000000000000366</Rotation>
+<Translation>-0.11412616593671245 0.035684459999999987 -0.0071961895587856484</Translation>
+</Transform>
+</Instance>
+<Instance name="servo mount-15" uid="servo mount-15" grounded="true" entityUid="servo mount*:*Default">
+<Transform>
+<Rotation>0.49999999999999978 0 0.86602540378443904 0 1 0 -0.86602540378443904 0 0.49999999999999978</Rotation>
+<Translation>-0.062981046063639551 0.0031749999999999999 -0.095020911248353115</Translation>
+</Transform>
+</Instance>
+<Instance name="Rod assem-11" uid="Rod assem-11" entityUid="Rod assem">
+<Transform>
+<Rotation>0.47307692209811442 0.42530119061457994 -0.77156796397983962 -0.73448777901884754 0.67403081255611019 -0.078804607713700653 0.48654488821704323 0.60398788148999349 0.63124694911191015</Rotation>
+<Translation>0.084435033412540411 0.045262201327933821 -0.16047991507334916</Translation>
+</Transform>
+<Instance name="platform rods-1" uid="platform rods-1" entityUid="platform rods*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0 0 0</Translation>
+</Transform>
+</Instance>
+<Instance name="uxcell SA5T ball-1" uid="uxcell SA5T ball-1" entityUid="uxcell SA5T ball*:*Default">
+<Transform>
+<Rotation>-0.98515681479857387 -0.042059954594033153 -0.16642418837259271 0.053742660516950702 -0.99634951867872834 -0.066327694586996611 -0.16302692015887485 -0.074287258989775493 0.98382093210873367</Rotation>
+<Translation>1.1606507421824119e-11 -0.013999999993162676 -5.0639770154958796e-12</Translation>
+</Transform>
+</Instance>
+<Instance name="uxcell SA5T ball joint housing-2" uid="uxcell SA5T ball joint housing-2" entityUid="uxcell SA5T ball joint housing*:*Default">
+<Transform>
+<Rotation>-1 1.1102230246251565e-16 0 -2.7755575615628914e-16 -0.99999999999999978 0 -1.1102230246251565e-16 0 0.99999999999999989</Rotation>
+<Translation>-8.2073237095414697e-14 0.077500000000003108 1.8596235662471372e-15</Translation>
+</Transform>
+</Instance>
+<Instance name="uxcell SA5T ball-2" uid="uxcell SA5T ball-2" entityUid="uxcell SA5T ball*:*Default">
+<Transform>
+<Rotation>-0.95124014912768184 0.27573599173662733 -0.1382455841919154 -0.28274633720422782 -0.95860810681173403 0.033541114358590807 -0.12327484530567684 0.070994087189297284 0.98982986017750529</Rotation>
+<Translation>-7.791961520453583e-13 0.077500000001970354 -1.2378709168814339e-12</Translation>
+</Transform>
+</Instance>
+<Instance name="uxcell SA5T ball joint housing-1" uid="uxcell SA5T ball joint housing-1" entityUid="uxcell SA5T ball joint housing*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>-2.2246093855926574e-14 -0.013999999999994669 -6.4670491184415368e-15</Translation>
+</Transform>
+</Instance>
+</Instance>
+<Instance name="Rod assem-12" uid="Rod assem-12" entityUid="Rod assem">
+<Transform>
+<Rotation>0.7491387013243832 -0.65858468219152977 -0.071115557796439313 0.66218594459861635 0.74736523421930934 0.054359741135838448 0.01734880266921271 -0.08781470869392427 0.99598574085322433</Rotation>
+<Translation>0.098538426273081903 0.051868946843314362 0.15120484779538895</Translation>
+</Transform>
+<Instance name="platform rods-1" uid="platform rods-1" entityUid="platform rods*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0 0 0</Translation>
+</Transform>
+</Instance>
+<Instance name="uxcell SA5T ball joint housing-1" uid="uxcell SA5T ball joint housing-1" entityUid="uxcell SA5T ball joint housing*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>-6.9236283373186325e-14 -0.013999999999778599 -1.2545520178264269e-14</Translation>
+</Transform>
+</Instance>
+<Instance name="uxcell SA5T ball joint housing-2" uid="uxcell SA5T ball joint housing-2" entityUid="uxcell SA5T ball joint housing*:*Default">
+<Transform>
+<Rotation>-1.0000000000000002 1.0993810029003015e-16 0 0 -0.99999999999999989 0 0 0 1</Rotation>
+<Translation>-5.8411608883091048e-14 0.077500000000220823 -1.9317880628477724e-14</Translation>
+</Transform>
+</Instance>
+<Instance name="uxcell SA5T ball-2" uid="uxcell SA5T ball-2" entityUid="uxcell SA5T ball*:*Default">
+<Transform>
+<Rotation>-0.28073488885272713 -0.95320144556093112 0.11222711954513687 0.94818208517203417 -0.29356543568131338 -0.12153216994711269 0.14879064332027148 0.072293424001025619 0.98622259419795677</Rotation>
+<Translation>-3.7866237923012136e-12 0.077500000010509065 1.24145138613585e-12</Translation>
+</Transform>
+</Instance>
+<Instance name="uxcell SA5T ball-1" uid="uxcell SA5T ball-1" entityUid="uxcell SA5T ball*:*Default">
+<Transform>
+<Rotation>-0.018698679239465391 -0.99967463628955 0.01734880266921816 0.99593295302257012 -0.020152667831949619 -0.087814708693920718 0.088135761631942783 0.015636225203385562 0.99598574085322444</Rotation>
+<Translation>5.250938572842756e-12 -0.013999999990560424 -2.8879676428061885e-13</Translation>
+</Transform>
+</Instance>
+</Instance>
+<Instance name="Rod assem-13" uid="Rod assem-13" entityUid="Rod assem">
+<Transform>
+<Rotation>-0.072633857693576456 -0.43300249641250715 0.89846155221972956 0.87906226216800532 0.39775343985160133 0.2627579500572485 -0.47114102129682811 0.80888876811756716 0.3517457872734604</Rotation>
+<Translation>-0.086504982687870546 0.074276966996244587 -0.15421279208757216</Translation>
+</Transform>
+<Instance name="platform rods-1" uid="platform rods-1" entityUid="platform rods*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0 0 0</Translation>
+</Transform>
+</Instance>
+<Instance name="uxcell SA5T ball-1" uid="uxcell SA5T ball-1" entityUid="uxcell SA5T ball*:*Default">
+<Transform>
+<Rotation>0.27056950925014855 -0.91526271847388307 -0.29847327658591316 0.96112917015075849 0.27452363465394503 0.029453222263474417 0.054980532458754033 -0.29484051653086035 0.95396342218261543</Rotation>
+<Translation>-3.8774261579277436e-12 -0.014000000004530888 4.4737269444539152e-12</Translation>
+</Transform>
+</Instance>
+<Instance name="uxcell SA5T ball joint housing-2" uid="uxcell SA5T ball joint housing-2" entityUid="uxcell SA5T ball joint housing*:*Default">
+<Transform>
+<Rotation>-0.99999999999999989 -3.4416913763379853e-15 0 3.4972025275692431e-15 -1 -1.1102230246251565e-16 0 -1.1102230246251565e-16 0.99999999999999989</Rotation>
+<Translation>6.3532512584174583e-14 0.077500000000015959 1.9428902930940239e-15</Translation>
+</Transform>
+</Instance>
+<Instance name="uxcell SA5T ball joint housing-1" uid="uxcell SA5T ball joint housing-1" entityUid="uxcell SA5T ball joint housing*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>3.0697666630885578e-14 -0.013999999999983068 0</Translation>
+</Transform>
+</Instance>
+<Instance name="uxcell SA5T ball-2" uid="uxcell SA5T ball-2" entityUid="uxcell SA5T ball*:*Default">
+<Transform>
+<Rotation>0.057628123749098981 -0.96100508747425872 -0.27045927826893035 0.995276093950759 0.0765047063190782 -0.059770617540323007 0.078131275192962951 -0.26573718550406861 0.96087421241133208</Rotation>
+<Translation>-4.1798786654112519e-12 0.077499999996359467 -2.3181456754173269e-13</Translation>
+</Transform>
+</Instance>
+</Instance>
+<Instance name="servo arm-6" uid="servo arm-6" entityUid="servo arm*:*Default">
+<Transform>
+<Rotation>-0.49079314792534451 0.095509611817521323 -0.86602540378443715 0.19101922363504348 0.98158629585068335 -1.0824674490095276e-15 0.85007866821335787 -0.16542750027912875 -0.50000000000000266</Rotation>
+<Translation>-0.15121370385378094 0.045684459999999996 -0.028608689558785799</Translation>
+</Transform>
+</Instance>
+<Instance name="servo mount-12" uid="servo mount-12" grounded="true" entityUid="servo mount*:*Default">
+<Transform>
+<Rotation>0.50000000000000022 0 -0.86602540378443871 0 1 0 0.86602540378443871 0 0.50000000000000022</Rotation>
+<Translation>0.11378104606364002 0.0031750000000000007 -0.007032730223853762</Translation>
+</Transform>
+</Instance>
+<Instance name="servo mount-13" uid="servo mount-13" grounded="true" entityUid="servo mount*:*Default">
+<Transform>
+<Rotation>0.500000000000001 0 -0.86602540378443815 0 1 0 0.86602540378443815 0 0.500000000000001</Rotation>
+<Translation>0.062981046063640078 0.0031749999999999999 -0.095020911248352713</Translation>
+</Transform>
+</Instance>
+<Instance name="servo mount-14" uid="servo mount-14" grounded="true" entityUid="servo mount*:*Default">
+<Transform>
+<Rotation>0.50000000000000377 0 0.86602540378443671 0 1 0 -0.86602540378443671 0 0.50000000000000377</Rotation>
+<Translation>-0.11378104606363949 0.0031749999999999999 -0.0070327302238539918</Translation>
+</Transform>
+</Instance>
+<Instance name="Rod assem-15" uid="Rod assem-15" entityUid="Rod assem">
+<Transform>
+<Rotation>0.27597078997662206 0.96106065437108734 0.014231714566305101 -0.95823799695789746 0.27394506699924875 0.082061205529126921 0.074967087883922395 -0.036283865375599945 0.99652567294957795</Rotation>
+<Translation>-0.077538887292186914 0.090177741808342302 0.15192627960184574</Translation>
+</Transform>
+<Instance name="platform rods-1" uid="platform rods-1" entityUid="platform rods*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>0 0 0</Translation>
+</Transform>
+</Instance>
+<Instance name="uxcell SA5T ball joint housing-1" uid="uxcell SA5T ball joint housing-1" entityUid="uxcell SA5T ball joint housing*:*Default">
+<Transform>
+<Rotation>1 0 0 0 1 0 0 0 1</Rotation>
+<Translation>-9.6742058808274578e-14 -0.014000000000010233 2.7228219678931964e-14</Translation>
+</Transform>
+</Instance>
+<Instance name="uxcell SA5T ball joint housing-2" uid="uxcell SA5T ball joint housing-2" entityUid="uxcell SA5T ball joint housing*:*Default">
+<Transform>
+<Rotation>-1 -3.2018658557841917e-15 0 3.2018658557841917e-15 -1 2.4980018054066032e-16 0 2.4980018054066017e-16 1</Rotation>
+<Translation>-1.2467804566540508e-13 0.077499999999988384 3.5305092183079978e-14</Translation>
+</Transform>
+</Instance>
+<Instance name="uxcell SA5T ball-1" uid="uxcell SA5T ball-1" entityUid="uxcell SA5T ball*:*Default">
+<Transform>
+<Rotation>-0.87469562521946986 0.47883974245683236 0.074967087883916872 -0.48226571673835139 -0.87527324851856914 -0.036283865375606877 0.048242529792339027 -0.067891394680219694 0.99652567294957817</Rotation>
+<Translation>7.6048750630164363e-12 -0.014000000007196388 1.5306644840507033e-12</Translation>
+</Transform>
+</Instance>
+<Instance name="uxcell SA5T ball-2" uid="uxcell SA5T ball-2" entityUid="uxcell SA5T ball*:*Default">
+<Transform>
+<Rotation>0.9497019635521784 0.30634132303617134 0.064970564300958281 -0.31033971616976963 0.94844304322459039 0.06438209631989969 -0.041897983159139458 -0.081306749777163442 0.99580809970991391</Rotation>
+<Translation>5.886777176833391e-12 0.077499999993187865 5.2966520058816968e-12</Translation>
+</Transform>
+</Instance>
+</Instance>
+<Instance name="Servo Motor-13" uid="Servo Motor-13" grounded="true" entityUid="Servo Motor*:*Varsayilan">
+<Transform>
+<Rotation>3.8857805861880479e-16 -0.49999999999999961 -0.86602540378443871 -1 0 -4.4408920985006262e-16 1.6653345369377348e-16 0.86602540378443871 -0.49999999999999956</Rotation>
+<Translation>-0.063295165936712569 0.035684460000000029 -0.095238064158319397</Translation>
+</Transform>
+</Instance>
+<Instance name="Servo Motor-14" uid="Servo Motor-14" grounded="true" entityUid="Servo Motor*:*Varsayilan">
+<Transform>
+<Rotation>-1.1102230246251565e-16 -0.50000000000000022 0.86602540378443849 -1 1.6653345369377348e-16 0 -2.2204460492503131e-16 -0.8660254037844386 -0.50000000000000022</Rotation>
+<Translation>0.11409516593671307 0.035684459999999994 -0.0072498831338199954</Translation>
+</Transform>
+</Instance>
+<Instance name="Servo Motor-15" uid="Servo Motor-15" grounded="true" entityUid="Servo Motor*:*Varsayilan">
+<Transform>
+<Rotation>-1.2490009027033011e-16 -0.500000000000001 0.86602540378443815 -1 1.1102230246251565e-16 0 -1.6653345369377348e-16 -0.86602540378443804 -0.50000000000000089</Rotation>
+<Translation>0.063326165936713114 0.035684459999999994 -0.095184370583284356</Translation>
+</Transform>
+</Instance>
+</InstanceTree>
+<Constraints>
+<Concentric name="Concentric8">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>Servo Motor-1</Uid>
+</InstancePath>
+<Position>-0.010000000000000009 0 0.046000000000000013</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>servo arm-1</Uid>
+</InstancePath>
+<Position>0 0 0.0031750000000000111</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Coincident name="Coincident13">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Servo Motor-1</Uid>
+</InstancePath>
+<Position>-0.010000000000000009 0 0.046000000000000013</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>servo arm-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Concentric name="Concentric13">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>Servo Motor-7</Uid>
+</InstancePath>
+<Position>-0.010000000000000009 0 0.046000000000000013</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>servo arm-2</Uid>
+</InstancePath>
+<Position>0 0 0.0031750000000000111</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Coincident name="Coincident12">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Servo Motor-7</Uid>
+</InstancePath>
+<Position>-0.010000000000000009 0 0.046000000000000013</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>servo arm-2</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident620">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>servo arm-3</Uid>
+</InstancePath>
+<Position>0 0 0.0031750000000000111</Position>
+<Axis>1.6653345369377348e-16 1.1102230246251565e-16 1.0000000000000002</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Rod assem-1</Uid>
+<Uid>uxcell SA5T ball-1</Uid>
+</InstancePath>
+<Position>0 0 0.0040000000000000036</Position>
+<Axis>0 0 1.0000000000000002</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident622">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>upper platform-1</Uid>
+</InstancePath>
+<Position>0.038099999999999967 0.0063500000000000084 -0.14842640000000001</Position>
+<Axis>-2.2204460492503131e-16 0 -1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Rod assem-1</Uid>
+<Uid>uxcell SA5T ball-2</Uid>
+</InstancePath>
+<Position>0 0 0.0039999999999999758</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident628">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>upper platform-1</Uid>
+</InstancePath>
+<Position>0.038099999999999967 0.0063500000000000084 -0.14842640000000001</Position>
+<Axis>-2.2204460492503131e-16 0 -1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Rod assem-11</Uid>
+<Uid>uxcell SA5T ball-2</Uid>
+</InstancePath>
+<Position>0 0 0.0040000000000000036</Position>
+<Axis>-1.1102230246251565e-16 0 1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident630">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>servo arm-4</Uid>
+</InstancePath>
+<Position>0 0 0.0031750000000000111</Position>
+<Axis>0 0 1.0000000000000002</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Rod assem-11</Uid>
+<Uid>uxcell SA5T ball-1</Uid>
+</InstancePath>
+<Position>0 0 0.0040000000000000036</Position>
+<Axis>-1.1102230246251565e-16 0 0.99999999999999978</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident633">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>servo arm-5</Uid>
+</InstancePath>
+<Position>0 0 0.0031750000000000111</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Rod assem-13</Uid>
+<Uid>uxcell SA5T ball-1</Uid>
+</InstancePath>
+<Position>0 0 0.0040000000000000036</Position>
+<Axis>0 1.1102230246251565e-16 1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident635">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>upper platform-1</Uid>
+</InstancePath>
+<Position>-0.14759103299227036 0.0063499999999999945 0.041217632115812503</Position>
+<Axis>-0.86602540378443771 0 0.50000000000000178</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Rod assem-13</Uid>
+<Uid>uxcell SA5T ball-2</Uid>
+</InstancePath>
+<Position>0 0 0.0040000000000000036</Position>
+<Axis>0 0 1.0000000000000002</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident637">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>upper platform-1</Uid>
+</InstancePath>
+<Position>-0.14759103299227036 0.0063499999999999945 0.041217632115812503</Position>
+<Axis>-0.86602540378443771 0 0.50000000000000178</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Rod assem-14</Uid>
+<Uid>uxcell SA5T ball-2</Uid>
+</InstancePath>
+<Position>0 0 0.0040000000000000036</Position>
+<Axis>0 0 1.0000000000000002</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident641">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>servo arm-6</Uid>
+</InstancePath>
+<Position>0 0 0.0031749999999999834</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Rod assem-14</Uid>
+<Uid>uxcell SA5T ball-1</Uid>
+</InstancePath>
+<Position>0 0 0.0040000000000000036</Position>
+<Axis>0 -1.1102230246251565e-16 1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident643">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>servo arm-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Rod assem-15</Uid>
+<Uid>uxcell SA5T ball-1</Uid>
+</InstancePath>
+<Position>0 0 -0.0040000000000000036</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident645">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>upper platform-1</Uid>
+</InstancePath>
+<Position>0.10949103299227041 0.0063499999999999945 0.10720876788418714</Position>
+<Axis>0.86602540378443693 0 0.500000000000003</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Rod assem-15</Uid>
+<Uid>uxcell SA5T ball-2</Uid>
+</InstancePath>
+<Position>0 0 -0.0040000000000000036</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident647">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>servo arm-2</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Rod assem-12</Uid>
+<Uid>uxcell SA5T ball-1</Uid>
+</InstancePath>
+<Position>0 0 -0.0040000000000000036</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident649">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>upper platform-1</Uid>
+</InstancePath>
+<Position>0.10949103299227041 0.0063499999999999945 0.10720876788418714</Position>
+<Axis>0.86602540378443693 0 0.500000000000003</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Rod assem-12</Uid>
+<Uid>uxcell SA5T ball-2</Uid>
+</InstancePath>
+<Position>0 0 -0.0039999999999999758</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Concentric name="Concentric25">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>servo arm-6</Uid>
+</InstancePath>
+<Position>0 0 0.0031749999999999834</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>Servo Motor-12</Uid>
+</InstancePath>
+<Position>-0.010000000000000009 0 0.045999999999999999</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Coincident name="Coincident655">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>servo arm-6</Uid>
+</InstancePath>
+<Position>0 0 0.0031749999999999834</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Servo Motor-12</Uid>
+</InstancePath>
+<Position>-0.010000000000000009 0 0.045999999999999999</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Concentric name="Concentric28">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>servo arm-5</Uid>
+</InstancePath>
+<Position>0 0 0.0031750000000000111</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>Servo Motor-13</Uid>
+</InstancePath>
+<Position>-0.010000000000000009 0 0.045999999999999999</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Coincident name="Coincident657">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>servo arm-5</Uid>
+</InstancePath>
+<Position>0 0 0.0031750000000000111</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Servo Motor-13</Uid>
+</InstancePath>
+<Position>-0.010000000000000009 0 0.045999999999999999</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Concentric name="Concentric29">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>upper platform-1</Uid>
+</InstancePath>
+<Position>-0.14124103299227106 0.0031749999999999973 0.052216154743874081</Position>
+<Axis>-0.86602540378444193 0 0.49999999999999423</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>Rod assem-13</Uid>
+<Uid>uxcell SA5T ball-2</Uid>
+</InstancePath>
+<Position>0 0 -0.0055050000000000099</Position>
+<Axis>0 0 1.0000000000000002</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Concentric name="Concentric30">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>upper platform-1</Uid>
+</InstancePath>
+<Position>-0.11584103299227133 0.0031749999999999973 0.096210245256123789</Position>
+<Axis>-0.86602540378444193 0 0.49999999999999423</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>Rod assem-14</Uid>
+<Uid>uxcell SA5T ball-2</Uid>
+</InstancePath>
+<Position>0 0 -0.0055050000000000099</Position>
+<Axis>0 0 1.0000000000000002</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Concentric name="Concentric31">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>servo arm-6</Uid>
+</InstancePath>
+<Position>0.057150000000000006 0 0.0031750000000000389</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>Rod assem-14</Uid>
+<Uid>uxcell SA5T ball-1</Uid>
+</InstancePath>
+<Position>0 0 -0.0055049999999999821</Position>
+<Axis>0 -1.1102230246251565e-16 1</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Concentric name="Concentric33">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>servo arm-5</Uid>
+</InstancePath>
+<Position>0.057149999999999992 0 0.0031750000000000111</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>Rod assem-13</Uid>
+<Uid>uxcell SA5T ball-1</Uid>
+</InstancePath>
+<Position>0 0 -0.0055050000000000099</Position>
+<Axis>0 1.1102230246251565e-16 1</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Concentric name="Concentric36">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>servo arm-4</Uid>
+</InstancePath>
+<Position>0 0 0.0031750000000000111</Position>
+<Axis>0 0 -1.0000000000000002</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>Servo Motor-15</Uid>
+</InstancePath>
+<Position>-0.010000000000000009 0 0.045999999999999985</Position>
+<Axis>0 1.6653345369377348e-16 -1</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Coincident name="Coincident659">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>servo arm-4</Uid>
+</InstancePath>
+<Position>0 0 0.0031750000000000111</Position>
+<Axis>0 0 1.0000000000000002</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Servo Motor-15</Uid>
+</InstancePath>
+<Position>-0.010000000000000009 0 0.045999999999999985</Position>
+<Axis>0 -1.6653345369377348e-16 1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Concentric name="Concentric37">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>servo arm-4</Uid>
+</InstancePath>
+<Position>0.057149999999999992 0 0.0031750000000000111</Position>
+<Axis>0 0 -1.0000000000000002</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>Rod assem-11</Uid>
+<Uid>uxcell SA5T ball-1</Uid>
+</InstancePath>
+<Position>0 0 -0.0055049999999999821</Position>
+<Axis>-1.1102230246251565e-16 0 0.99999999999999978</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Concentric name="Concentric38">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>upper platform-1</Uid>
+</InstancePath>
+<Position>-0.025399999999998153 0.0031750000000000111 -0.14842640000000026</Position>
+<Axis>-2.2204460492503131e-16 0 -1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>Rod assem-11</Uid>
+<Uid>uxcell SA5T ball-2</Uid>
+</InstancePath>
+<Position>0 0 -0.0055050000000000099</Position>
+<Axis>-1.1102230246251565e-16 0 1</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Concentric name="Concentric41">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>upper platform-1</Uid>
+</InstancePath>
+<Position>0.025400000000001852 0.0031750000000000111 -0.14842639999999971</Position>
+<Axis>-2.2204460492503131e-16 0 -1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>Rod assem-1</Uid>
+<Uid>uxcell SA5T ball-2</Uid>
+</InstancePath>
+<Position>0 0 -0.0055050000000000376</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Concentric name="Concentric42">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>servo arm-3</Uid>
+</InstancePath>
+<Position>0.057149999999999979 0 0.0031750000000000111</Position>
+<Axis>-1.6653345369377348e-16 -1.1102230246251565e-16 -1.0000000000000002</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>Rod assem-1</Uid>
+<Uid>uxcell SA5T ball-1</Uid>
+</InstancePath>
+<Position>0 0 -0.0055050000000000099</Position>
+<Axis>0 0 1.0000000000000002</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Concentric name="Concentric43">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>servo arm-3</Uid>
+</InstancePath>
+<Position>0 0 0.0031750000000000111</Position>
+<Axis>-1.6653345369377348e-16 -1.1102230246251565e-16 -1.0000000000000002</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>Servo Motor-14</Uid>
+</InstancePath>
+<Position>-0.010000000000000002 0 0.045999999999999999</Position>
+<Axis>0 0 -1.0000000000000002</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Coincident name="Coincident661">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>servo arm-3</Uid>
+</InstancePath>
+<Position>0 0 0.0031750000000000111</Position>
+<Axis>1.6653345369377348e-16 1.1102230246251565e-16 1.0000000000000002</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Servo Motor-14</Uid>
+</InstancePath>
+<Position>-0.010000000000000002 0 0.045999999999999999</Position>
+<Axis>0 0 1.0000000000000002</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Concentric name="Concentric44">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>servo arm-1</Uid>
+</InstancePath>
+<Position>0.057150000000000034 0 0.0031750000000000111</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>Rod assem-15</Uid>
+<Uid>uxcell SA5T ball-1</Uid>
+</InstancePath>
+<Position>0 0 -0.0055050000000000099</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Concentric name="Concentric45">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>upper platform-1</Uid>
+</InstancePath>
+<Position>0.11584103299227032 0.0031749999999999973 0.09621024525612519</Position>
+<Axis>0.86602540378443793 0 0.50000000000000167</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>Rod assem-15</Uid>
+<Uid>uxcell SA5T ball-2</Uid>
+</InstancePath>
+<Position>0 0 -0.0055049999999999821</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Concentric name="Concentric46">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>servo arm-2</Uid>
+</InstancePath>
+<Position>0.057150000000000048 0 0.0031750000000000111</Position>
+<Axis>0 0 -1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>Rod assem-12</Uid>
+<Uid>uxcell SA5T ball-1</Uid>
+</InstancePath>
+<Position>0 0 -0.0055050000000000099</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+</Concentric>
+<Concentric name="Concentric47">
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>upper platform-1</Uid>
+</InstancePath>
+<Position>0.14124103299227039 0.0031749999999999973 0.05221615474387576</Position>
+<Axis>0.86602540378443793 0 0.50000000000000167</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="cylinder">
+<InstancePath>
+<Uid>Rod assem-12</Uid>
+<Uid>uxcell SA5T ball-2</Uid>
+</InstancePath>
+<Position>0 0 -0.0055049999999999821</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+</Concentric>
+</Constraints>
+</RootAssembly>
+<Assemblies>
+<Assembly name="Rod assem" uid="Rod assem" version="133">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<AssemblyFile name="Rod assem.SLDASM" type="SolidWorks Assembly"/>
+<Constraints>
+<Coincident name="Coincident1">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>platform rods-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Rod assem</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident2">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>platform rods-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Rod assem</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 1 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident3">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>platform rods-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>Rod assem</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Concentric name="Concentric1">
+<ConstraintGeometry geomType="sphere">
+<InstancePath>
+<Uid>uxcell SA5T ball-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="sphere">
+<InstancePath>
+<Uid>uxcell SA5T ball joint housing-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+</ConstraintGeometry>
+</Concentric>
+<Coincident name="Coincident7">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>platform rods-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 -1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="circle">
+<InstancePath>
+<Uid>uxcell SA5T ball joint housing-1</Uid>
+</InstancePath>
+<Position>0 0.014000000000000012 0</Position>
+<Axis>3.4914813388431334e-15 -1 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident8">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>platform rods-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>uxcell SA5T ball joint housing-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident9">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>platform rods-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>uxcell SA5T ball joint housing-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Concentric name="Concentric2">
+<ConstraintGeometry geomType="sphere">
+<InstancePath>
+<Uid>uxcell SA5T ball joint housing-2</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="sphere">
+<InstancePath>
+<Uid>uxcell SA5T ball-2</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+</ConstraintGeometry>
+</Concentric>
+<Coincident name="Coincident10">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>platform rods-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 0 1</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>uxcell SA5T ball joint housing-2</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>0 1.6653345369377353e-16 1</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident11">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>platform rods-1</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>uxcell SA5T ball joint housing-2</Uid>
+</InstancePath>
+<Position>0 0 0</Position>
+<Axis>1 0 0</Axis>
+</ConstraintGeometry>
+</Coincident>
+<Coincident name="Coincident12">
+<ConstraintGeometry geomType="plane">
+<InstancePath>
+<Uid>platform rods-1</Uid>
+</InstancePath>
+<Position>0 0.063500000000000001 0</Position>
+<Axis>0 1 0</Axis>
+</ConstraintGeometry>
+<ConstraintGeometry geomType="circle">
+<InstancePath>
+<Uid>uxcell SA5T ball joint housing-2</Uid>
+</InstancePath>
+<Position>0 0.014000000000000012 0</Position>
+<Axis>3.4914813388431334e-15 -1 -1.6653345369377353e-16</Axis>
+</ConstraintGeometry>
+</Coincident>
+</Constraints>
+</Assembly>
+</Assemblies>
+<Parts>
+<Part name="Servo Motor" uid="Servo Motor*:*Varsayilan" version="250">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="Servo Motor.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.03128473836127274</Mass>
+<CenterOfMass>-0.00011056138312339061 1.7497038557037784e-10 0.019491986912177725</CenterOfMass>
+<Inertia>4.8980350469077828e-06 8.2183687252907939e-06 5.3758485678065303e-06 -6.8030100181280472e-14 6.9702074727304471e-08 8.0272040462085644e-14</Inertia>
+</MassProperties>
+<GeometryFile name="Servo Motor_Varsayilan_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.792156862745098" g="0.81960784313725488" b="0.93333333333333335" a="1"/>
+<Diffuse r="0.792156862745098" g="0.81960784313725488" b="0.93333333333333335" a="1"/>
+<Specular r="0.396078431372549" g="0.40980392156862744" b="0.46666666666666667" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.40000000596046448</Shininess>
+</VisualProperties>
+</Part>
+<Part name="bottom platform" uid="bottom platform*:*Default" version="208">
+<ModelUnits mass="kilogram" length="inch"/>
+<PartFile name="bottom platform.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.35333758815542693</Mass>
+<CenterOfMass>0 0.0015874999999999999 -2.1983449373047561e-06</CenterOfMass>
+<Inertia>0.0025031651469498563 0.0050090695559306822 0.0025064980529349245 0 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="bottom platform_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.29803921568627451" g="0.29803921568627451" b="0.29803921568627451" a="1"/>
+<Diffuse r="0.29803921568627451" g="0.29803921568627451" b="0.29803921568627451" a="1"/>
+<Specular r="0.14901960784313725" g="0.14901960784313725" b="0.14901960784313725" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.20000000298023224</Shininess>
+</VisualProperties>
+</Part>
+<Part name="platform rods" uid="platform rods*:*Default" version="245">
+<ModelUnits mass="kilogram" length="inch"/>
+<PartFile name="platform rods.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.0054818219963046772</Mass>
+<CenterOfMass>0 0.03175 0</CenterOfMass>
+<Inertia>1.7212148531923558e-06 4.2841060441662453e-08 1.7212148531923558e-06 0 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="platform rods_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.10980392156862745" g="0.10980392156862745" b="0.10980392156862745" a="1"/>
+<Diffuse r="0.10980392156862745" g="0.10980392156862745" b="0.10980392156862745" a="1"/>
+<Specular r="0.076862745098039212" g="0.076862745098039212" b="0.076862745098039212" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+<Part name="servo arm" uid="servo arm*:*Default" version="132">
+<ModelUnits mass="kilogram" length="inch"/>
+<PartFile name="servo arm.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.0024372081930387713</Mass>
+<CenterOfMass>0.025209546329043729 0 0.0015874999999999999</CenterOfMass>
+<Inertia>3.7256730255055961e-08 8.3960625858989293e-07 8.727682252047904e-07 0 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="servo arm_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.10980392156862745" g="0.10980392156862745" b="0.10980392156862745" a="1"/>
+<Diffuse r="0.10980392156862745" g="0.10980392156862745" b="0.10980392156862745" a="1"/>
+<Specular r="0.076862745098039212" g="0.076862745098039212" b="0.076862745098039212" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+<Part name="servo mount" uid="servo mount*:*Default" version="138">
+<ModelUnits mass="kilogram" length="inch"/>
+<PartFile name="servo mount.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.030209527528994248</Mass>
+<CenterOfMass>0 0.019472032552425494 -0.022120409677275639</CenterOfMass>
+<Inertia>1.687526659288959e-05 6.7254136857644078e-06 1.9230901339587491e-05 3.1095586381080513e-06 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="servo mount_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.6470588235294118" g="0.61960784313725492" b="0.58823529411764708" a="1"/>
+<Diffuse r="0.6470588235294118" g="0.61960784313725492" b="0.58823529411764708" a="1"/>
+<Specular r="0.45294117647058824" g="0.43372549019607842" b="0.41176470588235292" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+<Part name="upper platform" uid="upper platform*:*Default" version="198">
+<ModelUnits mass="kilogram" length="inch"/>
+<PartFile name="upper platform.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.39630533876735408</Mass>
+<CenterOfMass>0 0.0031749999999999999 0</CenterOfMass>
+<Inertia>0.0017544951929973048 0.0035063211021887468 0.0017544951929973043 0 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="upper platform_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="1" g="1" b="1" a="0.30000000000000004"/>
+<Diffuse r="1" g="1" b="1" a="0.30000000000000004"/>
+<Specular r="0.69999998807907104" g="0.69999998807907104" b="0.69999998807907104" a="0.30000000000000004"/>
+<Emissive r="0.29999999999999999" g="0.29999999999999999" b="0.29999999999999999" a="0.30000000000000004"/>
+<Shininess>0.10000000149011612</Shininess>
+</VisualProperties>
+</Part>
+<Part name="uxcell SA5T ball joint housing" uid="uxcell SA5T ball joint housing*:*Default" version="222">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="uxcell SA5T ball joint housing.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.0040640050052996209</Mass>
+<CenterOfMass>1.9738428365432865e-07 0.0065934821527072569 -4.8994520531647929e-07</CenterOfMass>
+<Inertia>4.5976007606110654e-07 8.4106909641847343e-08 5.2289910834730675e-07 4.6116030133881454e-13 3.947160108461881e-13 -2.548289860671465e-11</Inertia>
+</MassProperties>
+<GeometryFile name="uxcell SA5T ball joint housing_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.66666666666666663" g="0.69803921568627447" b="0.76862745098039209" a="1"/>
+<Diffuse r="0.66666666666666663" g="0.69803921568627447" b="0.76862745098039209" a="1"/>
+<Specular r="0.33333333333333331" g="0.34901960784313724" b="0.38431372549019605" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+<Part name="uxcell SA5T ball" uid="uxcell SA5T ball*:*Default" version="121">
+<ModelUnits mass="kilogram" length="millimeter"/>
+<PartFile name="uxcell SA5T ball.SLDPRT" type="SolidWorks Part"/>
+<MassProperties>
+<Mass>0.00047048028368165467</Mass>
+<CenterOfMass>0 0 0</CenterOfMass>
+<Inertia>5.7521052234599403e-09 5.7528782868261003e-09 7.6310140806627161e-09 0 0 0</Inertia>
+</MassProperties>
+<GeometryFile name="uxcell SA5T ball_Default_sldprt.STEP" type="STEP"/>
+<VisualProperties>
+<Ambient r="0.66666666666666663" g="0.69803921568627447" b="0.76862745098039209" a="1"/>
+<Diffuse r="0.66666666666666663" g="0.69803921568627447" b="0.76862745098039209" a="1"/>
+<Specular r="0.33333333333333331" g="0.34901960784313724" b="0.38431372549019605" a="1"/>
+<Emissive r="0" g="0" b="0" a="1"/>
+<Shininess>0.3125</Shininess>
+</VisualProperties>
+</Part>
+</Parts>
+</SimscapeMultibodyImportXML>

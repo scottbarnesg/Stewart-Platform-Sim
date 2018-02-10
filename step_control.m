@@ -2,12 +2,13 @@ clc; clear; close all;
 %% Set Initial Parameters
 % Set Base's Orientation
 roll = deg2rad(0); % Gamma
-pitch = deg2rad(15); % Alpha
+pitch = deg2rad(0); % Alpha
 yaw = deg2rad(0); % Beta
 % Apply Rotation
 R = rot_x(pitch)*rot_y(yaw)*rot_z(roll);
 % Set Initial Servo Angles
-servo_angles = [pi/2; -pi/2; pi/2; -pi/2; pi/2; -pi/2];
+init_angle = deg2rad(120);
+servo_angles = [init_angle; -init_angle; init_angle; -init_angle; init_angle; -init_angle];
 
 %% Reset Simulation
 for num = 1:6
