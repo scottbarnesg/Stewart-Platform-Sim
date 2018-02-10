@@ -8,11 +8,14 @@ pitch = deg2rad(0); % Alpha
 yaw = deg2rad(0); % Beta
 % Apply Rotation
 R = rot_x(pitch)*rot_y(yaw)*rot_z(roll);
+
+set_param('PlatformAssem/platform_qx','Value',num2str(roll))
+set_param('PlatformAssem/platform_qy','Value',num2str(pitch))
+
 % Set Initial Servo Angles
 
 init_angle = deg2rad(120);
 servo_angles = [init_angle; -init_angle; init_angle; -init_angle; init_angle; -init_angle];
-
 %% Reset Simulation
 for num = 1:6
     path = strcat('PlatformAssem/angle',int2str(num));
@@ -34,6 +37,15 @@ tic; % Start Timer
 while(run_sim == true)
     % Get Current Simulation Time
     current_sim_time = get_param('PlatformAssem','SimulationTime');
+    
+    % Set **Variable** Platform Angle
+    roll = deg2rad(5*sin(2*pi*1*current_sim_time)); % Gamma
+    pitch = deg2rad(0); % Alpha
+    yaw = deg2rad(0); % Beta
+    % Apply Rotation
+    set_param('PlatformAssem/platform_qx','Value',num2str(roll))
+    set_param('PlatformAssem/platform_qy','Value',num2str(pitch)) 
+    
     % Update Actuators
     for num = 1:6
         path = strcat('PlatformAssem/angle',int2str(num));
