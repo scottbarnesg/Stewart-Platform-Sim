@@ -1,6 +1,7 @@
 clc; clear; close all;
 %% Set Initial Parameters
 t_max = 2.0;
+g = 0;% -9.80665; %gravity
 % Set Base's Orientation
 
 roll = deg2rad(0); % Gamma
@@ -10,7 +11,8 @@ yaw = deg2rad(0); % Beta
 R = rot_x(pitch)*rot_y(yaw)*rot_z(roll);
 
 set_param('PlatformAssem/platform_qx','Value',num2str(roll))
-set_param('PlatformAssem/platform_qy','Value',num2str(pitch))
+set_param('PlatformAssem/platform_qy','Value',num2str(yaw))
+set_param('PlatformAssem/platform_qz','Value',num2str(pitch))
 
 % Set Initial Servo Angles
 
@@ -39,12 +41,13 @@ while(run_sim == true)
     current_sim_time = get_param('PlatformAssem','SimulationTime');
     
     % Set **Variable** Platform Angle
-    roll = deg2rad(5*sin(2*pi*1*current_sim_time)); % Gamma
-    pitch = deg2rad(0); % Alpha
+    roll = deg2rad(10*sin(2*pi*1*current_sim_time)); % Gamma
+    pitch = deg2rad(10*sin(2*pi*2*current_sim_time)); % Alpha
     yaw = deg2rad(0); % Beta
     % Apply Rotation
     set_param('PlatformAssem/platform_qx','Value',num2str(roll))
-    set_param('PlatformAssem/platform_qy','Value',num2str(pitch)) 
+    set_param('PlatformAssem/platform_qy','Value',num2str(yaw))
+    set_param('PlatformAssem/platform_qz','Value',num2str(pitch)) 
     
     % Update Actuators
     for num = 1:6
