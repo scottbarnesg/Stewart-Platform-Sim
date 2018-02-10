@@ -2,17 +2,29 @@ clc; clear; close all;
 %% Set Initial Parameters
 t_max = 2.0;
 g = 0;% -9.80665; %gravity
-% Set Base's Orientation
 
-roll = deg2rad(0); % Gamma
-pitch = deg2rad(0); % Alpha
-yaw = deg2rad(0); % Beta
-% Apply Rotation
-R = rot_x(pitch)*rot_y(yaw)*rot_z(roll);
+% Set Initial Base Position and Orientation
+base_px = 0;
+base_py = 0;
+base_pz = 0;
+base_qx = deg2rad(0); % Gamma - roll
+base_qy = deg2rad(0); % Alpha - pitch 
+base_qz = deg2rad(0); % Beta - yaw
 
-set_param('PlatformAssem/platform_qx','Value',num2str(roll))
-set_param('PlatformAssem/platform_qy','Value',num2str(yaw))
-set_param('PlatformAssem/platform_qz','Value',num2str(pitch))
+set_param('PlatformAssem/base_px','Value',num2str(base_px))
+set_param('PlatformAssem/base_py','Value',num2str(base_py))
+set_param('PlatformAssem/base_pz','Value',num2str(base_pz))
+set_param('PlatformAssem/base_qx','Value',num2str(base_qx))
+set_param('PlatformAssem/base_qy','Value',num2str(base_qz))
+set_param('PlatformAssem/base_qz','Value',num2str(base_qy))
+
+% Define Functions for Dynamic Base Position and Orientation
+base_pxf = @(t) 0;
+base_pyf = @(t) 0;
+base_pzf = @(t) 0;
+base_qxf = @(t) 0; %10*sin(2*pi*0.5*t); %in degrees
+base_qyf = @(t) 0; %10*cos(2*pi*0.5*t);
+base_qzf = @(t) 0;
 
 % Set Initial Servo Angles
 
@@ -40,14 +52,21 @@ while(run_sim == true)
     % Get Current Simulation Time
     current_sim_time = get_param('PlatformAssem','SimulationTime');
     
-    % Set **Variable** Platform Angle
-    roll = deg2rad(10*sin(2*pi*1*current_sim_time)); % Gamma
-    pitch = deg2rad(10*sin(2*pi*2*current_sim_time)); % Alpha
-    yaw = deg2rad(0); % Beta
-    % Apply Rotation
-    set_param('PlatformAssem/platform_qx','Value',num2str(roll))
-    set_param('PlatformAssem/platform_qy','Value',num2str(yaw))
-    set_param('PlatformAssem/platform_qz','Value',num2str(pitch)) 
+    % Set Variable Base Position and Orientation From Definitions
+    base_px = base_pxf(current_sim_time);
+    base_py = base_pyf(current_sim_time);
+    base_pz = base_pzf(current_sim_time);
+    base_qx = deg2rad(base_qxf(current_sim_time)); % Gamma - roll
+    base_qy = deg2rad(base_qyf(current_sim_time)); % Alpha - pitch
+    base_qz = deg2rad(base_qzf(current_sim_time)); % Beta - yaw
+    
+    % Apply Base Translation and Rotation
+    set_param('PlatformAssem/base_px','Value',num2str(base_px))
+    set_param('PlatformAssem/base_py','Value',num2str(base_py))
+    set_param('PlatformAssem/base_pz','Value',num2str(base_pz))
+    set_param('PlatformAssem/base_qx','Value',num2str(base_qx))
+    set_param('PlatformAssem/base_qy','Value',num2str(base_qz))
+    set_param('PlatformAssem/base_qz','Value',num2str(base_qy)) 
     
     % Update Actuators
     for num = 1:6
