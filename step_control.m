@@ -1,15 +1,23 @@
 clc; clear; close all;
 %% Set Initial Parameters
-t_max = 1.0;
-g = -9.80665; %gravity
+t_max = 5.0;
+g = 0; %-9.80665; %gravity
+
+% Define Functions for Dynamic Base Position and Orientation
+base_pxf = @(t) 0;
+base_pyf = @(t) 0;
+base_pzf = @(t) 0;
+base_qxf = @(t) 10*sin(2*pi*0.5*t); %in degrees
+base_qyf = @(t) 10*sin(2*pi*1*t);
+base_qzf = @(t) 0;
 
 % Set Initial Base Position and Orientation
-base_px = 0;
-base_py = 0;
-base_pz = 0;
-base_qx = deg2rad(0); % Gamma - roll
-base_qy = deg2rad(0); % Alpha - pitch 
-base_qz = deg2rad(0); % Beta - yaw
+base_px = base_pxf(0);
+base_py = base_pyf(0);
+base_pz = base_pzf(0);
+base_qx = deg2rad(base_qxf(0)); % Gamma - roll
+base_qy = deg2rad(base_qyf(0)); % Alpha - pitch 
+base_qz = deg2rad(base_qzf(0)); % Beta - yaw
 
 set_param('PlatformAssem/base_px','Value',num2str(base_px))
 set_param('PlatformAssem/base_py','Value',num2str(base_py))
@@ -18,16 +26,7 @@ set_param('PlatformAssem/base_qx','Value',num2str(base_qx))
 set_param('PlatformAssem/base_qy','Value',num2str(base_qz))
 set_param('PlatformAssem/base_qz','Value',num2str(base_qy))
 
-% Define Functions for Dynamic Base Position and Orientation
-base_pxf = @(t) 0;
-base_pyf = @(t) 0;
-base_pzf = @(t) 0;
-base_qxf = @(t) 10*sin(2*pi*t); %in degrees
-base_qyf = @(t) 10*cos(2*pi*t);
-base_qzf = @(t) 0;
-
 % Set Initial Servo Angles
-
 init_angle = deg2rad(120);
 servo_angles = [init_angle; -init_angle; init_angle; -init_angle; init_angle; -init_angle];
 %% Reset Simulation
