@@ -7,8 +7,8 @@ g = 0; %-9.80665; %gravity
 base_pxf = @(t) 0;
 base_pyf = @(t) 0;
 base_pzf = @(t) 0;
-base_qxf = @(t) 10*sin(2*pi*0.5*t); %in degrees
-base_qyf = @(t) 10*sin(2*pi*1*t);
+base_qxf = @(t) 12*sin(2*pi*0.5*t); %in degrees
+base_qyf = @(t) 12*sin(2*pi*1*t);
 base_qzf = @(t) 0;
 
 % Set Initial Base Position and Orientation
