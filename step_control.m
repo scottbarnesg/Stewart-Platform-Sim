@@ -1,7 +1,7 @@
 clc; clear; close all;
 %% Set Initial Parameters
-t_max = 2.0;
-g = 0;% -9.80665; %gravity
+t_max = 1.0;
+g = -9.80665; %gravity
 
 % Set Initial Base Position and Orientation
 base_px = 0;
@@ -22,8 +22,8 @@ set_param('PlatformAssem/base_qz','Value',num2str(base_qy))
 base_pxf = @(t) 0;
 base_pyf = @(t) 0;
 base_pzf = @(t) 0;
-base_qxf = @(t) 0; %10*sin(2*pi*0.5*t); %in degrees
-base_qyf = @(t) 0; %10*cos(2*pi*0.5*t);
+base_qxf = @(t) 15*sin(2*pi*t); %in degrees
+base_qyf = @(t) 15*cos(2*pi*t);
 base_qzf = @(t) 0;
 
 % Set Initial Servo Angles
@@ -102,9 +102,10 @@ for i = 1:size(platform_orientation.time, 1)
     gamma(i) = eangles(3)*180/pi;
     x(i) = 1000*(platform_translation.signals.values(i, 1)-platform_translation.signals.values(1, 1));
     y(i) = 1000*(platform_translation.signals.values(i, 2)-platform_translation.signals.values(1, 2));
+    z(i) = 1000*(platform_translation.signals.values(i, 3)-platform_translation.signals.values(1, 3));
 end
-plot(platform_orientation.time, alpha, platform_orientation.time, beta, platform_orientation.time, gamma, platform_orientation.time, x, platform_orientation.time, y);
-legend('Alpha','Beta','Gamma', 'X', 'Y');
+plot(platform_orientation.time, alpha, platform_orientation.time, beta, platform_orientation.time, gamma, platform_orientation.time, x, platform_orientation.time, y, platform_orientation.time, z);
+legend('Alpha','Beta','Gamma', 'X', 'Y', 'Z');
 xlabel('Time (s)');
 ylabel('Angles (degrees)');
 title('Simulation Results');
