@@ -19,10 +19,10 @@ function theta = controller_v0(eangles, theta, translation)
     
     % Velocity Calculation
     d_theta = [A(1)*sin(eangles(3))+B(1)*sin(eangles(1))-C(1)*sin(eangles(2))+D(1)*translation(1)+E(1)*translation(2)-F(1)*translation(3);
-                A(2)*sin(eangles(3))+B(2)*-sin(eangles(1))-C(2)*sin(eangles(2))+D(2)*translation(1)+E(2)*translation(2)-F(1)*translation(3);
-                A(3)*sin(eangles(3))+B(2)*-sin(eangles(1))-C(3)*sin(eangles(2))+D(3)*translation(1)+E(3)*translation(2)-F(1)*translation(3);
-                A(4)*-sin(eangles(3))+B(2)*sin(eangles(1))-C(4)*sin(eangles(2))+D(4)*translation(1)+E(4)*translation(2)-F(1)*translation(3);
-                A(5)*-sin(eangles(3))+B(2)*-sin(eangles(1))-C(5)*sin(eangles(2))+D(5)*translation(1)-E(5)*translation(2)-F(1)*translation(3);
-                A(6)*sin(eangles(3))+B(2)*sin(eangles(1))-C(6)*sin(eangles(2))+D(6)*translation(1)-E(6)*translation(2)]-F(1)*translation(3);
+                A(2)*sin(eangles(3))+B(2)*-sin(eangles(1))-C(2)*sin(eangles(2))+D(2)*translation(1)+E(2)*translation(2)-F(2)*translation(3);
+                A(3)*sin(eangles(3))+B(3)*-sin(eangles(1))-C(3)*sin(eangles(2))+D(3)*translation(1)+E(3)*translation(2)-F(3)*translation(3);
+                A(4)*-sin(eangles(3))+B(4)*sin(eangles(1))-C(4)*sin(eangles(2))+D(4)*translation(1)+E(4)*translation(2)-F(4)*translation(3);
+                A(5)*-sin(eangles(3))+B(5)*-sin(eangles(1))-C(5)*sin(eangles(2))+D(5)*translation(1)-E(5)*translation(2)-F(5)*translation(3);
+                A(6)*sin(eangles(3))+B(6)*sin(eangles(1))-C(6)*sin(eangles(2))+D(6)*translation(1)-E(6)*translation(2)-F(6)*translation(3)];
     theta = theta + d_theta*dt;
 end

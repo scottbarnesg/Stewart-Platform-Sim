@@ -46,6 +46,7 @@ set_param('PlatformAssem', 'SimulationCommand', 'start');
 set_param('PlatformAssem', 'SimulationCommand', 'pause');
 step_count = 0;
 tic; % Start Timer
+error_data = []; % Initialize Empty Error Array
 
 %% Run Simulation
 while(run_sim == true)
@@ -79,8 +80,8 @@ while(run_sim == true)
     trans_plat_state = platform_translation.signals.values(length(platform_translation.time), :)-platform_translation.signals.values(1, :);
     actuator_states = motor_states.signals.values(length(platform_orientation.time), :)'; %+repmat(pi,6,1);   
     % Calculate Controller Input
-    servo_angles = controller_v0(eul_plat_state, actuator_states, trans_plat_state);
-    % [servo_angles, error_data] = controller_v1(eul_plat_state, actuator_states, trans_plat_state, error_data);
+    % servo_angles = controller_v0(eul_plat_state, actuator_states, trans_plat_state);
+    [servo_angles, error_data] = controller_v1(eul_plat_state, actuator_states, trans_plat_state, error_data);
     % Step forward by single time step (determined by solver)
     set_param('PlatformAssem', 'SimulationCommand', 'step');
     % Check for Termination Criteria
@@ -93,7 +94,7 @@ while(run_sim == true)
 end
 toc % End Timer
 %%  Plot Results
-clear alpha beta gamma x y;
+clear alpha beta gamma x y z;
 for i = 1:size(platform_orientation.time, 1)
     R_m = quat_to_rot(platform_orientation.signals.values(i, :));
     eangles = quat_to_eangles(platform_orientation.signals.values(i, :));
@@ -106,7 +107,7 @@ for i = 1:size(platform_orientation.time, 1)
 end
 figure;
 subplot(2, 1, 1);
-plot(platform_orientation.time, alpha, 'r', platform_orientation.time, beta, 'g', platform_orientation.time, gamma, 'b', platform_orientation.time, base_qxf(platform_orientation.time), '--r', platform_orientation.time, base_qyf(platform_orientation.time), '--g', platform_orientation.time, base_qzf(platform_orientation.time), '--b');
+plot(platform_orientation.time, alpha, 'r', platform_orientation.time, beta, 'b', platform_orientation.time, gamma, 'g', platform_orientation.time, base_qxf(platform_orientation.time), '--r', platform_orientation.time, base_qyf(platform_orientation.time), '--b', platform_orientation.time, base_qzf(platform_orientation.time), '--g');
 legend('Alpha','Beta','Gamma', 'Roll', 'Pitch', 'Yaw');
 xlabel('Time (s)');
 ylabel('Angles (degrees)');
