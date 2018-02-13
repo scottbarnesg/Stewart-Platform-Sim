@@ -2,6 +2,7 @@ clc; clear; close all;
 %% Set Initial Parameters
 t_max = 5.0;
 g = 0; %-9.80665; %gravity
+sensor_delay = 0.001; %seconds
 
 % Define Functions for Dynamic Base Position and Orientation
 base_pxf = @(t) 0;
