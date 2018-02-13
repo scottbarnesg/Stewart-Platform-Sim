@@ -22,8 +22,8 @@ set_param('PlatformAssem/base_qz','Value',num2str(base_qy))
 base_pxf = @(t) 0;
 base_pyf = @(t) 0;
 base_pzf = @(t) 0;
-base_qxf = @(t) 15*sin(2*pi*t); %in degrees
-base_qyf = @(t) 15*cos(2*pi*t);
+base_qxf = @(t) 10*sin(2*pi*t); %in degrees
+base_qyf = @(t) 10*cos(2*pi*t);
 base_qzf = @(t) 0;
 
 % Set Initial Servo Angles
@@ -104,8 +104,16 @@ for i = 1:size(platform_orientation.time, 1)
     y(i) = 1000*(platform_translation.signals.values(i, 2)-platform_translation.signals.values(1, 2));
     z(i) = 1000*(platform_translation.signals.values(i, 3)-platform_translation.signals.values(1, 3));
 end
-plot(platform_orientation.time, alpha, platform_orientation.time, beta, platform_orientation.time, gamma, platform_orientation.time, x, platform_orientation.time, y, platform_orientation.time, z);
-legend('Alpha','Beta','Gamma', 'X', 'Y', 'Z');
+figure;
+subplot(2, 1, 1);
+plot(platform_orientation.time, alpha, 'r', platform_orientation.time, beta, 'g', platform_orientation.time, gamma, 'b', platform_orientation.time, base_qxf(platform_orientation.time), '--r', platform_orientation.time, base_qyf(platform_orientation.time), '--g', platform_orientation.time, base_qzf(platform_orientation.time), '--b');
+legend('Alpha','Beta','Gamma', 'Roll', 'Pitch', 'Yaw');
 xlabel('Time (s)');
 ylabel('Angles (degrees)');
-title('Simulation Results');
+title('Rotation')
+subplot(2, 1, 2);
+plot(platform_orientation.time, x, platform_orientation.time, y, platform_orientation.time, z);
+legend('X', 'Y', 'Z');
+xlabel('Time (s)');
+ylabel('Displacement (mm)');
+title('Translation');

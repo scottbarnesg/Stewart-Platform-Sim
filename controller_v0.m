@@ -14,8 +14,8 @@ function theta = controller_v0(eangles, theta, translation)
     % D = zeros(1, 6);
     E = 200*[0, 0, 1, 1, 1, 1];
     % E = zeros(1, 6);
-    % F = zeros(1, 6);
     F = 200*ones(1, 6);
+    % F = zeros(1, 6);
     
     % Velocity Calculation
     d_theta = [A(1)*sin(eangles(3))+B(1)*sin(eangles(1))-C(1)*sin(eangles(2))+D(1)*translation(1)+E(1)*translation(2)-F(1)*translation(3);
