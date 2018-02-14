@@ -2,7 +2,8 @@ clc; clear; close all;
 %% Set Initial Parameters
 t_max = 1.0;
 g = -9.80665; %gravity
-sensor_delay = 0.010; %seconds
+sensor_delay = 0.00; %seconds
+noise_mag = mag2db(10^-2);
 
 % Define Functions for Dynamic Base Position and Orientation
 base_pxf = @(t) 0;
@@ -76,9 +77,9 @@ while(run_sim == true)
     end
     % Get Platform State
     quat_plat_state = platform_orientation.signals.values(length(platform_orientation.time), :);
-    eul_plat_state = quat_to_eangles(quat_plat_state);
-    trans_plat_state = platform_translation.signals.values(length(platform_translation.time), :)-platform_translation.signals.values(1, :);
-    actuator_states = motor_states.signals.values(length(platform_orientation.time), :)'; %+repmat(pi,6,1);   
+    eul_plat_state = quat_to_eangles(quat_plat_state) + wgn(3, 1, noise_mag);
+    trans_plat_state = platform_translation.signals.values(length(platform_translation.time), :) + wgn(1, 3, noise_mag) - platform_translation.signals.values(1, :);
+    actuator_states = motor_states.signals.values(length(platform_orientation.time), :)' + wgn(6, 1, noise_mag);   
     % Calculate Controller Input
     % servo_angles = controller_v0(eul_plat_state, actuator_states, trans_plat_state);
     if length(platform_orientation.time) > 1
