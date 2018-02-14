@@ -1,15 +1,15 @@
 clc; clear; close all;
 %% Set Initial Parameters
-t_max = 5.0;
-g = 0; %-9.80665; %gravity
-sensor_delay = 0.001; %seconds
+t_max = 1.0;
+g = -9.80665; %gravity
+sensor_delay = 0.010; %seconds
 
 % Define Functions for Dynamic Base Position and Orientation
 base_pxf = @(t) 0;
 base_pyf = @(t) 0;
 base_pzf = @(t) 0;
-base_qxf = @(t) 12*sin(2*pi*0.5*t); %in degrees
-base_qyf = @(t) 12*sin(2*pi*1*t);
+base_qxf = @(t) 10*sin(2*pi*2*t); %in degrees
+base_qyf = @(t) 10*sin(2*pi*2*t);
 base_qzf = @(t) 0;
 
 % Set Initial Base Position and Orientation
@@ -81,7 +81,12 @@ while(run_sim == true)
     actuator_states = motor_states.signals.values(length(platform_orientation.time), :)'; %+repmat(pi,6,1);   
     % Calculate Controller Input
     % servo_angles = controller_v0(eul_plat_state, actuator_states, trans_plat_state);
-    [servo_angles, error_data] = controller_v1(eul_plat_state, actuator_states, trans_plat_state, error_data);
+    if length(platform_orientation.time) > 1
+        dt = platform_orientation.time(length(platform_orientation.time))-platform_orientation.time(length(platform_orientation.time)-1);
+    else
+        dt = platform_orientation.time(1);
+    end
+    [servo_angles, error_data] = controller_v1(eul_plat_state, actuator_states, trans_plat_state, error_data, dt);
     % Step forward by single time step (determined by solver)
     set_param('PlatformAssem', 'SimulationCommand', 'step');
     % Check for Termination Criteria

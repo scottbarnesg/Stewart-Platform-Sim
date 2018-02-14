@@ -1,9 +1,7 @@
 % Stewart Platform Controller Version 1.0
 % Add Integral Control
 % WARNING: Unstable
-function [theta, error_data] = controller_v1(eangles, theta, translation, error_data)
-    % Time Step
-    dt=0.001;
+function [theta, error_data] = controller_v1(eangles, theta, translation, error_data, dt)
     % Controller Weights
     A = 250*ones(1, 6); % Implementation Weights (Verified)
     % A = zeros(1, 6); % Dummy Weights (for testing)
@@ -17,8 +15,7 @@ function [theta, error_data] = controller_v1(eangles, theta, translation, error_
     % E = zeros(1, 6);
     F = 200*ones(1, 6);
     % F = zeros(1, 6);
-    G = zeros(1, 6);
-    % G = 100*ones(1, 6);
+    G = 0.25;
     
     % Velocity Calculations
     d_theta = [A(1)*sin(eangles(3))+B(1)*sin(eangles(1))-C(1)*sin(eangles(2))+D(1)*translation(1)+E(1)*translation(2)-F(1)*translation(3);
@@ -34,7 +31,7 @@ function [theta, error_data] = controller_v1(eangles, theta, translation, error_
     error_sum = sum(error_data');
     if length(error_sum) == 6
         d_theta = d_theta +...
-            [A(1)*error_sum(1)+B(1)*error_sum(2)-C(1)*error_sum(3)+D(1)*error_sum(4)+E(1)*error_sum(5)-F(1)*error_sum(6);
+            G*[A(1)*error_sum(1)+B(1)*error_sum(2)-C(1)*error_sum(3)+D(1)*error_sum(4)+E(1)*error_sum(5)-F(1)*error_sum(6);
             A(2)*error_sum(1)+B(2)*-error_sum(2)-C(2)*error_sum(3)+D(2)*error_sum(4)+E(2)*error_sum(5)-F(2)*error_sum(6);
             A(3)*error_sum(1)+B(3)*-error_sum(2)-C(3)*error_sum(3)+D(3)*error_sum(4)+E(3)*error_sum(5)-F(3)*error_sum(6);
             A(4)*-error_sum(1)+B(4)*error_sum(2)-C(4)*error_sum(3)+D(4)*error_sum(4)+E(4)*error_sum(5)-F(4)*error_sum(6);
