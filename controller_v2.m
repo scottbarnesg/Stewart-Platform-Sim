@@ -18,7 +18,7 @@ function [theta, error_data] = controller_v2(eangles, theta, translation, accele
     F = 200*ones(1, 6);
     % F = zeros(1, 6);
     G = 0.25;
-    H = 1;
+    H = 10;
     
     % Proportional Calculations
     d_theta = [A(1)*sin(eangles(3))+B(1)*sin(eangles(1))-C(1)*sin(eangles(2))+D(1)*translation(1)+E(1)*translation(2)-F(1)*translation(3);
@@ -44,16 +44,18 @@ function [theta, error_data] = controller_v2(eangles, theta, translation, accele
     end
     
     % Acceleration Control
-    if length(error_sum) == 6
-        d_theta = d_theta +...
-            H*[-acceleration(2); 
-            acceleration(2);
-            -acceleration(2);
-            -acceleration(2);
-            acceleration(2);
-            acceleration(2)];
-            
-    end
+%     if length(error_sum) == 6
+%         d_theta =... % d_theta +...
+%             H*[0.1*acceleration(2); 
+%             -0.1*acceleration(2);
+%             -acceleration(2);
+%             -acceleration(2);
+%             acceleration(2);
+%             acceleration(2)];
+%             
+%     else
+%         d_theta = [0; 0; 0; 0; 0; 0];
+%     end
     % Update Motor Angles
     theta = theta + d_theta*dt;
 end
