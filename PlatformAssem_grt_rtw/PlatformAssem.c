@@ -10,7 +10,7 @@
  *
  * Model version              : 1.39
  * Simulink Coder version : 8.13 (R2017b) 24-Jul-2017
- * C source code generated on : Thu Feb 15 19:05:13 2018
+ * C source code generated on : Thu Feb 15 21:26:39 2018
  *
  * Target selection: grt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -231,7 +231,7 @@ void PlatformAssem_projection(void)
   int32_T tmp_2;
   char *msg;
 
-  /* Projection for SimscapeExecutionBlock: '<S93>/STATE_1' */
+  /* Projection for SimscapeExecutionBlock: '<S108>/STATE_1' */
   simulationData = (NeslSimulationData *)PlatformAssem_DW.STATE_1_SimulationData;
   time = PlatformAssem_M->Timing.t[0];
   simulationData->mData->mTime.mN = 1;
@@ -332,7 +332,7 @@ void PlatformAssem_projection(void)
     }
   }
 
-  /* End of Projection for SimscapeExecutionBlock: '<S93>/STATE_1' */
+  /* End of Projection for SimscapeExecutionBlock: '<S108>/STATE_1' */
 }
 
 /*
@@ -460,7 +460,7 @@ void PlatformAssem_step(void)
     PlatformAssem_B.base_px = PlatformAssem_P.base_px_Value;
   }
 
-  /* SimscapeInputBlock: '<S93>/INPUT_12_1_1' */
+  /* SimscapeInputBlock: '<S108>/INPUT_12_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     PlatformAssem_DW.INPUT_12_1_1_discrete[1] = PlatformAssem_B.base_px;
   }
@@ -486,13 +486,13 @@ void PlatformAssem_step(void)
     PlatformAssem_X.PlatformAssemSimulink_PS_Conver[1]) * 1000.0;
   PlatformAssem_B.INPUT_12_1_1[3] = 0.0;
 
-  /* End of SimscapeInputBlock: '<S93>/INPUT_12_1_1' */
+  /* End of SimscapeInputBlock: '<S108>/INPUT_12_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     /* Constant: '<Root>/base_py' */
     PlatformAssem_B.base_py = PlatformAssem_P.base_py_Value;
   }
 
-  /* SimscapeInputBlock: '<S93>/INPUT_4_1_1' */
+  /* SimscapeInputBlock: '<S108>/INPUT_4_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     PlatformAssem_DW.INPUT_4_1_1_discrete[1] = PlatformAssem_B.base_py;
   }
@@ -518,13 +518,13 @@ void PlatformAssem_step(void)
     PlatformAssem_X.PlatformAssemSimulink_PS_Conv_l[1]) * 1000.0;
   PlatformAssem_B.INPUT_4_1_1[3] = 0.0;
 
-  /* End of SimscapeInputBlock: '<S93>/INPUT_4_1_1' */
+  /* End of SimscapeInputBlock: '<S108>/INPUT_4_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     /* Constant: '<Root>/base_pz' */
     PlatformAssem_B.base_pz = PlatformAssem_P.base_pz_Value;
   }
 
-  /* SimscapeInputBlock: '<S93>/INPUT_3_1_1' */
+  /* SimscapeInputBlock: '<S108>/INPUT_3_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     PlatformAssem_DW.INPUT_3_1_1_discrete[1] = PlatformAssem_B.base_pz;
   }
@@ -550,13 +550,13 @@ void PlatformAssem_step(void)
     PlatformAssem_X.PlatformAssemSimulink_PS_Conv_j[1]) * 1000.0;
   PlatformAssem_B.INPUT_3_1_1[3] = 0.0;
 
-  /* End of SimscapeInputBlock: '<S93>/INPUT_3_1_1' */
+  /* End of SimscapeInputBlock: '<S108>/INPUT_3_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     /* Constant: '<Root>/base_qx' */
     PlatformAssem_B.base_qx = PlatformAssem_P.base_qx_Value;
   }
 
-  /* SimscapeInputBlock: '<S93>/INPUT_9_1_1' */
+  /* SimscapeInputBlock: '<S108>/INPUT_9_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     PlatformAssem_DW.INPUT_9_1_1_discrete[1] = PlatformAssem_B.base_qx;
   }
@@ -582,13 +582,13 @@ void PlatformAssem_step(void)
     PlatformAssem_X.PlatformAssemSimulink_PS_Conv_h[1]) * 1000.0;
   PlatformAssem_B.INPUT_9_1_1[3] = 0.0;
 
-  /* End of SimscapeInputBlock: '<S93>/INPUT_9_1_1' */
+  /* End of SimscapeInputBlock: '<S108>/INPUT_9_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     /* Constant: '<Root>/base_qy' */
     PlatformAssem_B.base_qy = PlatformAssem_P.base_qy_Value;
   }
 
-  /* SimscapeInputBlock: '<S93>/INPUT_11_1_1' */
+  /* SimscapeInputBlock: '<S108>/INPUT_11_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     PlatformAssem_DW.INPUT_11_1_1_discrete[1] = PlatformAssem_B.base_qy;
   }
@@ -614,13 +614,13 @@ void PlatformAssem_step(void)
     PlatformAssem_X.PlatformAssemSimulink_PS_Con_la[1]) * 1000.0;
   PlatformAssem_B.INPUT_11_1_1[3] = 0.0;
 
-  /* End of SimscapeInputBlock: '<S93>/INPUT_11_1_1' */
+  /* End of SimscapeInputBlock: '<S108>/INPUT_11_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     /* Constant: '<Root>/base_qz' */
     PlatformAssem_B.base_qz = PlatformAssem_P.base_qz_Value;
   }
 
-  /* SimscapeInputBlock: '<S93>/INPUT_10_1_1' */
+  /* SimscapeInputBlock: '<S108>/INPUT_10_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     PlatformAssem_DW.INPUT_10_1_1_discrete[1] = PlatformAssem_B.base_qz;
   }
@@ -646,13 +646,13 @@ void PlatformAssem_step(void)
     PlatformAssem_X.PlatformAssemSimulink_PS_Conv_m[1]) * 1000.0;
   PlatformAssem_B.INPUT_10_1_1[3] = 0.0;
 
-  /* End of SimscapeInputBlock: '<S93>/INPUT_10_1_1' */
+  /* End of SimscapeInputBlock: '<S108>/INPUT_10_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     /* Constant: '<Root>/angle1' */
     PlatformAssem_B.angle1 = PlatformAssem_P.angle1_Value;
   }
 
-  /* SimscapeInputBlock: '<S93>/INPUT_8_1_1' */
+  /* SimscapeInputBlock: '<S108>/INPUT_8_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     PlatformAssem_DW.INPUT_8_1_1_discrete[1] = PlatformAssem_B.angle1;
   }
@@ -678,13 +678,13 @@ void PlatformAssem_step(void)
     PlatformAssem_X.PlatformAssemSimulink_PS_Conv_e[1]) * 1000.0;
   PlatformAssem_B.INPUT_8_1_1[3] = 0.0;
 
-  /* End of SimscapeInputBlock: '<S93>/INPUT_8_1_1' */
+  /* End of SimscapeInputBlock: '<S108>/INPUT_8_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     /* Constant: '<Root>/angle3' */
     PlatformAssem_B.angle3 = PlatformAssem_P.angle3_Value;
   }
 
-  /* SimscapeInputBlock: '<S93>/INPUT_2_1_1' */
+  /* SimscapeInputBlock: '<S108>/INPUT_2_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     PlatformAssem_DW.INPUT_2_1_1_discrete[1] = PlatformAssem_B.angle3;
   }
@@ -710,13 +710,13 @@ void PlatformAssem_step(void)
     PlatformAssem_X.PlatformAssemSimulink_PS_Conv_g[1]) * 1000.0;
   PlatformAssem_B.INPUT_2_1_1[3] = 0.0;
 
-  /* End of SimscapeInputBlock: '<S93>/INPUT_2_1_1' */
+  /* End of SimscapeInputBlock: '<S108>/INPUT_2_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     /* Constant: '<Root>/angle4' */
     PlatformAssem_B.angle4 = PlatformAssem_P.angle4_Value;
   }
 
-  /* SimscapeInputBlock: '<S93>/INPUT_5_1_1' */
+  /* SimscapeInputBlock: '<S108>/INPUT_5_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     PlatformAssem_DW.INPUT_5_1_1_discrete[1] = PlatformAssem_B.angle4;
   }
@@ -742,13 +742,13 @@ void PlatformAssem_step(void)
     PlatformAssem_X.PlatformAssemSimulink_PS_Conv_a[1]) * 1000.0;
   PlatformAssem_B.INPUT_5_1_1[3] = 0.0;
 
-  /* End of SimscapeInputBlock: '<S93>/INPUT_5_1_1' */
+  /* End of SimscapeInputBlock: '<S108>/INPUT_5_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     /* Constant: '<Root>/angle5' */
     PlatformAssem_B.angle5 = PlatformAssem_P.angle5_Value;
   }
 
-  /* SimscapeInputBlock: '<S93>/INPUT_6_1_1' */
+  /* SimscapeInputBlock: '<S108>/INPUT_6_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     PlatformAssem_DW.INPUT_6_1_1_discrete[1] = PlatformAssem_B.angle5;
   }
@@ -774,13 +774,13 @@ void PlatformAssem_step(void)
     PlatformAssem_X.PlatformAssemSimulink_PS_Con_lk[1]) * 1000.0;
   PlatformAssem_B.INPUT_6_1_1[3] = 0.0;
 
-  /* End of SimscapeInputBlock: '<S93>/INPUT_6_1_1' */
+  /* End of SimscapeInputBlock: '<S108>/INPUT_6_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     /* Constant: '<Root>/angle6' */
     PlatformAssem_B.angle6 = PlatformAssem_P.angle6_Value;
   }
 
-  /* SimscapeInputBlock: '<S93>/INPUT_7_1_1' */
+  /* SimscapeInputBlock: '<S108>/INPUT_7_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     PlatformAssem_DW.INPUT_7_1_1_discrete[1] = PlatformAssem_B.angle6;
   }
@@ -806,13 +806,13 @@ void PlatformAssem_step(void)
     PlatformAssem_X.PlatformAssemSimulink_PS_Conv_o[1]) * 1000.0;
   PlatformAssem_B.INPUT_7_1_1[3] = 0.0;
 
-  /* End of SimscapeInputBlock: '<S93>/INPUT_7_1_1' */
+  /* End of SimscapeInputBlock: '<S108>/INPUT_7_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     /* Constant: '<Root>/angle2' */
     PlatformAssem_B.angle2 = PlatformAssem_P.angle2_Value;
   }
 
-  /* SimscapeInputBlock: '<S93>/INPUT_1_1_1' */
+  /* SimscapeInputBlock: '<S108>/INPUT_1_1_1' */
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
     PlatformAssem_DW.INPUT_1_1_1_discrete[1] = PlatformAssem_B.angle2;
   }
@@ -838,10 +838,10 @@ void PlatformAssem_step(void)
     PlatformAssem_X.PlatformAssemSimulink_PS_Conv_i[1]) * 1000.0;
   PlatformAssem_B.INPUT_1_1_1[3] = 0.0;
 
-  /* End of SimscapeInputBlock: '<S93>/INPUT_1_1_1' */
+  /* End of SimscapeInputBlock: '<S108>/INPUT_1_1_1' */
 
-  /* SimscapeExecutionBlock: '<S93>/STATE_1' incorporates:
-   *  SimscapeExecutionBlock: '<S93>/OUTPUT_1_0'
+  /* SimscapeExecutionBlock: '<S108>/STATE_1' incorporates:
+   *  SimscapeExecutionBlock: '<S108>/OUTPUT_1_0'
    */
   simulationData = (NeslSimulationData *)PlatformAssem_DW.STATE_1_SimulationData;
   time = PlatformAssem_M->Timing.t[0];
@@ -951,9 +951,9 @@ void PlatformAssem_step(void)
     }
   }
 
-  /* End of SimscapeExecutionBlock: '<S93>/STATE_1' */
+  /* End of SimscapeExecutionBlock: '<S108>/STATE_1' */
 
-  /* SimscapeExecutionBlock: '<S93>/OUTPUT_1_0' */
+  /* SimscapeExecutionBlock: '<S108>/OUTPUT_1_0' */
   simulationData = (NeslSimulationData *)
     PlatformAssem_DW.OUTPUT_1_0_SimulationData;
   time_0 = PlatformAssem_M->Timing.t[0];
@@ -1041,7 +1041,7 @@ void PlatformAssem_step(void)
   simulationData->mData->mInputValues.mX = &tmp_2[0];
   simulationData->mData->mInputOffsets.mN = 14;
   simulationData->mData->mInputOffsets.mX = &tmp_3[0];
-  simulationData->mData->mOutputs.mN = 20;
+  simulationData->mData->mOutputs.mN = 23;
   simulationData->mData->mOutputs.mX = &PlatformAssem_B.OUTPUT_1_0[0];
   simulationData->mData->mSampleHits.mN = 0;
   simulationData->mData->mSampleHits.mX = NULL;
@@ -1085,119 +1085,43 @@ void PlatformAssem_step(void)
     }
   }
 
-  /* TransportDelay: '<Root>/Transport Delay' */
+  /* TransportDelay: '<S7>/Transport Delay' */
   {
     real_T **uBuffer = (real_T**)
       &PlatformAssem_DW.TransportDelay_PWORK.TUbufferPtrs[0];
     real_T **tBuffer = (real_T**)
-      &PlatformAssem_DW.TransportDelay_PWORK.TUbufferPtrs[8];
+      &PlatformAssem_DW.TransportDelay_PWORK.TUbufferPtrs[3];
     real_T simTime = PlatformAssem_M->Timing.t[0];
     real_T tMinusDelay ;
 
     {
       int_T i1;
       real_T *y0 = &PlatformAssem_B.TransportDelay[0];
+      const real_T *u0 = &PlatformAssem_B.OUTPUT_1_0[13];
       int_T *iw_Tail = &PlatformAssem_DW.TransportDelay_IWORK.Tail[0];
       int_T *iw_Head = &PlatformAssem_DW.TransportDelay_IWORK.Head[0];
       int_T *iw_Last = &PlatformAssem_DW.TransportDelay_IWORK.Last[0];
       int_T *iw_CircularBufSize =
         &PlatformAssem_DW.TransportDelay_IWORK.CircularBufSize[0];
-      for (i1=0; i1 < 4; i1++) {
-        tMinusDelay = ((PlatformAssem_P.sensor_delay > 0.0) ?
-                       PlatformAssem_P.sensor_delay : 0.0);
-        tMinusDelay = simTime - tMinusDelay;
-        y0[i1] = rt_TDelayInterpolate(
-          tMinusDelay,
-          0.0,
-          *tBuffer,
-          *uBuffer,
-          iw_CircularBufSize[i1],
-          &iw_Last[i1],
-          iw_Tail[i1],
-          iw_Head[i1],
-          PlatformAssem_P.TransportDelay_InitOutput,
-          0,
-          0);
-        tBuffer++;
-        uBuffer++;
-      }
-
-      y0 = &PlatformAssem_B.TransportDelay[4];
-      iw_Tail = &PlatformAssem_DW.TransportDelay_IWORK.Tail[4];
-      iw_Head = &PlatformAssem_DW.TransportDelay_IWORK.Head[4];
-      iw_Last = &PlatformAssem_DW.TransportDelay_IWORK.Last[4];
-      iw_CircularBufSize =
-        &PlatformAssem_DW.TransportDelay_IWORK.CircularBufSize[4];
-      for (i1=0; i1 < 4; i1++) {
-        tMinusDelay = ((PlatformAssem_P.sensor_delay > 0.0) ?
-                       PlatformAssem_P.sensor_delay : 0.0);
-        tMinusDelay = simTime - tMinusDelay;
-        y0[i1] = rt_TDelayInterpolate(
-          tMinusDelay,
-          0.0,
-          *tBuffer,
-          *uBuffer,
-          iw_CircularBufSize[i1],
-          &iw_Last[i1],
-          iw_Tail[i1],
-          iw_Head[i1],
-          PlatformAssem_P.TransportDelay_InitOutput,
-          0,
-          0);
-        tBuffer++;
-        uBuffer++;
-      }
-    }
-  }
-
-  if (rtmIsMajorTimeStep(PlatformAssem_M)) {
-    /* ToWorkspace: '<Root>/To Workspace' */
-    {
-      double locTime = (((PlatformAssem_M->Timing.clockTick1+
-                          PlatformAssem_M->Timing.clockTickH1* 4294967296.0)) *
-                        0.2);
-      ;
-      if (rtmIsMajorTimeStep(PlatformAssem_M)) {
-        rt_UpdateStructLogVar((StructLogVar *)
-                              PlatformAssem_DW.ToWorkspace_PWORK.LoggedData,
-                              &locTime, &PlatformAssem_B.TransportDelay[0]);
-      }
-    }
-  }
-
-  /* TransportDelay: '<Root>/Transport Delay1' */
-  {
-    real_T **uBuffer = (real_T**)
-      &PlatformAssem_DW.TransportDelay1_PWORK.TUbufferPtrs[0];
-    real_T **tBuffer = (real_T**)
-      &PlatformAssem_DW.TransportDelay1_PWORK.TUbufferPtrs[3];
-    real_T simTime = PlatformAssem_M->Timing.t[0];
-    real_T tMinusDelay ;
-
-    {
-      int_T i1;
-      real_T *y0 = &PlatformAssem_B.TransportDelay1[0];
-      int_T *iw_Tail = &PlatformAssem_DW.TransportDelay1_IWORK.Tail[0];
-      int_T *iw_Head = &PlatformAssem_DW.TransportDelay1_IWORK.Head[0];
-      int_T *iw_Last = &PlatformAssem_DW.TransportDelay1_IWORK.Last[0];
-      int_T *iw_CircularBufSize =
-        &PlatformAssem_DW.TransportDelay1_IWORK.CircularBufSize[0];
       for (i1=0; i1 < 3; i1++) {
         tMinusDelay = ((PlatformAssem_P.sensor_delay > 0.0) ?
                        PlatformAssem_P.sensor_delay : 0.0);
         tMinusDelay = simTime - tMinusDelay;
-        y0[i1] = rt_TDelayInterpolate(
-          tMinusDelay,
-          0.0,
-          *tBuffer,
-          *uBuffer,
-          iw_CircularBufSize[i1],
-          &iw_Last[i1],
-          iw_Tail[i1],
-          iw_Head[i1],
-          PlatformAssem_P.TransportDelay1_InitOutput,
-          0,
-          0);
+        if (PlatformAssem_P.sensor_delay == 0.0)
+          y0[i1] = u0[i1];
+        else
+          y0[i1] = rt_TDelayInterpolate(
+            tMinusDelay,
+            0.0,
+            *tBuffer,
+            *uBuffer,
+            iw_CircularBufSize[i1],
+            &iw_Last[i1],
+            iw_Tail[i1],
+            iw_Head[i1],
+            PlatformAssem_P.TransportDelay_InitOutput,
+            0,
+            0);
         tBuffer++;
         uBuffer++;
       }
@@ -1205,7 +1129,7 @@ void PlatformAssem_step(void)
   }
 
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
-    /* ToWorkspace: '<Root>/To Workspace2' */
+    /* ToWorkspace: '<S7>/To Workspace2' */
     {
       double locTime = (((PlatformAssem_M->Timing.clockTick1+
                           PlatformAssem_M->Timing.clockTickH1* 4294967296.0)) *
@@ -1214,11 +1138,144 @@ void PlatformAssem_step(void)
       if (rtmIsMajorTimeStep(PlatformAssem_M)) {
         rt_UpdateStructLogVar((StructLogVar *)
                               PlatformAssem_DW.ToWorkspace2_PWORK.LoggedData,
-                              &locTime, &PlatformAssem_B.TransportDelay1[0]);
+                              &locTime, &PlatformAssem_B.TransportDelay[0]);
       }
     }
+  }
 
-    /* ToWorkspace: '<S33>/To Workspace2' */
+  /* TransportDelay: '<S8>/Transport Delay' */
+  {
+    real_T **uBuffer = (real_T**)
+      &PlatformAssem_DW.TransportDelay_PWORK_l.TUbufferPtrs[0];
+    real_T **tBuffer = (real_T**)
+      &PlatformAssem_DW.TransportDelay_PWORK_l.TUbufferPtrs[8];
+    real_T simTime = PlatformAssem_M->Timing.t[0];
+    real_T tMinusDelay ;
+
+    {
+      int_T i1;
+      real_T *y0 = &PlatformAssem_B.TransportDelay_d[0];
+      const real_T *u0 = &PlatformAssem_B.OUTPUT_1_0[6];
+      int_T *iw_Tail = &PlatformAssem_DW.TransportDelay_IWORK_o.Tail[0];
+      int_T *iw_Head = &PlatformAssem_DW.TransportDelay_IWORK_o.Head[0];
+      int_T *iw_Last = &PlatformAssem_DW.TransportDelay_IWORK_o.Last[0];
+      int_T *iw_CircularBufSize =
+        &PlatformAssem_DW.TransportDelay_IWORK_o.CircularBufSize[0];
+      for (i1=0; i1 < 4; i1++) {
+        tMinusDelay = ((PlatformAssem_P.sensor_delay > 0.0) ?
+                       PlatformAssem_P.sensor_delay : 0.0);
+        tMinusDelay = simTime - tMinusDelay;
+        if (PlatformAssem_P.sensor_delay == 0.0)
+          y0[i1] = u0[i1];
+        else
+          y0[i1] = rt_TDelayInterpolate(
+            tMinusDelay,
+            0.0,
+            *tBuffer,
+            *uBuffer,
+            iw_CircularBufSize[i1],
+            &iw_Last[i1],
+            iw_Tail[i1],
+            iw_Head[i1],
+            PlatformAssem_P.TransportDelay_InitOutput_b,
+            0,
+            0);
+        tBuffer++;
+        uBuffer++;
+      }
+
+      y0 = &PlatformAssem_B.TransportDelay_d[4];
+      u0 = &PlatformAssem_B.OUTPUT_1_0[16];
+      iw_Tail = &PlatformAssem_DW.TransportDelay_IWORK_o.Tail[4];
+      iw_Head = &PlatformAssem_DW.TransportDelay_IWORK_o.Head[4];
+      iw_Last = &PlatformAssem_DW.TransportDelay_IWORK_o.Last[4];
+      iw_CircularBufSize =
+        &PlatformAssem_DW.TransportDelay_IWORK_o.CircularBufSize[4];
+      for (i1=0; i1 < 4; i1++) {
+        tMinusDelay = ((PlatformAssem_P.sensor_delay > 0.0) ?
+                       PlatformAssem_P.sensor_delay : 0.0);
+        tMinusDelay = simTime - tMinusDelay;
+        if (PlatformAssem_P.sensor_delay == 0.0)
+          y0[i1] = u0[i1];
+        else
+          y0[i1] = rt_TDelayInterpolate(
+            tMinusDelay,
+            0.0,
+            *tBuffer,
+            *uBuffer,
+            iw_CircularBufSize[i1],
+            &iw_Last[i1],
+            iw_Tail[i1],
+            iw_Head[i1],
+            PlatformAssem_P.TransportDelay_InitOutput_b,
+            0,
+            0);
+        tBuffer++;
+        uBuffer++;
+      }
+    }
+  }
+
+  if (rtmIsMajorTimeStep(PlatformAssem_M)) {
+    /* ToWorkspace: '<S8>/To Workspace' */
+    {
+      double locTime = (((PlatformAssem_M->Timing.clockTick1+
+                          PlatformAssem_M->Timing.clockTickH1* 4294967296.0)) *
+                        0.2);
+      ;
+      if (rtmIsMajorTimeStep(PlatformAssem_M)) {
+        rt_UpdateStructLogVar((StructLogVar *)
+                              PlatformAssem_DW.ToWorkspace_PWORK.LoggedData,
+                              &locTime, &PlatformAssem_B.TransportDelay_d[0]);
+      }
+    }
+  }
+
+  /* TransportDelay: '<S9>/Transport Delay' */
+  {
+    real_T **uBuffer = (real_T**)
+      &PlatformAssem_DW.TransportDelay_PWORK_h.TUbufferPtrs[0];
+    real_T **tBuffer = (real_T**)
+      &PlatformAssem_DW.TransportDelay_PWORK_h.TUbufferPtrs[3];
+    real_T simTime = PlatformAssem_M->Timing.t[0];
+    real_T tMinusDelay ;
+
+    {
+      int_T i1;
+      real_T *y0 = &PlatformAssem_B.TransportDelay_n[0];
+      const real_T *u0 = &PlatformAssem_B.OUTPUT_1_0[10];
+      int_T *iw_Tail = &PlatformAssem_DW.TransportDelay_IWORK_a.Tail[0];
+      int_T *iw_Head = &PlatformAssem_DW.TransportDelay_IWORK_a.Head[0];
+      int_T *iw_Last = &PlatformAssem_DW.TransportDelay_IWORK_a.Last[0];
+      int_T *iw_CircularBufSize =
+        &PlatformAssem_DW.TransportDelay_IWORK_a.CircularBufSize[0];
+      for (i1=0; i1 < 3; i1++) {
+        tMinusDelay = ((PlatformAssem_P.sensor_delay > 0.0) ?
+                       PlatformAssem_P.sensor_delay : 0.0);
+        tMinusDelay = simTime - tMinusDelay;
+        if (PlatformAssem_P.sensor_delay == 0.0)
+          y0[i1] = u0[i1];
+        else
+          y0[i1] = rt_TDelayInterpolate(
+            tMinusDelay,
+            0.0,
+            *tBuffer,
+            *uBuffer,
+            iw_CircularBufSize[i1],
+            &iw_Last[i1],
+            iw_Tail[i1],
+            iw_Head[i1],
+            PlatformAssem_P.TransportDelay_InitOutput_a,
+            0,
+            0);
+        tBuffer++;
+        uBuffer++;
+      }
+    }
+  }
+
+  if (rtmIsMajorTimeStep(PlatformAssem_M)) {
+    /* ToWorkspace: '<S9>/To Workspace2' */
     {
       double locTime = (((PlatformAssem_M->Timing.clockTick1+
                           PlatformAssem_M->Timing.clockTickH1* 4294967296.0)) *
@@ -1227,7 +1284,65 @@ void PlatformAssem_step(void)
       if (rtmIsMajorTimeStep(PlatformAssem_M)) {
         rt_UpdateStructLogVar((StructLogVar *)
                               PlatformAssem_DW.ToWorkspace2_PWORK_a.LoggedData,
-                              &locTime, &PlatformAssem_B.OUTPUT_1_0[10]);
+                              &locTime, &PlatformAssem_B.TransportDelay_n[0]);
+      }
+    }
+  }
+
+  /* TransportDelay: '<S10>/Transport Delay' */
+  {
+    real_T **uBuffer = (real_T**)
+      &PlatformAssem_DW.TransportDelay_PWORK_p.TUbufferPtrs[0];
+    real_T **tBuffer = (real_T**)
+      &PlatformAssem_DW.TransportDelay_PWORK_p.TUbufferPtrs[3];
+    real_T simTime = PlatformAssem_M->Timing.t[0];
+    real_T tMinusDelay ;
+
+    {
+      int_T i1;
+      real_T *y0 = &PlatformAssem_B.TransportDelay_b[0];
+      const real_T *u0 = &PlatformAssem_B.OUTPUT_1_0[20];
+      int_T *iw_Tail = &PlatformAssem_DW.TransportDelay_IWORK_i.Tail[0];
+      int_T *iw_Head = &PlatformAssem_DW.TransportDelay_IWORK_i.Head[0];
+      int_T *iw_Last = &PlatformAssem_DW.TransportDelay_IWORK_i.Last[0];
+      int_T *iw_CircularBufSize =
+        &PlatformAssem_DW.TransportDelay_IWORK_i.CircularBufSize[0];
+      for (i1=0; i1 < 3; i1++) {
+        tMinusDelay = ((PlatformAssem_P.sensor_delay > 0.0) ?
+                       PlatformAssem_P.sensor_delay : 0.0);
+        tMinusDelay = simTime - tMinusDelay;
+        if (PlatformAssem_P.sensor_delay == 0.0)
+          y0[i1] = u0[i1];
+        else
+          y0[i1] = rt_TDelayInterpolate(
+            tMinusDelay,
+            0.0,
+            *tBuffer,
+            *uBuffer,
+            iw_CircularBufSize[i1],
+            &iw_Last[i1],
+            iw_Tail[i1],
+            iw_Head[i1],
+            PlatformAssem_P.TransportDelay_InitOutput_n,
+            0,
+            0);
+        tBuffer++;
+        uBuffer++;
+      }
+    }
+  }
+
+  if (rtmIsMajorTimeStep(PlatformAssem_M)) {
+    /* ToWorkspace: '<S10>/To Workspace' */
+    {
+      double locTime = (((PlatformAssem_M->Timing.clockTick1+
+                          PlatformAssem_M->Timing.clockTickH1* 4294967296.0)) *
+                        0.2);
+      ;
+      if (rtmIsMajorTimeStep(PlatformAssem_M)) {
+        rt_UpdateStructLogVar((StructLogVar *)
+                              PlatformAssem_DW.ToWorkspace_PWORK_d.LoggedData,
+                              &locTime, &PlatformAssem_B.TransportDelay_b[0]);
       }
     }
   }
@@ -1238,12 +1353,12 @@ void PlatformAssem_step(void)
   }                                    /* end MajorTimeStep */
 
   if (rtmIsMajorTimeStep(PlatformAssem_M)) {
-    /* Update for TransportDelay: '<Root>/Transport Delay' */
+    /* Update for TransportDelay: '<S7>/Transport Delay' */
     {
       real_T **uBuffer = (real_T**)
         &PlatformAssem_DW.TransportDelay_PWORK.TUbufferPtrs[0];
       real_T **tBuffer = (real_T**)
-        &PlatformAssem_DW.TransportDelay_PWORK.TUbufferPtrs[8];
+        &PlatformAssem_DW.TransportDelay_PWORK.TUbufferPtrs[3];
       real_T simTime = PlatformAssem_M->Timing.t[0];
       PlatformAssem_DW.TransportDelay_IWORK.Head[0] =
         ((PlatformAssem_DW.TransportDelay_IWORK.Head[0] <
@@ -1259,7 +1374,7 @@ void PlatformAssem_step(void)
 
       (*tBuffer++)[PlatformAssem_DW.TransportDelay_IWORK.Head[0]] = simTime;
       (*uBuffer++)[PlatformAssem_DW.TransportDelay_IWORK.Head[0]] =
-        PlatformAssem_B.OUTPUT_1_0[6];
+        PlatformAssem_B.OUTPUT_1_0[13];
       PlatformAssem_DW.TransportDelay_IWORK.Head[1] =
         ((PlatformAssem_DW.TransportDelay_IWORK.Head[1] <
           (PlatformAssem_DW.TransportDelay_IWORK.CircularBufSize[1]-1)) ?
@@ -1274,7 +1389,7 @@ void PlatformAssem_step(void)
 
       (*tBuffer++)[PlatformAssem_DW.TransportDelay_IWORK.Head[1]] = simTime;
       (*uBuffer++)[PlatformAssem_DW.TransportDelay_IWORK.Head[1]] =
-        PlatformAssem_B.OUTPUT_1_0[7];
+        PlatformAssem_B.OUTPUT_1_0[14];
       PlatformAssem_DW.TransportDelay_IWORK.Head[2] =
         ((PlatformAssem_DW.TransportDelay_IWORK.Head[2] <
           (PlatformAssem_DW.TransportDelay_IWORK.CircularBufSize[2]-1)) ?
@@ -1287,138 +1402,246 @@ void PlatformAssem_step(void)
            (PlatformAssem_DW.TransportDelay_IWORK.Tail[2]+1) : 0);
       }
 
-      (*tBuffer++)[PlatformAssem_DW.TransportDelay_IWORK.Head[2]] = simTime;
-      (*uBuffer++)[PlatformAssem_DW.TransportDelay_IWORK.Head[2]] =
-        PlatformAssem_B.OUTPUT_1_0[8];
-      PlatformAssem_DW.TransportDelay_IWORK.Head[3] =
-        ((PlatformAssem_DW.TransportDelay_IWORK.Head[3] <
-          (PlatformAssem_DW.TransportDelay_IWORK.CircularBufSize[3]-1)) ?
-         (PlatformAssem_DW.TransportDelay_IWORK.Head[3]+1) : 0);
-      if (PlatformAssem_DW.TransportDelay_IWORK.Head[3] ==
-          PlatformAssem_DW.TransportDelay_IWORK.Tail[3]) {
-        PlatformAssem_DW.TransportDelay_IWORK.Tail[3] =
-          ((PlatformAssem_DW.TransportDelay_IWORK.Tail[3] <
-            (PlatformAssem_DW.TransportDelay_IWORK.CircularBufSize[3]-1)) ?
-           (PlatformAssem_DW.TransportDelay_IWORK.Tail[3]+1) : 0);
-      }
-
-      (*tBuffer++)[PlatformAssem_DW.TransportDelay_IWORK.Head[3]] = simTime;
-      (*uBuffer++)[PlatformAssem_DW.TransportDelay_IWORK.Head[3]] =
-        PlatformAssem_B.OUTPUT_1_0[9];
-      PlatformAssem_DW.TransportDelay_IWORK.Head[4] =
-        ((PlatformAssem_DW.TransportDelay_IWORK.Head[4] <
-          (PlatformAssem_DW.TransportDelay_IWORK.CircularBufSize[4]-1)) ?
-         (PlatformAssem_DW.TransportDelay_IWORK.Head[4]+1) : 0);
-      if (PlatformAssem_DW.TransportDelay_IWORK.Head[4] ==
-          PlatformAssem_DW.TransportDelay_IWORK.Tail[4]) {
-        PlatformAssem_DW.TransportDelay_IWORK.Tail[4] =
-          ((PlatformAssem_DW.TransportDelay_IWORK.Tail[4] <
-            (PlatformAssem_DW.TransportDelay_IWORK.CircularBufSize[4]-1)) ?
-           (PlatformAssem_DW.TransportDelay_IWORK.Tail[4]+1) : 0);
-      }
-
-      (*tBuffer++)[PlatformAssem_DW.TransportDelay_IWORK.Head[4]] = simTime;
-      (*uBuffer++)[PlatformAssem_DW.TransportDelay_IWORK.Head[4]] =
-        PlatformAssem_B.OUTPUT_1_0[13];
-      PlatformAssem_DW.TransportDelay_IWORK.Head[5] =
-        ((PlatformAssem_DW.TransportDelay_IWORK.Head[5] <
-          (PlatformAssem_DW.TransportDelay_IWORK.CircularBufSize[5]-1)) ?
-         (PlatformAssem_DW.TransportDelay_IWORK.Head[5]+1) : 0);
-      if (PlatformAssem_DW.TransportDelay_IWORK.Head[5] ==
-          PlatformAssem_DW.TransportDelay_IWORK.Tail[5]) {
-        PlatformAssem_DW.TransportDelay_IWORK.Tail[5] =
-          ((PlatformAssem_DW.TransportDelay_IWORK.Tail[5] <
-            (PlatformAssem_DW.TransportDelay_IWORK.CircularBufSize[5]-1)) ?
-           (PlatformAssem_DW.TransportDelay_IWORK.Tail[5]+1) : 0);
-      }
-
-      (*tBuffer++)[PlatformAssem_DW.TransportDelay_IWORK.Head[5]] = simTime;
-      (*uBuffer++)[PlatformAssem_DW.TransportDelay_IWORK.Head[5]] =
-        PlatformAssem_B.OUTPUT_1_0[14];
-      PlatformAssem_DW.TransportDelay_IWORK.Head[6] =
-        ((PlatformAssem_DW.TransportDelay_IWORK.Head[6] <
-          (PlatformAssem_DW.TransportDelay_IWORK.CircularBufSize[6]-1)) ?
-         (PlatformAssem_DW.TransportDelay_IWORK.Head[6]+1) : 0);
-      if (PlatformAssem_DW.TransportDelay_IWORK.Head[6] ==
-          PlatformAssem_DW.TransportDelay_IWORK.Tail[6]) {
-        PlatformAssem_DW.TransportDelay_IWORK.Tail[6] =
-          ((PlatformAssem_DW.TransportDelay_IWORK.Tail[6] <
-            (PlatformAssem_DW.TransportDelay_IWORK.CircularBufSize[6]-1)) ?
-           (PlatformAssem_DW.TransportDelay_IWORK.Tail[6]+1) : 0);
-      }
-
-      (*tBuffer++)[PlatformAssem_DW.TransportDelay_IWORK.Head[6]] = simTime;
-      (*uBuffer++)[PlatformAssem_DW.TransportDelay_IWORK.Head[6]] =
+      (*tBuffer)[PlatformAssem_DW.TransportDelay_IWORK.Head[2]] = simTime;
+      (*uBuffer)[PlatformAssem_DW.TransportDelay_IWORK.Head[2]] =
         PlatformAssem_B.OUTPUT_1_0[15];
-      PlatformAssem_DW.TransportDelay_IWORK.Head[7] =
-        ((PlatformAssem_DW.TransportDelay_IWORK.Head[7] <
-          (PlatformAssem_DW.TransportDelay_IWORK.CircularBufSize[7]-1)) ?
-         (PlatformAssem_DW.TransportDelay_IWORK.Head[7]+1) : 0);
-      if (PlatformAssem_DW.TransportDelay_IWORK.Head[7] ==
-          PlatformAssem_DW.TransportDelay_IWORK.Tail[7]) {
-        PlatformAssem_DW.TransportDelay_IWORK.Tail[7] =
-          ((PlatformAssem_DW.TransportDelay_IWORK.Tail[7] <
-            (PlatformAssem_DW.TransportDelay_IWORK.CircularBufSize[7]-1)) ?
-           (PlatformAssem_DW.TransportDelay_IWORK.Tail[7]+1) : 0);
-      }
-
-      (*tBuffer)[PlatformAssem_DW.TransportDelay_IWORK.Head[7]] = simTime;
-      (*uBuffer)[PlatformAssem_DW.TransportDelay_IWORK.Head[7]] =
-        PlatformAssem_B.OUTPUT_1_0[16];
     }
 
-    /* Update for TransportDelay: '<Root>/Transport Delay1' */
+    /* Update for TransportDelay: '<S8>/Transport Delay' */
     {
       real_T **uBuffer = (real_T**)
-        &PlatformAssem_DW.TransportDelay1_PWORK.TUbufferPtrs[0];
+        &PlatformAssem_DW.TransportDelay_PWORK_l.TUbufferPtrs[0];
       real_T **tBuffer = (real_T**)
-        &PlatformAssem_DW.TransportDelay1_PWORK.TUbufferPtrs[3];
+        &PlatformAssem_DW.TransportDelay_PWORK_l.TUbufferPtrs[8];
       real_T simTime = PlatformAssem_M->Timing.t[0];
-      PlatformAssem_DW.TransportDelay1_IWORK.Head[0] =
-        ((PlatformAssem_DW.TransportDelay1_IWORK.Head[0] <
-          (PlatformAssem_DW.TransportDelay1_IWORK.CircularBufSize[0]-1)) ?
-         (PlatformAssem_DW.TransportDelay1_IWORK.Head[0]+1) : 0);
-      if (PlatformAssem_DW.TransportDelay1_IWORK.Head[0] ==
-          PlatformAssem_DW.TransportDelay1_IWORK.Tail[0]) {
-        PlatformAssem_DW.TransportDelay1_IWORK.Tail[0] =
-          ((PlatformAssem_DW.TransportDelay1_IWORK.Tail[0] <
-            (PlatformAssem_DW.TransportDelay1_IWORK.CircularBufSize[0]-1)) ?
-           (PlatformAssem_DW.TransportDelay1_IWORK.Tail[0]+1) : 0);
+      PlatformAssem_DW.TransportDelay_IWORK_o.Head[0] =
+        ((PlatformAssem_DW.TransportDelay_IWORK_o.Head[0] <
+          (PlatformAssem_DW.TransportDelay_IWORK_o.CircularBufSize[0]-1)) ?
+         (PlatformAssem_DW.TransportDelay_IWORK_o.Head[0]+1) : 0);
+      if (PlatformAssem_DW.TransportDelay_IWORK_o.Head[0] ==
+          PlatformAssem_DW.TransportDelay_IWORK_o.Tail[0]) {
+        PlatformAssem_DW.TransportDelay_IWORK_o.Tail[0] =
+          ((PlatformAssem_DW.TransportDelay_IWORK_o.Tail[0] <
+            (PlatformAssem_DW.TransportDelay_IWORK_o.CircularBufSize[0]-1)) ?
+           (PlatformAssem_DW.TransportDelay_IWORK_o.Tail[0]+1) : 0);
       }
 
-      (*tBuffer++)[PlatformAssem_DW.TransportDelay1_IWORK.Head[0]] = simTime;
-      (*uBuffer++)[PlatformAssem_DW.TransportDelay1_IWORK.Head[0]] =
+      (*tBuffer++)[PlatformAssem_DW.TransportDelay_IWORK_o.Head[0]] = simTime;
+      (*uBuffer++)[PlatformAssem_DW.TransportDelay_IWORK_o.Head[0]] =
+        PlatformAssem_B.OUTPUT_1_0[6];
+      PlatformAssem_DW.TransportDelay_IWORK_o.Head[1] =
+        ((PlatformAssem_DW.TransportDelay_IWORK_o.Head[1] <
+          (PlatformAssem_DW.TransportDelay_IWORK_o.CircularBufSize[1]-1)) ?
+         (PlatformAssem_DW.TransportDelay_IWORK_o.Head[1]+1) : 0);
+      if (PlatformAssem_DW.TransportDelay_IWORK_o.Head[1] ==
+          PlatformAssem_DW.TransportDelay_IWORK_o.Tail[1]) {
+        PlatformAssem_DW.TransportDelay_IWORK_o.Tail[1] =
+          ((PlatformAssem_DW.TransportDelay_IWORK_o.Tail[1] <
+            (PlatformAssem_DW.TransportDelay_IWORK_o.CircularBufSize[1]-1)) ?
+           (PlatformAssem_DW.TransportDelay_IWORK_o.Tail[1]+1) : 0);
+      }
+
+      (*tBuffer++)[PlatformAssem_DW.TransportDelay_IWORK_o.Head[1]] = simTime;
+      (*uBuffer++)[PlatformAssem_DW.TransportDelay_IWORK_o.Head[1]] =
+        PlatformAssem_B.OUTPUT_1_0[7];
+      PlatformAssem_DW.TransportDelay_IWORK_o.Head[2] =
+        ((PlatformAssem_DW.TransportDelay_IWORK_o.Head[2] <
+          (PlatformAssem_DW.TransportDelay_IWORK_o.CircularBufSize[2]-1)) ?
+         (PlatformAssem_DW.TransportDelay_IWORK_o.Head[2]+1) : 0);
+      if (PlatformAssem_DW.TransportDelay_IWORK_o.Head[2] ==
+          PlatformAssem_DW.TransportDelay_IWORK_o.Tail[2]) {
+        PlatformAssem_DW.TransportDelay_IWORK_o.Tail[2] =
+          ((PlatformAssem_DW.TransportDelay_IWORK_o.Tail[2] <
+            (PlatformAssem_DW.TransportDelay_IWORK_o.CircularBufSize[2]-1)) ?
+           (PlatformAssem_DW.TransportDelay_IWORK_o.Tail[2]+1) : 0);
+      }
+
+      (*tBuffer++)[PlatformAssem_DW.TransportDelay_IWORK_o.Head[2]] = simTime;
+      (*uBuffer++)[PlatformAssem_DW.TransportDelay_IWORK_o.Head[2]] =
+        PlatformAssem_B.OUTPUT_1_0[8];
+      PlatformAssem_DW.TransportDelay_IWORK_o.Head[3] =
+        ((PlatformAssem_DW.TransportDelay_IWORK_o.Head[3] <
+          (PlatformAssem_DW.TransportDelay_IWORK_o.CircularBufSize[3]-1)) ?
+         (PlatformAssem_DW.TransportDelay_IWORK_o.Head[3]+1) : 0);
+      if (PlatformAssem_DW.TransportDelay_IWORK_o.Head[3] ==
+          PlatformAssem_DW.TransportDelay_IWORK_o.Tail[3]) {
+        PlatformAssem_DW.TransportDelay_IWORK_o.Tail[3] =
+          ((PlatformAssem_DW.TransportDelay_IWORK_o.Tail[3] <
+            (PlatformAssem_DW.TransportDelay_IWORK_o.CircularBufSize[3]-1)) ?
+           (PlatformAssem_DW.TransportDelay_IWORK_o.Tail[3]+1) : 0);
+      }
+
+      (*tBuffer++)[PlatformAssem_DW.TransportDelay_IWORK_o.Head[3]] = simTime;
+      (*uBuffer++)[PlatformAssem_DW.TransportDelay_IWORK_o.Head[3]] =
+        PlatformAssem_B.OUTPUT_1_0[9];
+      PlatformAssem_DW.TransportDelay_IWORK_o.Head[4] =
+        ((PlatformAssem_DW.TransportDelay_IWORK_o.Head[4] <
+          (PlatformAssem_DW.TransportDelay_IWORK_o.CircularBufSize[4]-1)) ?
+         (PlatformAssem_DW.TransportDelay_IWORK_o.Head[4]+1) : 0);
+      if (PlatformAssem_DW.TransportDelay_IWORK_o.Head[4] ==
+          PlatformAssem_DW.TransportDelay_IWORK_o.Tail[4]) {
+        PlatformAssem_DW.TransportDelay_IWORK_o.Tail[4] =
+          ((PlatformAssem_DW.TransportDelay_IWORK_o.Tail[4] <
+            (PlatformAssem_DW.TransportDelay_IWORK_o.CircularBufSize[4]-1)) ?
+           (PlatformAssem_DW.TransportDelay_IWORK_o.Tail[4]+1) : 0);
+      }
+
+      (*tBuffer++)[PlatformAssem_DW.TransportDelay_IWORK_o.Head[4]] = simTime;
+      (*uBuffer++)[PlatformAssem_DW.TransportDelay_IWORK_o.Head[4]] =
+        PlatformAssem_B.OUTPUT_1_0[16];
+      PlatformAssem_DW.TransportDelay_IWORK_o.Head[5] =
+        ((PlatformAssem_DW.TransportDelay_IWORK_o.Head[5] <
+          (PlatformAssem_DW.TransportDelay_IWORK_o.CircularBufSize[5]-1)) ?
+         (PlatformAssem_DW.TransportDelay_IWORK_o.Head[5]+1) : 0);
+      if (PlatformAssem_DW.TransportDelay_IWORK_o.Head[5] ==
+          PlatformAssem_DW.TransportDelay_IWORK_o.Tail[5]) {
+        PlatformAssem_DW.TransportDelay_IWORK_o.Tail[5] =
+          ((PlatformAssem_DW.TransportDelay_IWORK_o.Tail[5] <
+            (PlatformAssem_DW.TransportDelay_IWORK_o.CircularBufSize[5]-1)) ?
+           (PlatformAssem_DW.TransportDelay_IWORK_o.Tail[5]+1) : 0);
+      }
+
+      (*tBuffer++)[PlatformAssem_DW.TransportDelay_IWORK_o.Head[5]] = simTime;
+      (*uBuffer++)[PlatformAssem_DW.TransportDelay_IWORK_o.Head[5]] =
         PlatformAssem_B.OUTPUT_1_0[17];
-      PlatformAssem_DW.TransportDelay1_IWORK.Head[1] =
-        ((PlatformAssem_DW.TransportDelay1_IWORK.Head[1] <
-          (PlatformAssem_DW.TransportDelay1_IWORK.CircularBufSize[1]-1)) ?
-         (PlatformAssem_DW.TransportDelay1_IWORK.Head[1]+1) : 0);
-      if (PlatformAssem_DW.TransportDelay1_IWORK.Head[1] ==
-          PlatformAssem_DW.TransportDelay1_IWORK.Tail[1]) {
-        PlatformAssem_DW.TransportDelay1_IWORK.Tail[1] =
-          ((PlatformAssem_DW.TransportDelay1_IWORK.Tail[1] <
-            (PlatformAssem_DW.TransportDelay1_IWORK.CircularBufSize[1]-1)) ?
-           (PlatformAssem_DW.TransportDelay1_IWORK.Tail[1]+1) : 0);
+      PlatformAssem_DW.TransportDelay_IWORK_o.Head[6] =
+        ((PlatformAssem_DW.TransportDelay_IWORK_o.Head[6] <
+          (PlatformAssem_DW.TransportDelay_IWORK_o.CircularBufSize[6]-1)) ?
+         (PlatformAssem_DW.TransportDelay_IWORK_o.Head[6]+1) : 0);
+      if (PlatformAssem_DW.TransportDelay_IWORK_o.Head[6] ==
+          PlatformAssem_DW.TransportDelay_IWORK_o.Tail[6]) {
+        PlatformAssem_DW.TransportDelay_IWORK_o.Tail[6] =
+          ((PlatformAssem_DW.TransportDelay_IWORK_o.Tail[6] <
+            (PlatformAssem_DW.TransportDelay_IWORK_o.CircularBufSize[6]-1)) ?
+           (PlatformAssem_DW.TransportDelay_IWORK_o.Tail[6]+1) : 0);
       }
 
-      (*tBuffer++)[PlatformAssem_DW.TransportDelay1_IWORK.Head[1]] = simTime;
-      (*uBuffer++)[PlatformAssem_DW.TransportDelay1_IWORK.Head[1]] =
+      (*tBuffer++)[PlatformAssem_DW.TransportDelay_IWORK_o.Head[6]] = simTime;
+      (*uBuffer++)[PlatformAssem_DW.TransportDelay_IWORK_o.Head[6]] =
         PlatformAssem_B.OUTPUT_1_0[18];
-      PlatformAssem_DW.TransportDelay1_IWORK.Head[2] =
-        ((PlatformAssem_DW.TransportDelay1_IWORK.Head[2] <
-          (PlatformAssem_DW.TransportDelay1_IWORK.CircularBufSize[2]-1)) ?
-         (PlatformAssem_DW.TransportDelay1_IWORK.Head[2]+1) : 0);
-      if (PlatformAssem_DW.TransportDelay1_IWORK.Head[2] ==
-          PlatformAssem_DW.TransportDelay1_IWORK.Tail[2]) {
-        PlatformAssem_DW.TransportDelay1_IWORK.Tail[2] =
-          ((PlatformAssem_DW.TransportDelay1_IWORK.Tail[2] <
-            (PlatformAssem_DW.TransportDelay1_IWORK.CircularBufSize[2]-1)) ?
-           (PlatformAssem_DW.TransportDelay1_IWORK.Tail[2]+1) : 0);
+      PlatformAssem_DW.TransportDelay_IWORK_o.Head[7] =
+        ((PlatformAssem_DW.TransportDelay_IWORK_o.Head[7] <
+          (PlatformAssem_DW.TransportDelay_IWORK_o.CircularBufSize[7]-1)) ?
+         (PlatformAssem_DW.TransportDelay_IWORK_o.Head[7]+1) : 0);
+      if (PlatformAssem_DW.TransportDelay_IWORK_o.Head[7] ==
+          PlatformAssem_DW.TransportDelay_IWORK_o.Tail[7]) {
+        PlatformAssem_DW.TransportDelay_IWORK_o.Tail[7] =
+          ((PlatformAssem_DW.TransportDelay_IWORK_o.Tail[7] <
+            (PlatformAssem_DW.TransportDelay_IWORK_o.CircularBufSize[7]-1)) ?
+           (PlatformAssem_DW.TransportDelay_IWORK_o.Tail[7]+1) : 0);
       }
 
-      (*tBuffer)[PlatformAssem_DW.TransportDelay1_IWORK.Head[2]] = simTime;
-      (*uBuffer)[PlatformAssem_DW.TransportDelay1_IWORK.Head[2]] =
+      (*tBuffer)[PlatformAssem_DW.TransportDelay_IWORK_o.Head[7]] = simTime;
+      (*uBuffer)[PlatformAssem_DW.TransportDelay_IWORK_o.Head[7]] =
         PlatformAssem_B.OUTPUT_1_0[19];
+    }
+
+    /* Update for TransportDelay: '<S9>/Transport Delay' */
+    {
+      real_T **uBuffer = (real_T**)
+        &PlatformAssem_DW.TransportDelay_PWORK_h.TUbufferPtrs[0];
+      real_T **tBuffer = (real_T**)
+        &PlatformAssem_DW.TransportDelay_PWORK_h.TUbufferPtrs[3];
+      real_T simTime = PlatformAssem_M->Timing.t[0];
+      PlatformAssem_DW.TransportDelay_IWORK_a.Head[0] =
+        ((PlatformAssem_DW.TransportDelay_IWORK_a.Head[0] <
+          (PlatformAssem_DW.TransportDelay_IWORK_a.CircularBufSize[0]-1)) ?
+         (PlatformAssem_DW.TransportDelay_IWORK_a.Head[0]+1) : 0);
+      if (PlatformAssem_DW.TransportDelay_IWORK_a.Head[0] ==
+          PlatformAssem_DW.TransportDelay_IWORK_a.Tail[0]) {
+        PlatformAssem_DW.TransportDelay_IWORK_a.Tail[0] =
+          ((PlatformAssem_DW.TransportDelay_IWORK_a.Tail[0] <
+            (PlatformAssem_DW.TransportDelay_IWORK_a.CircularBufSize[0]-1)) ?
+           (PlatformAssem_DW.TransportDelay_IWORK_a.Tail[0]+1) : 0);
+      }
+
+      (*tBuffer++)[PlatformAssem_DW.TransportDelay_IWORK_a.Head[0]] = simTime;
+      (*uBuffer++)[PlatformAssem_DW.TransportDelay_IWORK_a.Head[0]] =
+        PlatformAssem_B.OUTPUT_1_0[10];
+      PlatformAssem_DW.TransportDelay_IWORK_a.Head[1] =
+        ((PlatformAssem_DW.TransportDelay_IWORK_a.Head[1] <
+          (PlatformAssem_DW.TransportDelay_IWORK_a.CircularBufSize[1]-1)) ?
+         (PlatformAssem_DW.TransportDelay_IWORK_a.Head[1]+1) : 0);
+      if (PlatformAssem_DW.TransportDelay_IWORK_a.Head[1] ==
+          PlatformAssem_DW.TransportDelay_IWORK_a.Tail[1]) {
+        PlatformAssem_DW.TransportDelay_IWORK_a.Tail[1] =
+          ((PlatformAssem_DW.TransportDelay_IWORK_a.Tail[1] <
+            (PlatformAssem_DW.TransportDelay_IWORK_a.CircularBufSize[1]-1)) ?
+           (PlatformAssem_DW.TransportDelay_IWORK_a.Tail[1]+1) : 0);
+      }
+
+      (*tBuffer++)[PlatformAssem_DW.TransportDelay_IWORK_a.Head[1]] = simTime;
+      (*uBuffer++)[PlatformAssem_DW.TransportDelay_IWORK_a.Head[1]] =
+        PlatformAssem_B.OUTPUT_1_0[11];
+      PlatformAssem_DW.TransportDelay_IWORK_a.Head[2] =
+        ((PlatformAssem_DW.TransportDelay_IWORK_a.Head[2] <
+          (PlatformAssem_DW.TransportDelay_IWORK_a.CircularBufSize[2]-1)) ?
+         (PlatformAssem_DW.TransportDelay_IWORK_a.Head[2]+1) : 0);
+      if (PlatformAssem_DW.TransportDelay_IWORK_a.Head[2] ==
+          PlatformAssem_DW.TransportDelay_IWORK_a.Tail[2]) {
+        PlatformAssem_DW.TransportDelay_IWORK_a.Tail[2] =
+          ((PlatformAssem_DW.TransportDelay_IWORK_a.Tail[2] <
+            (PlatformAssem_DW.TransportDelay_IWORK_a.CircularBufSize[2]-1)) ?
+           (PlatformAssem_DW.TransportDelay_IWORK_a.Tail[2]+1) : 0);
+      }
+
+      (*tBuffer)[PlatformAssem_DW.TransportDelay_IWORK_a.Head[2]] = simTime;
+      (*uBuffer)[PlatformAssem_DW.TransportDelay_IWORK_a.Head[2]] =
+        PlatformAssem_B.OUTPUT_1_0[12];
+    }
+
+    /* Update for TransportDelay: '<S10>/Transport Delay' */
+    {
+      real_T **uBuffer = (real_T**)
+        &PlatformAssem_DW.TransportDelay_PWORK_p.TUbufferPtrs[0];
+      real_T **tBuffer = (real_T**)
+        &PlatformAssem_DW.TransportDelay_PWORK_p.TUbufferPtrs[3];
+      real_T simTime = PlatformAssem_M->Timing.t[0];
+      PlatformAssem_DW.TransportDelay_IWORK_i.Head[0] =
+        ((PlatformAssem_DW.TransportDelay_IWORK_i.Head[0] <
+          (PlatformAssem_DW.TransportDelay_IWORK_i.CircularBufSize[0]-1)) ?
+         (PlatformAssem_DW.TransportDelay_IWORK_i.Head[0]+1) : 0);
+      if (PlatformAssem_DW.TransportDelay_IWORK_i.Head[0] ==
+          PlatformAssem_DW.TransportDelay_IWORK_i.Tail[0]) {
+        PlatformAssem_DW.TransportDelay_IWORK_i.Tail[0] =
+          ((PlatformAssem_DW.TransportDelay_IWORK_i.Tail[0] <
+            (PlatformAssem_DW.TransportDelay_IWORK_i.CircularBufSize[0]-1)) ?
+           (PlatformAssem_DW.TransportDelay_IWORK_i.Tail[0]+1) : 0);
+      }
+
+      (*tBuffer++)[PlatformAssem_DW.TransportDelay_IWORK_i.Head[0]] = simTime;
+      (*uBuffer++)[PlatformAssem_DW.TransportDelay_IWORK_i.Head[0]] =
+        PlatformAssem_B.OUTPUT_1_0[20];
+      PlatformAssem_DW.TransportDelay_IWORK_i.Head[1] =
+        ((PlatformAssem_DW.TransportDelay_IWORK_i.Head[1] <
+          (PlatformAssem_DW.TransportDelay_IWORK_i.CircularBufSize[1]-1)) ?
+         (PlatformAssem_DW.TransportDelay_IWORK_i.Head[1]+1) : 0);
+      if (PlatformAssem_DW.TransportDelay_IWORK_i.Head[1] ==
+          PlatformAssem_DW.TransportDelay_IWORK_i.Tail[1]) {
+        PlatformAssem_DW.TransportDelay_IWORK_i.Tail[1] =
+          ((PlatformAssem_DW.TransportDelay_IWORK_i.Tail[1] <
+            (PlatformAssem_DW.TransportDelay_IWORK_i.CircularBufSize[1]-1)) ?
+           (PlatformAssem_DW.TransportDelay_IWORK_i.Tail[1]+1) : 0);
+      }
+
+      (*tBuffer++)[PlatformAssem_DW.TransportDelay_IWORK_i.Head[1]] = simTime;
+      (*uBuffer++)[PlatformAssem_DW.TransportDelay_IWORK_i.Head[1]] =
+        PlatformAssem_B.OUTPUT_1_0[21];
+      PlatformAssem_DW.TransportDelay_IWORK_i.Head[2] =
+        ((PlatformAssem_DW.TransportDelay_IWORK_i.Head[2] <
+          (PlatformAssem_DW.TransportDelay_IWORK_i.CircularBufSize[2]-1)) ?
+         (PlatformAssem_DW.TransportDelay_IWORK_i.Head[2]+1) : 0);
+      if (PlatformAssem_DW.TransportDelay_IWORK_i.Head[2] ==
+          PlatformAssem_DW.TransportDelay_IWORK_i.Tail[2]) {
+        PlatformAssem_DW.TransportDelay_IWORK_i.Tail[2] =
+          ((PlatformAssem_DW.TransportDelay_IWORK_i.Tail[2] <
+            (PlatformAssem_DW.TransportDelay_IWORK_i.CircularBufSize[2]-1)) ?
+           (PlatformAssem_DW.TransportDelay_IWORK_i.Tail[2]+1) : 0);
+      }
+
+      (*tBuffer)[PlatformAssem_DW.TransportDelay_IWORK_i.Head[2]] = simTime;
+      (*uBuffer)[PlatformAssem_DW.TransportDelay_IWORK_i.Head[2]] =
+        PlatformAssem_B.OUTPUT_1_0[22];
     }
   }                                    /* end MajorTimeStep */
 
@@ -1486,7 +1709,7 @@ void PlatformAssem_derivatives(void)
   XDot_PlatformAssem_T *_rtXdot;
   _rtXdot = ((XDot_PlatformAssem_T *) PlatformAssem_M->derivs);
 
-  /* Derivatives for SimscapeInputBlock: '<S93>/INPUT_12_1_1' */
+  /* Derivatives for SimscapeInputBlock: '<S108>/INPUT_12_1_1' */
   _rtXdot->PlatformAssemSimulink_PS_Conver[0] =
     PlatformAssem_X.PlatformAssemSimulink_PS_Conver[1];
   _rtXdot->PlatformAssemSimulink_PS_Conver[1] =
@@ -1494,7 +1717,7 @@ void PlatformAssem_derivatives(void)
       PlatformAssem_X.PlatformAssemSimulink_PS_Conver[0]) * 1000.0 - 2.0 *
      PlatformAssem_X.PlatformAssemSimulink_PS_Conver[1]) * 1000.0;
 
-  /* Derivatives for SimscapeInputBlock: '<S93>/INPUT_4_1_1' */
+  /* Derivatives for SimscapeInputBlock: '<S108>/INPUT_4_1_1' */
   _rtXdot->PlatformAssemSimulink_PS_Conv_l[0] =
     PlatformAssem_X.PlatformAssemSimulink_PS_Conv_l[1];
   _rtXdot->PlatformAssemSimulink_PS_Conv_l[1] =
@@ -1502,7 +1725,7 @@ void PlatformAssem_derivatives(void)
       PlatformAssem_X.PlatformAssemSimulink_PS_Conv_l[0]) * 1000.0 - 2.0 *
      PlatformAssem_X.PlatformAssemSimulink_PS_Conv_l[1]) * 1000.0;
 
-  /* Derivatives for SimscapeInputBlock: '<S93>/INPUT_3_1_1' */
+  /* Derivatives for SimscapeInputBlock: '<S108>/INPUT_3_1_1' */
   _rtXdot->PlatformAssemSimulink_PS_Conv_j[0] =
     PlatformAssem_X.PlatformAssemSimulink_PS_Conv_j[1];
   _rtXdot->PlatformAssemSimulink_PS_Conv_j[1] =
@@ -1510,7 +1733,7 @@ void PlatformAssem_derivatives(void)
       PlatformAssem_X.PlatformAssemSimulink_PS_Conv_j[0]) * 1000.0 - 2.0 *
      PlatformAssem_X.PlatformAssemSimulink_PS_Conv_j[1]) * 1000.0;
 
-  /* Derivatives for SimscapeInputBlock: '<S93>/INPUT_9_1_1' */
+  /* Derivatives for SimscapeInputBlock: '<S108>/INPUT_9_1_1' */
   _rtXdot->PlatformAssemSimulink_PS_Conv_h[0] =
     PlatformAssem_X.PlatformAssemSimulink_PS_Conv_h[1];
   _rtXdot->PlatformAssemSimulink_PS_Conv_h[1] =
@@ -1518,7 +1741,7 @@ void PlatformAssem_derivatives(void)
       PlatformAssem_X.PlatformAssemSimulink_PS_Conv_h[0]) * 1000.0 - 2.0 *
      PlatformAssem_X.PlatformAssemSimulink_PS_Conv_h[1]) * 1000.0;
 
-  /* Derivatives for SimscapeInputBlock: '<S93>/INPUT_11_1_1' */
+  /* Derivatives for SimscapeInputBlock: '<S108>/INPUT_11_1_1' */
   _rtXdot->PlatformAssemSimulink_PS_Con_la[0] =
     PlatformAssem_X.PlatformAssemSimulink_PS_Con_la[1];
   _rtXdot->PlatformAssemSimulink_PS_Con_la[1] =
@@ -1526,7 +1749,7 @@ void PlatformAssem_derivatives(void)
       PlatformAssem_X.PlatformAssemSimulink_PS_Con_la[0]) * 1000.0 - 2.0 *
      PlatformAssem_X.PlatformAssemSimulink_PS_Con_la[1]) * 1000.0;
 
-  /* Derivatives for SimscapeInputBlock: '<S93>/INPUT_10_1_1' */
+  /* Derivatives for SimscapeInputBlock: '<S108>/INPUT_10_1_1' */
   _rtXdot->PlatformAssemSimulink_PS_Conv_m[0] =
     PlatformAssem_X.PlatformAssemSimulink_PS_Conv_m[1];
   _rtXdot->PlatformAssemSimulink_PS_Conv_m[1] =
@@ -1534,7 +1757,7 @@ void PlatformAssem_derivatives(void)
       PlatformAssem_X.PlatformAssemSimulink_PS_Conv_m[0]) * 1000.0 - 2.0 *
      PlatformAssem_X.PlatformAssemSimulink_PS_Conv_m[1]) * 1000.0;
 
-  /* Derivatives for SimscapeInputBlock: '<S93>/INPUT_8_1_1' */
+  /* Derivatives for SimscapeInputBlock: '<S108>/INPUT_8_1_1' */
   _rtXdot->PlatformAssemSimulink_PS_Conv_e[0] =
     PlatformAssem_X.PlatformAssemSimulink_PS_Conv_e[1];
   _rtXdot->PlatformAssemSimulink_PS_Conv_e[1] =
@@ -1542,7 +1765,7 @@ void PlatformAssem_derivatives(void)
       PlatformAssem_X.PlatformAssemSimulink_PS_Conv_e[0]) * 1000.0 - 2.0 *
      PlatformAssem_X.PlatformAssemSimulink_PS_Conv_e[1]) * 1000.0;
 
-  /* Derivatives for SimscapeInputBlock: '<S93>/INPUT_2_1_1' */
+  /* Derivatives for SimscapeInputBlock: '<S108>/INPUT_2_1_1' */
   _rtXdot->PlatformAssemSimulink_PS_Conv_g[0] =
     PlatformAssem_X.PlatformAssemSimulink_PS_Conv_g[1];
   _rtXdot->PlatformAssemSimulink_PS_Conv_g[1] =
@@ -1550,7 +1773,7 @@ void PlatformAssem_derivatives(void)
       PlatformAssem_X.PlatformAssemSimulink_PS_Conv_g[0]) * 1000.0 - 2.0 *
      PlatformAssem_X.PlatformAssemSimulink_PS_Conv_g[1]) * 1000.0;
 
-  /* Derivatives for SimscapeInputBlock: '<S93>/INPUT_5_1_1' */
+  /* Derivatives for SimscapeInputBlock: '<S108>/INPUT_5_1_1' */
   _rtXdot->PlatformAssemSimulink_PS_Conv_a[0] =
     PlatformAssem_X.PlatformAssemSimulink_PS_Conv_a[1];
   _rtXdot->PlatformAssemSimulink_PS_Conv_a[1] =
@@ -1558,7 +1781,7 @@ void PlatformAssem_derivatives(void)
       PlatformAssem_X.PlatformAssemSimulink_PS_Conv_a[0]) * 1000.0 - 2.0 *
      PlatformAssem_X.PlatformAssemSimulink_PS_Conv_a[1]) * 1000.0;
 
-  /* Derivatives for SimscapeInputBlock: '<S93>/INPUT_6_1_1' */
+  /* Derivatives for SimscapeInputBlock: '<S108>/INPUT_6_1_1' */
   _rtXdot->PlatformAssemSimulink_PS_Con_lk[0] =
     PlatformAssem_X.PlatformAssemSimulink_PS_Con_lk[1];
   _rtXdot->PlatformAssemSimulink_PS_Con_lk[1] =
@@ -1566,7 +1789,7 @@ void PlatformAssem_derivatives(void)
       PlatformAssem_X.PlatformAssemSimulink_PS_Con_lk[0]) * 1000.0 - 2.0 *
      PlatformAssem_X.PlatformAssemSimulink_PS_Con_lk[1]) * 1000.0;
 
-  /* Derivatives for SimscapeInputBlock: '<S93>/INPUT_7_1_1' */
+  /* Derivatives for SimscapeInputBlock: '<S108>/INPUT_7_1_1' */
   _rtXdot->PlatformAssemSimulink_PS_Conv_o[0] =
     PlatformAssem_X.PlatformAssemSimulink_PS_Conv_o[1];
   _rtXdot->PlatformAssemSimulink_PS_Conv_o[1] =
@@ -1574,7 +1797,7 @@ void PlatformAssem_derivatives(void)
       PlatformAssem_X.PlatformAssemSimulink_PS_Conv_o[0]) * 1000.0 - 2.0 *
      PlatformAssem_X.PlatformAssemSimulink_PS_Conv_o[1]) * 1000.0;
 
-  /* Derivatives for SimscapeInputBlock: '<S93>/INPUT_1_1_1' */
+  /* Derivatives for SimscapeInputBlock: '<S108>/INPUT_1_1_1' */
   _rtXdot->PlatformAssemSimulink_PS_Conv_i[0] =
     PlatformAssem_X.PlatformAssemSimulink_PS_Conv_i[1];
   _rtXdot->PlatformAssemSimulink_PS_Conv_i[1] =
@@ -1582,7 +1805,7 @@ void PlatformAssem_derivatives(void)
       PlatformAssem_X.PlatformAssemSimulink_PS_Conv_i[0]) * 1000.0 - 2.0 *
      PlatformAssem_X.PlatformAssemSimulink_PS_Conv_i[1]) * 1000.0;
 
-  /* Derivatives for SimscapeExecutionBlock: '<S93>/STATE_1' */
+  /* Derivatives for SimscapeExecutionBlock: '<S108>/STATE_1' */
   simulationData = (NeslSimulationData *)PlatformAssem_DW.STATE_1_SimulationData;
   time = PlatformAssem_M->Timing.t[0];
   simulationData->mData->mTime.mN = 1;
@@ -1685,7 +1908,7 @@ void PlatformAssem_derivatives(void)
     }
   }
 
-  /* End of Derivatives for SimscapeExecutionBlock: '<S93>/STATE_1' */
+  /* End of Derivatives for SimscapeExecutionBlock: '<S108>/STATE_1' */
 }
 
 /* Model initialize function */
@@ -1794,8 +2017,8 @@ void PlatformAssem_initialize(void)
     NeParameterBundle expl_temp;
     boolean_T tmp_3;
 
-    /* Start for SimscapeExecutionBlock: '<S93>/STATE_1' incorporates:
-     *  SimscapeExecutionBlock: '<S93>/OUTPUT_1_0'
+    /* Start for SimscapeExecutionBlock: '<S108>/STATE_1' incorporates:
+     *  SimscapeExecutionBlock: '<S108>/OUTPUT_1_0'
      */
     tmp = nesl_lease_simulator("PlatformAssem/Solver Configuration_1", 0, 0);
     PlatformAssem_DW.STATE_1_Simulator = (void *)tmp;
@@ -1819,7 +2042,7 @@ void PlatformAssem_initialize(void)
     modelParameters.mUseSimState = false;
     modelParameters.mLinTrimCompile = false;
     modelParameters.mLoggingMode = SSC_LOGGING_NONE;
-    modelParameters.mRTWModifiedTimeStamp = 4.40622294E+8;
+    modelParameters.mRTWModifiedTimeStamp = 4.40630782E+8;
     tmp_1 = 0.001;
     modelParameters.mSolverTolerance = tmp_1;
     tmp_1 = 0.2;
@@ -1886,9 +2109,9 @@ void PlatformAssem_initialize(void)
       }
     }
 
-    /* End of Start for SimscapeExecutionBlock: '<S93>/STATE_1' */
+    /* End of Start for SimscapeExecutionBlock: '<S108>/STATE_1' */
 
-    /* Start for SimscapeExecutionBlock: '<S93>/OUTPUT_1_0' */
+    /* Start for SimscapeExecutionBlock: '<S108>/OUTPUT_1_0' */
     tmp = nesl_lease_simulator("PlatformAssem/Solver Configuration_1", 2, 0);
     PlatformAssem_DW.OUTPUT_1_0_Simulator = (void *)tmp;
     tmp_0 = pointer_is_null(PlatformAssem_DW.OUTPUT_1_0_Simulator);
@@ -1911,7 +2134,7 @@ void PlatformAssem_initialize(void)
     modelParameters_0.mUseSimState = false;
     modelParameters_0.mLinTrimCompile = false;
     modelParameters_0.mLoggingMode = SSC_LOGGING_NONE;
-    modelParameters_0.mRTWModifiedTimeStamp = 4.40622294E+8;
+    modelParameters_0.mRTWModifiedTimeStamp = 4.40630782E+8;
     tmp_1 = 0.001;
     modelParameters_0.mSolverTolerance = tmp_1;
     tmp_1 = 0.2;
@@ -2035,7 +2258,7 @@ void PlatformAssem_initialize(void)
         return;
     }
 
-    /* Start for TransportDelay: '<Root>/Transport Delay' */
+    /* Start for TransportDelay: '<S7>/Transport Delay' */
     {
       real_T *pBuffer = &PlatformAssem_DW.TransportDelay_RWORK.TUbufferArea[0];
 
@@ -2048,126 +2271,12 @@ void PlatformAssem_initialize(void)
           &PlatformAssem_DW.TransportDelay_IWORK.CircularBufSize[0];
         void **pw_TUbufferPtrs =
           &PlatformAssem_DW.TransportDelay_PWORK.TUbufferPtrs[0];
-        for (i1=0; i1 < 4; i1++) {
-          iw_Tail[i1] = 0;
-          iw_Head[i1] = 0;
-          iw_Last[i1] = 0;
-          iw_CircularBufSize[i1] = 1024;
-          pBuffer[0] = PlatformAssem_P.TransportDelay_InitOutput;
-          pBuffer[1024] = PlatformAssem_M->Timing.t[0];
-          pw_TUbufferPtrs[i1] = (void *) &pBuffer[0];
-          pw_TUbufferPtrs[i1+8] = (void *) &pBuffer[1024];
-          pBuffer += 2048;
-        }
-
-        iw_Tail = &PlatformAssem_DW.TransportDelay_IWORK.Tail[4];
-        iw_Head = &PlatformAssem_DW.TransportDelay_IWORK.Head[4];
-        iw_Last = &PlatformAssem_DW.TransportDelay_IWORK.Last[4];
-        iw_CircularBufSize =
-          &PlatformAssem_DW.TransportDelay_IWORK.CircularBufSize[4];
-        pw_TUbufferPtrs = &PlatformAssem_DW.TransportDelay_PWORK.TUbufferPtrs[4];
-        for (i1=0; i1 < 4; i1++) {
-          iw_Tail[i1] = 0;
-          iw_Head[i1] = 0;
-          iw_Last[i1] = 0;
-          iw_CircularBufSize[i1] = 1024;
-          pBuffer[0] = PlatformAssem_P.TransportDelay_InitOutput;
-          pBuffer[1024] = PlatformAssem_M->Timing.t[0];
-          pw_TUbufferPtrs[i1] = (void *) &pBuffer[0];
-          pw_TUbufferPtrs[i1+8] = (void *) &pBuffer[1024];
-          pBuffer += 2048;
-        }
-      }
-    }
-
-    /* Start for ToWorkspace: '<Root>/To Workspace' */
-    {
-      static int_T rt_ToWksWidths[] = { 8 };
-
-      static int_T rt_ToWksNumDimensions[] = { 1 };
-
-      static int_T rt_ToWksDimensions[] = { 8 };
-
-      static boolean_T rt_ToWksIsVarDims[] = { 0 };
-
-      static void *rt_ToWksCurrSigDims[] = { (NULL) };
-
-      static int_T rt_ToWksCurrSigDimsSize[] = { 4 };
-
-      static BuiltInDTypeId rt_ToWksDataTypeIds[] = { SS_DOUBLE };
-
-      static int_T rt_ToWksComplexSignals[] = { 0 };
-
-      static int_T rt_ToWksFrameData[] = { 0 };
-
-      static RTWPreprocessingFcnPtr rt_ToWksLoggingPreprocessingFcnPtrs[] = {
-        (NULL)
-      };
-
-      static const char_T *rt_ToWksLabels[] = { "" };
-
-      static RTWLogSignalInfo rt_ToWksSignalInfo = {
-        1,
-        rt_ToWksWidths,
-        rt_ToWksNumDimensions,
-        rt_ToWksDimensions,
-        rt_ToWksIsVarDims,
-        rt_ToWksCurrSigDims,
-        rt_ToWksCurrSigDimsSize,
-        rt_ToWksDataTypeIds,
-        rt_ToWksComplexSignals,
-        rt_ToWksFrameData,
-        rt_ToWksLoggingPreprocessingFcnPtrs,
-
-        { rt_ToWksLabels },
-        (NULL),
-        (NULL),
-        (NULL),
-
-        { (NULL) },
-
-        { (NULL) },
-        (NULL),
-        (NULL)
-      };
-
-      static const char_T rt_ToWksBlockName[] = "PlatformAssem/To Workspace";
-      PlatformAssem_DW.ToWorkspace_PWORK.LoggedData = rt_CreateStructLogVar(
-        PlatformAssem_M->rtwLogInfo,
-        0.0,
-        rtmGetTFinal(PlatformAssem_M),
-        PlatformAssem_M->Timing.stepSize0,
-        (&rtmGetErrorStatus(PlatformAssem_M)),
-        "platform_orientation",
-        1,
-        0,
-        1,
-        0.2,
-        &rt_ToWksSignalInfo,
-        rt_ToWksBlockName);
-      if (PlatformAssem_DW.ToWorkspace_PWORK.LoggedData == (NULL))
-        return;
-    }
-
-    /* Start for TransportDelay: '<Root>/Transport Delay1' */
-    {
-      real_T *pBuffer = &PlatformAssem_DW.TransportDelay1_RWORK.TUbufferArea[0];
-
-      {
-        int_T i1;
-        int_T *iw_Tail = &PlatformAssem_DW.TransportDelay1_IWORK.Tail[0];
-        int_T *iw_Head = &PlatformAssem_DW.TransportDelay1_IWORK.Head[0];
-        int_T *iw_Last = &PlatformAssem_DW.TransportDelay1_IWORK.Last[0];
-        int_T *iw_CircularBufSize =
-          &PlatformAssem_DW.TransportDelay1_IWORK.CircularBufSize[0];
-        void **pw_TUbufferPtrs =
-          &PlatformAssem_DW.TransportDelay1_PWORK.TUbufferPtrs[0];
         for (i1=0; i1 < 3; i1++) {
           iw_Tail[i1] = 0;
           iw_Head[i1] = 0;
           iw_Last[i1] = 0;
           iw_CircularBufSize[i1] = 1024;
-          pBuffer[0] = PlatformAssem_P.TransportDelay1_InitOutput;
+          pBuffer[0] = PlatformAssem_P.TransportDelay_InitOutput;
           pBuffer[1024] = PlatformAssem_M->Timing.t[0];
           pw_TUbufferPtrs[i1] = (void *) &pBuffer[0];
           pw_TUbufferPtrs[i1+3] = (void *) &pBuffer[1024];
@@ -2176,76 +2285,7 @@ void PlatformAssem_initialize(void)
       }
     }
 
-    /* Start for ToWorkspace: '<Root>/To Workspace2' */
-    {
-      static int_T rt_ToWksWidths[] = { 3 };
-
-      static int_T rt_ToWksNumDimensions[] = { 1 };
-
-      static int_T rt_ToWksDimensions[] = { 3 };
-
-      static boolean_T rt_ToWksIsVarDims[] = { 0 };
-
-      static void *rt_ToWksCurrSigDims[] = { (NULL) };
-
-      static int_T rt_ToWksCurrSigDimsSize[] = { 4 };
-
-      static BuiltInDTypeId rt_ToWksDataTypeIds[] = { SS_DOUBLE };
-
-      static int_T rt_ToWksComplexSignals[] = { 0 };
-
-      static int_T rt_ToWksFrameData[] = { 0 };
-
-      static RTWPreprocessingFcnPtr rt_ToWksLoggingPreprocessingFcnPtrs[] = {
-        (NULL)
-      };
-
-      static const char_T *rt_ToWksLabels[] = { "" };
-
-      static RTWLogSignalInfo rt_ToWksSignalInfo = {
-        1,
-        rt_ToWksWidths,
-        rt_ToWksNumDimensions,
-        rt_ToWksDimensions,
-        rt_ToWksIsVarDims,
-        rt_ToWksCurrSigDims,
-        rt_ToWksCurrSigDimsSize,
-        rt_ToWksDataTypeIds,
-        rt_ToWksComplexSignals,
-        rt_ToWksFrameData,
-        rt_ToWksLoggingPreprocessingFcnPtrs,
-
-        { rt_ToWksLabels },
-        (NULL),
-        (NULL),
-        (NULL),
-
-        { (NULL) },
-
-        { (NULL) },
-        (NULL),
-        (NULL)
-      };
-
-      static const char_T rt_ToWksBlockName[] = "PlatformAssem/To Workspace2";
-      PlatformAssem_DW.ToWorkspace2_PWORK.LoggedData = rt_CreateStructLogVar(
-        PlatformAssem_M->rtwLogInfo,
-        0.0,
-        rtmGetTFinal(PlatformAssem_M),
-        PlatformAssem_M->Timing.stepSize0,
-        (&rtmGetErrorStatus(PlatformAssem_M)),
-        "platform_acceleration",
-        1,
-        0,
-        1,
-        0.2,
-        &rt_ToWksSignalInfo,
-        rt_ToWksBlockName);
-      if (PlatformAssem_DW.ToWorkspace2_PWORK.LoggedData == (NULL))
-        return;
-    }
-
-    /* Start for ToWorkspace: '<S33>/To Workspace2' */
+    /* Start for ToWorkspace: '<S7>/To Workspace2' */
     {
       static int_T rt_ToWksWidths[] = { 3 };
 
@@ -2297,14 +2337,227 @@ void PlatformAssem_initialize(void)
       };
 
       static const char_T rt_ToWksBlockName[] =
-        "PlatformAssem/Subsystem2/To Workspace2";
+        "PlatformAssem/Platform Acceleration (Abs)/To Workspace2";
+      PlatformAssem_DW.ToWorkspace2_PWORK.LoggedData = rt_CreateStructLogVar(
+        PlatformAssem_M->rtwLogInfo,
+        0.0,
+        rtmGetTFinal(PlatformAssem_M),
+        PlatformAssem_M->Timing.stepSize0,
+        (&rtmGetErrorStatus(PlatformAssem_M)),
+        "platform_acceleration",
+        1,
+        0,
+        1,
+        0.2,
+        &rt_ToWksSignalInfo,
+        rt_ToWksBlockName);
+      if (PlatformAssem_DW.ToWorkspace2_PWORK.LoggedData == (NULL))
+        return;
+    }
+
+    /* Start for TransportDelay: '<S8>/Transport Delay' */
+    {
+      real_T *pBuffer = &PlatformAssem_DW.TransportDelay_RWORK_b.TUbufferArea[0];
+
+      {
+        int_T i1;
+        int_T *iw_Tail = &PlatformAssem_DW.TransportDelay_IWORK_o.Tail[0];
+        int_T *iw_Head = &PlatformAssem_DW.TransportDelay_IWORK_o.Head[0];
+        int_T *iw_Last = &PlatformAssem_DW.TransportDelay_IWORK_o.Last[0];
+        int_T *iw_CircularBufSize =
+          &PlatformAssem_DW.TransportDelay_IWORK_o.CircularBufSize[0];
+        void **pw_TUbufferPtrs =
+          &PlatformAssem_DW.TransportDelay_PWORK_l.TUbufferPtrs[0];
+        for (i1=0; i1 < 4; i1++) {
+          iw_Tail[i1] = 0;
+          iw_Head[i1] = 0;
+          iw_Last[i1] = 0;
+          iw_CircularBufSize[i1] = 1024;
+          pBuffer[0] = PlatformAssem_P.TransportDelay_InitOutput_b;
+          pBuffer[1024] = PlatformAssem_M->Timing.t[0];
+          pw_TUbufferPtrs[i1] = (void *) &pBuffer[0];
+          pw_TUbufferPtrs[i1+8] = (void *) &pBuffer[1024];
+          pBuffer += 2048;
+        }
+
+        iw_Tail = &PlatformAssem_DW.TransportDelay_IWORK_o.Tail[4];
+        iw_Head = &PlatformAssem_DW.TransportDelay_IWORK_o.Head[4];
+        iw_Last = &PlatformAssem_DW.TransportDelay_IWORK_o.Last[4];
+        iw_CircularBufSize =
+          &PlatformAssem_DW.TransportDelay_IWORK_o.CircularBufSize[4];
+        pw_TUbufferPtrs = &PlatformAssem_DW.TransportDelay_PWORK_l.TUbufferPtrs
+          [4];
+        for (i1=0; i1 < 4; i1++) {
+          iw_Tail[i1] = 0;
+          iw_Head[i1] = 0;
+          iw_Last[i1] = 0;
+          iw_CircularBufSize[i1] = 1024;
+          pBuffer[0] = PlatformAssem_P.TransportDelay_InitOutput_b;
+          pBuffer[1024] = PlatformAssem_M->Timing.t[0];
+          pw_TUbufferPtrs[i1] = (void *) &pBuffer[0];
+          pw_TUbufferPtrs[i1+8] = (void *) &pBuffer[1024];
+          pBuffer += 2048;
+        }
+      }
+    }
+
+    /* Start for ToWorkspace: '<S8>/To Workspace' */
+    {
+      static int_T rt_ToWksWidths[] = { 8 };
+
+      static int_T rt_ToWksNumDimensions[] = { 1 };
+
+      static int_T rt_ToWksDimensions[] = { 8 };
+
+      static boolean_T rt_ToWksIsVarDims[] = { 0 };
+
+      static void *rt_ToWksCurrSigDims[] = { (NULL) };
+
+      static int_T rt_ToWksCurrSigDimsSize[] = { 4 };
+
+      static BuiltInDTypeId rt_ToWksDataTypeIds[] = { SS_DOUBLE };
+
+      static int_T rt_ToWksComplexSignals[] = { 0 };
+
+      static int_T rt_ToWksFrameData[] = { 0 };
+
+      static RTWPreprocessingFcnPtr rt_ToWksLoggingPreprocessingFcnPtrs[] = {
+        (NULL)
+      };
+
+      static const char_T *rt_ToWksLabels[] = { "" };
+
+      static RTWLogSignalInfo rt_ToWksSignalInfo = {
+        1,
+        rt_ToWksWidths,
+        rt_ToWksNumDimensions,
+        rt_ToWksDimensions,
+        rt_ToWksIsVarDims,
+        rt_ToWksCurrSigDims,
+        rt_ToWksCurrSigDimsSize,
+        rt_ToWksDataTypeIds,
+        rt_ToWksComplexSignals,
+        rt_ToWksFrameData,
+        rt_ToWksLoggingPreprocessingFcnPtrs,
+
+        { rt_ToWksLabels },
+        (NULL),
+        (NULL),
+        (NULL),
+
+        { (NULL) },
+
+        { (NULL) },
+        (NULL),
+        (NULL)
+      };
+
+      static const char_T rt_ToWksBlockName[] =
+        "PlatformAssem/Platform Orientation/To Workspace";
+      PlatformAssem_DW.ToWorkspace_PWORK.LoggedData = rt_CreateStructLogVar(
+        PlatformAssem_M->rtwLogInfo,
+        0.0,
+        rtmGetTFinal(PlatformAssem_M),
+        PlatformAssem_M->Timing.stepSize0,
+        (&rtmGetErrorStatus(PlatformAssem_M)),
+        "platform_orientation",
+        1,
+        0,
+        1,
+        0.2,
+        &rt_ToWksSignalInfo,
+        rt_ToWksBlockName);
+      if (PlatformAssem_DW.ToWorkspace_PWORK.LoggedData == (NULL))
+        return;
+    }
+
+    /* Start for TransportDelay: '<S9>/Transport Delay' */
+    {
+      real_T *pBuffer = &PlatformAssem_DW.TransportDelay_RWORK_j.TUbufferArea[0];
+
+      {
+        int_T i1;
+        int_T *iw_Tail = &PlatformAssem_DW.TransportDelay_IWORK_a.Tail[0];
+        int_T *iw_Head = &PlatformAssem_DW.TransportDelay_IWORK_a.Head[0];
+        int_T *iw_Last = &PlatformAssem_DW.TransportDelay_IWORK_a.Last[0];
+        int_T *iw_CircularBufSize =
+          &PlatformAssem_DW.TransportDelay_IWORK_a.CircularBufSize[0];
+        void **pw_TUbufferPtrs =
+          &PlatformAssem_DW.TransportDelay_PWORK_h.TUbufferPtrs[0];
+        for (i1=0; i1 < 3; i1++) {
+          iw_Tail[i1] = 0;
+          iw_Head[i1] = 0;
+          iw_Last[i1] = 0;
+          iw_CircularBufSize[i1] = 1024;
+          pBuffer[0] = PlatformAssem_P.TransportDelay_InitOutput_a;
+          pBuffer[1024] = PlatformAssem_M->Timing.t[0];
+          pw_TUbufferPtrs[i1] = (void *) &pBuffer[0];
+          pw_TUbufferPtrs[i1+3] = (void *) &pBuffer[1024];
+          pBuffer += 2048;
+        }
+      }
+    }
+
+    /* Start for ToWorkspace: '<S9>/To Workspace2' */
+    {
+      static int_T rt_ToWksWidths[] = { 3 };
+
+      static int_T rt_ToWksNumDimensions[] = { 1 };
+
+      static int_T rt_ToWksDimensions[] = { 3 };
+
+      static boolean_T rt_ToWksIsVarDims[] = { 0 };
+
+      static void *rt_ToWksCurrSigDims[] = { (NULL) };
+
+      static int_T rt_ToWksCurrSigDimsSize[] = { 4 };
+
+      static BuiltInDTypeId rt_ToWksDataTypeIds[] = { SS_DOUBLE };
+
+      static int_T rt_ToWksComplexSignals[] = { 0 };
+
+      static int_T rt_ToWksFrameData[] = { 0 };
+
+      static RTWPreprocessingFcnPtr rt_ToWksLoggingPreprocessingFcnPtrs[] = {
+        (NULL)
+      };
+
+      static const char_T *rt_ToWksLabels[] = { "" };
+
+      static RTWLogSignalInfo rt_ToWksSignalInfo = {
+        1,
+        rt_ToWksWidths,
+        rt_ToWksNumDimensions,
+        rt_ToWksDimensions,
+        rt_ToWksIsVarDims,
+        rt_ToWksCurrSigDims,
+        rt_ToWksCurrSigDimsSize,
+        rt_ToWksDataTypeIds,
+        rt_ToWksComplexSignals,
+        rt_ToWksFrameData,
+        rt_ToWksLoggingPreprocessingFcnPtrs,
+
+        { rt_ToWksLabels },
+        (NULL),
+        (NULL),
+        (NULL),
+
+        { (NULL) },
+
+        { (NULL) },
+        (NULL),
+        (NULL)
+      };
+
+      static const char_T rt_ToWksBlockName[] =
+        "PlatformAssem/Platform Translation (Abs)/To Workspace2";
       PlatformAssem_DW.ToWorkspace2_PWORK_a.LoggedData = rt_CreateStructLogVar(
         PlatformAssem_M->rtwLogInfo,
         0.0,
         rtmGetTFinal(PlatformAssem_M),
         PlatformAssem_M->Timing.stepSize0,
         (&rtmGetErrorStatus(PlatformAssem_M)),
-        "platform_translation",
+        "platform_translation_abs",
         1,
         0,
         1,
@@ -2314,6 +2567,103 @@ void PlatformAssem_initialize(void)
       if (PlatformAssem_DW.ToWorkspace2_PWORK_a.LoggedData == (NULL))
         return;
     }
+
+    /* Start for TransportDelay: '<S10>/Transport Delay' */
+    {
+      real_T *pBuffer = &PlatformAssem_DW.TransportDelay_RWORK_e.TUbufferArea[0];
+
+      {
+        int_T i1;
+        int_T *iw_Tail = &PlatformAssem_DW.TransportDelay_IWORK_i.Tail[0];
+        int_T *iw_Head = &PlatformAssem_DW.TransportDelay_IWORK_i.Head[0];
+        int_T *iw_Last = &PlatformAssem_DW.TransportDelay_IWORK_i.Last[0];
+        int_T *iw_CircularBufSize =
+          &PlatformAssem_DW.TransportDelay_IWORK_i.CircularBufSize[0];
+        void **pw_TUbufferPtrs =
+          &PlatformAssem_DW.TransportDelay_PWORK_p.TUbufferPtrs[0];
+        for (i1=0; i1 < 3; i1++) {
+          iw_Tail[i1] = 0;
+          iw_Head[i1] = 0;
+          iw_Last[i1] = 0;
+          iw_CircularBufSize[i1] = 1024;
+          pBuffer[0] = PlatformAssem_P.TransportDelay_InitOutput_n;
+          pBuffer[1024] = PlatformAssem_M->Timing.t[0];
+          pw_TUbufferPtrs[i1] = (void *) &pBuffer[0];
+          pw_TUbufferPtrs[i1+3] = (void *) &pBuffer[1024];
+          pBuffer += 2048;
+        }
+      }
+    }
+
+    /* Start for ToWorkspace: '<S10>/To Workspace' */
+    {
+      static int_T rt_ToWksWidths[] = { 3 };
+
+      static int_T rt_ToWksNumDimensions[] = { 1 };
+
+      static int_T rt_ToWksDimensions[] = { 3 };
+
+      static boolean_T rt_ToWksIsVarDims[] = { 0 };
+
+      static void *rt_ToWksCurrSigDims[] = { (NULL) };
+
+      static int_T rt_ToWksCurrSigDimsSize[] = { 4 };
+
+      static BuiltInDTypeId rt_ToWksDataTypeIds[] = { SS_DOUBLE };
+
+      static int_T rt_ToWksComplexSignals[] = { 0 };
+
+      static int_T rt_ToWksFrameData[] = { 0 };
+
+      static RTWPreprocessingFcnPtr rt_ToWksLoggingPreprocessingFcnPtrs[] = {
+        (NULL)
+      };
+
+      static const char_T *rt_ToWksLabels[] = { "" };
+
+      static RTWLogSignalInfo rt_ToWksSignalInfo = {
+        1,
+        rt_ToWksWidths,
+        rt_ToWksNumDimensions,
+        rt_ToWksDimensions,
+        rt_ToWksIsVarDims,
+        rt_ToWksCurrSigDims,
+        rt_ToWksCurrSigDimsSize,
+        rt_ToWksDataTypeIds,
+        rt_ToWksComplexSignals,
+        rt_ToWksFrameData,
+        rt_ToWksLoggingPreprocessingFcnPtrs,
+
+        { rt_ToWksLabels },
+        (NULL),
+        (NULL),
+        (NULL),
+
+        { (NULL) },
+
+        { (NULL) },
+        (NULL),
+        (NULL)
+      };
+
+      static const char_T rt_ToWksBlockName[] =
+        "PlatformAssem/Platform Translation (Rel)\n/To Workspace";
+      PlatformAssem_DW.ToWorkspace_PWORK_d.LoggedData = rt_CreateStructLogVar(
+        PlatformAssem_M->rtwLogInfo,
+        0.0,
+        rtmGetTFinal(PlatformAssem_M),
+        PlatformAssem_M->Timing.stepSize0,
+        (&rtmGetErrorStatus(PlatformAssem_M)),
+        "platform_translation_rel",
+        1,
+        0,
+        1,
+        0.2,
+        &rt_ToWksSignalInfo,
+        rt_ToWksBlockName);
+      if (PlatformAssem_DW.ToWorkspace_PWORK_d.LoggedData == (NULL))
+        return;
+    }
   }
 
   {
@@ -2321,7 +2671,7 @@ void PlatformAssem_initialize(void)
     int_T tmp_0;
     char *tmp_1;
 
-    /* InitializeConditions for SimscapeExecutionBlock: '<S93>/STATE_1' */
+    /* InitializeConditions for SimscapeExecutionBlock: '<S108>/STATE_1' */
     tmp = false;
     if (tmp) {
       tmp_0 = strcmp("ode3", rtsiGetSolverName(&PlatformAssem_M->solverInfo));
@@ -2332,21 +2682,21 @@ void PlatformAssem_initialize(void)
       }
     }
 
-    /* End of InitializeConditions for SimscapeExecutionBlock: '<S93>/STATE_1' */
+    /* End of InitializeConditions for SimscapeExecutionBlock: '<S108>/STATE_1' */
   }
 }
 
 /* Model terminate function */
 void PlatformAssem_terminate(void)
 {
-  /* Terminate for SimscapeExecutionBlock: '<S93>/STATE_1' */
+  /* Terminate for SimscapeExecutionBlock: '<S108>/STATE_1' */
   neu_destroy_diagnostic_manager((NeuDiagnosticManager *)
     PlatformAssem_DW.STATE_1_DiagnosticManager);
   nesl_destroy_simulation_data((NeslSimulationData *)
     PlatformAssem_DW.STATE_1_SimulationData);
   nesl_erase_simulator("PlatformAssem/Solver Configuration_1");
 
-  /* Terminate for SimscapeExecutionBlock: '<S93>/OUTPUT_1_0' */
+  /* Terminate for SimscapeExecutionBlock: '<S108>/OUTPUT_1_0' */
   neu_destroy_diagnostic_manager((NeuDiagnosticManager *)
     PlatformAssem_DW.OUTPUT_1_0_DiagnosticManager);
   nesl_destroy_simulation_data((NeslSimulationData *)

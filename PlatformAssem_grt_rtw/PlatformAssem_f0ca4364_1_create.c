@@ -483,7 +483,7 @@ static
   smData->mFullStateVectorSize = 97;
   smData->mDiscreteStateSize = 0;
   smData->mInputVectorSize = 12;
-  smData->mOutputVectorSize = 20;
+  smData->mOutputVectorSize = 23;
   smData->mNumConstraintEqns = 15;
   smData->mDoCheckDynamics = false;
   for (i = 0; i < 4; ++i)
@@ -1351,7 +1351,7 @@ static
     { 1, 1 }, { 1, 1 }, { 1, 1 }, { 1, 1 }
   };
 
-  const char *outputPortPaths[14] = {
+  const char *outputPortPaths[17] = {
     "Revolute16.q",
     "Revolute2.q",
     "Revolute3.q",
@@ -1362,13 +1362,16 @@ static
     "Transform_Sensor1.x",
     "Transform_Sensor1.y",
     "Transform_Sensor1.z",
+    "Transform_Sensor1.ax",
+    "Transform_Sensor1.ay",
+    "Transform_Sensor1.az",
     "Transform_Sensor2.Q",
-    "Transform_Sensor2.ax",
-    "Transform_Sensor2.ay",
-    "Transform_Sensor2.az"
+    "Transform_Sensor2.x",
+    "Transform_Sensor2.y",
+    "Transform_Sensor2.z"
   };
 
-  const char *outputUnits[14] = {
+  const char *outputUnits[17] = {
     "rad",
     "rad",
     "rad",
@@ -1379,25 +1382,30 @@ static
     "m",
     "m",
     "m",
+    "m/s^2",
+    "m/s^2",
+    "m/s^2",
     "1",
-    "m/s^2",
-    "m/s^2",
-    "m/s^2"
+    "m",
+    "m",
+    "m"
   };
 
-  const SizePair outputDimensions[14] = {
+  const SizePair outputDimensions[17] = {
     { 1, 1 }, { 1, 1 }, { 1, 1 }, { 1, 1 },
 
     { 1, 1 }, { 1, 1 }, { 4, 1 }, { 1, 1 },
 
-    { 1, 1 }, { 1, 1 }, { 4, 1 }, { 1, 1 },
+    { 1, 1 }, { 1, 1 }, { 1, 1 }, { 1, 1 },
 
-    { 1, 1 }, { 1, 1 }
+    { 1, 1 }, { 4, 1 }, { 1, 1 }, { 1, 1 },
+
+    { 1, 1 }
   };
 
   initIoInfoHelper(12, inputPortPaths, inputUnits, inputDimensions,
                    true, smData);
-  initIoInfoHelper(14, outputPortPaths, outputUnits, outputDimensions,
+  initIoInfoHelper(17, outputPortPaths, outputUnits, outputDimensions,
                    false, smData);
 }
 
@@ -1426,7 +1434,7 @@ static
     true, true
   };
 
-  const boolean_T directFeedthroughMatrix[480] = {
+  const boolean_T directFeedthroughMatrix[552] = {
     true, true, true, true, true, true, true, true, true, true,
     true, true, true, true, true, true, true, true, true, true,
     true, true, true, true, true, true, true, true, true, true,
@@ -1474,7 +1482,15 @@ static
     true, true, true, true, true, true, true, true, true, true,
     true, true, true, true, true, true, true, true, true, true,
     true, true, true, true, true, true, true, true, true, true,
-    true, true, true, true, true, true, true, true, true, true
+    true, true, true, true, true, true, true, true, true, true,
+    true, true, true, true, true, true, true, true, true, true,
+    true, true, true, true, true, true, true, true, true, true,
+    true, true, true, true, true, true, true, true, true, true,
+    true, true, true, true, true, true, true, true, true, true,
+    true, true, true, true, true, true, true, true, true, true,
+    true, true, true, true, true, true, true, true, true, true,
+    true, true, true, true, true, true, true, true, true, true,
+    true, true
   };
 
   PmAllocator *alloc = pm_default_allocator();
@@ -1489,10 +1505,10 @@ static
 
   {
     const int_T status = pm_create_bool_vector_fields(
-      &smData->mDirectFeedthroughMatrix, 480, alloc);
+      &smData->mDirectFeedthroughMatrix, 552, alloc);
     checkMemAllocStatus(status);
     memcpy(smData->mDirectFeedthroughMatrix.mX, directFeedthroughMatrix,
-           480 * sizeof(boolean_T));
+           552 * sizeof(boolean_T));
   }
 }
 
@@ -1500,14 +1516,15 @@ static
   void initOutputDerivProc(NeDaePrivateData *smData)
 {
   PmAllocator *alloc = pm_default_allocator();
-  const int32_T outputFunctionMap[20] = {
+  const int32_T outputFunctionMap[23] = {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0
   };
 
-  smData->mOutputFunctionMap = pm_create_int_vector(20, alloc);
+  smData->mOutputFunctionMap = pm_create_int_vector(23, alloc);
   memcpy(smData->mOutputFunctionMap->mX, outputFunctionMap,
-         20 * sizeof(int32_T));
+         23 * sizeof(int32_T));
   smData->mNumOutputClasses = 1;
   smData->mHasKinematicOutputs = true;
   smData->mHasDynamicOutputs = true;

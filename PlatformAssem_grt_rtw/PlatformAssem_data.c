@@ -10,7 +10,7 @@
  *
  * Model version              : 1.39
  * Simulink Coder version : 8.13 (R2017b) 24-Jul-2017
- * C source code generated on : Thu Feb 15 19:05:13 2018
+ * C source code generated on : Thu Feb 15 21:26:39 2018
  *
  * Target selection: grt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -26,15 +26,17 @@
 P_PlatformAssem_T PlatformAssem_P = {
   /* Variable: sensor_delay
    * Referenced by:
-   *   '<Root>/Transport Delay'
-   *   '<Root>/Transport Delay1'
-   */
-  0.005,
-
-  /* Expression: 0
-   * Referenced by: '<Root>/base_px'
+   *   '<S7>/Transport Delay'
+   *   '<S8>/Transport Delay'
+   *   '<S9>/Transport Delay'
+   *   '<S10>/Transport Delay'
    */
   0.0,
+
+  /* Expression: -1.0035
+   * Referenced by: '<Root>/base_px'
+   */
+  -1.0035,
 
   /* Expression: 0
    * Referenced by: '<Root>/base_py'
@@ -92,12 +94,22 @@ P_PlatformAssem_T PlatformAssem_P = {
   -2.0944,
 
   /* Expression: 0
-   * Referenced by: '<Root>/Transport Delay'
+   * Referenced by: '<S7>/Transport Delay'
    */
   0.0,
 
   /* Expression: 0
-   * Referenced by: '<Root>/Transport Delay1'
+   * Referenced by: '<S8>/Transport Delay'
+   */
+  0.0,
+
+  /* Expression: 0
+   * Referenced by: '<S9>/Transport Delay'
+   */
+  0.0,
+
+  /* Expression: 0
+   * Referenced by: '<S10>/Transport Delay'
    */
   0.0
 };

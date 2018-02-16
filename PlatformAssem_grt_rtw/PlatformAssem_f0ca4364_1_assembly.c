@@ -1820,7 +1820,7 @@ void PlatformAssem_f0ca4364_1_propagateMotion(const void *mech, const double
   xx[378] = xx[79];
   pm_math_quatXform(xx + 372, xx + 376, xx + 379);
   xx[368] = xx[223] * xx[245] + xx[244] * xx[224];
-  xx[369] = xx[65] * xx[75] + xx[68] * xx[76];
+  xx[369] = xx[75] * xx[65] + xx[76] * xx[68];
   xx[382] = xx[75] * xx[68] - xx[65] * xx[76];
   xx[383] = xx[68] * xx[82];
   xx[384] = xx[68] * xx[80];
@@ -2094,7 +2094,7 @@ void PlatformAssem_f0ca4364_1_propagateMotion(const void *mech, const double
     xx[27] * xx[9] * xx[8] * state[4];
   xx[9] = (xx[605] - xx[27] * xx[8] * xx[8]) * state[4] - xx[27] * (xx[6] * xx[2]
     - xx[7] * xx[3]) * state[3];
-  xx[8] = xx[27] * (xx[6] * xx[7] + xx[3] * xx[2]) * state[3] + state[5];
+  xx[8] = xx[27] * (xx[7] * xx[6] + xx[2] * xx[3]) * state[3] + state[5];
   xx[620] = xx[606];
   xx[621] = xx[9];
   xx[622] = xx[8];
@@ -4181,7 +4181,7 @@ static size_t computeAssemblyJacobian_1(const double *rtdv, const double *state,
   xx[103] = xx[100];
   xx[104] = - xx[101];
   pm_math_cross3(xx + 84, xx + 102, xx + 105);
-  xx[102] = xx[4] * (xx[97] - xx[87] * xx[41]) + (xx[96] * xx[41] + xx[105]) *
+  xx[102] = xx[4] * (xx[97] - xx[87] * xx[41]) + (xx[41] * xx[96] + xx[105]) *
     xx[4];
   xx[103] = xx[4] * (xx[98] - xx[88] * xx[41]) + xx[4] * (xx[106] + xx[100] *
     xx[41]) - motionData[307] - xx[15];
@@ -4214,7 +4214,7 @@ static size_t computeAssemblyJacobian_1(const double *rtdv, const double *state,
   pm_math_cross3(xx + 84, xx + 108, xx + 111);
   xx[108] = motionData[307] + (xx[63] * xx[41] + xx[105]) * xx[4] + xx[4] * (xx
     [111] + xx[102] * xx[41]) + xx[15];
-  xx[109] = (xx[69] * xx[41] + xx[106]) * xx[4] + xx[4] * (xx[112] - xx[48] *
+  xx[109] = (xx[41] * xx[69] + xx[106]) * xx[4] + xx[4] * (xx[112] - xx[48] *
     xx[41]);
   xx[110] = (xx[60] * xx[41] + xx[107]) * xx[4] + (xx[95] * xx[41] + xx[113]) *
     xx[4] - motionData[305] - xx[6];
@@ -4242,7 +4242,7 @@ static size_t computeAssemblyJacobian_1(const double *rtdv, const double *state,
     [4] - motionData[306] + xx[8];
   xx[85] = motionData[305] + (xx[48] * xx[41] + xx[91]) * xx[4] + xx[4] * (xx[94]
     - xx[60] * xx[41]) + xx[6];
-  xx[86] = (xx[49] * xx[41] + xx[92]) * xx[4] + (xx[61] * xx[41] + xx[95]) * xx
+  xx[86] = (xx[41] * xx[49] + xx[92]) * xx[4] + (xx[61] * xx[41] + xx[95]) * xx
     [4];
   pm_math_quatXform(xx + 36, xx + 84, xx + 60);
   xx[15] = xx[2] * state[30];
@@ -4497,7 +4497,7 @@ static size_t computeAssemblyJacobian_1(const double *rtdv, const double *state,
   J[72] = - (xx[152] + xx[76]);
   J[73] = - (xx[155] + xx[79]);
   J[74] = - ((xx[149] - xx[73] * xx[144] * xx[147]) * xx[4] + xx[125] + xx[63]);
-  J[96] = xx[14] + xx[4] * (xx[28] - xx[22] * xx[3]) + (xx[3] * xx[20] + xx[11] *
+  J[96] = xx[14] + xx[4] * (xx[28] - xx[3] * xx[22]) + (xx[3] * xx[20] + xx[11] *
     xx[21]) * xx[4];
   J[97] = xx[31] + (xx[32] * motionData[14] + xx[44]) * xx[4];
   J[98] = xx[68] + xx[72];
@@ -4809,7 +4809,7 @@ static size_t computeAssemblyJacobian_2(const double *rtdv, const double *state,
   pm_math_cross3(xx + 84, xx + 108, xx + 111);
   xx[108] = motionData[363] + (xx[63] * xx[41] + xx[105]) * xx[4] + xx[4] * (xx
     [111] + xx[102] * xx[41]) + xx[15];
-  xx[109] = (xx[69] * xx[41] + xx[106]) * xx[4] + xx[4] * (xx[112] - xx[48] *
+  xx[109] = (xx[41] * xx[69] + xx[106]) * xx[4] + xx[4] * (xx[112] - xx[48] *
     xx[41]);
   xx[110] = (xx[60] * xx[41] + xx[107]) * xx[4] + (xx[95] * xx[41] + xx[113]) *
     xx[4] - motionData[361] - xx[6];
@@ -4837,7 +4837,7 @@ static size_t computeAssemblyJacobian_2(const double *rtdv, const double *state,
     [4] - motionData[362] + xx[8];
   xx[85] = motionData[361] + (xx[48] * xx[41] + xx[91]) * xx[4] + xx[4] * (xx[94]
     - xx[60] * xx[41]) + xx[6];
-  xx[86] = (xx[49] * xx[41] + xx[92]) * xx[4] + (xx[61] * xx[41] + xx[95]) * xx
+  xx[86] = (xx[41] * xx[49] + xx[92]) * xx[4] + (xx[61] * xx[41] + xx[95]) * xx
     [4];
   pm_math_quatXform(xx + 36, xx + 84, xx + 60);
   xx[15] = xx[2] * state[30];
@@ -5091,7 +5091,7 @@ static size_t computeAssemblyJacobian_2(const double *rtdv, const double *state,
   J[82] = - (xx[149] + xx[76]);
   J[83] = - (xx[152] + xx[79]);
   J[84] = - ((xx[146] - xx[65] * xx[141] * xx[144]) * xx[4] + xx[131] + xx[63]);
-  J[96] = xx[14] + xx[4] * (xx[28] - xx[3] * xx[22]) + (xx[3] * xx[20] + xx[11] *
+  J[96] = xx[14] + xx[4] * (xx[28] - xx[22] * xx[3]) + (xx[3] * xx[20] + xx[11] *
     xx[21]) * xx[4];
   J[97] = xx[31] + (xx[32] * motionData[14] + xx[44]) * xx[4];
   J[98] = xx[68] + xx[72];
@@ -5695,7 +5695,7 @@ static size_t computeAssemblyJacobian_3(const double *rtdv, const double *state,
   J[103] = xx[109] + xx[62];
   J[104] = xx[17] + (xx[37] * motionData[217] + xx[89]) * xx[4];
   J[108] = (xx[114] * xx[49] + xx[112]) * xx[4] + xx[120];
-  J[130] = - (xx[92] + xx[4] * (xx[129] - xx[85] * xx[40]) + (xx[40] * xx[102] -
+  J[130] = - (xx[92] + xx[4] * (xx[129] - xx[40] * xx[85]) + (xx[40] * xx[102] -
     xx[86] * xx[103]) * xx[4]);
   J[131] = - (xx[95] + (xx[113] * motionData[168] + xx[135]) * xx[4]);
   J[132] = - (xx[150] + xx[77]);
@@ -5996,7 +5996,7 @@ static size_t computeAssemblyJacobian_4(const double *rtdv, const double *state,
   pm_math_cross3(xx + 84, xx + 108, xx + 111);
   xx[108] = motionData[475] + (xx[63] * xx[41] + xx[105]) * xx[4] + xx[4] * (xx
     [111] + xx[102] * xx[41]) + xx[15];
-  xx[109] = (xx[69] * xx[41] + xx[106]) * xx[4] + xx[4] * (xx[112] - xx[48] *
+  xx[109] = (xx[41] * xx[69] + xx[106]) * xx[4] + xx[4] * (xx[112] - xx[48] *
     xx[41]);
   xx[110] = (xx[60] * xx[41] + xx[107]) * xx[4] + (xx[95] * xx[41] + xx[113]) *
     xx[4] - motionData[473] - xx[6];
@@ -6024,7 +6024,7 @@ static size_t computeAssemblyJacobian_4(const double *rtdv, const double *state,
     [4] - motionData[474] + xx[8];
   xx[85] = motionData[473] + (xx[48] * xx[41] + xx[91]) * xx[4] + xx[4] * (xx[94]
     - xx[60] * xx[41]) + xx[6];
-  xx[86] = (xx[49] * xx[41] + xx[92]) * xx[4] + (xx[61] * xx[41] + xx[95]) * xx
+  xx[86] = (xx[41] * xx[49] + xx[92]) * xx[4] + (xx[61] * xx[41] + xx[95]) * xx
     [4];
   pm_math_quatXform(xx + 36, xx + 84, xx + 60);
   xx[15] = xx[2] * state[30];
@@ -7124,7 +7124,7 @@ size_t PlatformAssem_f0ca4364_1_computeFullAssemblyJacobian(const void *mech,
   pm_math_cross3(xx + 335, xx + 346, xx + 349);
   xx[334] = xx[4] * (xx[349] + xx[333] * xx[330]) - xx[338];
   xx[335] = xx[316] + (xx[340] * xx[330] + xx[350]) * xx[4];
-  xx[336] = (xx[330] * xx[329] + xx[351]) * xx[4];
+  xx[336] = (xx[329] * xx[330] + xx[351]) * xx[4];
   pm_math_quatXform(xx + 325, xx + 334, xx + 346);
   xx[316] = 0.04233709306330295;
   xx[317] = xx[2] * state[53];
@@ -7723,7 +7723,7 @@ size_t PlatformAssem_f0ca4364_1_computeFullAssemblyJacobian(const void *mech,
     xx[112];
   xx[558] = motionData[424] + xx[4] * (xx[561] + xx[544] * xx[57]) + xx[111] +
     xx[86];
-  xx[559] = (xx[562] - xx[57] * xx[545]) * xx[4] + xx[113];
+  xx[559] = (xx[562] - xx[545] * xx[57]) * xx[4] + xx[113];
   pm_math_quatXform(xx + 61, xx + 557, xx + 543);
   xx[557] = motionData[413];
   xx[558] = motionData[414];
@@ -7774,7 +7774,7 @@ size_t PlatformAssem_f0ca4364_1_computeFullAssemblyJacobian(const void *mech,
   pm_math_cross3(xx + 142, xx + 579, xx + 582);
   xx[579] = motionData[419] + (xx[547] * xx[68] + xx[582]) * xx[4] + xx[162] +
     xx[19];
-  xx[580] = (xx[68] * xx[558] + xx[583]) * xx[4] + xx[155];
+  xx[580] = (xx[558] * xx[68] + xx[583]) * xx[4] + xx[155];
   xx[581] = (xx[569] * xx[68] + xx[584]) * xx[4] + xx[161] - motionData[417] -
     xx[6];
   pm_math_quatXform(xx + 119, xx + 579, xx + 582);
@@ -7794,7 +7794,7 @@ size_t PlatformAssem_f0ca4364_1_computeFullAssemblyJacobian(const void *mech,
     xx[8];
   xx[560] = motionData[417] + (xx[547] * xx[68] + xx[563]) * xx[4] + xx[66] +
     xx[6];
-  xx[561] = (xx[68] * xx[558] + xx[564]) * xx[4] + xx[127];
+  xx[561] = (xx[558] * xx[68] + xx[564]) * xx[4] + xx[127];
   pm_math_quatXform(xx + 119, xx + 559, xx + 562);
   xx[557] = motionData[70];
   xx[558] = motionData[71];
@@ -8090,7 +8090,7 @@ size_t PlatformAssem_f0ca4364_1_computeFullAssemblyJacobian(const void *mech,
     [112];
   xx[83] = motionData[480] + xx[4] * (xx[648] + xx[45] * xx[57]) + xx[111] + xx
     [86];
-  xx[84] = (xx[649] - xx[57] * xx[47]) * xx[4] + xx[113];
+  xx[84] = (xx[649] - xx[47] * xx[57]) * xx[4] + xx[113];
   pm_math_quatXform(xx + 61, xx + 82, xx + 90);
   xx[61] = motionData[469];
   xx[62] = motionData[470];
@@ -8530,7 +8530,7 @@ size_t PlatformAssem_f0ca4364_1_computeFullAssemblyJacobian(const void *mech,
   J[492] = - (xx[638] + xx[644]);
   J[493] = - (xx[641] + xx[630]);
   J[494] = - ((xx[651] - xx[192] * xx[633] * xx[636]) * xx[4] + xx[627] + xx[191]);
-  J[501] = xx[496] + xx[4] * (xx[532] - xx[3] * xx[497]) + xx[224];
+  J[501] = xx[496] + xx[4] * (xx[532] - xx[497] * xx[3]) + xx[224];
   J[502] = xx[526] + (xx[533] * motionData[14] + xx[539]) * xx[4];
   J[503] = xx[550] + xx[556];
   J[504] = xx[536] + xx[542];
@@ -8540,7 +8540,7 @@ size_t PlatformAssem_f0ca4364_1_computeFullAssemblyJacobian(const void *mech,
   J[508] = xx[575] + xx[564];
   J[509] = xx[559] + (xx[568] * motionData[217] + xx[587]) * xx[4];
   J[513] = (xx[592] * xx[580] + xx[598]) * xx[4] + xx[601];
-  J[535] = - (xx[604] + xx[4] * (xx[613] - xx[463] * xx[581]) + (xx[463] * xx
+  J[535] = - (xx[604] + xx[4] * (xx[613] - xx[581] * xx[463]) + (xx[463] * xx
     [588] - xx[594] * xx[590]) * xx[4]);
   J[536] = - (xx[609] + (xx[610] * motionData[168] + xx[625]) * xx[4]);
   J[537] = - (xx[639] + xx[645]);
@@ -8579,7 +8579,7 @@ size_t PlatformAssem_f0ca4364_1_computeFullAssemblyJacobian(const void *mech,
   J[607] = - (xx[209] + xx[100]);
   J[608] = - (xx[248] + xx[106]);
   J[609] = - ((xx[661] - xx[192] * xx[664] * xx[667]) * xx[4] + xx[170] + xx[191]);
-  J[636] = xx[14] + xx[4] * (xx[622] - xx[3] * xx[7]) + xx[224];
+  J[636] = xx[14] + xx[4] * (xx[622] - xx[7] * xx[3]) + xx[224];
   J[637] = xx[22] + (xx[37] * motionData[14] + xx[619]) * xx[4];
   J[638] = xx[51] + xx[104];
   J[639] = xx[40] + xx[76];
@@ -8787,7 +8787,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_convertStateVector(const void *asmMech,
     + xx[42] * xx[49] * xx[2] * asmState[4];
   xx[53] = (xx[48] - xx[42] * xx[2] * xx[2]) * asmState[4] - xx[42] * (xx[51] *
     xx[15] - xx[43] * xx[28]) * asmState[3];
-  xx[54] = xx[42] * (xx[51] * xx[43] + xx[15] * xx[28]) * asmState[3] +
+  xx[54] = xx[42] * (xx[51] * xx[43] + xx[28] * xx[15]) * asmState[3] +
     asmState[5];
   pm_math_quatInverseXform(xx + 24, xx + 52, xx + 48);
   pm_math_quatInverseXform(xx + 20, xx + 48, xx + 24);
@@ -9211,7 +9211,7 @@ int PlatformAssem_f0ca4364_1_isPositionViolation(const void *mech, const double 
   xx[65] = - xx[2];
   pm_math_cross3(xx + 60, xx + 63, xx + 66);
   xx[60] = - (0.1158410329997535 + (xx[36] * xx[43] + xx[66]) * xx[42]);
-  xx[61] = 5.088251355846174e-12 - (xx[49] * xx[43] + xx[67]) * xx[42];
+  xx[61] = 5.088251355846174e-12 - (xx[43] * xx[49] + xx[67]) * xx[42];
   xx[62] = - (0.1002102452613437 + xx[42] * (xx[68] - xx[2] * xx[43]));
   pm_math_quatXform(xx + 32, xx + 60, xx + 43);
   xx[2] = 3.641924106626229e-8;
@@ -9310,7 +9310,7 @@ int PlatformAssem_f0ca4364_1_isPositionViolation(const void *mech, const double 
   xx[71] = xx[1];
   xx[72] = xx[2];
   pm_math_cross3(xx + 63, xx + 70, xx + 81);
-  xx[14] = xx[44] + xx[33] + xx[20] + xx[30] - (xx[22] * xx[13] + xx[61]) * xx
+  xx[14] = xx[44] + xx[33] + xx[20] + xx[30] - (xx[13] * xx[22] + xx[61]) * xx
     [42] + 0.02992188481855372;
   xx[19] = xx[45] + xx[34] + xx[21] + xx[31] - xx[42] * (xx[62] + xx[10] * xx[13])
     + 0.1428830924490354;
@@ -9809,7 +9809,7 @@ int PlatformAssem_f0ca4364_1_isVelocityViolation(const void *mech, const double 
   xx[91] = - xx[24];
   pm_math_cross3(xx + 81, xx + 89, xx + 92);
   xx[69] = 0.1158410329997535 + (xx[36] * xx[35] + xx[92]) * xx[51];
-  xx[36] = 5.088251355846174e-12 - (xx[35] * xx[70] + xx[93]) * xx[51];
+  xx[36] = 5.088251355846174e-12 - (xx[70] * xx[35] + xx[93]) * xx[51];
   xx[70] = 0.1002102452613437 + xx[51] * (xx[94] - xx[24] * xx[35]);
   xx[81] = xx[86] - xx[69];
   xx[82] = xx[87] + xx[36];
@@ -10914,9 +10914,9 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[141] = xx[15];
   xx[120] = xx[80] * xx[136] * xx[8];
   xx[136] = xx[130] + xx[80] * xx[8] * xx[129] + xx[120] - xx[131];
-  xx[129] = xx[136] * xx[15];
-  xx[130] = xx[138] * xx[15];
-  xx[142] = xx[136] * xx[3] - xx[138] * xx[7];
+  xx[129] = xx[15] * xx[136];
+  xx[130] = xx[15] * xx[138];
+  xx[142] = xx[3] * xx[136] - xx[138] * xx[7];
   xx[143] = - xx[129];
   xx[144] = xx[130];
   xx[145] = xx[142];
@@ -11197,7 +11197,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[261] = xx[256];
   xx[262] = xx[258];
   pm_math_quatCompose(xx + 244, xx + 259, xx + 263);
-  xx[244] = (xx[255] * xx[251] + xx[248] * xx[257]) * xx[80];
+  xx[244] = (xx[255] * xx[251] + xx[257] * xx[248]) * xx[80];
   xx[245] = xx[80] * (xx[255] * xx[257] - xx[251] * xx[248]);
   xx[246] = xx[22] - (xx[248] * xx[248] + xx[255] * xx[255]) * xx[80];
   xx[267] = xx[102];
@@ -11843,7 +11843,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[542] = xx[537];
   xx[543] = xx[539];
   pm_math_quatCompose(xx + 528, xx + 540, xx + 544);
-  xx[528] = (xx[536] * xx[532] + xx[507] * xx[538]) * xx[80];
+  xx[528] = (xx[536] * xx[532] + xx[538] * xx[507]) * xx[80];
   xx[529] = xx[80] * (xx[536] * xx[538] - xx[507] * xx[532]);
   xx[530] = xx[22] - (xx[507] * xx[507] + xx[536] * xx[536]) * xx[80];
   pm_math_cross3(xx + 528, xx + 267, xx + 548);
@@ -12162,8 +12162,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[679] = xx[674];
   xx[680] = xx[676];
   pm_math_quatCompose(xx + 664, xx + 677, xx + 681);
-  xx[664] = (xx[673] * xx[669] + xx[675] * xx[647]) * xx[80];
-  xx[665] = xx[80] * (xx[673] * xx[675] - xx[669] * xx[647]);
+  xx[664] = (xx[673] * xx[669] + xx[647] * xx[675]) * xx[80];
+  xx[665] = xx[80] * (xx[673] * xx[675] - xx[647] * xx[669]);
   xx[666] = xx[22] - (xx[647] * xx[647] + xx[673] * xx[673]) * xx[80];
   pm_math_cross3(xx + 664, xx + 267, xx + 685);
   pm_math_quatXform(xx + 681, xx + 685, xx + 664);
@@ -12260,7 +12260,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[742] = xx[738];
   pm_math_quatCompose(xx + 724, xx + 739, xx + 743);
   xx[724] = (xx[735] * xx[731] + xx[728] * xx[737]) * xx[80];
-  xx[725] = xx[80] * (xx[735] * xx[737] - xx[728] * xx[731]);
+  xx[725] = xx[80] * (xx[735] * xx[737] - xx[731] * xx[728]);
   xx[726] = xx[22] - (xx[728] * xx[728] + xx[735] * xx[735]) * xx[80];
   pm_math_cross3(xx + 724, xx + 267, xx + 747);
   pm_math_quatXform(xx + 743, xx + 747, xx + 724);
@@ -12368,9 +12368,9 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[797] = xx[53] * xx[10] - xx[796] * xx[8];
   xx[800] = xx[80] * xx[10] * xx[797] - (xx[53] - xx[137]) - xx[135];
   xx[53] = xx[796] + xx[80] * xx[8] * xx[797] + xx[120] - xx[131];
-  xx[120] = xx[53] * xx[15];
-  xx[137] = xx[800] * xx[15];
-  xx[796] = xx[53] * xx[3] - xx[800] * xx[7];
+  xx[120] = xx[15] * xx[53];
+  xx[137] = xx[15] * xx[800];
+  xx[796] = xx[3] * xx[53] - xx[800] * xx[7];
   xx[801] = - xx[120];
   xx[802] = xx[137];
   xx[803] = xx[796];
@@ -12422,29 +12422,29 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   pm_math_quatXform(xx + 807, xx + 783, xx + 35);
   xx[38] = xx[50] * xx[33];
   xx[52] = xx[51] * xx[33];
-  xx[33] = xx[50] * xx[23] + xx[51] * xx[31];
+  xx[33] = xx[50] * xx[23] + xx[31] * xx[51];
   xx[783] = xx[38];
   xx[784] = xx[52];
   xx[785] = - xx[33];
   pm_math_cross3(xx + 68, xx + 783, xx + 801);
   xx[68] = xx[80] * (xx[801] + xx[38] * xx[27]) + xx[34] - xx[51] - xx[119];
   xx[69] = xx[50] + xx[80] * (xx[802] + xx[52] * xx[27]) + xx[16] + xx[117];
-  xx[70] = (xx[803] - xx[33] * xx[27]) * xx[80] + xx[30];
+  xx[70] = (xx[803] - xx[27] * xx[33]) * xx[80] + xx[30];
   pm_math_quatXform(xx + 149, xx + 68, xx + 50);
   pm_math_quatCompose(xx + 157, xx + 734, xx + 783);
   xx[16] = xx[731] * xx[731];
   xx[23] = xx[64] * xx[64];
   xx[27] = xx[731] * xx[728];
   xx[30] = xx[673] * xx[64];
-  xx[31] = xx[673] * xx[731];
-  xx[33] = xx[728] * xx[64];
+  xx[31] = xx[731] * xx[673];
+  xx[33] = xx[64] * xx[728];
   xx[68] = xx[22] - (xx[16] + xx[23]) * xx[80];
   xx[69] = xx[80] * (xx[27] - xx[30]);
   xx[70] = (xx[31] + xx[33]) * xx[80];
   pm_math_cross3(xx + 68, xx + 84, xx + 734);
   pm_math_quatXform(xx + 783, xx + 734, xx + 68);
-  xx[34] = xx[799] * xx[46];
-  xx[38] = xx[795] * xx[48];
+  xx[34] = xx[46] * xx[799];
+  xx[38] = xx[48] * xx[795];
   xx[734] = xx[34] + xx[38];
   xx[735] = xx[799] * xx[39];
   xx[736] = xx[795] * xx[39];
@@ -12464,16 +12464,16 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[803] = xx[80] * (xx[202] - xx[64]);
   pm_math_cross3(xx + 801, xx + 84, xx + 807);
   pm_math_quatXform(xx + 783, xx + 807, xx + 801);
-  xx[23] = xx[798] * xx[46];
+  xx[23] = xx[46] * xx[798];
   xx[27] = xx[798] * xx[39];
   xx[30] = xx[27] - xx[38];
-  xx[38] = xx[795] * xx[46];
+  xx[38] = xx[46] * xx[795];
   xx[807] = xx[23];
   xx[808] = xx[30];
   xx[809] = xx[38];
   pm_math_cross3(xx + 198, xx + 807, xx + 817);
   xx[807] = xx[795] + (xx[23] * xx[43] + xx[817]) * xx[80] + xx[166] + xx[74];
-  xx[808] = (xx[30] * xx[43] + xx[818]) * xx[80] + xx[58];
+  xx[808] = (xx[43] * xx[30] + xx[818]) * xx[80] + xx[58];
   xx[809] = (xx[38] * xx[43] + xx[819]) * xx[80] + xx[61] - xx[798] - xx[72];
   pm_math_quatXform(xx + 153, xx + 807, xx + 817);
   xx[807] = xx[80] * (xx[33] - xx[31]);
@@ -12481,8 +12481,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[809] = xx[22] - (xx[201] + xx[16]) * xx[80];
   pm_math_cross3(xx + 807, xx + 84, xx + 820);
   pm_math_quatXform(xx + 783, xx + 820, xx + 807);
-  xx[16] = xx[798] * xx[48];
-  xx[23] = xx[799] * xx[48];
+  xx[16] = xx[48] * xx[798];
+  xx[23] = xx[48] * xx[799];
   xx[30] = xx[27] - xx[34];
   xx[783] = xx[16];
   xx[784] = xx[23];
@@ -12490,7 +12490,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   pm_math_cross3(xx + 198, xx + 783, xx + 820);
   xx[198] = (xx[16] * xx[43] + xx[820]) * xx[80] + xx[59] - xx[799] + xx[73];
   xx[199] = xx[798] + (xx[23] * xx[43] + xx[821]) * xx[80] + xx[11] + xx[72];
-  xx[200] = (xx[30] * xx[43] + xx[822]) * xx[80] + xx[47];
+  xx[200] = (xx[43] * xx[30] + xx[822]) * xx[80] + xx[47];
   pm_math_quatXform(xx + 153, xx + 198, xx + 46);
   xx[11] = xx[674] * xx[191] + xx[194] * xx[723];
   xx[16] = xx[674] * xx[192] - xx[193] * xx[723];
@@ -12608,7 +12608,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[893] = xx[0];
   xx[894] = xx[0];
   xx[895] = xx[0];
-  xx[896] = xx[83] + (xx[142] * xx[14] + xx[148]) * xx[80];
+  xx[896] = xx[83] + (xx[14] * xx[142] + xx[148]) * xx[80];
   xx[897] = xx[145] + xx[164];
   xx[898] = xx[175] + xx[181];
   xx[899] = xx[187] + xx[190];
@@ -13011,7 +13011,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[1289] = - (xx[759] + xx[776]);
   xx[1290] = - (xx[773] + xx[741]);
   xx[1291] = - ((xx[767] * xx[669] + xx[782]) * xx[80] + xx[779]);
-  xx[1292] = xx[19] + (xx[796] * xx[14] + xx[806]) * xx[80];
+  xx[1292] = xx[19] + (xx[14] * xx[796] + xx[806]) * xx[80];
   xx[1293] = xx[813] + xx[172];
   xx[1294] = xx[816] + xx[184];
   xx[1295] = xx[37] + xx[52];
@@ -13101,7 +13101,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   pm_math_cross3(xx + 275, xx + 97, xx + 132);
   xx[97] = (xx[241] * xx[78] + xx[132]) * xx[80];
   xx[78] = 0.1417622656843958;
-  xx[98] = (xx[23] * xx[14] + xx[76]) * xx[80];
+  xx[98] = (xx[14] * xx[23] + xx[76]) * xx[80];
   xx[23] = 0.02992188481855372;
   xx[99] = xx[38] + xx[47] + xx[35] + xx[69] - xx[98] + xx[23];
   xx[101] = (xx[241] * xx[88] + xx[133]) * xx[80];
@@ -13429,9 +13429,9 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[260] = xx[80] * xx[35] * xx[255] - (xx[248] - xx[259]) - xx[135];
   xx[248] = xx[80] * xx[258] * xx[32];
   xx[258] = xx[251] + xx[80] * xx[32] * xx[255] + xx[248] - xx[131];
-  xx[251] = xx[258] * xx[15];
-  xx[255] = xx[260] * xx[15];
-  xx[261] = xx[258] * xx[3] - xx[260] * xx[7];
+  xx[251] = xx[15] * xx[258];
+  xx[255] = xx[15] * xx[260];
+  xx[261] = xx[3] * xx[258] - xx[260] * xx[7];
   xx[263] = - xx[251];
   xx[264] = xx[255];
   xx[265] = xx[261];
@@ -13510,7 +13510,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[75] = (xx[322] - xx[186] * xx[24]) * xx[80];
   xx[291] = xx[80] * (xx[294] + xx[31] * xx[24]) + xx[244] - xx[237] - xx[119];
   xx[292] = xx[234] + xx[80] * (xx[295] + xx[33] * xx[24]) + xx[69] + xx[117];
-  xx[293] = (xx[296] - xx[64] * xx[24]) * xx[80] + xx[75];
+  xx[293] = (xx[296] - xx[24] * xx[64]) * xx[80] + xx[75];
   pm_math_quatXform(xx + 283, xx + 291, xx + 294);
   pm_math_quatCompose(xx + 287, xx + 154, xx + 320);
   pm_math_quatCompose(xx + 320, xx + 179, xx + 329);
@@ -13518,7 +13518,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[33] = xx[137] * xx[137];
   xx[64] = xx[136] * xx[134];
   xx[179] = xx[133] * xx[137];
-  xx[180] = xx[133] * xx[136];
+  xx[180] = xx[136] * xx[133];
   xx[181] = xx[134] * xx[137];
   xx[291] = xx[22] - (xx[31] + xx[33]) * xx[80];
   xx[292] = xx[80] * (xx[64] - xx[179]);
@@ -13546,7 +13546,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[337] = xx[279];
   xx[338] = - xx[313];
   pm_math_cross3(xx + 333, xx + 336, xx + 342);
-  xx[336] = (xx[278] * xx[40] + xx[342]) * xx[80];
+  xx[336] = (xx[40] * xx[278] + xx[342]) * xx[80];
   xx[278] = xx[80] * (xx[343] + xx[279] * xx[40]);
   xx[279] = (xx[344] - xx[313] * xx[40]) * xx[80];
   xx[342] = xx[80] * (xx[339] - xx[182] * xx[40]) + xx[336];
@@ -13581,7 +13581,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[134] = xx[80] * (xx[350] - xx[179] * xx[40]);
   xx[179] = (xx[234] * xx[40] + xx[351]) * xx[80];
   xx[343] = xx[100] + (xx[33] * xx[40] + xx[346]) * xx[80] + xx[274] + xx[74];
-  xx[344] = (xx[133] * xx[40] + xx[347]) * xx[80] + xx[134];
+  xx[344] = (xx[40] * xx[133] + xx[347]) * xx[80] + xx[134];
   xx[345] = (xx[99] * xx[40] + xx[348]) * xx[80] + xx[179] - xx[103] - xx[72];
   pm_math_quatXform(xx + 287, xx + 343, xx + 346);
   xx[343] = xx[80] * (xx[181] - xx[180]);
@@ -13608,7 +13608,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[82] = (xx[100] * xx[40] + xx[351]) * xx[80];
   xx[180] = (xx[31] * xx[40] + xx[329]) * xx[80] + xx[133] - xx[219] + xx[73];
   xx[181] = xx[103] + (xx[33] * xx[40] + xx[330]) * xx[80] + xx[64] + xx[72];
-  xx[182] = (xx[99] * xx[40] + xx[331]) * xx[80] + xx[82];
+  xx[182] = (xx[40] * xx[99] + xx[331]) * xx[80] + xx[82];
   pm_math_quatXform(xx + 287, xx + 180, xx + 329);
   pm_math_quatCompose(xx + 320, xx + 215, xx + 349);
   xx[31] = xx[111] * xx[349] + xx[352] * xx[175];
@@ -13701,7 +13701,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[383] = xx[372];
   pm_math_quatCompose(xx + 375, xx + 380, xx + 384);
   xx[375] = (xx[332] * xx[237] + xx[367] * xx[249]) * xx[80];
-  xx[376] = xx[80] * (xx[332] * xx[367] - xx[237] * xx[249]);
+  xx[376] = xx[80] * (xx[332] * xx[367] - xx[249] * xx[237]);
   xx[377] = xx[22] - (xx[249] * xx[249] + xx[332] * xx[332]) * xx[80];
   pm_math_cross3(xx + 375, xx + 267, xx + 388);
   pm_math_quatXform(xx + 384, xx + 388, xx + 375);
@@ -13714,7 +13714,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
     xx[270];
   xx[378] = xx[389] * xx[242];
   xx[387] = xx[388] * xx[242];
-  xx[390] = xx[389] * xx[125] + xx[388] * xx[225];
+  xx[390] = xx[389] * xx[125] + xx[225] * xx[388];
   xx[391] = xx[378];
   xx[392] = - xx[387];
   xx[393] = - xx[390];
@@ -13803,9 +13803,9 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[444] = xx[441] * xx[35] - xx[443] * xx[32];
   xx[450] = xx[80] * xx[35] * xx[444] - (xx[441] - xx[259]) - xx[135];
   xx[441] = xx[443] + xx[80] * xx[32] * xx[444] + xx[248] - xx[131];
-  xx[443] = xx[441] * xx[15];
-  xx[444] = xx[450] * xx[15];
-  xx[452] = xx[441] * xx[3] - xx[450] * xx[7];
+  xx[443] = xx[15] * xx[441];
+  xx[444] = xx[15] * xx[450];
+  xx[452] = xx[3] * xx[441] - xx[450] * xx[7];
   xx[453] = - xx[443];
   xx[454] = xx[444];
   xx[455] = xx[452];
@@ -14010,7 +14010,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[524] = xx[440];
   xx[525] = xx[467];
   pm_math_quatCompose(xx + 429, xx + 522, xx + 526);
-  xx[429] = (xx[412] * xx[328] + xx[368] * xx[442]) * xx[80];
+  xx[429] = (xx[412] * xx[328] + xx[442] * xx[368]) * xx[80];
   xx[430] = xx[80] * (xx[412] * xx[442] - xx[328] * xx[368]);
   xx[431] = xx[22] - (xx[368] * xx[368] + xx[412] * xx[412]) * xx[80];
   pm_math_cross3(xx + 429, xx + 267, xx + 537);
@@ -14420,9 +14420,9 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[711] = xx[673] * xx[35] - xx[674] * xx[32];
   xx[716] = xx[80] * xx[35] * xx[711] - (xx[673] - xx[259]) - xx[135];
   xx[673] = xx[674] + xx[80] * xx[32] * xx[711] + xx[248] - xx[131];
-  xx[674] = xx[673] * xx[15];
-  xx[711] = xx[716] * xx[15];
-  xx[717] = xx[673] * xx[3] - xx[716] * xx[7];
+  xx[674] = xx[15] * xx[673];
+  xx[711] = xx[15] * xx[716];
+  xx[717] = xx[3] * xx[673] - xx[716] * xx[7];
   xx[723] = - xx[674];
   xx[724] = xx[711];
   xx[725] = xx[717];
@@ -14474,14 +14474,14 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   pm_math_quatXform(xx + 734, xx + 707, xx + 723);
   xx[669] = xx[624] * xx[70];
   xx[707] = xx[655] * xx[70];
-  xx[708] = xx[624] * xx[26] + xx[655] * xx[68];
+  xx[708] = xx[624] * xx[26] + xx[68] * xx[655];
   xx[734] = xx[669];
   xx[735] = xx[707];
   xx[736] = - xx[708];
   pm_math_cross3(xx + 183, xx + 734, xx + 795);
   xx[734] = xx[80] * (xx[795] + xx[669] * xx[24]) + xx[244] - xx[655] - xx[119];
   xx[735] = xx[624] + xx[80] * (xx[796] + xx[707] * xx[24]) + xx[69] + xx[117];
-  xx[736] = (xx[797] - xx[708] * xx[24]) * xx[80] + xx[75];
+  xx[736] = (xx[797] - xx[24] * xx[708]) * xx[80] + xx[75];
   pm_math_quatXform(xx + 283, xx + 734, xx + 707);
   pm_math_quatCompose(xx + 320, xx + 703, xx + 734);
   xx[624] = xx[705] * xx[705];
@@ -14495,8 +14495,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[797] = (xx[718] + xx[719]) * xx[80];
   pm_math_cross3(xx + 795, xx + 84, xx + 798);
   pm_math_quatXform(xx + 734, xx + 798, xx + 795);
-  xx[731] = xx[605] * xx[44];
-  xx[745] = xx[613] * xx[83];
+  xx[731] = xx[44] * xx[605];
+  xx[745] = xx[83] * xx[613];
   xx[751] = xx[731] + xx[745];
   xx[788] = xx[605] * xx[42];
   xx[789] = xx[613] * xx[42];
@@ -14516,16 +14516,16 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[800] = xx[80] * (xx[788] - xx[705]);
   pm_math_cross3(xx + 798, xx + 84, xx + 804);
   pm_math_quatXform(xx + 734, xx + 804, xx + 798);
-  xx[655] = xx[576] * xx[44];
+  xx[655] = xx[44] * xx[576];
   xx[669] = xx[576] * xx[42];
   xx[703] = xx[669] - xx[745];
-  xx[704] = xx[613] * xx[44];
+  xx[704] = xx[44] * xx[613];
   xx[804] = xx[655];
   xx[805] = xx[703];
   xx[806] = xx[704];
   pm_math_cross3(xx + 333, xx + 804, xx + 807);
   xx[804] = xx[613] + (xx[655] * xx[40] + xx[807]) * xx[80] + xx[274] + xx[74];
-  xx[805] = (xx[703] * xx[40] + xx[808]) * xx[80] + xx[134];
+  xx[805] = (xx[40] * xx[703] + xx[808]) * xx[80] + xx[134];
   xx[806] = (xx[704] * xx[40] + xx[809]) * xx[80] + xx[179] - xx[576] - xx[72];
   pm_math_quatXform(xx + 287, xx + 804, xx + 807);
   xx[804] = xx[80] * (xx[719] - xx[718]);
@@ -14533,8 +14533,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[806] = xx[22] - (xx[751] + xx[624]) * xx[80];
   pm_math_cross3(xx + 804, xx + 84, xx + 703);
   pm_math_quatXform(xx + 734, xx + 703, xx + 804);
-  xx[613] = xx[576] * xx[83];
-  xx[624] = xx[605] * xx[83];
+  xx[613] = xx[83] * xx[576];
+  xx[624] = xx[83] * xx[605];
   xx[655] = xx[669] - xx[731];
   xx[703] = xx[613];
   xx[704] = xx[624];
@@ -14542,7 +14542,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   pm_math_cross3(xx + 333, xx + 703, xx + 734);
   xx[703] = (xx[613] * xx[40] + xx[734]) * xx[80] + xx[133] - xx[605] + xx[73];
   xx[704] = xx[576] + (xx[624] * xx[40] + xx[735]) * xx[80] + xx[64] + xx[72];
-  xx[705] = (xx[655] * xx[40] + xx[736]) * xx[80] + xx[82];
+  xx[705] = (xx[40] * xx[655] + xx[736]) * xx[80] + xx[82];
   pm_math_quatXform(xx + 287, xx + 703, xx + 734);
   pm_math_quatCompose(xx + 349, xx + 699, xx + 703);
   xx[699] = xx[500];
@@ -14627,7 +14627,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[824] = xx[718];
   xx[825] = xx[731];
   pm_math_quatCompose(xx + 699, xx + 822, xx + 826);
-  xx[699] = (xx[712] * xx[648] + xx[719] * xx[668]) * xx[80];
+  xx[699] = (xx[712] * xx[648] + xx[668] * xx[719]) * xx[80];
   xx[700] = xx[80] * (xx[712] * xx[719] - xx[648] * xx[668]);
   xx[701] = xx[22] - (xx[668] * xx[668] + xx[712] * xx[712]) * xx[80];
   pm_math_cross3(xx + 699, xx + 267, xx + 830);
@@ -14641,7 +14641,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
     xx[684];
   xx[702] = xx[751] * xx[642];
   xx[737] = xx[745] * xx[642];
-  xx[788] = xx[751] * xx[536] + xx[594] * xx[745];
+  xx[788] = xx[751] * xx[536] + xx[745] * xx[594];
   xx[829] = - xx[702];
   xx[830] = xx[737];
   xx[831] = - xx[788];
@@ -14718,7 +14718,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[861] = xx[825];
   xx[862] = xx[847];
   pm_math_quatCompose(xx + 855, xx + 859, xx + 863);
-  xx[855] = (xx[789] * xx[719] + xx[846] * xx[729]) * xx[80];
+  xx[855] = (xx[789] * xx[719] + xx[729] * xx[846]) * xx[80];
   xx[856] = xx[80] * (xx[789] * xx[846] - xx[719] * xx[729]);
   xx[857] = xx[22] - (xx[729] * xx[729] + xx[789] * xx[789]) * xx[80];
   pm_math_cross3(xx + 855, xx + 267, xx + 867);
@@ -14732,7 +14732,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
     xx[746];
   xx[848] = xx[867] * xx[722];
   xx[858] = xx[866] * xx[722];
-  xx[868] = xx[867] * xx[647] + xx[675] * xx[866];
+  xx[868] = xx[867] * xx[647] + xx[866] * xx[675];
   xx[869] = xx[848];
   xx[870] = - xx[858];
   xx[871] = - xx[868];
@@ -14816,9 +14816,9 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[770] = xx[157] * xx[35] - xx[769] * xx[32];
   xx[773] = xx[80] * xx[35] * xx[770] - (xx[157] - xx[259]) - xx[135];
   xx[157] = xx[769] + xx[80] * xx[32] * xx[770] + xx[248] - xx[131];
-  xx[248] = xx[157] * xx[15];
-  xx[259] = xx[773] * xx[15];
-  xx[769] = xx[157] * xx[3] - xx[773] * xx[7];
+  xx[248] = xx[15] * xx[157];
+  xx[259] = xx[15] * xx[773];
+  xx[769] = xx[3] * xx[157] - xx[773] * xx[7];
   xx[774] = - xx[248];
   xx[775] = xx[259];
   xx[776] = xx[769];
@@ -14870,14 +14870,14 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   pm_math_quatXform(xx + 780, xx + 150, xx + 139);
   xx[150] = xx[154] * xx[70];
   xx[151] = xx[155] * xx[70];
-  xx[70] = xx[154] * xx[26] + xx[155] * xx[68];
+  xx[70] = xx[154] * xx[26] + xx[68] * xx[155];
   xx[759] = xx[150];
   xx[760] = xx[151];
   xx[761] = - xx[70];
   pm_math_cross3(xx + 183, xx + 759, xx + 780);
   xx[183] = xx[80] * (xx[780] + xx[150] * xx[24]) + xx[244] - xx[155] - xx[119];
   xx[184] = xx[154] + xx[80] * (xx[781] + xx[151] * xx[24]) + xx[69] + xx[117];
-  xx[185] = (xx[782] - xx[70] * xx[24]) * xx[80] + xx[75];
+  xx[185] = (xx[782] - xx[24] * xx[70]) * xx[80] + xx[75];
   pm_math_quatXform(xx + 283, xx + 183, xx + 68);
   pm_math_quatCompose(xx + 320, xx + 755, xx + 150);
   xx[24] = xx[731] * xx[731];
@@ -14891,8 +14891,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[185] = (xx[155] + xx[156]) * xx[80];
   pm_math_cross3(xx + 183, xx + 84, xx + 755);
   pm_math_quatXform(xx + 150, xx + 755, xx + 183);
-  xx[244] = xx[772] * xx[44];
-  xx[755] = xx[768] * xx[83];
+  xx[244] = xx[44] * xx[772];
+  xx[755] = xx[83] * xx[768];
   xx[756] = xx[244] + xx[755];
   xx[757] = xx[772] * xx[42];
   xx[758] = xx[768] * xx[42];
@@ -14912,16 +14912,16 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[761] = xx[80] * (xx[279] - xx[138]);
   pm_math_cross3(xx + 759, xx + 84, xx + 780);
   pm_math_quatXform(xx + 150, xx + 780, xx + 759);
-  xx[26] = xx[771] * xx[44];
+  xx[26] = xx[44] * xx[771];
   xx[75] = xx[771] * xx[42];
   xx[42] = xx[75] - xx[755];
-  xx[154] = xx[768] * xx[44];
+  xx[154] = xx[44] * xx[768];
   xx[780] = xx[26];
   xx[781] = xx[42];
   xx[782] = xx[154];
   pm_math_cross3(xx + 333, xx + 780, xx + 886);
   xx[780] = xx[768] + (xx[26] * xx[40] + xx[886]) * xx[80] + xx[274] + xx[74];
-  xx[781] = (xx[42] * xx[40] + xx[887]) * xx[80] + xx[134];
+  xx[781] = (xx[40] * xx[42] + xx[887]) * xx[80] + xx[134];
   xx[782] = (xx[154] * xx[40] + xx[888]) * xx[80] + xx[179] - xx[771] - xx[72];
   pm_math_quatXform(xx + 287, xx + 780, xx + 886);
   xx[780] = xx[80] * (xx[156] - xx[155]);
@@ -14929,8 +14929,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[782] = xx[22] - (xx[278] + xx[24]) * xx[80];
   pm_math_cross3(xx + 780, xx + 84, xx + 154);
   pm_math_quatXform(xx + 150, xx + 154, xx + 780);
-  xx[24] = xx[771] * xx[83];
-  xx[26] = xx[772] * xx[83];
+  xx[24] = xx[83] * xx[771];
+  xx[26] = xx[83] * xx[772];
   xx[42] = xx[75] - xx[244];
   xx[150] = xx[24];
   xx[151] = xx[26];
@@ -14938,7 +14938,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   pm_math_cross3(xx + 333, xx + 150, xx + 153);
   xx[150] = (xx[24] * xx[40] + xx[153]) * xx[80] + xx[133] - xx[772] + xx[73];
   xx[151] = xx[771] + (xx[26] * xx[40] + xx[154]) * xx[80] + xx[64] + xx[72];
-  xx[152] = (xx[42] * xx[40] + xx[155]) * xx[80] + xx[82];
+  xx[152] = (xx[40] * xx[42] + xx[155]) * xx[80] + xx[82];
   pm_math_quatXform(xx + 287, xx + 150, xx + 153);
   xx[24] = xx[712] * xx[349] + xx[352] * xx[719];
   xx[26] = xx[712] * xx[350] - xx[351] * xx[719];
@@ -15055,7 +15055,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[965] = xx[0];
   xx[966] = xx[0];
   xx[967] = xx[0];
-  xx[968] = xx[192] + (xx[261] * xx[14] + xx[273]) * xx[80];
+  xx[968] = xx[192] + (xx[14] * xx[261] + xx[273]) * xx[80];
   xx[969] = xx[302] + xx[305];
   xx[970] = xx[308] + xx[311];
   xx[971] = xx[318] + xx[296];
@@ -15156,7 +15156,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[1064] = xx[0];
   xx[1065] = xx[0];
   xx[1066] = xx[0];
-  xx[1067] = xx[422] + (xx[452] * xx[14] + xx[461]) * xx[80];
+  xx[1067] = xx[422] + (xx[14] * xx[452] + xx[461]) * xx[80];
   xx[1068] = xx[470] + xx[479];
   xx[1069] = xx[476] + xx[455];
   xx[1070] = xx[482] + xx[439];
@@ -15356,7 +15356,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[1262] = xx[0];
   xx[1263] = xx[0];
   xx[1264] = xx[0];
-  xx[1265] = xx[683] + (xx[717] * xx[14] + xx[728]) * xx[80];
+  xx[1265] = xx[683] + (xx[14] * xx[717] + xx[728]) * xx[80];
   xx[1266] = xx[744] + xx[750];
   xx[1267] = xx[741] + xx[794];
   xx[1268] = xx[725] + xx[709];
@@ -15458,7 +15458,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[1361] = - (xx[754] + xx[885]);
   xx[1362] = - (xx[871] + xx[861]);
   xx[1363] = - ((xx[879] * xx[624] + xx[891]) * xx[80] + xx[894]);
-  xx[1364] = xx[148] + (xx[769] * xx[14] + xx[779]) * xx[80];
+  xx[1364] = xx[148] + (xx[14] * xx[769] + xx[779]) * xx[80];
   xx[1365] = xx[776] + xx[265];
   xx[1366] = xx[786] + xx[48];
   xx[1367] = xx[141] + xx[70];
@@ -16394,7 +16394,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[27] = (xx[214] - xx[35] * xx[28]) * xx[80];
   xx[206] = xx[80] * (xx[209] + xx[8] * xx[28]) + xx[37] - xx[120] - xx[119];
   xx[207] = xx[111] + xx[80] * (xx[210] + xx[11] * xx[28]) + xx[23] + xx[117];
-  xx[208] = (xx[211] - xx[28] * xx[17]) * xx[80] + xx[27];
+  xx[208] = (xx[211] - xx[17] * xx[28]) * xx[80] + xx[27];
   pm_math_quatXform(xx + 161, xx + 206, xx + 209);
   pm_math_quatCompose(xx + 170, xx + 68, xx + 212);
   pm_math_quatCompose(xx + 212, xx + 91, xx + 216);
@@ -16403,7 +16403,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[17] = xx[61] * xx[58];
   xx[35] = xx[53] * xx[64];
   xx[40] = xx[53] * xx[61];
-  xx[111] = xx[58] * xx[64];
+  xx[111] = xx[64] * xx[58];
   xx[206] = xx[22] - (xx[8] + xx[11]) * xx[80];
   xx[207] = xx[80] * (xx[17] - xx[35]);
   xx[208] = (xx[40] + xx[111]) * xx[80];
@@ -16430,7 +16430,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[224] = xx[192];
   xx[225] = - xx[193];
   pm_math_cross3(xx + 220, xx + 223, xx + 229);
-  xx[195] = (xx[46] * xx[182] + xx[229]) * xx[80];
+  xx[195] = (xx[182] * xx[46] + xx[229]) * xx[80];
   xx[182] = xx[80] * (xx[230] + xx[192] * xx[46]);
   xx[192] = (xx[231] - xx[193] * xx[46]) * xx[80];
   xx[223] = xx[80] * (xx[226] - xx[115] * xx[46]) + xx[195];
@@ -16465,7 +16465,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[53] = xx[80] * (xx[236] - xx[64] * xx[46]);
   xx[64] = (xx[166] * xx[46] + xx[237]) * xx[80];
   xx[229] = xx[18] + (xx[11] * xx[46] + xx[232]) * xx[80] + xx[175] + xx[74];
-  xx[230] = (xx[46] * xx[35] + xx[233]) * xx[80] + xx[53];
+  xx[230] = (xx[35] * xx[46] + xx[233]) * xx[80] + xx[53];
   xx[231] = (xx[49] * xx[46] + xx[234]) * xx[80] + xx[64] - xx[3] - xx[72];
   pm_math_quatXform(xx + 170, xx + 229, xx + 232);
   xx[229] = xx[80] * (xx[111] - xx[40]);
@@ -16492,7 +16492,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[35] = (xx[40] * xx[46] + xx[246]) * xx[80];
   xx[216] = (xx[8] * xx[46] + xx[235]) * xx[80] + xx[41] - xx[103] + xx[73];
   xx[217] = xx[3] + (xx[11] * xx[46] + xx[236]) * xx[80] + xx[17] + xx[72];
-  xx[218] = (xx[46] * xx[18] + xx[237]) * xx[80] + xx[35];
+  xx[218] = (xx[18] * xx[46] + xx[237]) * xx[80] + xx[35];
   pm_math_quatXform(xx + 170, xx + 216, xx + 235);
   pm_math_quatCompose(xx + 212, xx + 140, xx + 216);
   xx[3] = xx[52] * xx[216] + xx[219] * xx[76];
@@ -16575,8 +16575,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[273] = xx[255];
   xx[274] = xx[261];
   pm_math_quatCompose(xx + 239, xx + 271, xx + 275);
-  xx[239] = (xx[250] * xx[244] + xx[256] * xx[245]) * xx[80];
-  xx[240] = xx[80] * (xx[250] * xx[256] - xx[245] * xx[244]);
+  xx[239] = (xx[250] * xx[244] + xx[245] * xx[256]) * xx[80];
+  xx[240] = xx[80] * (xx[250] * xx[256] - xx[244] * xx[245]);
   xx[241] = xx[22] - (xx[245] * xx[245] + xx[250] * xx[250]) * xx[80];
   pm_math_cross3(xx + 239, xx + 267, xx + 283);
   pm_math_quatXform(xx + 275, xx + 283, xx + 239);
@@ -16818,7 +16818,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[378] = xx[255];
   pm_math_cross3(xx + 300, xx + 376, xx + 391);
   xx[376] = xx[80] * (xx[391] + xx[120] * xx[62]) - xx[57];
-  xx[377] = xx[80] * (xx[392] - xx[62] * xx[166]);
+  xx[377] = xx[80] * (xx[392] - xx[166] * xx[62]);
   xx[378] = (xx[393] - xx[255] * xx[62]) * xx[80] - xx[63];
   pm_math_cross3(xx + 376, xx + 84, xx + 391);
   pm_math_quatXform(xx + 411, xx + 391, xx + 376);
@@ -16845,7 +16845,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   pm_math_cross3(xx + 300, xx + 391, xx + 421);
   xx[305] = xx[80] * (xx[421] + xx[255] * xx[62]) - xx[257];
   xx[255] = xx[254] + (xx[262] * xx[62] + xx[422]) * xx[80];
-  xx[254] = xx[62] * xx[303] + xx[423];
+  xx[254] = xx[303] * xx[62] + xx[423];
   xx[257] = xx[254] * xx[80];
   xx[391] = xx[305];
   xx[392] = xx[255];
@@ -16882,8 +16882,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[430] = xx[397];
   xx[431] = xx[400];
   pm_math_quatCompose(xx + 424, xx + 428, xx + 432);
-  xx[424] = (xx[393] * xx[306] + xx[398] * xx[391]) * xx[80];
-  xx[425] = xx[80] * (xx[393] * xx[398] - xx[306] * xx[391]);
+  xx[424] = (xx[393] * xx[306] + xx[391] * xx[398]) * xx[80];
+  xx[425] = xx[80] * (xx[393] * xx[398] - xx[391] * xx[306]);
   xx[426] = xx[22] - (xx[391] * xx[391] + xx[393] * xx[393]) * xx[80];
   pm_math_cross3(xx + 424, xx + 267, xx + 436);
   pm_math_quatXform(xx + 432, xx + 436, xx + 424);
@@ -17091,7 +17091,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[554] = xx[534];
   pm_math_cross3(xx + 220, xx + 552, xx + 555);
   xx[552] = xx[452] + (xx[458] * xx[46] + xx[555]) * xx[80] + xx[175] + xx[74];
-  xx[553] = (xx[46] * xx[513] + xx[556]) * xx[80] + xx[53];
+  xx[553] = (xx[513] * xx[46] + xx[556]) * xx[80] + xx[53];
   xx[554] = (xx[534] * xx[46] + xx[557]) * xx[80] + xx[64] - xx[363] - xx[72];
   pm_math_quatXform(xx + 170, xx + 552, xx + 555);
   xx[552] = xx[80] * (xx[531] - xx[530]);
@@ -17108,7 +17108,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   pm_math_cross3(xx + 220, xx + 526, xx + 529);
   xx[526] = (xx[452] * xx[46] + xx[529]) * xx[80] + xx[41] - xx[451] + xx[73];
   xx[527] = xx[363] + (xx[457] * xx[46] + xx[530]) * xx[80] + xx[17] + xx[72];
-  xx[528] = (xx[46] * xx[458] + xx[531]) * xx[80] + xx[35];
+  xx[528] = (xx[458] * xx[46] + xx[531]) * xx[80] + xx[35];
   pm_math_quatXform(xx + 170, xx + 526, xx + 529);
   pm_math_quatCompose(xx + 216, xx + 441, xx + 542);
   xx[441] = xx[303];
@@ -17186,7 +17186,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[577] = xx[559];
   xx[578] = xx[574];
   pm_math_quatCompose(xx + 570, xx + 575, xx + 579);
-  xx[570] = (xx[558] * xx[513] + xx[560] * xx[544]) * xx[80];
+  xx[570] = (xx[558] * xx[513] + xx[544] * xx[560]) * xx[80];
   xx[571] = xx[80] * (xx[558] * xx[560] - xx[513] * xx[544]);
   xx[572] = xx[22] - (xx[544] * xx[544] + xx[558] * xx[558]) * xx[80];
   pm_math_cross3(xx + 570, xx + 267, xx + 585);
@@ -17204,7 +17204,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[581] = xx[579] + xx[80] * xx[452] * xx[573] + xx[589] - xx[547];
   xx[573] = xx[581] * xx[543];
   xx[590] = xx[583] * xx[543];
-  xx[591] = xx[581] * xx[458] - xx[583] * xx[534];
+  xx[591] = xx[581] * xx[458] - xx[534] * xx[583];
   xx[592] = xx[573];
   xx[593] = - xx[590];
   xx[594] = xx[591];
@@ -17290,9 +17290,9 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[642] = xx[634] * xx[19] - xx[636] * xx[15];
   xx[647] = xx[80] * xx[19] * xx[642] - (xx[634] - xx[145]) - xx[135];
   xx[648] = xx[636] + xx[80] * xx[15] * xx[642] + xx[152] - xx[131];
-  xx[642] = xx[26] * xx[648];
-  xx[649] = xx[26] * xx[647];
-  xx[650] = xx[6] * xx[648] - xx[647] * xx[14];
+  xx[642] = xx[648] * xx[26];
+  xx[649] = xx[647] * xx[26];
+  xx[650] = xx[648] * xx[6] - xx[647] * xx[14];
   xx[651] = - xx[642];
   xx[652] = xx[649];
   xx[653] = xx[650];
@@ -17344,14 +17344,14 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   pm_math_quatXform(xx + 657, xx + 676, xx + 664);
   xx[612] = xx[601] * xx[38];
   xx[657] = xx[611] * xx[38];
-  xx[658] = xx[601] * xx[29] + xx[36] * xx[611];
+  xx[658] = xx[601] * xx[29] + xx[611] * xx[36];
   xx[676] = xx[612];
   xx[677] = xx[657];
   xx[678] = - xx[658];
   pm_math_cross3(xx + 179, xx + 676, xx + 681);
   xx[676] = xx[80] * (xx[681] + xx[612] * xx[28]) + xx[37] - xx[611] - xx[119];
   xx[677] = xx[601] + xx[80] * (xx[682] + xx[657] * xx[28]) + xx[23] + xx[117];
-  xx[678] = (xx[683] - xx[28] * xx[658]) * xx[80] + xx[27];
+  xx[678] = (xx[683] - xx[658] * xx[28]) * xx[80] + xx[27];
   pm_math_quatXform(xx + 161, xx + 676, xx + 657);
   pm_math_quatCompose(xx + 212, xx + 626, xx + 676);
   xx[601] = xx[628] * xx[628];
@@ -17365,8 +17365,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[683] = (xx[670] + xx[671]) * xx[80];
   pm_math_cross3(xx + 681, xx + 84, xx + 686);
   pm_math_quatXform(xx + 676, xx + 686, xx + 681);
-  xx[686] = xx[48] * xx[559];
-  xx[687] = xx[50] * xx[574];
+  xx[686] = xx[559] * xx[48];
+  xx[687] = xx[574] * xx[50];
   xx[688] = xx[686] + xx[687];
   xx[689] = xx[559] * xx[47];
   xx[690] = xx[574] * xx[47];
@@ -17386,16 +17386,16 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[696] = xx[80] * (xx[692] - xx[693]);
   pm_math_cross3(xx + 694, xx + 84, xx + 697);
   pm_math_quatXform(xx + 676, xx + 697, xx + 694);
-  xx[611] = xx[48] * xx[533];
+  xx[611] = xx[533] * xx[48];
   xx[612] = xx[533] * xx[47];
   xx[660] = xx[612] - xx[687];
-  xx[687] = xx[48] * xx[574];
+  xx[687] = xx[574] * xx[48];
   xx[697] = xx[611];
   xx[698] = xx[660];
   xx[699] = xx[687];
   pm_math_cross3(xx + 220, xx + 697, xx + 700);
   xx[697] = xx[574] + (xx[611] * xx[46] + xx[700]) * xx[80] + xx[175] + xx[74];
-  xx[698] = (xx[46] * xx[660] + xx[701]) * xx[80] + xx[53];
+  xx[698] = (xx[660] * xx[46] + xx[701]) * xx[80] + xx[53];
   xx[699] = (xx[687] * xx[46] + xx[702]) * xx[80] + xx[64] - xx[533] - xx[72];
   pm_math_quatXform(xx + 170, xx + 697, xx + 700);
   xx[697] = xx[80] * (xx[671] - xx[670]);
@@ -17403,8 +17403,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[699] = xx[22] - (xx[691] + xx[601]) * xx[80];
   pm_math_cross3(xx + 697, xx + 84, xx + 691);
   pm_math_quatXform(xx + 676, xx + 691, xx + 697);
-  xx[574] = xx[50] * xx[533];
-  xx[601] = xx[50] * xx[559];
+  xx[574] = xx[533] * xx[50];
+  xx[601] = xx[559] * xx[50];
   xx[611] = xx[612] - xx[686];
   xx[676] = xx[574];
   xx[677] = xx[601];
@@ -17412,7 +17412,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   pm_math_cross3(xx + 220, xx + 676, xx + 691);
   xx[676] = (xx[574] * xx[46] + xx[691]) * xx[80] + xx[41] - xx[559] + xx[73];
   xx[677] = xx[533] + (xx[601] * xx[46] + xx[692]) * xx[80] + xx[17] + xx[72];
-  xx[678] = (xx[46] * xx[611] + xx[693]) * xx[80] + xx[35];
+  xx[678] = (xx[611] * xx[46] + xx[693]) * xx[80] + xx[35];
   pm_math_quatXform(xx + 170, xx + 676, xx + 691);
   pm_math_quatCompose(xx + 216, xx + 602, xx + 676);
   xx[601] = xx[379];
@@ -17490,7 +17490,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[727] = xx[707];
   xx[728] = xx[718];
   pm_math_quatCompose(xx + 721, xx + 725, xx + 729);
-  xx[721] = (xx[706] * xx[670] + xx[708] * xx[686]) * xx[80];
+  xx[721] = (xx[706] * xx[670] + xx[686] * xx[708]) * xx[80];
   xx[722] = xx[80] * (xx[706] * xx[708] - xx[686] * xx[670]);
   xx[723] = xx[22] - (xx[686] * xx[686] + xx[706] * xx[706]) * xx[80];
   pm_math_cross3(xx + 721, xx + 267, xx + 733);
@@ -17680,9 +17680,9 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[147] = xx[121] * xx[19] - xx[148] * xx[15];
   xx[744] = xx[80] * xx[19] * xx[147] - (xx[121] - xx[145]) - xx[135];
   xx[752] = xx[148] + xx[80] * xx[15] * xx[147] + xx[152] - xx[131];
-  xx[147] = xx[26] * xx[752];
-  xx[761] = xx[26] * xx[744];
-  xx[791] = xx[6] * xx[752] - xx[744] * xx[14];
+  xx[147] = xx[752] * xx[26];
+  xx[761] = xx[744] * xx[26];
+  xx[791] = xx[752] * xx[6] - xx[744] * xx[14];
   xx[922] = - xx[147];
   xx[923] = xx[761];
   xx[924] = xx[791];
@@ -17734,14 +17734,14 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   pm_math_quatXform(xx + 928, xx + 935, xx + 197);
   xx[4] = xx[107] * xx[38];
   xx[118] = xx[105] * xx[38];
-  xx[38] = xx[107] * xx[29] + xx[36] * xx[105];
+  xx[38] = xx[107] * xx[29] + xx[105] * xx[36];
   xx[928] = xx[4];
   xx[929] = xx[118];
   xx[930] = - xx[38];
   pm_math_cross3(xx + 179, xx + 928, xx + 935);
   xx[179] = xx[80] * (xx[935] + xx[4] * xx[28]) + xx[37] - xx[105] - xx[119];
   xx[180] = xx[107] + xx[80] * (xx[936] + xx[118] * xx[28]) + xx[23] + xx[117];
-  xx[181] = (xx[937] - xx[28] * xx[38]) * xx[80] + xx[27];
+  xx[181] = (xx[937] - xx[38] * xx[28]) * xx[80] + xx[27];
   pm_math_quatXform(xx + 161, xx + 179, xx + 27);
   pm_math_quatCompose(xx + 212, xx + 897, xx + 161);
   xx[4] = xx[687] * xx[687];
@@ -17749,14 +17749,14 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[36] = xx[687] * xx[680];
   xx[37] = xx[299] * xx[65];
   xx[38] = xx[299] * xx[687];
-  xx[105] = xx[65] * xx[680];
+  xx[105] = xx[680] * xx[65];
   xx[117] = xx[22] - (xx[4] + xx[23]) * xx[80];
   xx[118] = xx[80] * (xx[36] - xx[37]);
   xx[119] = (xx[38] + xx[105]) * xx[80];
   pm_math_cross3(xx + 117, xx + 84, xx + 179);
   pm_math_quatXform(xx + 161, xx + 179, xx + 117);
-  xx[107] = xx[48] * xx[104];
-  xx[179] = xx[50] * xx[96];
+  xx[107] = xx[104] * xx[48];
+  xx[179] = xx[96] * xx[50];
   xx[180] = xx[107] + xx[179];
   xx[181] = xx[104] * xx[47];
   xx[902] = xx[96] * xx[47];
@@ -17776,16 +17776,16 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[930] = xx[80] * (xx[195] - xx[65]);
   pm_math_cross3(xx + 928, xx + 84, xx + 935);
   pm_math_quatXform(xx + 161, xx + 935, xx + 928);
-  xx[23] = xx[48] * xx[718];
+  xx[23] = xx[718] * xx[48];
   xx[36] = xx[718] * xx[47];
   xx[37] = xx[36] - xx[179];
-  xx[47] = xx[48] * xx[96];
+  xx[47] = xx[96] * xx[48];
   xx[935] = xx[23];
   xx[936] = xx[37];
   xx[937] = xx[47];
   pm_math_cross3(xx + 220, xx + 935, xx + 938);
   xx[935] = xx[96] + (xx[23] * xx[46] + xx[938]) * xx[80] + xx[175] + xx[74];
-  xx[936] = (xx[46] * xx[37] + xx[939]) * xx[80] + xx[53];
+  xx[936] = (xx[37] * xx[46] + xx[939]) * xx[80] + xx[53];
   xx[937] = (xx[47] * xx[46] + xx[940]) * xx[80] + xx[64] - xx[718] - xx[72];
   pm_math_quatXform(xx + 170, xx + 935, xx + 938);
   xx[935] = xx[80] * (xx[105] - xx[38]);
@@ -17793,8 +17793,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[937] = xx[22] - (xx[192] + xx[4]) * xx[80];
   pm_math_cross3(xx + 935, xx + 84, xx + 941);
   pm_math_quatXform(xx + 161, xx + 941, xx + 935);
-  xx[4] = xx[50] * xx[718];
-  xx[22] = xx[50] * xx[104];
+  xx[4] = xx[718] * xx[50];
+  xx[22] = xx[104] * xx[50];
   xx[23] = xx[36] - xx[107];
   xx[36] = xx[4];
   xx[37] = xx[22];
@@ -17802,7 +17802,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   pm_math_cross3(xx + 220, xx + 36, xx + 161);
   xx[36] = (xx[4] * xx[46] + xx[161]) * xx[80] + xx[41] - xx[104] + xx[73];
   xx[37] = xx[718] + (xx[22] * xx[46] + xx[162]) * xx[80] + xx[17] + xx[72];
-  xx[38] = (xx[46] * xx[23] + xx[163]) * xx[80] + xx[35];
+  xx[38] = (xx[23] * xx[46] + xx[163]) * xx[80] + xx[35];
   pm_math_quatXform(xx + 170, xx + 36, xx + 46);
   xx[4] = xx[2] * xx[216] + xx[219] * xx[637];
   xx[17] = xx[2] * xx[217] - xx[218] * xx[637];
@@ -18220,7 +18220,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[1305] = xx[0];
   xx[1306] = xx[0];
   xx[1307] = xx[0];
-  xx[1308] = xx[616] + (xx[24] * xx[650] + xx[656]) * xx[80];
+  xx[1308] = xx[616] + (xx[650] * xx[24] + xx[656]) * xx[80];
   xx[1309] = xx[663] + xx[669];
   xx[1310] = xx[675] + xx[653];
   xx[1311] = xx[666] + xx[659];
@@ -18322,7 +18322,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[1404] = - (xx[788] + xx[169]);
   xx[1405] = - (xx[282] + xx[178]);
   xx[1406] = - ((xx[901] * xx[298] + xx[907]) * xx[80] + xx[910]);
-  xx[1407] = xx[33] + (xx[24] * xx[791] + xx[927]) * xx[80];
+  xx[1407] = xx[33] + (xx[791] * xx[24] + xx[927]) * xx[80];
   xx[1408] = xx[924] + xx[185];
   xx[1409] = xx[934] + xx[151];
   xx[1410] = xx[199] + xx[29];
@@ -18643,8 +18643,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[207] = xx[877];
   pm_math_cross3(xx + 205, xx + 126, xx + 208);
   pm_math_quatXform(xx + 575, xx + 208, xx + 205);
-  xx[24] = xx[205] - xx[870] * xx[580];
-  xx[107] = xx[206] + xx[870] * xx[579];
+  xx[24] = xx[205] - xx[580] * xx[870];
+  xx[107] = xx[206] + xx[579] * xx[870];
   xx[111] = xx[107] * xx[452] + xx[399] * xx[24];
   xx[116] = xx[547] * xx[399] - xx[548] * xx[452];
   xx[173] = xx[452] * xx[580] + xx[579] * xx[399];
@@ -18762,8 +18762,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[249] = xx[888];
   pm_math_cross3(xx + 247, xx + 126, xx + 251);
   pm_math_quatXform(xx + 725, xx + 251, xx + 247);
-  xx[216] = xx[247] - xx[881] * xx[730];
-  xx[218] = xx[248] + xx[881] * xx[729];
+  xx[216] = xx[247] - xx[730] * xx[881];
+  xx[218] = xx[248] + xx[729] * xx[881];
   xx[230] = xx[218] * xx[605] + xx[532] * xx[216];
   xx[232] = xx[684] * xx[532] - xx[685] * xx[605];
   xx[233] = xx[605] * xx[730] + xx[729] * xx[532];
@@ -18789,8 +18789,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[232] = xx[218] * xx[816];
   xx[233] = xx[816] * xx[216];
   xx[253] = xx[80] * (xx[232] * xx[196] - xx[230] * xx[233]);
-  xx[254] = xx[818] * xx[639];
-  xx[258] = xx[818] * xx[640];
+  xx[254] = xx[639] * xx[818];
+  xx[258] = xx[640] * xx[818];
   pm_math_quatInverseXform(xx + 630, xx + 81, xx + 262);
   pm_math_quatInverseXform(xx + 626, xx + 830, xx + 281);
   xx[259] = xx[546] * xx[23];
@@ -18877,8 +18877,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[309] = xx[814];
   pm_math_cross3(xx + 307, xx + 126, xx + 289);
   pm_math_quatXform(xx + 777, xx + 289, xx + 307);
-  xx[258] = xx[307] - xx[807] * xx[782];
-  xx[259] = xx[308] + xx[807] * xx[781];
+  xx[258] = xx[307] - xx[782] * xx[807];
+  xx[259] = xx[308] + xx[781] * xx[807];
   xx[265] = xx[259] * xx[660] + xx[643] * xx[258];
   xx[270] = xx[747] + xx[776];
   xx[289] = xx[747] * xx[660] + xx[746] * xx[643];
@@ -18905,8 +18905,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[289] = xx[259] * xx[816];
   xx[290] = xx[816] * xx[258];
   xx[310] = xx[80] * (xx[289] * xx[194] - xx[265] * xx[290]);
-  xx[311] = xx[818] * xx[916];
-  xx[315] = xx[818] * xx[917];
+  xx[311] = xx[916] * xx[818];
+  xx[315] = xx[917] * xx[818];
   pm_math_quatInverseXform(xx + 911, xx + 81, xx + 316);
   pm_math_quatInverseXform(xx + 897, xx + 830, xx + 327);
   xx[323] = xx[87] * xx[637];
@@ -19125,7 +19125,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   pm_math_cross3(xx + 97, xx + 112, xx + 91);
   pm_math_quatXform(xx + 68, xx + 91, xx + 112);
   xx[51] = xx[77] * xx[60];
-  xx[59] = xx[8] * xx[78] - xx[57] * xx[88];
+  xx[59] = xx[78] * xx[8] - xx[57] * xx[88];
   xx[60] = xx[78] * xx[11] + xx[57] * xx[101] - xx[95] * xx[50];
   xx[61] = xx[50] * xx[88];
   pm_math_quatXform(xx + 140, xx + 59, xx + 91);
@@ -19151,7 +19151,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[78] = xx[58] - (xx[15] * xx[58] * xx[15] + xx[58] * xx[19] * xx[19]) * xx
     [80];
   pm_math_quatXform(xx + 72, xx + 76, xx + 58);
-  xx[9] = xx[250] * xx[144];
+  xx[9] = xx[144] * xx[250];
   xx[40] = xx[144] * xx[245];
   xx[52] = xx[145] * xx[21];
   xx[55] = xx[146] * xx[21];
@@ -19351,7 +19351,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[88] = xx[61] + xx[3] - xx[80] * xx[5] * xx[15] + xx[254];
   xx[89] = xx[9] - (xx[15] * xx[9] * xx[15] + xx[9] * xx[19] * xx[19]) * xx[80];
   pm_math_quatXform(xx + 72, xx + 87, xx + 134);
-  xx[0] = xx[165] * xx[706];
+  xx[0] = xx[706] * xx[165];
   xx[3] = xx[165] * xx[686];
   xx[5] = xx[166] * xx[21];
   xx[9] = xx[167] * xx[21];
@@ -19403,15 +19403,15 @@ PmfMessageId PlatformAssem_f0ca4364_1_projectStateSim(const void *mech, const
   xx[70] = xx[113] + xx[56] + xx[67];
   xx[71] = xx[114] + xx[57] + xx[68];
   pm_math_quatXform(xx + 42, xx + 69, xx + 55);
-  xx[0] = xx[117] + xx[55] - xx[49] * xx[121];
-  xx[2] = xx[118] + xx[56] + xx[49] * xx[148];
+  xx[0] = xx[117] + xx[55] - xx[121] * xx[49];
+  xx[2] = xx[118] + xx[56] + xx[148] * xx[49];
   xx[3] = xx[2] * xx[15] + xx[19] * xx[0];
   xx[5] = xx[119] + xx[57];
   xx[40] = xx[18] + xx[0] - xx[80] * xx[3] * xx[19] - xx[81];
   xx[41] = xx[61] + xx[2] - xx[80] * xx[3] * xx[15] + xx[82];
   xx[42] = xx[5] - (xx[15] * xx[5] * xx[15] + xx[5] * xx[19] * xx[19]) * xx[80];
   pm_math_quatXform(xx + 72, xx + 40, xx + 17);
-  xx[0] = xx[16] * xx[745];
+  xx[0] = xx[745] * xx[16];
   xx[2] = xx[16] * xx[743];
   xx[3] = xx[46] * xx[21];
   xx[5] = xx[47] * xx[21];
