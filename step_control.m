@@ -1,16 +1,16 @@
 clc; clear; close all;
 %% Set Initial Parameters
-t_max = 1.0;
+t_max = 0.1;
 g = -9.80665; %gravity
 sensor_delay = 0.00; %seconds
-noise_mag = mag2db(10^-2);
+noise_mag = mag2db(0.00); %converts magnitude to dB
 
 % Define Functions for Dynamic Base Position and Orientation
-base_pxf = @(t) 0;
-base_pyf = @(t) 0;
-base_pzf = @(t) 0;
-base_qxf = @(t) 10*sin(2*pi*2*t); %in degrees
-base_qyf = @(t) 10*sin(2*pi*2*t);
+base_pxf = @(t) t;
+base_pyf = @(t) t;
+base_pzf = @(t) t;
+base_qxf = @(t) 0; % 20*sin(2*pi*t); %in degrees
+base_qyf = @(t) 0; % 20*sin(2*pi*t);
 base_qzf = @(t) 0;
 
 % Set Initial Base Position and Orientation
@@ -78,8 +78,9 @@ while(run_sim == true)
     % Get Platform State
     quat_plat_state = platform_orientation.signals.values(length(platform_orientation.time), :);
     eul_plat_state = quat_to_eangles(quat_plat_state) + wgn(3, 1, noise_mag);
-    trans_plat_state = platform_translation.signals.values(length(platform_translation.time), :) + wgn(1, 3, noise_mag) - platform_translation.signals.values(1, :);
+    trans_plat_state = platform_translation.signals.values(length(platform_translation.time), :) + wgn(1, 3, noise_mag)- platform_translation.signals.values(1, :);
     actuator_states = motor_states.signals.values(length(platform_orientation.time), :)' + wgn(6, 1, noise_mag);   
+    accel_plat_state = platform_acceleration.signals.values(length(platform_acceleration.time), :) + wgn(1, 3, noise_mag);
     % Calculate Controller Input
     % servo_angles = controller_v0(eul_plat_state, actuator_states, trans_plat_state);
     if length(platform_orientation.time) > 1
@@ -87,7 +88,8 @@ while(run_sim == true)
     else
         dt = platform_orientation.time(1);
     end
-    [servo_angles, error_data] = controller_v1(eul_plat_state, actuator_states, trans_plat_state, error_data, dt);
+    % [servo_angles, error_data] = controller_v1(eul_plat_state, actuator_states, trans_plat_state, error_data, dt);
+    % [servo_angles, error_data] = controller_v2(eul_plat_state, actuator_states, trans_plat_state, accel_plat_state, error_data, dt);
     % Step forward by single time step (determined by solver)
     set_param('PlatformAssem', 'SimulationCommand', 'step');
     % Check for Termination Criteria
@@ -107,20 +109,29 @@ for i = 1:size(platform_orientation.time, 1)
     alpha(i) = eangles(1)*180/pi;
     beta(i) = eangles(2)*180/pi;
     gamma(i) = eangles(3)*180/pi;
-    x(i) = 1000*(platform_translation.signals.values(i, 1)-platform_translation.signals.values(1, 1));
-    y(i) = 1000*(platform_translation.signals.values(i, 2)-platform_translation.signals.values(1, 2));
-    z(i) = 1000*(platform_translation.signals.values(i, 3)-platform_translation.signals.values(1, 3));
+    x(i) = 1000*(platform_translation.signals.values(i, 1)); %-platform_translation.signals.values(1, 1));
+    y(i) = 1000*(platform_translation.signals.values(i, 2) - platform_translation.signals.values(1, 2));
+    z(i) = 1000*(platform_translation.signals.values(i, 3)); %-platform_translation.signals.values(1, 3));
+    ax(i) = platform_acceleration.signals.values(i, 1);
+    ay(i) = platform_acceleration.signals.values(i, 2);
+    az(i) = platform_acceleration.signals.values(i, 3);
 end
 figure;
-subplot(2, 1, 1);
+subplot(3, 1, 1);
 plot(platform_orientation.time, alpha, 'r', platform_orientation.time, beta, 'b', platform_orientation.time, gamma, 'g', platform_orientation.time, base_qxf(platform_orientation.time), '--r', platform_orientation.time, base_qyf(platform_orientation.time), '--b', platform_orientation.time, base_qzf(platform_orientation.time), '--g');
 legend('Alpha','Beta','Gamma', 'Roll', 'Pitch', 'Yaw');
 xlabel('Time (s)');
 ylabel('Angles (degrees)');
 title('Rotation')
-subplot(2, 1, 2);
+subplot(3, 1, 2);
 plot(platform_orientation.time, x, platform_orientation.time, y, platform_orientation.time, z);
 legend('X', 'Y', 'Z');
 xlabel('Time (s)');
 ylabel('Displacement (mm)');
 title('Translation');
+subplot(3, 1, 3);
+plot(platform_orientation.time, ax, platform_orientation.time, ay, platform_orientation.time, az);
+legend('X', 'Y', 'Z');
+xlabel('Time (s)');
+ylabel('Acceleration (m/s^2)');
+title('Acceleration');

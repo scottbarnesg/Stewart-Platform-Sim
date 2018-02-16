@@ -1,6 +1,6 @@
-% Stewart Platform Controller Version 1.0
-% Add Integral Control
-% WARNING: Unstable
+% Stewart Platform Controller Version 1.1
+% PI Control with Discount
+% Verified Stable
 function [theta, error_data] = controller_v1(eangles, theta, translation, error_data, dt)
     % Controller Weights
     A = 250*ones(1, 6); % Implementation Weights (Verified)
@@ -11,7 +11,7 @@ function [theta, error_data] = controller_v1(eangles, theta, translation, error_
     % C = zeros(1, 6); % Dummy Weights (for testing)
     D = 500*[1, 1, 0, 0, 0, 0]; % Implementation Weights (Not Yet Tested)
     % D = zeros(1, 6);
-    E = 200*[0, 0, 1, 1, 1, 1];
+    E = 500*[0, 0, 1, 1, 1, 1];
     % E = zeros(1, 6);
     F = 200*ones(1, 6);
     % F = zeros(1, 6);
