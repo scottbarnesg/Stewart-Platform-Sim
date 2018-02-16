@@ -8,9 +8,9 @@
  *
  * Code generation for model "PlatformAssem".
  *
- * Model version              : 1.39
+ * Model version              : 1.51
  * Simulink Coder version : 8.13 (R2017b) 24-Jul-2017
- * C source code generated on : Thu Feb 15 21:26:39 2018
+ * C source code generated on : Fri Feb 16 16:37:19 2018
  *
  * Target selection: grt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -389,10 +389,10 @@ struct P_PlatformAssem_T_ {
                                         *   '<S9>/Transport Delay'
                                         *   '<S10>/Transport Delay'
                                         */
-  real_T base_px_Value;                /* Expression: -1.0035
+  real_T base_px_Value;                /* Expression: 0
                                         * Referenced by: '<Root>/base_px'
                                         */
-  real_T base_py_Value;                /* Expression: 0
+  real_T base_py_Value;                /* Expression: 1.3193
                                         * Referenced by: '<Root>/base_py'
                                         */
   real_T base_pz_Value;                /* Expression: 0
@@ -407,22 +407,22 @@ struct P_PlatformAssem_T_ {
   real_T base_qz_Value;                /* Expression: 0
                                         * Referenced by: '<Root>/base_qz'
                                         */
-  real_T angle1_Value;                 /* Expression: 2.0944
+  real_T angle1_Value;                 /* Expression: 2.1974
                                         * Referenced by: '<Root>/angle1'
                                         */
-  real_T angle3_Value;                 /* Expression: 2.0944
+  real_T angle3_Value;                 /* Expression: 1.2748
                                         * Referenced by: '<Root>/angle3'
                                         */
-  real_T angle4_Value;                 /* Expression: -2.0944
+  real_T angle4_Value;                 /* Expression: -2.9158
                                         * Referenced by: '<Root>/angle4'
                                         */
-  real_T angle5_Value;                 /* Expression: 2.0944
+  real_T angle5_Value;                 /* Expression: 2.6971
                                         * Referenced by: '<Root>/angle5'
                                         */
-  real_T angle6_Value;                 /* Expression: -2.0944
+  real_T angle6_Value;                 /* Expression: -1.4945
                                         * Referenced by: '<Root>/angle6'
                                         */
-  real_T angle2_Value;                 /* Expression: -2.0944
+  real_T angle2_Value;                 /* Expression: -2.4169
                                         * Referenced by: '<Root>/angle2'
                                         */
   real_T TransportDelay_InitOutput;    /* Expression: 0

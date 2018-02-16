@@ -8,9 +8,9 @@
  *
  * Code generation for model "PlatformAssem".
  *
- * Model version              : 1.39
+ * Model version              : 1.51
  * Simulink Coder version : 8.13 (R2017b) 24-Jul-2017
- * C source code generated on : Thu Feb 15 21:26:39 2018
+ * C source code generated on : Fri Feb 16 16:37:19 2018
  *
  * Target selection: grt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -33,15 +33,15 @@ P_PlatformAssem_T PlatformAssem_P = {
    */
   0.0,
 
-  /* Expression: -1.0035
+  /* Expression: 0
    * Referenced by: '<Root>/base_px'
    */
-  -1.0035,
+  0.0,
 
-  /* Expression: 0
+  /* Expression: 1.3193
    * Referenced by: '<Root>/base_py'
    */
-  0.0,
+  1.3193,
 
   /* Expression: 0
    * Referenced by: '<Root>/base_pz'
@@ -63,35 +63,35 @@ P_PlatformAssem_T PlatformAssem_P = {
    */
   0.0,
 
-  /* Expression: 2.0944
+  /* Expression: 2.1974
    * Referenced by: '<Root>/angle1'
    */
-  2.0944,
+  2.1974,
 
-  /* Expression: 2.0944
+  /* Expression: 1.2748
    * Referenced by: '<Root>/angle3'
    */
-  2.0944,
+  1.2748,
 
-  /* Expression: -2.0944
+  /* Expression: -2.9158
    * Referenced by: '<Root>/angle4'
    */
-  -2.0944,
+  -2.9158,
 
-  /* Expression: 2.0944
+  /* Expression: 2.6971
    * Referenced by: '<Root>/angle5'
    */
-  2.0944,
+  2.6971,
 
-  /* Expression: -2.0944
+  /* Expression: -1.4945
    * Referenced by: '<Root>/angle6'
    */
-  -2.0944,
+  -1.4945,
 
-  /* Expression: -2.0944
+  /* Expression: -2.4169
    * Referenced by: '<Root>/angle2'
    */
-  -2.0944,
+  -2.4169,
 
   /* Expression: 0
    * Referenced by: '<S7>/Transport Delay'

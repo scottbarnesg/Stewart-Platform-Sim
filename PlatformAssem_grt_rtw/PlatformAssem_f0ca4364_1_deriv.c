@@ -73,7 +73,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[5] = xx[3] * xx[22] + xx[23] * xx[7];
   xx[3] = (xx[31] * xx[4] - xx[20] * xx[5]) * xx[19];
   xx[7] = xx[3] * inputDot[3];
-  xx[22] = xx[19] * (xx[20] * xx[31] + xx[4] * xx[5]);
+  xx[22] = xx[19] * (xx[20] * xx[31] + xx[5] * xx[4]);
   xx[23] = xx[22] * inputDot[3];
   xx[32] = xx[26] + xx[28];
   xx[33] = xx[30] - xx[7];
@@ -464,7 +464,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[339] = xx[338] * xx[205];
   xx[340] = xx[19] * (xx[329] * xx[205] - xx[193] * xx[339]) - xx[328];
   xx[328] = (xx[193] * xx[329] + xx[339] * xx[205]) * xx[19] - xx[338];
-  xx[329] = xx[340] * xx[238] - xx[328] * xx[241] - xx[52] * xx[327];
+  xx[329] = xx[340] * xx[238] - xx[241] * xx[328] - xx[52] * xx[327];
   xx[338] = xx[243] * xx[328];
   xx[339] = 0.3535533905932758;
   xx[341] = xx[1] * state[33];
@@ -534,11 +534,11 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[373] = 2.968427723224885e-15;
   xx[374] = xx[373] / xx[346];
   xx[375] = xx[52] * xx[374];
-  xx[376] = xx[351] * xx[372] - xx[375] * xx[349];
+  xx[376] = xx[372] * xx[351] - xx[375] * xx[349];
   xx[377] = xx[376] * xx[354];
   xx[378] = xx[372] * xx[342] - xx[341] * xx[375];
   xx[379] = xx[378] * xx[354];
-  xx[389] = xx[356] * xx[372] - xx[352] * xx[375];
+  xx[389] = xx[356] * xx[372] - xx[375] * xx[352];
   xx[372] = xx[389] * xx[354];
   xx[375] = xx[376] * xx[358];
   xx[390] = xx[378] * xx[358];
@@ -575,12 +575,12 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[394] = xx[393] - xx[373] * xx[374];
   xx[395] = xx[370] * xx[374];
   xx[396] = xx[393] - xx[370] * xx[371];
-  xx[424] = xx[349] * xx[394] + xx[351] * xx[395];
+  xx[424] = xx[394] * xx[349] + xx[395] * xx[351];
   xx[425] = xx[341] * xx[394] + xx[395] * xx[342];
-  xx[426] = xx[352] * xx[394] + xx[356] * xx[395];
+  xx[426] = xx[352] * xx[394] + xx[395] * xx[356];
   xx[427] = xx[351] * xx[396] + xx[395] * xx[349];
-  xx[428] = xx[342] * xx[396] + xx[341] * xx[395];
-  xx[429] = xx[356] * xx[396] + xx[352] * xx[395];
+  xx[428] = xx[396] * xx[342] + xx[395] * xx[341];
+  xx[429] = xx[356] * xx[396] + xx[395] * xx[352];
   xx[430] = xx[393] * xx[354];
   xx[431] = xx[393] * xx[358];
   xx[432] = xx[393] * xx[357];
@@ -590,9 +590,9 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[341] = 0.152426400001803;
   xx[351] = xx[1] * state[35];
   xx[352] = cos(xx[351]);
-  xx[354] = sin(xx[351]);
-  xx[351] = xx[352] * xx[354];
-  xx[356] = xx[19] * xx[351];
+  xx[354] = xx[352] * xx[352];
+  xx[356] = sin(xx[351]);
+  xx[351] = (xx[354] + xx[356] * xx[356]) * xx[19] - xx[21];
   xx[357] = 2.642797429992618e-15;
   if (ii[1] != 0) {
     return sm_ssci_recordRunTimeError(
@@ -604,35 +604,35 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   memcpy(xx + 358, xx + 235, 1 * sizeof(double));
   xx[394] = xx[357] / xx[358];
   xx[395] = xx[52] * xx[394];
-  xx[396] = 3.2073700752247e-15;
-  xx[397] = xx[396] / xx[358];
-  xx[398] = xx[52] * xx[397];
-  xx[399] = xx[352] * xx[352];
-  xx[400] = xx[19] * xx[399] - xx[21];
-  xx[401] = (xx[399] + xx[354] * xx[354]) * xx[19] - xx[21];
-  xx[399] = (xx[356] * xx[395] + xx[398] * xx[400]) * xx[401];
-  xx[409] = xx[341] * xx[399];
+  xx[396] = xx[352] * xx[356];
+  xx[397] = xx[19] * xx[396];
+  xx[398] = 3.2073700752247e-15;
+  xx[399] = xx[398] / xx[358];
+  xx[400] = xx[52] * xx[399];
+  xx[401] = xx[19] * xx[354] - xx[21];
+  xx[354] = xx[351] * (xx[395] * xx[397] + xx[400] * xx[401]);
+  xx[409] = xx[341] * xx[354];
   xx[410] = xx[393] - xx[357] * xx[394];
-  xx[451] = xx[396] * xx[394];
-  xx[452] = xx[451] * xx[400];
-  xx[453] = xx[356] * xx[410] - xx[452];
-  xx[454] = xx[393] - xx[396] * xx[397];
-  xx[455] = xx[356] * xx[451];
-  xx[451] = xx[400] * xx[454] - xx[455];
-  xx[456] = xx[453] * xx[356] + xx[451] * xx[400];
+  xx[451] = xx[398] * xx[394];
+  xx[452] = xx[451] * xx[401];
+  xx[453] = xx[397] * xx[410] - xx[452];
+  xx[454] = xx[393] - xx[398] * xx[399];
+  xx[455] = xx[451] * xx[397];
+  xx[451] = xx[454] * xx[401] - xx[455];
+  xx[456] = xx[453] * xx[397] + xx[451] * xx[401];
   xx[457] = xx[456] * xx[341];
   xx[458] = 6.817225262079063e-12;
-  xx[459] = xx[458] * xx[354];
-  xx[460] = xx[459] * xx[354];
+  xx[459] = xx[458] * xx[356];
+  xx[460] = xx[459] * xx[356];
   xx[461] = 5.61723311615081e-12;
-  xx[462] = xx[461] * xx[354];
+  xx[462] = xx[461] * xx[356];
   xx[463] = xx[352] * xx[462];
   xx[464] = xx[19] * (xx[460] - xx[463]) - xx[458];
   xx[465] = 0.02540000000000185 - xx[464];
-  xx[466] = xx[451] * xx[356] - xx[453] * xx[400];
+  xx[466] = xx[451] * xx[397] - xx[453] * xx[401];
   xx[451] = xx[341] * xx[466];
   xx[453] = xx[352] * xx[459];
-  xx[459] = xx[462] * xx[354];
+  xx[459] = xx[462] * xx[356];
   xx[462] = (xx[453] + xx[459]) * xx[19] - xx[461];
   xx[467] = xx[1] * state[31];
   xx[468] = cos(xx[467]);
@@ -700,11 +700,11 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[496] = 1.826292542130627e-15;
   xx[497] = xx[496] / xx[471];
   xx[498] = xx[52] * xx[497];
-  xx[499] = xx[495] * xx[468] + xx[474] * xx[498];
+  xx[499] = xx[495] * xx[468] + xx[498] * xx[474];
   xx[500] = xx[499] * xx[477];
   xx[501] = xx[467] * xx[495] - xx[498] * xx[470];
   xx[502] = xx[501] * xx[477];
-  xx[512] = xx[479] * xx[498] - xx[475] * xx[495];
+  xx[512] = xx[479] * xx[498] - xx[495] * xx[475];
   xx[495] = xx[512] * xx[477];
   xx[498] = xx[499] * xx[481];
   xx[513] = xx[501] * xx[481];
@@ -741,11 +741,11 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[516] = xx[393] - xx[493] * xx[494];
   xx[517] = xx[496] * xx[494];
   xx[518] = xx[393] - xx[496] * xx[497];
-  xx[548] = xx[468] * xx[516] - xx[517] * xx[474];
+  xx[548] = xx[516] * xx[468] - xx[517] * xx[474];
   xx[549] = - (xx[467] * xx[516] + xx[517] * xx[470]);
-  xx[550] = xx[475] * xx[516] + xx[517] * xx[479];
+  xx[550] = xx[475] * xx[516] + xx[479] * xx[517];
   xx[551] = xx[474] * xx[518] - xx[517] * xx[468];
-  xx[552] = xx[470] * xx[518] + xx[517] * xx[467];
+  xx[552] = xx[518] * xx[470] + xx[467] * xx[517];
   xx[553] = - (xx[479] * xx[518] + xx[517] * xx[475]);
   xx[554] = xx[393] * xx[477];
   xx[555] = xx[393] * xx[481];
@@ -770,8 +770,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[477] = xx[194] * xx[475];
   xx[480] = xx[467] - xx[477];
   xx[533] = xx[19] * xx[480];
-  xx[534] = xx[194] * xx[481];
-  xx[566] = xx[200] * xx[475];
+  xx[534] = xx[481] * xx[194];
+  xx[566] = xx[475] * xx[200];
   xx[567] = (xx[534] + xx[566]) * xx[19];
   xx[568] = xx[477] + xx[467];
   xx[467] = xx[568] * xx[19];
@@ -818,11 +818,11 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[585] = 2.891114289123629e-16;
   xx[586] = xx[585] / xx[235];
   xx[587] = xx[52] * xx[586];
-  xx[588] = xx[533] * xx[584] - xx[587] * xx[474];
+  xx[588] = xx[584] * xx[533] - xx[587] * xx[474];
   xx[589] = xx[588] * xx[567];
   xx[590] = xx[467] * xx[587] + xx[584] * xx[477];
   xx[591] = xx[590] * xx[567];
-  xx[601] = xx[534] * xx[587] + xx[569] * xx[584];
+  xx[601] = xx[587] * xx[534] + xx[569] * xx[584];
   xx[584] = xx[601] * xx[567];
   xx[587] = xx[588] * xx[571];
   xx[602] = xx[590] * xx[571];
@@ -860,11 +860,11 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[605] = xx[393] - xx[585] * xx[586];
   xx[606] = xx[582] * xx[586];
   xx[607] = xx[393] - xx[582] * xx[583];
-  xx[638] = xx[474] * xx[605] + xx[606] * xx[533];
+  xx[638] = xx[605] * xx[474] + xx[606] * xx[533];
   xx[639] = xx[606] * xx[477] - xx[467] * xx[605];
   xx[640] = xx[534] * xx[605] - xx[606] * xx[569];
   xx[641] = xx[533] * xx[607] + xx[606] * xx[474];
-  xx[642] = xx[477] * xx[607] - xx[606] * xx[467];
+  xx[642] = xx[607] * xx[477] - xx[606] * xx[467];
   xx[643] = xx[606] * xx[534] - xx[569] * xx[607];
   xx[644] = xx[393] * xx[567];
   xx[645] = xx[393] * xx[571];
@@ -881,10 +881,10 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[571] = xx[19] * xx[570] - xx[21];
   xx[623] = xx[569] * xx[571];
   xx[624] = xx[533] * xx[567] + xx[623];
-  xx[656] = xx[533] * xx[569];
+  xx[656] = xx[569] * xx[533];
   xx[569] = xx[337] / xx[326];
   xx[657] = xx[393] - xx[337] * xx[569];
-  xx[658] = xx[656] + xx[571] * xx[657];
+  xx[658] = xx[656] + xx[657] * xx[571];
   xx[659] = xx[624] * xx[533] + xx[658] * xx[571];
   xx[660] = xx[659] * xx[243];
   xx[661] = xx[658] * xx[533] - xx[624] * xx[571];
@@ -892,62 +892,62 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[658] = (xx[570] + xx[205] * xx[205]) * xx[19] - xx[21];
   xx[570] = xx[52] * xx[534];
   xx[662] = xx[52] * xx[569];
-  xx[663] = xx[658] * (xx[533] * xx[570] - xx[662] * xx[571]);
+  xx[663] = xx[658] * (xx[570] * xx[533] - xx[662] * xx[571]);
   xx[664] = xx[243] * xx[663];
   xx[665] = xx[386] - xx[421] - xx[417] - xx[448] - (xx[409] - (xx[457] * xx[465]
     + xx[451] * xx[462])) + xx[509] - xx[545] - xx[541] - xx[563] + xx[598] -
     xx[635] - xx[631] - xx[653] - (xx[660] * xx[241] - xx[624] * xx[238] - xx
     [664]);
   xx[666] = xx[52] / xx[358];
-  xx[667] = (xx[356] * xx[398] - xx[395] * xx[400]) * xx[401];
-  xx[395] = xx[667] * xx[462] + xx[399] * xx[465];
-  xx[398] = xx[356] * xx[454] + xx[452];
-  xx[452] = xx[400] * xx[410] + xx[455];
-  xx[410] = xx[398] * xx[400] - xx[356] * xx[452];
-  xx[454] = xx[410] * xx[462] + xx[456] * xx[465];
-  xx[455] = xx[452] * xx[400] + xx[356] * xx[398];
-  xx[398] = xx[455] * xx[462] + xx[466] * xx[465];
+  xx[667] = (xx[400] * xx[397] - xx[395] * xx[401]) * xx[351];
+  xx[395] = xx[667] * xx[462] + xx[354] * xx[465];
+  xx[400] = xx[397] * xx[454] + xx[452];
+  xx[452] = xx[410] * xx[401] + xx[455];
+  xx[410] = xx[401] * xx[400] - xx[397] * xx[452];
+  xx[454] = xx[462] * xx[410] + xx[456] * xx[465];
+  xx[455] = xx[401] * xx[452] + xx[397] * xx[400];
+  xx[400] = xx[455] * xx[462] + xx[466] * xx[465];
   xx[452] = 1.754495192997305e-3;
   xx[668] = xx[52] / xx[326];
-  xx[669] = (xx[570] * xx[571] + xx[533] * xx[662]) * xx[658];
+  xx[669] = (xx[570] * xx[571] + xx[662] * xx[533]) * xx[658];
   xx[570] = xx[669] * xx[238] + xx[663] * xx[241];
-  xx[662] = xx[571] * xx[567] - xx[656];
+  xx[662] = xx[567] * xx[571] - xx[656];
   xx[567] = xx[533] * xx[657] - xx[623];
   xx[623] = xx[571] * xx[662] + xx[533] * xx[567];
-  xx[656] = xx[623] * xx[238] - xx[661] * xx[241];
+  xx[656] = xx[623] * xx[238] - xx[241] * xx[661];
   xx[657] = xx[571] * xx[567] - xx[533] * xx[662];
   xx[567] = xx[657] * xx[238] - xx[659] * xx[241];
-  xx[662] = xx[401] * (xx[52] - xx[52] * xx[666]) * xx[401] - xx[395] - xx[395]
-    + xx[454] * xx[465] + xx[398] * xx[462] + xx[388] - xx[423] - xx[423] - xx
+  xx[662] = xx[351] * (xx[52] - xx[52] * xx[666]) * xx[351] - xx[395] - xx[395]
+    + xx[454] * xx[465] + xx[400] * xx[462] + xx[388] - xx[423] - xx[423] - xx
     [450] + xx[511] - xx[547] - xx[547] - xx[565] + xx[600] - xx[637] - xx[637]
     - xx[655] + xx[452] + xx[658] * (xx[52] - xx[52] * xx[668]) * xx[658] - xx
     [570] - xx[570] + xx[656] * xx[238] - xx[567] * xx[241];
-  xx[395] = xx[454] - xx[399] - (xx[376] + xx[429]) - (xx[499] + xx[553]) - (xx
+  xx[395] = xx[454] - xx[354] - (xx[376] + xx[429]) - (xx[499] + xx[553]) - (xx
     [588] + xx[643]) + xx[663] + xx[567];
-  xx[376] = xx[195] * xx[665] + xx[662] * xx[201] + xx[395] * xx[291];
-  xx[399] = xx[379] + xx[427] - xx[457] + xx[502] + xx[551] + xx[591] + xx[641]
+  xx[354] = xx[195] * xx[665] + xx[662] * xx[201] + xx[395] * xx[291];
+  xx[376] = xx[379] + xx[427] - xx[457] + xx[502] + xx[551] + xx[591] + xx[641]
     - xx[660];
-  xx[379] = xx[50] * xx[400];
-  xx[427] = xx[51] * xx[356];
-  xx[429] = xx[393] * xx[401] * xx[401];
+  xx[379] = xx[50] * xx[401];
+  xx[427] = xx[51] * xx[397];
+  xx[429] = xx[393] * xx[351] * xx[351];
   xx[499] = xx[429] * xx[462];
   xx[502] = 1.754495192997305e-3;
   xx[551] = xx[50] * xx[571];
   xx[553] = xx[51] * xx[533];
   xx[570] = xx[393] * xx[658] * xx[658];
   xx[588] = xx[570] * xx[238];
-  xx[591] = xx[379] * xx[400] + xx[356] * xx[427] + xx[499] * xx[462] + xx[341] *
+  xx[591] = xx[379] * xx[401] + xx[427] * xx[397] + xx[499] * xx[462] + xx[341] *
     xx[457] + xx[380] - xx[415] - xx[415] - xx[442] + xx[503] - xx[539] - xx[539]
     - xx[557] + xx[592] - xx[629] - xx[629] - xx[647] + xx[502] + xx[551] * xx
-    [571] + xx[533] * xx[553] + xx[588] * xx[238] + xx[243] * xx[660];
+    [571] + xx[553] * xx[533] + xx[588] * xx[238] + xx[243] * xx[660];
   xx[457] = xx[382] - xx[417] - xx[421] - xx[444] - (xx[409] - xx[454] * xx[341])
     + xx[505] - xx[541] - xx[545] - xx[559] + xx[594] - xx[631] - xx[635] - xx
     [649] + xx[664] + xx[567] * xx[243];
-  xx[409] = xx[399] * xx[291] - (xx[591] * xx[195] + xx[201] * xx[457]);
+  xx[409] = xx[376] * xx[291] - (xx[591] * xx[195] + xx[201] * xx[457]);
   xx[454] = 0.3963053387673541;
   xx[567] = xx[456] + xx[437] + xx[520] + xx[609] + xx[454] + xx[659];
-  xx[437] = xx[399] * xx[195] - xx[395] * xx[201] - xx[567] * xx[291];
-  xx[456] = xx[376] * xx[201] - xx[195] * xx[409] - xx[437] * xx[291];
+  xx[437] = xx[376] * xx[195] - xx[395] * xx[201] - xx[567] * xx[291];
+  xx[456] = xx[354] * xx[201] - xx[195] * xx[409] - xx[437] * xx[291];
   ii[1] = factorSymmetricPosDef(xx + 456, 1, xx + 520);
   if (ii[1] != 0) {
     return sm_ssci_recordRunTimeError(
@@ -962,34 +962,34 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[641] = xx[243] * xx[657];
   xx[643] = xx[609] + xx[390] + xx[428] + xx[513] + xx[552] + xx[602] + xx[642]
     + xx[641];
-  xx[390] = xx[427] * xx[400] - xx[356] * xx[379] - (xx[341] * xx[451] - xx[499]
+  xx[390] = xx[427] * xx[401] - xx[379] * xx[397] - (xx[341] * xx[451] - xx[499]
     * xx[465]) + xx[383] - xx[418] - xx[416] - xx[445] + xx[506] - xx[542] - xx
     [540] - xx[560] + xx[595] - xx[632] - xx[630] - xx[650] + xx[553] * xx[571]
-    - xx[533] * xx[551] - (xx[243] * xx[624] + xx[588] * xx[241]);
+    - xx[551] * xx[533] - (xx[243] * xx[624] + xx[588] * xx[241]);
   xx[379] = xx[341] * xx[667];
   xx[427] = xx[243] * xx[669];
-  xx[428] = xx[379] - xx[398] * xx[341] + xx[385] - xx[420] - xx[422] - xx[447]
+  xx[428] = xx[379] - xx[400] * xx[341] + xx[385] - xx[420] - xx[422] - xx[447]
     + xx[508] - xx[544] - xx[546] - xx[562] + xx[597] - xx[634] - xx[636] - xx
     [652] + xx[427] - xx[656] * xx[243];
   xx[513] = xx[643] * xx[291] - (xx[390] * xx[195] + xx[428] * xx[201]);
   xx[551] = xx[520] * xx[409] + xx[338];
   xx[552] = xx[513] * xx[520] - xx[340] * xx[243];
-  xx[553] = xx[329] - xx[376] * xx[520];
+  xx[553] = xx[329] - xx[354] * xx[520];
   pm_math_quatXform(xx + 214, xx + 551, xx + 670);
   xx[551] = - xx[258];
   xx[552] = xx[252];
   xx[553] = - xx[247];
   xx[329] = xx[377] + xx[424] - xx[451] + xx[548] - xx[500] + xx[589] + xx[638]
     - xx[624];
-  xx[338] = xx[398] - xx[667] - (xx[392] + xx[426]) - (xx[550] - xx[515]) - (xx
+  xx[338] = xx[400] - xx[667] - (xx[392] + xx[426]) - (xx[550] - xx[515]) - (xx
     [604] + xx[640]) + xx[656] - xx[669];
   xx[377] = xx[466] + xx[434] + xx[517] + xx[606] + xx[661];
   xx[392] = xx[329] * xx[195] - xx[338] * xx[201] - xx[377] * xx[291];
-  xx[398] = xx[499] + xx[372] + xx[430] + xx[495] + xx[554] + xx[644] - xx[584]
+  xx[400] = xx[499] + xx[372] + xx[430] + xx[495] + xx[554] + xx[644] - xx[584]
     + xx[588];
   xx[372] = xx[378] + xx[432] + xx[501] + xx[556] + xx[646] - xx[590];
   xx[378] = xx[440] + xx[523] + xx[612];
-  xx[424] = xx[398] * xx[195] + xx[372] * xx[201] - xx[378] * xx[291];
+  xx[424] = xx[400] * xx[195] + xx[372] * xx[201] - xx[378] * xx[291];
   xx[499] = xx[340] + xx[392] * xx[520];
   xx[500] = xx[328] + xx[437] * xx[520];
   xx[501] = xx[520] * xx[424];
@@ -1022,31 +1022,31 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[680] = xx[440];
   xx[681] = xx[432];
   xx[340] = xx[409] / xx[456];
-  xx[451] = xx[51] * xx[400];
-  xx[515] = xx[50] * xx[356];
+  xx[451] = xx[51] * xx[401];
+  xx[515] = xx[50] * xx[397];
   xx[548] = xx[429] * xx[465];
   xx[550] = xx[51] * xx[571];
   xx[554] = xx[50] * xx[533];
   xx[556] = xx[570] * xx[241];
-  xx[584] = xx[356] * xx[451] - xx[515] * xx[400] - (xx[341] * xx[609] - xx[548]
+  xx[584] = xx[451] * xx[397] - xx[515] * xx[401] - (xx[341] * xx[609] - xx[548]
     * xx[462]) + xx[381] - xx[416] - xx[418] - xx[443] + xx[504] - xx[540] - xx
-    [542] - xx[558] + xx[593] - xx[630] - xx[632] - xx[648] + xx[533] * xx[550]
+    [542] - xx[558] + xx[593] - xx[630] - xx[632] - xx[648] + xx[550] * xx[533]
     - xx[554] * xx[571] - (xx[243] * xx[641] + xx[556] * xx[238]);
   xx[602] = xx[513] * xx[340];
-  xx[604] = xx[376] * xx[340];
+  xx[604] = xx[354] * xx[340];
   xx[606] = xx[455] * xx[341];
   xx[415] = 3.506321102188747e-3;
   xx[416] = xx[623] * xx[243];
-  xx[417] = xx[356] * xx[515] + xx[451] * xx[400] + xx[341] * xx[606] + xx[548] *
+  xx[417] = xx[515] * xx[397] + xx[451] * xx[401] + xx[341] * xx[606] + xx[548] *
     xx[465] + xx[384] - xx[419] - xx[419] - xx[446] + xx[507] - xx[543] - xx[543]
-    - xx[561] + xx[596] - xx[633] - xx[633] - xx[651] + xx[415] + xx[533] * xx
-    [554] + xx[550] * xx[571] + xx[243] * xx[416] + xx[556] * xx[241];
+    - xx[561] + xx[596] - xx[633] - xx[633] - xx[651] + xx[415] + xx[554] * xx
+    [533] + xx[550] * xx[571] + xx[243] * xx[416] + xx[556] * xx[241];
   xx[418] = xx[513] / xx[456];
-  xx[419] = xx[376] * xx[418];
+  xx[419] = xx[354] * xx[418];
   xx[380] = xx[379] - (xx[609] * xx[465] + xx[606] * xx[462]) + xx[387] - xx[422]
     - xx[420] - xx[449] + xx[510] - xx[546] - xx[544] - xx[564] + xx[599] - xx
     [636] - xx[634] - xx[654] + xx[641] * xx[241] - xx[416] * xx[238] + xx[427];
-  xx[379] = xx[376] / xx[456];
+  xx[379] = xx[354] / xx[456];
   xx[442] = xx[591] - xx[340] * xx[409];
   xx[443] = xx[584] - xx[602];
   xx[444] = xx[457] + xx[604];
@@ -1055,7 +1055,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[447] = xx[428] + xx[419];
   xx[448] = xx[665] + xx[604];
   xx[449] = xx[380] + xx[419];
-  xx[450] = xx[662] - xx[376] * xx[379];
+  xx[450] = xx[662] - xx[354] * xx[379];
   pm_math_matrix3x3ComposeTranspose(xx + 442, xx + 673, xx + 503);
   pm_math_matrix3x3Compose(xx + 673, xx + 503, xx + 442);
   xx[381] = xx[392] / xx[456];
@@ -1066,14 +1066,14 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[375] = xx[548] + xx[391] + xx[431] + xx[514] + xx[555] + xx[645] - xx[603]
     - xx[556];
   xx[503] = - (xx[329] + xx[381] * xx[409]);
-  xx[504] = - (xx[399] + xx[382] * xx[409]);
-  xx[505] = - (xx[398] + xx[383] * xx[409]);
+  xx[504] = - (xx[376] + xx[382] * xx[409]);
+  xx[505] = - (xx[400] + xx[383] * xx[409]);
   xx[506] = - (xx[384] + xx[513] * xx[381]);
   xx[507] = - (xx[643] + xx[513] * xx[382]);
   xx[508] = - (xx[375] + xx[513] * xx[383]);
-  xx[509] = xx[338] + xx[376] * xx[381];
-  xx[510] = xx[395] + xx[376] * xx[382];
-  xx[511] = - (xx[372] - xx[376] * xx[383]);
+  xx[509] = xx[338] + xx[354] * xx[381];
+  xx[510] = xx[395] + xx[354] * xx[382];
+  xx[511] = - (xx[372] - xx[354] * xx[383]);
   pm_math_matrix3x3ComposeTranspose(xx + 503, xx + 673, xx + 539);
   pm_math_matrix3x3Compose(xx + 673, xx + 539, xx + 503);
   pm_math_matrix3x3PostCross(xx + 503, xx + 551, xx + 539);
@@ -1185,7 +1185,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[636] = xx[624];
   xx[637] = - xx[629];
   pm_math_cross3(xx + 611, xx + 635, xx + 638);
-  xx[630] = (xx[183] * xx[623] + xx[638]) * xx[19];
+  xx[630] = (xx[623] * xx[183] + xx[638]) * xx[19];
   xx[623] = xx[19] * (xx[639] + xx[624] * xx[183]);
   xx[624] = (xx[640] - xx[629] * xx[183]) * xx[19];
   xx[635] = xx[19] * (xx[632] - xx[554] * xx[183]) + xx[630];
@@ -1222,7 +1222,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[641] = xx[19] * (xx[654] - xx[644] * xx[183]);
   xx[644] = (xx[587] * xx[183] + xx[655]) * xx[19];
   xx[650] = xx[248] + (xx[638] * xx[183] + xx[647]) * xx[19] + xx[645] + xx[230];
-  xx[651] = (xx[183] * xx[640] + xx[648]) * xx[19] + xx[641];
+  xx[651] = (xx[640] * xx[183] + xx[648]) * xx[19] + xx[641];
   xx[652] = (xx[186] * xx[183] + xx[649]) * xx[19] + xx[644] - xx[250] - xx[228];
   pm_math_quatXform(xx + 300, xx + 650, xx + 646);
   xx[186] = xx[635] + xx[646];
@@ -1249,7 +1249,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[550] = (xx[652] * xx[183] + xx[661]) * xx[19];
   xx[652] = (xx[547] * xx[183] + xx[638]) * xx[19] + xx[570] - xx[256] + xx[229];
   xx[653] = xx[250] + (xx[548] * xx[183] + xx[639]) * xx[19] + xx[182] + xx[228];
-  xx[654] = (xx[183] * xx[549] + xx[640]) * xx[19] + xx[550];
+  xx[654] = (xx[549] * xx[183] + xx[640]) * xx[19] + xx[550];
   pm_math_quatXform(xx + 300, xx + 652, xx + 547);
   xx[250] = xx[649] + xx[547];
   xx[256] = xx[672] + xx[501];
@@ -1287,7 +1287,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[605] = (xx[603] + xx[604]) * xx[19];
   xx[606] = (xx[542] + xx[541]) * xx[19];
   xx[541] = (xx[328] + xx[185] * xx[185]) * xx[19] - xx[21];
-  xx[542] = xx[187] * xx[185];
+  xx[542] = xx[185] * xx[187];
   xx[607] = xx[183] * xx[184];
   xx[608] = xx[19] * (xx[542] - xx[607]);
   xx[609] = xx[19] * (xx[604] - xx[603]);
@@ -1528,7 +1528,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[805] = (xx[816] - xx[806] * xx[171]) * xx[19];
   xx[811] = xx[19] * (xx[808] + xx[173] * xx[171]) + xx[807] - xx[273] - xx[68];
   xx[812] = xx[257] + xx[19] * (xx[809] + xx[175] * xx[171]) + xx[763] + xx[67];
-  xx[813] = (xx[810] - xx[171] * xx[177]) * xx[19] + xx[805];
+  xx[813] = (xx[810] - xx[177] * xx[171]) * xx[19] + xx[805];
   pm_math_quatXform(xx + 296, xx + 811, xx + 808);
   xx[173] = xx[802] + xx[808];
   xx[175] = xx[449] + xx[546];
@@ -1554,15 +1554,15 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[175] = xx[171] * xx[171];
   xx[256] = (xx[175] + xx[172] * xx[172]) * xx[19] - xx[21];
   xx[448] = xx[174] * xx[172];
-  xx[449] = xx[171] * xx[176];
+  xx[449] = xx[176] * xx[171];
   xx[590] = (xx[448] + xx[449]) * xx[19];
-  xx[659] = xx[172] * xx[176];
+  xx[659] = xx[176] * xx[172];
   xx[660] = xx[174] * xx[171];
   xx[678] = xx[19] * (xx[659] - xx[660]);
   xx[679] = xx[19] * (xx[448] - xx[449]);
   xx[448] = (xx[175] + xx[174] * xx[174]) * xx[19] - xx[21];
   xx[449] = xx[174] * xx[176];
-  xx[681] = xx[171] * xx[172];
+  xx[681] = xx[172] * xx[171];
   xx[682] = (xx[449] + xx[681]) * xx[19];
   xx[683] = (xx[659] + xx[660]) * xx[19];
   xx[659] = xx[19] * (xx[449] - xx[681]);
@@ -1801,7 +1801,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[707] = xx[716] * xx[711];
   xx[708] = xx[712] * xx[772];
   xx[709] = xx[716] * xx[772];
-  xx[710] = xx[711] * xx[712];
+  xx[710] = xx[712] * xx[711];
   xx[826] = xx[19] * (xx[709] - xx[710]);
   xx[827] = xx[712] * xx[712];
   xx[832] = xx[716] * xx[716];
@@ -1905,7 +1905,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[928] = xx[711] * xx[711];
   xx[951] = (xx[928] + xx[827]) * xx[19] - xx[21];
   xx[827] = xx[716] * xx[712];
-  xx[952] = xx[711] * xx[772];
+  xx[952] = xx[772] * xx[711];
   xx[960] = (xx[827] + xx[952]) * xx[19];
   xx[961] = xx[19] * (xx[708] - xx[707]);
   xx[965] = xx[19] * (xx[827] - xx[952]);
@@ -2051,13 +2051,13 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[998] = xx[997] * xx[205];
   xx[999] = xx[19] * (xx[996] * xx[205] - xx[193] * xx[998]) - xx[330];
   xx[330] = (xx[193] * xx[996] + xx[998] * xx[205]) * xx[19] - xx[997];
-  xx[996] = xx[999] * xx[238] - xx[330] * xx[241] - xx[52] * xx[236];
+  xx[996] = xx[999] * xx[238] - xx[241] * xx[330] - xx[52] * xx[236];
   xx[997] = xx[243] * xx[330];
   xx[998] = (xx[281] + xx[996] * xx[201] + xx[195] * xx[997] + xx[291] * xx[330])
     / xx[456];
   xx[1000] = xx[998] * xx[409] + xx[997];
   xx[1001] = xx[513] * xx[998] - xx[999] * xx[243];
-  xx[1002] = xx[996] - xx[376] * xx[998];
+  xx[1002] = xx[996] - xx[354] * xx[998];
   pm_math_quatXform(xx + 214, xx + 1000, xx + 1003);
   xx[1000] = xx[999] + xx[392] * xx[998];
   xx[1001] = xx[330] + xx[437] * xx[998];
@@ -2211,7 +2211,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[905] = xx[860] * xx[894] - xx[834] * xx[860];
   xx[1002] = xx[860] * xx[893] - xx[856] * xx[860];
   xx[1003] = xx[1002] * xx[772];
-  xx[1006] = xx[772] * xx[905];
+  xx[1006] = xx[905] * xx[772];
   xx[1083] = xx[716] * xx[905] + xx[1002] * xx[712];
   xx[1084] = - xx[1003];
   xx[1085] = - xx[1006];
@@ -2219,7 +2219,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_cross3(xx + 942, xx + 1084, xx + 1087);
   xx[1084] = xx[905] + xx[19] * (xx[1087] + xx[1003] * xx[711]);
   xx[1085] = xx[19] * (xx[1088] + xx[1006] * xx[711]) - xx[1002];
-  xx[1086] = xx[19] * (xx[1089] - xx[711] * xx[1083]);
+  xx[1086] = xx[19] * (xx[1089] - xx[1083] * xx[711]);
   xx[905] = xx[1080] - (pm_math_dot3(xx + 962, xx + 1074) + pm_math_dot3(xx +
     1059, xx + 1084));
   xx[1002] = xx[1081] - (pm_math_dot3(xx + 1062, xx + 1074) + pm_math_dot3(xx +
@@ -2241,13 +2241,13 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[293] = xx[289] * xx[205];
   xx[294] = xx[19] * (xx[283] * xx[205] - xx[193] * xx[293]) - xx[239];
   xx[239] = (xx[193] * xx[283] + xx[293] * xx[205]) * xx[19] - xx[289];
-  xx[283] = xx[294] * xx[238] - xx[239] * xx[241] - xx[52] * xx[155];
+  xx[283] = xx[294] * xx[238] - xx[241] * xx[239] - xx[52] * xx[155];
   xx[289] = xx[243] * xx[239];
   xx[293] = (xx[226] + xx[283] * xx[201] + xx[195] * xx[289] + xx[291] * xx[239])
     / xx[456];
   xx[318] = xx[293] * xx[409] + xx[289];
   xx[319] = xx[513] * xx[293] - xx[294] * xx[243];
-  xx[320] = xx[283] - xx[376] * xx[293];
+  xx[320] = xx[283] - xx[354] * xx[293];
   pm_math_quatXform(xx + 214, xx + 318, xx + 322);
   xx[318] = xx[294] + xx[392] * xx[293];
   xx[319] = xx[239] + xx[437] * xx[293];
@@ -2392,7 +2392,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[333] = xx[320] * xx[894] - xx[834] * xx[320];
   xx[335] = xx[320] * xx[893] - xx[856] * xx[320];
   xx[336] = xx[335] * xx[772];
-  xx[563] = xx[772] * xx[333];
+  xx[563] = xx[333] * xx[772];
   xx[564] = xx[716] * xx[333] + xx[335] * xx[712];
   xx[646] = - xx[336];
   xx[647] = - xx[563];
@@ -2400,7 +2400,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_cross3(xx + 942, xx + 646, xx + 649);
   xx[646] = xx[333] + xx[19] * (xx[649] + xx[336] * xx[711]);
   xx[647] = xx[19] * (xx[650] + xx[563] * xx[711]) - xx[335];
-  xx[648] = xx[19] * (xx[651] - xx[711] * xx[564]);
+  xx[648] = xx[19] * (xx[651] - xx[564] * xx[711]);
   xx[333] = xx[635] - (pm_math_dot3(xx + 962, xx + 631) + pm_math_dot3(xx + 1059,
     xx + 646));
   xx[335] = xx[636] - (pm_math_dot3(xx + 1062, xx + 631) + pm_math_dot3(xx +
@@ -2531,7 +2531,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1095] = xx[1085] + xx[1074] * xx[409];
   xx[1096] = xx[19] * (xx[1076] * xx[200] - xx[481] * xx[1075]) + xx[1090] + xx
     [513] * xx[1074];
-  xx[1097] = xx[945] - xx[376] * xx[1074];
+  xx[1097] = xx[945] - xx[354] * xx[1074];
   pm_math_quatXform(xx + 214, xx + 1095, xx + 1085);
   xx[1089] = xx[1088] + xx[392] * xx[1074];
   xx[1090] = xx[1084] + xx[437] * xx[1074];
@@ -2697,7 +2697,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
     [68];
   xx[1159] = xx[789] + xx[19] * (xx[1162] + xx[1136] * xx[171]) + xx[763] + xx
     [67];
-  xx[1160] = (xx[1163] - xx[171] * xx[1137]) * xx[19] + xx[805];
+  xx[1160] = (xx[1163] - xx[1137] * xx[171]) * xx[19] + xx[805];
   pm_math_quatXform(xx + 296, xx + 1158, xx + 1135);
   xx[789] = xx[1155] + xx[1135];
   xx[790] = xx[1134] + xx[1087];
@@ -2735,7 +2735,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[790] = xx[651] * xx[277] - xx[276] * xx[651];
   xx[1085] = xx[790] * xx[176];
   xx[1096] = xx[280] * xx[651] + xx[651] * xx[278];
-  xx[1097] = xx[176] * xx[1096];
+  xx[1097] = xx[1096] * xx[176];
   xx[1124] = xx[790] * xx[172] + xx[174] * xx[1096];
   xx[1161] = xx[1085];
   xx[1162] = xx[1097];
@@ -2796,7 +2796,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
     xx[1158] * xx[205])) * xx[569];
   xx[1074] = xx[290] * xx[651] + xx[771] * xx[1096] + xx[263] * xx[1097] + xx
     [173] * xx[1124] + xx[554] * xx[790] + xx[186] * xx[1088] + xx[250] * xx
-    [1089] + xx[312] * xx[1090] + xx[242] * xx[1160];
+    [1089] + xx[312] * xx[1090] + xx[1160] * xx[242];
   xx[1086] = xx[751] + xx[840] + (xx[906] * xx[163] + xx[941]) * xx[19];
   xx[840] = (xx[948] - xx[229] * xx[943] * xx[946]) * xx[19] + xx[1081] - xx[228];
   xx[906] = xx[840] / xx[235];
@@ -2814,7 +2814,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_cross3(xx + 930, xx + 1165, xx + 1168);
   xx[1165] = xx[19] * (xx[1168] + xx[1161] * xx[200]) - xx[1162];
   xx[1161] = xx[1159] + (xx[1163] * xx[200] + xx[1169]) * xx[19];
-  xx[1159] = (xx[200] * xx[1164] + xx[1170]) * xx[19];
+  xx[1159] = (xx[1164] * xx[200] + xx[1170]) * xx[19];
   xx[1162] = xx[1165];
   xx[1163] = xx[1161];
   xx[1164] = xx[1159];
@@ -2828,7 +2828,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1168] = xx[1162] + xx[946] * xx[409];
   xx[1169] = xx[19] * (xx[1158] * xx[200] - xx[481] * xx[1095]) + xx[1167] + xx
     [513] * xx[946];
-  xx[1170] = xx[1164] - xx[376] * xx[946];
+  xx[1170] = xx[1164] - xx[354] * xx[946];
   pm_math_quatXform(xx + 214, xx + 1168, xx + 1171);
   xx[1166] = xx[1165] + xx[392] * xx[946];
   xx[1167] = xx[1161] + xx[437] * xx[946];
@@ -2900,7 +2900,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1164] = xx[1095] * xx[277] - xx[276] * xx[1095];
   xx[1165] = xx[1164] * xx[176];
   xx[1175] = xx[280] * xx[1095] + xx[1095] * xx[278];
-  xx[1176] = xx[176] * xx[1175];
+  xx[1176] = xx[1175] * xx[176];
   xx[1182] = xx[1164] * xx[172] + xx[174] * xx[1175];
   xx[1183] = xx[1165];
   xx[1184] = xx[1176];
@@ -2961,7 +2961,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
     [1180] * xx[205])) * xx[569];
   xx[946] = xx[290] * xx[1095] + xx[771] * xx[1175] + xx[263] * xx[1176] + xx
     [173] * xx[1179] + xx[554] * xx[1167] + xx[186] * xx[1168] + xx[250] * xx
-    [1169] + xx[312] * xx[1170] + xx[242] * xx[1182];
+    [1169] + xx[312] * xx[1170] + xx[1182] * xx[242];
   xx[750] = xx[752] + (xx[163] * xx[910] + xx[942]) * xx[19];
   xx[751] = (xx[943] * xx[839] + xx[949]) * xx[19] + xx[1082];
   xx[752] = xx[751] / xx[235];
@@ -2979,7 +2979,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_cross3(xx + 930, xx + 1080, xx + 1184);
   xx[949] = xx[19] * (xx[1184] + xx[942] * xx[200]) - xx[943];
   xx[942] = xx[941] + (xx[947] * xx[200] + xx[1185]) * xx[19];
-  xx[941] = (xx[200] * xx[948] + xx[1186]) * xx[19];
+  xx[941] = (xx[948] * xx[200] + xx[1186]) * xx[19];
   xx[1080] = xx[949];
   xx[1081] = xx[942];
   xx[1082] = xx[941];
@@ -2992,7 +2992,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1080] = xx[943] + xx[839] * xx[409];
   xx[1081] = xx[19] * (xx[940] * xx[200] - xx[481] * xx[910]) + xx[1185] + xx
     [513] * xx[839];
-  xx[1082] = xx[948] - xx[376] * xx[839];
+  xx[1082] = xx[948] - xx[354] * xx[839];
   pm_math_quatXform(xx + 214, xx + 1080, xx + 1092);
   xx[1080] = xx[949] + xx[392] * xx[839];
   xx[1081] = xx[942] + xx[437] * xx[839];
@@ -3064,7 +3064,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[940] = xx[910] * xx[277] - xx[276] * xx[910];
   xx[941] = xx[940] * xx[176];
   xx[1082] = xx[280] * xx[910] + xx[910] * xx[278];
-  xx[1102] = xx[176] * xx[1082];
+  xx[1102] = xx[1082] * xx[176];
   xx[1108] = xx[940] * xx[172] + xx[174] * xx[1082];
   xx[1120] = xx[941];
   xx[1121] = xx[1102];
@@ -3125,7 +3125,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
     [1112] * xx[205])) * xx[569];
   xx[839] = xx[290] * xx[910] + xx[771] * xx[1082] + xx[263] * xx[1102] + xx[173]
     * xx[1108] + xx[554] * xx[1080] + xx[186] * xx[1081] + xx[250] * xx[1092] +
-    xx[312] * xx[1093] + xx[242] * xx[1114];
+    xx[312] * xx[1093] + xx[1114] * xx[242];
   pm_math_quatCompose(xx + 214, xx + 525, xx + 1139);
   pm_math_quatCompose(xx + 188, xx + 1139, xx + 1143);
   pm_math_quatCompose(xx + 178, xx + 1143, xx + 1184);
@@ -3162,9 +3162,9 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1174] = xx[1147] * xx[159] - xx[1165] * xx[157];
   xx[1180] = xx[19] * xx[159] * xx[1174] - (xx[1147] - xx[282]) - xx[280];
   xx[1181] = xx[1165] + xx[19] * xx[157] * xx[1174] + xx[287] - xx[276];
-  xx[1174] = xx[164] * xx[1181];
-  xx[1188] = xx[164] * xx[1180];
-  xx[1189] = xx[149] * xx[1181] - xx[1180] * xx[156];
+  xx[1174] = xx[1181] * xx[164];
+  xx[1188] = xx[1180] * xx[164];
+  xx[1189] = xx[1181] * xx[149] - xx[1180] * xx[156];
   xx[1190] = - xx[1174];
   xx[1191] = xx[1188];
   xx[1192] = xx[1189];
@@ -3246,7 +3246,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1224] = xx[1223] + xx[1213] * xx[409];
   xx[1225] = xx[19] * (xx[1214] * xx[473] - xx[339] * xx[1215]) + xx[1221] + xx
     [513] * xx[1213];
-  xx[1226] = xx[1198] - xx[376] * xx[1213];
+  xx[1226] = xx[1198] - xx[354] * xx[1213];
   pm_math_quatXform(xx + 214, xx + 1224, xx + 1220);
   xx[1223] = xx[1219] + xx[392] * xx[1213];
   xx[1224] = xx[1210] + xx[437] * xx[1213];
@@ -3267,8 +3267,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1243] = (xx[1226] + xx[1240]) * xx[19];
   pm_math_cross3(xx + 1241, xx + 231, xx + 1244);
   pm_math_quatXform(xx + 1236, xx + 1244, xx + 1241);
-  xx[1244] = xx[185] * xx[1136];
-  xx[1245] = xx[187] * xx[1129];
+  xx[1244] = xx[1136] * xx[185];
+  xx[1245] = xx[1129] * xx[187];
   xx[1246] = xx[1244] + xx[1245];
   xx[1247] = xx[1136] * xx[184];
   xx[1248] = xx[1129] * xx[184];
@@ -3292,17 +3292,17 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1256] = xx[1253];
   pm_math_cross3(xx + 1254, xx + 231, xx + 1257);
   pm_math_quatXform(xx + 1236, xx + 1257, xx + 1254);
-  xx[1257] = xx[185] * xx[1135];
+  xx[1257] = xx[1135] * xx[185];
   xx[1258] = xx[1135] * xx[184];
   xx[1259] = xx[1258] - xx[1245];
-  xx[1245] = xx[185] * xx[1129];
+  xx[1245] = xx[1129] * xx[185];
   xx[1260] = xx[1257];
   xx[1261] = xx[1259];
   xx[1262] = xx[1245];
   pm_math_cross3(xx + 611, xx + 1260, xx + 1263);
   xx[1260] = xx[1129] + (xx[1257] * xx[183] + xx[1263]) * xx[19] + xx[645] + xx
     [230];
-  xx[1261] = (xx[183] * xx[1259] + xx[1264]) * xx[19] + xx[641];
+  xx[1261] = (xx[1259] * xx[183] + xx[1264]) * xx[19] + xx[641];
   xx[1262] = (xx[1245] * xx[183] + xx[1265]) * xx[19] + xx[644] - xx[1135] - xx
     [228];
   pm_math_quatXform(xx + 300, xx + 1260, xx + 1263);
@@ -3314,15 +3314,15 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1261] = xx[21] - (xx[1250] + xx[1210]) * xx[19];
   pm_math_cross3(xx + 1259, xx + 231, xx + 1266);
   pm_math_quatXform(xx + 1236, xx + 1266, xx + 1259);
-  xx[1236] = xx[187] * xx[1135];
-  xx[1237] = xx[187] * xx[1136];
+  xx[1236] = xx[1135] * xx[187];
+  xx[1237] = xx[1136] * xx[187];
   xx[1238] = xx[1258] - xx[1244];
   pm_math_cross3(xx + 611, xx + 1236, xx + 1266);
   xx[1269] = (xx[1236] * xx[183] + xx[1266]) * xx[19] + xx[570] - xx[1136] + xx
     [229];
   xx[1270] = xx[1135] + (xx[1237] * xx[183] + xx[1267]) * xx[19] + xx[182] + xx
     [228];
-  xx[1271] = (xx[183] * xx[1238] + xx[1268]) * xx[19] + xx[550];
+  xx[1271] = (xx[1238] * xx[183] + xx[1268]) * xx[19] + xx[550];
   pm_math_quatXform(xx + 300, xx + 1269, xx + 1236);
   xx[1135] = xx[1259] + xx[1236];
   xx[1136] = xx[1222] + xx[1225];
@@ -3403,7 +3403,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_quatXform(xx + 1269, xx + 1292, xx + 1289);
   xx[1269] = xx[1130] * xx[176];
   xx[1270] = xx[1131] * xx[176];
-  xx[1271] = xx[1130] * xx[172] + xx[174] * xx[1131];
+  xx[1271] = xx[1130] * xx[172] + xx[1131] * xx[174];
   xx[1292] = xx[1269];
   xx[1293] = xx[1270];
   xx[1294] = - xx[1271];
@@ -3412,7 +3412,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
     [68];
   xx[1293] = xx[1130] + xx[19] * (xx[1296] + xx[1270] * xx[171]) + xx[763] + xx
     [67];
-  xx[1294] = (xx[1297] - xx[171] * xx[1271]) * xx[19] + xx[805];
+  xx[1294] = (xx[1297] - xx[1271] * xx[171]) * xx[19] + xx[805];
   pm_math_quatXform(xx + 296, xx + 1292, xx + 1269);
   xx[1130] = xx[1289] + xx[1269];
   xx[1131] = xx[1268] + xx[1222];
@@ -3450,7 +3450,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1136] = xx[1131] * xx[277] - xx[276] * xx[1131];
   xx[1220] = xx[1136] * xx[176];
   xx[1234] = xx[280] * xx[1131] + xx[1131] * xx[278];
-  xx[1235] = xx[176] * xx[1234];
+  xx[1235] = xx[1234] * xx[176];
   xx[1258] = xx[1136] * xx[172] + xx[174] * xx[1234];
   xx[1295] = xx[1220];
   xx[1296] = xx[1235];
@@ -3511,7 +3511,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
     xx[1292] * xx[205])) * xx[569];
   xx[1213] = xx[290] * xx[1131] + xx[771] * xx[1234] + xx[263] * xx[1235] + xx
     [173] * xx[1258] + xx[554] * xx[1136] + xx[186] * xx[1223] + xx[250] * xx
-    [1224] + xx[312] * xx[1225] + xx[242] * xx[1294];
+    [1224] + xx[312] * xx[1225] + xx[1294] * xx[242];
   xx[1221] = xx[1126] + xx[1181] + (xx[1188] * xx[163] + xx[1194]) * xx[19];
   xx[1181] = (xx[229] * xx[1196] * xx[1199] + xx[1204]) * xx[19] + xx[1217] +
     xx[228];
@@ -3544,7 +3544,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1302] = xx[1297] + xx[1292] * xx[409];
   xx[1303] = xx[19] * (xx[1293] * xx[473] - xx[339] * xx[1295]) + xx[1301] + xx
     [513] * xx[1292];
-  xx[1304] = xx[1299] - xx[376] * xx[1292];
+  xx[1304] = xx[1299] - xx[354] * xx[1292];
   pm_math_quatXform(xx + 214, xx + 1302, xx + 1299);
   xx[1302] = xx[1296] + xx[392] * xx[1292];
   xx[1303] = xx[1199] + xx[437] * xx[1292];
@@ -3616,7 +3616,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1295] = xx[1199] * xx[277] - xx[276] * xx[1199];
   xx[1296] = xx[1295] * xx[176];
   xx[1301] = xx[280] * xx[1199] + xx[1199] * xx[278];
-  xx[1310] = xx[1301] * xx[176];
+  xx[1310] = xx[176] * xx[1301];
   xx[1316] = xx[1295] * xx[172] + xx[174] * xx[1301];
   xx[1317] = xx[1296];
   xx[1318] = xx[1310];
@@ -3677,8 +3677,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
     xx[1314] * xx[205])) * xx[569];
   xx[1292] = xx[290] * xx[1199] + xx[771] * xx[1301] + xx[263] * xx[1310] + xx
     [173] * xx[1313] + xx[554] * xx[1299] + xx[186] * xx[1300] + xx[250] * xx
-    [1303] + xx[312] * xx[1304] + xx[1316] * xx[242];
-  xx[1125] = xx[1127] + (xx[163] * xx[1189] + xx[1195]) * xx[19];
+    [1303] + xx[312] * xx[1304] + xx[242] * xx[1316];
+  xx[1125] = xx[1127] + (xx[1189] * xx[163] + xx[1195]) * xx[19];
   xx[1126] = (xx[1196] * xx[1180] + xx[1205]) * xx[19] + xx[1218];
   xx[1127] = xx[1126] / xx[471];
   xx[1180] = xx[493] * xx[1127];
@@ -3709,7 +3709,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1227] = xx[1216] + xx[1193] * xx[409];
   xx[1228] = xx[19] * (xx[1194] * xx[473] - xx[339] * xx[1195]) + xx[1204] + xx
     [513] * xx[1193];
-  xx[1229] = xx[1218] - xx[376] * xx[1193];
+  xx[1229] = xx[1218] - xx[354] * xx[1193];
   pm_math_quatXform(xx + 214, xx + 1227, xx + 1203);
   xx[1227] = xx[1196] + xx[392] * xx[1193];
   xx[1228] = xx[1180] + xx[437] * xx[1193];
@@ -3781,7 +3781,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1194] = xx[1180] * xx[277] - xx[276] * xx[1180];
   xx[1195] = xx[1194] * xx[176];
   xx[1205] = xx[280] * xx[1180] + xx[1180] * xx[278];
-  xx[1231] = xx[1205] * xx[176];
+  xx[1231] = xx[176] * xx[1205];
   xx[1242] = xx[1194] * xx[172] + xx[174] * xx[1205];
   xx[1254] = xx[1195];
   xx[1255] = xx[1231];
@@ -3842,7 +3842,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
     xx[1246] * xx[205])) * xx[569];
   xx[1193] = xx[290] * xx[1180] + xx[771] * xx[1205] + xx[263] * xx[1231] + xx
     [173] * xx[1242] + xx[554] * xx[1203] + xx[186] * xx[1204] + xx[250] * xx
-    [1227] + xx[312] * xx[1228] + xx[1248] * xx[242];
+    [1227] + xx[312] * xx[1228] + xx[242] * xx[1248];
   pm_math_quatCompose(xx + 214, xx + 402, xx + 1273);
   pm_math_quatCompose(xx + 188, xx + 1273, xx + 1277);
   pm_math_quatCompose(xx + 178, xx + 1277, xx + 1318);
@@ -3879,9 +3879,9 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1305] = xx[1281] * xx[159] - xx[1296] * xx[157];
   xx[1314] = xx[19] * xx[159] * xx[1305] - (xx[1281] - xx[282]) - xx[280];
   xx[1315] = xx[1296] + xx[19] * xx[157] * xx[1305] + xx[287] - xx[276];
-  xx[1305] = xx[1315] * xx[164];
-  xx[1322] = xx[1314] * xx[164];
-  xx[1323] = xx[1315] * xx[149] - xx[1314] * xx[156];
+  xx[1305] = xx[164] * xx[1315];
+  xx[1322] = xx[164] * xx[1314];
+  xx[1323] = xx[149] * xx[1315] - xx[1314] * xx[156];
   xx[1324] = - xx[1305];
   xx[1325] = xx[1322];
   xx[1326] = xx[1323];
@@ -3963,7 +3963,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1359] = xx[1358] + xx[1348] * xx[409];
   xx[1360] = xx[19] * (xx[345] * xx[1350] - xx[1349] * xx[348]) + xx[1356] + xx
     [513] * xx[1348];
-  xx[1361] = xx[1332] - xx[376] * xx[1348];
+  xx[1361] = xx[1332] - xx[354] * xx[1348];
   pm_math_quatXform(xx + 214, xx + 1359, xx + 1355);
   xx[1358] = xx[1354] + xx[392] * xx[1348];
   xx[1359] = xx[1345] + xx[437] * xx[1348];
@@ -3984,8 +3984,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1378] = (xx[1361] + xx[1375]) * xx[19];
   pm_math_cross3(xx + 1376, xx + 231, xx + 1379);
   pm_math_quatXform(xx + 1371, xx + 1379, xx + 1376);
-  xx[1379] = xx[1270] * xx[185];
-  xx[1380] = xx[1263] * xx[187];
+  xx[1379] = xx[185] * xx[1270];
+  xx[1380] = xx[187] * xx[1263];
   xx[1381] = xx[1379] + xx[1380];
   xx[1382] = xx[1270] * xx[184];
   xx[1383] = xx[1263] * xx[184];
@@ -4009,17 +4009,17 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1391] = xx[1388];
   pm_math_cross3(xx + 1389, xx + 231, xx + 1392);
   pm_math_quatXform(xx + 1371, xx + 1392, xx + 1389);
-  xx[1392] = xx[1269] * xx[185];
+  xx[1392] = xx[185] * xx[1269];
   xx[1393] = xx[1269] * xx[184];
   xx[1394] = xx[1393] - xx[1380];
-  xx[1380] = xx[1263] * xx[185];
+  xx[1380] = xx[185] * xx[1263];
   xx[1395] = xx[1392];
   xx[1396] = xx[1394];
   xx[1397] = xx[1380];
   pm_math_cross3(xx + 611, xx + 1395, xx + 1398);
   xx[1395] = xx[1263] + (xx[1392] * xx[183] + xx[1398]) * xx[19] + xx[645] + xx
     [230];
-  xx[1396] = (xx[1394] * xx[183] + xx[1399]) * xx[19] + xx[641];
+  xx[1396] = (xx[183] * xx[1394] + xx[1399]) * xx[19] + xx[641];
   xx[1397] = (xx[1380] * xx[183] + xx[1400]) * xx[19] + xx[644] - xx[1269] - xx
     [228];
   pm_math_quatXform(xx + 300, xx + 1395, xx + 1398);
@@ -4031,15 +4031,15 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1396] = xx[21] - (xx[1385] + xx[1345]) * xx[19];
   pm_math_cross3(xx + 1394, xx + 231, xx + 1401);
   pm_math_quatXform(xx + 1371, xx + 1401, xx + 1394);
-  xx[1371] = xx[1269] * xx[187];
-  xx[1372] = xx[1270] * xx[187];
+  xx[1371] = xx[187] * xx[1269];
+  xx[1372] = xx[187] * xx[1270];
   xx[1373] = xx[1393] - xx[1379];
   pm_math_cross3(xx + 611, xx + 1371, xx + 1401);
   xx[1404] = (xx[1371] * xx[183] + xx[1401]) * xx[19] + xx[570] - xx[1270] + xx
     [229];
   xx[1405] = xx[1269] + (xx[1372] * xx[183] + xx[1402]) * xx[19] + xx[182] + xx
     [228];
-  xx[1406] = (xx[1373] * xx[183] + xx[1403]) * xx[19] + xx[550];
+  xx[1406] = (xx[183] * xx[1373] + xx[1403]) * xx[19] + xx[550];
   pm_math_quatXform(xx + 300, xx + 1404, xx + 1371);
   xx[1269] = xx[1394] + xx[1371];
   xx[1270] = xx[1357] + xx[1360];
@@ -4120,7 +4120,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_quatXform(xx + 1404, xx + 1427, xx + 1424);
   xx[1404] = xx[1264] * xx[176];
   xx[1405] = xx[1265] * xx[176];
-  xx[1406] = xx[1264] * xx[172] + xx[1265] * xx[174];
+  xx[1406] = xx[1264] * xx[172] + xx[174] * xx[1265];
   xx[1427] = xx[1404];
   xx[1428] = xx[1405];
   xx[1429] = - xx[1406];
@@ -4129,7 +4129,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
     [68];
   xx[1428] = xx[1264] + xx[19] * (xx[1431] + xx[1405] * xx[171]) + xx[763] + xx
     [67];
-  xx[1429] = (xx[1432] - xx[1406] * xx[171]) * xx[19] + xx[805];
+  xx[1429] = (xx[1432] - xx[171] * xx[1406]) * xx[19] + xx[805];
   pm_math_quatXform(xx + 296, xx + 1427, xx + 1404);
   xx[1264] = xx[1424] + xx[1404];
   xx[1265] = xx[1403] + xx[1357];
@@ -4167,7 +4167,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1270] = xx[1265] * xx[277] - xx[276] * xx[1265];
   xx[1355] = xx[1270] * xx[176];
   xx[1369] = xx[280] * xx[1265] + xx[1265] * xx[278];
-  xx[1370] = xx[1369] * xx[176];
+  xx[1370] = xx[176] * xx[1369];
   xx[1393] = xx[1270] * xx[172] + xx[174] * xx[1369];
   xx[1430] = xx[1355];
   xx[1431] = xx[1370];
@@ -4228,7 +4228,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
     xx[1427] * xx[205])) * xx[569];
   xx[1348] = xx[290] * xx[1265] + xx[771] * xx[1369] + xx[263] * xx[1370] + xx
     [173] * xx[1393] + xx[554] * xx[1270] + xx[186] * xx[1358] + xx[250] * xx
-    [1359] + xx[312] * xx[1360] + xx[1429] * xx[242];
+    [1359] + xx[312] * xx[1360] + xx[242] * xx[1429];
   xx[1356] = xx[1260] + xx[1315] + (xx[1322] * xx[163] + xx[1328]) * xx[19];
   xx[1315] = (xx[229] * xx[1330] * xx[1333] + xx[1338]) * xx[19] + xx[1352] +
     xx[228];
@@ -4261,7 +4261,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1437] = xx[1432] + xx[1427] * xx[409];
   xx[1438] = xx[19] * (xx[345] * xx[1430] - xx[1428] * xx[348]) + xx[1436] + xx
     [513] * xx[1427];
-  xx[1439] = xx[1434] - xx[376] * xx[1427];
+  xx[1439] = xx[1434] - xx[354] * xx[1427];
   pm_math_quatXform(xx + 214, xx + 1437, xx + 1434);
   xx[1437] = xx[1431] + xx[392] * xx[1427];
   xx[1438] = xx[1333] + xx[437] * xx[1427];
@@ -4395,7 +4395,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1427] = xx[290] * xx[1333] + xx[771] * xx[1436] + xx[263] * xx[1445] + xx
     [173] * xx[1448] + xx[554] * xx[1434] + xx[186] * xx[1435] + xx[250] * xx
     [1438] + xx[312] * xx[1439] + xx[242] * xx[1451];
-  xx[1259] = xx[1261] + (xx[1323] * xx[163] + xx[1329]) * xx[19];
+  xx[1259] = xx[1261] + (xx[163] * xx[1323] + xx[1329]) * xx[19];
   xx[1260] = (xx[1330] * xx[1314] + xx[1339]) * xx[19] + xx[1353];
   xx[1261] = xx[1260] / xx[346];
   xx[1314] = xx[373] * xx[1261];
@@ -4426,7 +4426,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1362] = xx[1351] + xx[1327] * xx[409];
   xx[1363] = xx[19] * (xx[345] * xx[1329] - xx[1328] * xx[348]) + xx[1338] + xx
     [513] * xx[1327];
-  xx[1364] = xx[1353] - xx[376] * xx[1327];
+  xx[1364] = xx[1353] - xx[354] * xx[1327];
   pm_math_quatXform(xx + 214, xx + 1362, xx + 1337);
   xx[1362] = xx[1330] + xx[392] * xx[1327];
   xx[1363] = xx[1314] + xx[437] * xx[1327];
@@ -4560,10 +4560,10 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1327] = xx[290] * xx[1314] + xx[771] * xx[1339] + xx[263] * xx[1366] + xx
     [173] * xx[1377] + xx[554] * xx[1337] + xx[186] * xx[1338] + xx[250] * xx
     [1362] + xx[312] * xx[1363] + xx[242] * xx[1383];
-  xx[1329] = xx[352] * xx[204] + xx[354] * xx[192];
-  xx[1364] = xx[202] * xx[352] - xx[354] * xx[203];
-  xx[1381] = xx[352] * xx[203] + xx[202] * xx[354];
-  xx[1382] = xx[352] * xx[192] - xx[354] * xx[204];
+  xx[1329] = xx[352] * xx[204] + xx[356] * xx[192];
+  xx[1364] = xx[202] * xx[352] - xx[356] * xx[203];
+  xx[1381] = xx[352] * xx[203] + xx[202] * xx[356];
+  xx[1382] = xx[352] * xx[192] - xx[356] * xx[204];
   xx[1408] = xx[1329];
   xx[1409] = xx[1364];
   xx[1410] = xx[1381];
@@ -4614,17 +4614,17 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1459] = xx[1449];
   pm_math_cross3(xx + 284, xx + 1457, xx + 1460);
   xx[1450] = xx[1394] + xx[1426] + xx[19] * (xx[1460] - xx[1424] * xx[163]);
-  xx[1424] = xx[352] * xx[308] + xx[311] * xx[354];
-  xx[1426] = xx[352] * xx[309] - xx[310] * xx[354];
-  xx[1457] = xx[352] * xx[310] + xx[309] * xx[354];
-  xx[1458] = xx[352] * xx[311] - xx[308] * xx[354];
+  xx[1424] = xx[352] * xx[308] + xx[311] * xx[356];
+  xx[1426] = xx[352] * xx[309] - xx[310] * xx[356];
+  xx[1457] = xx[352] * xx[310] + xx[309] * xx[356];
+  xx[1458] = xx[352] * xx[311] - xx[308] * xx[356];
   xx[1463] = xx[1424];
   xx[1464] = xx[1426];
   xx[1465] = xx[1457];
   xx[1466] = xx[1458];
-  xx[1459] = xx[195] * xx[354];
+  xx[1459] = xx[195] * xx[356];
   xx[1467] = xx[19] * xx[352] * xx[1459];
-  xx[1468] = xx[19] * xx[1459] * xx[354] - xx[195];
+  xx[1468] = xx[19] * xx[1459] * xx[356] - xx[195];
   xx[1469] = xx[230] * xx[1467] + xx[316];
   xx[1470] = xx[317] + xx[230] * xx[1468];
   xx[1471] = xx[229] * xx[1468] - xx[228] * xx[1467];
@@ -4660,19 +4660,19 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1457] = xx[19] * (xx[1469] - xx[1424] * xx[314]) + xx[1426] + xx[19] * (xx
     [1463] + xx[308] * xx[459]) + xx[229];
   xx[314] = xx[1457] / xx[358];
-  xx[459] = xx[396] * xx[314];
+  xx[459] = xx[398] * xx[314];
   xx[1458] = xx[357] * xx[314];
-  xx[1459] = xx[1458] * xx[354];
-  xx[1475] = xx[459] * xx[354];
-  xx[1476] = xx[459] + (xx[352] * xx[1459] - xx[1475] * xx[354]) * xx[19];
+  xx[1459] = xx[1458] * xx[356];
+  xx[1475] = xx[459] * xx[356];
+  xx[1476] = xx[459] + (xx[352] * xx[1459] - xx[1475] * xx[356]) * xx[19];
   xx[459] = xx[341] * xx[1476];
-  xx[1477] = xx[1458] - xx[19] * (xx[352] * xx[1475] + xx[1459] * xx[354]);
-  xx[1458] = xx[1477] * xx[462] - xx[1476] * xx[465] - xx[52] * xx[314];
+  xx[1477] = xx[1458] - xx[19] * (xx[352] * xx[1475] + xx[1459] * xx[356]);
+  xx[1458] = xx[1477] * xx[462] - xx[465] * xx[1476] - xx[52] * xx[314];
   xx[1459] = (xx[292] - (xx[195] * xx[459] - xx[1458] * xx[201] + xx[291] * xx
     [1476])) / xx[456];
   xx[1478] = xx[1459] * xx[409] - xx[459];
   xx[1479] = xx[513] * xx[1459] - xx[1477] * xx[341];
-  xx[1480] = xx[1458] - xx[376] * xx[1459];
+  xx[1480] = xx[1458] - xx[354] * xx[1459];
   pm_math_quatXform(xx + 214, xx + 1478, xx + 1481);
   xx[1478] = xx[1477] + xx[392] * xx[1459];
   xx[1479] = xx[437] * xx[1459] - xx[1476];
@@ -4686,7 +4686,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1489] = xx[1381] * xx[1364];
   xx[1490] = xx[1329] * xx[1382];
   xx[1491] = xx[19] * (xx[1489] - xx[1490]);
-  xx[1492] = xx[1329] * xx[1381];
+  xx[1492] = xx[1381] * xx[1329];
   xx[1493] = xx[1382] * xx[1364];
   xx[1494] = xx[21] - (xx[1458] + xx[1488]) * xx[19];
   xx[1495] = xx[1491];
@@ -4875,7 +4875,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[251] = xx[183] * xx[277] - xx[276] * xx[183];
   xx[550] = xx[251] * xx[176];
   xx[763] = xx[280] * xx[183] + xx[183] * xx[278];
-  xx[805] = xx[176] * xx[763];
+  xx[805] = xx[763] * xx[176];
   xx[807] = xx[251] * xx[172] + xx[174] * xx[763];
   xx[1475] = xx[550];
   xx[1476] = xx[805];
@@ -4936,25 +4936,25 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
     * xx[205])) * xx[569];
   xx[611] = xx[290] * xx[183] + xx[771] * xx[763] + xx[263] * xx[805] + xx[173] *
     xx[807] + xx[554] * xx[251] + xx[186] * xx[550] + xx[250] * xx[1416] + xx
-    [312] * xx[1475] + xx[242] * xx[1479];
+    [312] * xx[1475] + xx[1479] * xx[242];
   xx[612] = xx[1395] + xx[1431] + (xx[1440] * xx[163] + xx[1461]) * xx[19];
   xx[613] = xx[1473] + xx[1467];
   xx[1431] = (xx[1424] * xx[316] + xx[1470]) * xx[19] - xx[453] + (xx[308] * xx
     [460] + xx[1464]) * xx[19] + xx[228];
   xx[316] = xx[1431] / xx[358];
-  xx[460] = xx[396] * xx[316];
+  xx[460] = xx[398] * xx[316];
   xx[1440] = xx[357] * xx[316];
-  xx[1476] = xx[1440] * xx[354];
-  xx[1487] = xx[460] * xx[354];
-  xx[1497] = xx[460] + (xx[352] * xx[1476] - xx[1487] * xx[354]) * xx[19];
+  xx[1476] = xx[1440] * xx[356];
+  xx[1487] = xx[460] * xx[356];
+  xx[1497] = xx[460] + (xx[352] * xx[1476] - xx[1487] * xx[356]) * xx[19];
   xx[460] = xx[341] * xx[1497];
-  xx[1498] = xx[1440] - xx[19] * (xx[352] * xx[1487] + xx[1476] * xx[354]);
+  xx[1498] = xx[1440] - xx[19] * (xx[352] * xx[1487] + xx[1476] * xx[356]);
   xx[1440] = xx[1498] * xx[462] - xx[1497] * xx[465] - xx[52] * xx[316];
   xx[1476] = (xx[613] - (xx[195] * xx[460] - xx[1440] * xx[201] + xx[291] * xx
     [1497])) / xx[456];
   xx[1512] = xx[1476] * xx[409] - xx[460];
   xx[1513] = xx[513] * xx[1476] - xx[1498] * xx[341];
-  xx[1514] = xx[1440] - xx[376] * xx[1476];
+  xx[1514] = xx[1440] - xx[354] * xx[1476];
   pm_math_quatXform(xx + 214, xx + 1512, xx + 1528);
   xx[1512] = xx[1498] + xx[392] * xx[1476];
   xx[1513] = xx[437] * xx[1476] - xx[1497];
@@ -5026,7 +5026,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1505] = xx[460] * xx[277] - xx[276] * xx[460];
   xx[1512] = xx[1505] * xx[176];
   xx[1535] = xx[280] * xx[460] + xx[460] * xx[278];
-  xx[1536] = xx[176] * xx[1535];
+  xx[1536] = xx[1535] * xx[176];
   xx[1541] = xx[1505] * xx[172] + xx[174] * xx[1535];
   xx[1542] = xx[1512];
   xx[1543] = xx[1536];
@@ -5087,25 +5087,25 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
     xx[1539] * xx[205])) * xx[569];
   xx[1513] = xx[290] * xx[460] + xx[771] * xx[1535] + xx[263] * xx[1536] + xx
     [173] * xx[1538] + xx[554] * xx[1505] + xx[186] * xx[1528] + xx[250] * xx
-    [1529] + xx[312] * xx[1530] + xx[242] * xx[1541];
+    [1529] + xx[312] * xx[1530] + xx[1541] * xx[242];
   xx[1394] = xx[1396] + (xx[163] * xx[1449] + xx[1462]) * xx[19];
   xx[1395] = xx[1474] + xx[1468];
   xx[1396] = (xx[1424] * xx[317] + xx[1471]) * xx[19] + (xx[1465] - xx[308] *
     xx[463]) * xx[19];
   xx[317] = xx[1396] / xx[358];
-  xx[463] = xx[396] * xx[317];
+  xx[463] = xx[398] * xx[317];
   xx[1424] = xx[357] * xx[317];
-  xx[1449] = xx[1424] * xx[354];
-  xx[1460] = xx[463] * xx[354];
-  xx[1461] = xx[463] + (xx[352] * xx[1449] - xx[1460] * xx[354]) * xx[19];
+  xx[1449] = xx[1424] * xx[356];
+  xx[1460] = xx[463] * xx[356];
+  xx[1461] = xx[463] + (xx[352] * xx[1449] - xx[1460] * xx[356]) * xx[19];
   xx[463] = xx[341] * xx[1461];
-  xx[1462] = xx[1424] - xx[19] * (xx[352] * xx[1460] + xx[1449] * xx[354]);
+  xx[1462] = xx[1424] - xx[19] * (xx[352] * xx[1460] + xx[1449] * xx[356]);
   xx[1424] = xx[1462] * xx[462] - xx[1461] * xx[465] - xx[52] * xx[317];
   xx[1449] = (xx[1395] - (xx[195] * xx[463] - xx[1424] * xx[201] + xx[291] * xx
     [1461])) / xx[456];
   xx[1463] = xx[1449] * xx[409] - xx[463];
   xx[1464] = xx[513] * xx[1449] - xx[1462] * xx[341];
-  xx[1465] = xx[1424] - xx[376] * xx[1449];
+  xx[1465] = xx[1424] - xx[354] * xx[1449];
   pm_math_quatXform(xx + 214, xx + 1463, xx + 1466);
   xx[1463] = xx[1462] + xx[392] * xx[1449];
   xx[1464] = xx[437] * xx[1449] - xx[1461];
@@ -5177,7 +5177,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[783] = xx[463] * xx[277] - xx[276] * xx[463];
   xx[792] = xx[783] * xx[176];
   xx[1465] = xx[280] * xx[463] + xx[463] * xx[278];
-  xx[1470] = xx[176] * xx[1465];
+  xx[1470] = xx[1465] * xx[176];
   xx[176] = xx[783] * xx[172] + xx[174] * xx[1465];
   xx[1484] = xx[792];
   xx[1485] = xx[1470];
@@ -5238,14 +5238,14 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
     [1463] * xx[205])) * xx[569];
   xx[792] = xx[290] * xx[463] + xx[771] * xx[171] + xx[263] * xx[176] + xx[173] *
     xx[761] + xx[554] * xx[172] + xx[186] * xx[174] + xx[250] * xx[760] + xx[312]
-    * xx[762] + xx[242] * xx[1465];
+    * xx[762] + xx[1465] * xx[242];
   xx[1449] = xx[953] * xx[239] + xx[1008] * xx[324] + xx[1042] * xx[547] + xx
     [1077] * xx[562] + xx[996] * xx[322] + xx[997] * xx[323] + xx[1009] * xx[331]
     + xx[281] * xx[332] + xx[288] * xx[334] + xx[929] * xx[320] - xx[236] * xx
     [333] - xx[998] * xx[335] - xx[1001] * xx[336];
   xx[1463] = xx[953] * xx[651] + xx[1008] * xx[1096] + xx[1042] * xx[1097] + xx
     [1077] * xx[1124] + xx[996] * xx[790] + xx[997] * xx[1088] + xx[1009] * xx
-    [1089] + xx[281] * xx[1090] + xx[288] * xx[1160];
+    [1089] + xx[281] * xx[1090] + xx[1160] * xx[288];
   xx[1464] = xx[953] * xx[1095] + xx[1008] * xx[1175] + xx[1042] * xx[1176] +
     xx[1077] * xx[1179] + xx[996] * xx[1167] + xx[997] * xx[1168] + xx[1009] *
     xx[1169] + xx[281] * xx[1170] + xx[1182] * xx[288];
@@ -5272,16 +5272,16 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
     xx[1362] + xx[281] * xx[1363] + xx[1383] * xx[288];
   xx[1486] = xx[953] * xx[183] + xx[1008] * xx[763] + xx[1042] * xx[805] + xx
     [1077] * xx[807] + xx[996] * xx[251] + xx[997] * xx[550] + xx[1009] * xx
-    [1416] + xx[281] * xx[1475] + xx[288] * xx[1479];
+    [1416] + xx[281] * xx[1475] + xx[1479] * xx[288];
   xx[1494] = xx[953] * xx[460] + xx[1008] * xx[1535] + xx[1042] * xx[1536] + xx
     [1077] * xx[1538] + xx[996] * xx[1505] + xx[997] * xx[1528] + xx[1009] * xx
-    [1529] + xx[281] * xx[1530] + xx[288] * xx[1541];
+    [1529] + xx[281] * xx[1530] + xx[1541] * xx[288];
   xx[1495] = xx[953] * xx[463] + xx[1008] * xx[171] + xx[1042] * xx[176] + xx
     [1077] * xx[761] + xx[996] * xx[172] + xx[997] * xx[174] + xx[1009] * xx[760]
-    + xx[281] * xx[762] + xx[288] * xx[1465];
+    + xx[281] * xx[762] + xx[1465] * xx[288];
   xx[1496] = xx[225] * xx[651] + xx[294] * xx[1096] + xx[548] * xx[1097] + xx
     [549] * xx[1124] + xx[283] * xx[790] + xx[289] * xx[1088] + xx[295] * xx
-    [1089] + xx[226] * xx[1090] + xx[227] * xx[1160];
+    [1089] + xx[226] * xx[1090] + xx[1160] * xx[227];
   xx[1160] = xx[225] * xx[1095] + xx[294] * xx[1175] + xx[548] * xx[1176] + xx
     [549] * xx[1179] + xx[283] * xx[1167] + xx[289] * xx[1168] + xx[295] * xx
     [1169] + xx[226] * xx[1170] + xx[1182] * xx[227];
@@ -5293,28 +5293,28 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
     [1224] + xx[226] * xx[1225] + xx[1294] * xx[227];
   xx[1294] = xx[225] * xx[1199] + xx[294] * xx[1301] + xx[548] * xx[1310] + xx
     [549] * xx[1313] + xx[283] * xx[1299] + xx[289] * xx[1300] + xx[295] * xx
-    [1303] + xx[226] * xx[1304] + xx[1316] * xx[227];
+    [1303] + xx[226] * xx[1304] + xx[227] * xx[1316];
   xx[1316] = xx[225] * xx[1180] + xx[294] * xx[1205] + xx[548] * xx[1231] + xx
     [549] * xx[1242] + xx[283] * xx[1203] + xx[289] * xx[1204] + xx[295] * xx
-    [1227] + xx[226] * xx[1228] + xx[1248] * xx[227];
+    [1227] + xx[226] * xx[1228] + xx[227] * xx[1248];
   xx[1248] = xx[225] * xx[1265] + xx[294] * xx[1369] + xx[548] * xx[1370] + xx
     [549] * xx[1393] + xx[283] * xx[1270] + xx[289] * xx[1358] + xx[295] * xx
     [1359] + xx[226] * xx[1360] + xx[1429] * xx[227];
   xx[1429] = xx[225] * xx[1333] + xx[294] * xx[1436] + xx[548] * xx[1445] + xx
     [549] * xx[1448] + xx[283] * xx[1434] + xx[289] * xx[1435] + xx[295] * xx
-    [1438] + xx[226] * xx[1439] + xx[1451] * xx[227];
+    [1438] + xx[226] * xx[1439] + xx[227] * xx[1451];
   xx[1451] = xx[225] * xx[1314] + xx[294] * xx[1339] + xx[548] * xx[1366] + xx
     [549] * xx[1377] + xx[283] * xx[1337] + xx[289] * xx[1338] + xx[295] * xx
-    [1362] + xx[226] * xx[1363] + xx[1383] * xx[227];
+    [1362] + xx[226] * xx[1363] + xx[227] * xx[1383];
   xx[1383] = xx[225] * xx[183] + xx[294] * xx[763] + xx[548] * xx[805] + xx[549]
     * xx[807] + xx[283] * xx[251] + xx[289] * xx[550] + xx[295] * xx[1416] + xx
-    [226] * xx[1475] + xx[227] * xx[1479];
+    [226] * xx[1475] + xx[1479] * xx[227];
   xx[1479] = xx[225] * xx[460] + xx[294] * xx[1535] + xx[548] * xx[1536] + xx
     [549] * xx[1538] + xx[283] * xx[1505] + xx[289] * xx[1528] + xx[295] * xx
-    [1529] + xx[226] * xx[1530] + xx[227] * xx[1541];
+    [1529] + xx[226] * xx[1530] + xx[1541] * xx[227];
   xx[1499] = xx[225] * xx[463] + xx[294] * xx[171] + xx[548] * xx[176] + xx[549]
     * xx[761] + xx[283] * xx[172] + xx[289] * xx[174] + xx[295] * xx[760] + xx
-    [226] * xx[762] + xx[227] * xx[1465];
+    [226] * xx[762] + xx[1465] * xx[227];
   pm_math_quatInverseXform(xx + 615, xx + 1132, xx + 1500);
   pm_math_cross3(xx + 1132, xx + 626, xx + 1506);
   xx[1132] = xx[1085] + xx[1506];
@@ -5379,7 +5379,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1547] = xx[1524] + xx[19] * xx[1134] * xx[1527] - xx[1553] + xx[1541];
   xx[1527] = xx[1500] * xx[1547];
   xx[1554] = xx[1500] * xx[1549];
-  xx[1555] = xx[1085] * xx[1547] - xx[1549] * xx[1133];
+  xx[1555] = xx[1547] * xx[1085] - xx[1549] * xx[1133];
   xx[1556] = - xx[1527];
   xx[1557] = xx[1554];
   xx[1558] = xx[1555];
@@ -5444,7 +5444,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1138] = xx[1501] * xx[1501];
   xx[1517] = (xx[1138] + xx[1539]) * xx[19] - xx[21];
   xx[1519] = xx[1516] * xx[1503];
-  xx[1539] = xx[1501] * xx[1518];
+  xx[1539] = xx[1518] * xx[1501];
   xx[1557] = (xx[1519] + xx[1539]) * xx[19];
   xx[1558] = xx[19] * (xx[1509] - xx[1508]);
   xx[1576] = xx[19] * (xx[1519] - xx[1539]);
@@ -5678,7 +5678,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1549] = xx[479] * xx[1561] + xx[583] * xx[1580] - xx[586] * xx[1579];
   xx[1555] = xx[911] * xx[1131] + xx[1111] * xx[1234] + xx[802] * xx[1235] + xx
     [789] * xx[1258] + xx[1115] * xx[1136] + xx[700] * xx[1223] + xx[650] * xx
-    [1224] + xx[944] * xx[1225] - xx[1549] * xx[912];
+    [1224] + xx[944] * xx[1225] - xx[912] * xx[1549];
   pm_math_quatInverseXform(xx + 615, xx + 1307, xx + 1559);
   pm_math_cross3(xx + 1307, xx + 626, xx + 1579);
   xx[1582] = xx[1295] + xx[1579];
@@ -5688,7 +5688,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1559] = xx[479] * xx[1561] + xx[583] * xx[1580] - xx[586] * xx[1579];
   xx[1560] = xx[911] * xx[1199] + xx[1111] * xx[1301] + xx[802] * xx[1310] + xx
     [789] * xx[1313] + xx[1115] * xx[1299] + xx[700] * xx[1300] + xx[650] * xx
-    [1303] + xx[944] * xx[1304] - xx[1559] * xx[912];
+    [1303] + xx[944] * xx[1304] - xx[912] * xx[1559];
   pm_math_quatInverseXform(xx + 615, xx + 1236, xx + 1579);
   pm_math_cross3(xx + 1236, xx + 626, xx + 1582);
   xx[1585] = xx[1194] + xx[1582];
@@ -5698,7 +5698,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1561] = xx[479] * xx[1581] + xx[583] * xx[1583] - xx[586] * xx[1582];
   xx[1575] = xx[911] * xx[1180] + xx[1111] * xx[1205] + xx[802] * xx[1231] + xx
     [789] * xx[1242] + xx[1115] * xx[1203] + xx[700] * xx[1204] + xx[650] * xx
-    [1227] + xx[944] * xx[1228] - xx[1561] * xx[912];
+    [1227] + xx[944] * xx[1228] - xx[912] * xx[1561];
   pm_math_quatInverseXform(xx + 615, xx + 1401, xx + 1579);
   pm_math_cross3(xx + 1401, xx + 626, xx + 1582);
   xx[1585] = xx[1355] + xx[1582];
@@ -5708,7 +5708,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1579] = xx[479] * xx[1581] + xx[583] * xx[1583] - xx[586] * xx[1582];
   xx[1580] = xx[911] * xx[1265] + xx[1111] * xx[1369] + xx[802] * xx[1370] + xx
     [789] * xx[1393] + xx[1115] * xx[1270] + xx[700] * xx[1358] + xx[650] * xx
-    [1359] + xx[944] * xx[1360] - xx[1579] * xx[912];
+    [1359] + xx[944] * xx[1360] - xx[912] * xx[1579];
   pm_math_quatInverseXform(xx + 615, xx + 1442, xx + 1581);
   pm_math_cross3(xx + 1442, xx + 626, xx + 1584);
   xx[1587] = xx[1430] + xx[1584];
@@ -5718,7 +5718,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1581] = xx[479] * xx[1583] + xx[583] * xx[1585] - xx[586] * xx[1584];
   xx[1582] = xx[911] * xx[1333] + xx[1111] * xx[1436] + xx[802] * xx[1445] + xx
     [789] * xx[1448] + xx[1115] * xx[1434] + xx[700] * xx[1435] + xx[650] * xx
-    [1438] + xx[944] * xx[1439] - xx[1581] * xx[912];
+    [1438] + xx[944] * xx[1439] - xx[912] * xx[1581];
   pm_math_quatInverseXform(xx + 615, xx + 1371, xx + 1583);
   pm_math_cross3(xx + 1371, xx + 626, xx + 1586);
   xx[1589] = xx[1328] + xx[1586];
@@ -5728,7 +5728,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1583] = xx[479] * xx[1585] + xx[583] * xx[1587] - xx[586] * xx[1586];
   xx[1584] = xx[911] * xx[1314] + xx[1111] * xx[1339] + xx[802] * xx[1366] + xx
     [789] * xx[1377] + xx[1115] * xx[1337] + xx[700] * xx[1338] + xx[650] * xx
-    [1362] + xx[944] * xx[1363] - xx[1583] * xx[912];
+    [1362] + xx[944] * xx[1363] - xx[912] * xx[1583];
   pm_math_quatInverseXform(xx + 615, xx + 1481, xx + 1585);
   pm_math_cross3(xx + 1481, xx + 626, xx + 1588);
   xx[1591] = xx[1478] + xx[1588];
@@ -5738,7 +5738,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1585] = xx[479] * xx[1587] + xx[583] * xx[1589] - xx[586] * xx[1588];
   xx[1586] = xx[911] * xx[183] + xx[1111] * xx[763] + xx[802] * xx[805] + xx[789]
     * xx[807] + xx[1115] * xx[251] + xx[700] * xx[550] + xx[650] * xx[1416] +
-    xx[944] * xx[1475] - xx[1585] * xx[912];
+    xx[944] * xx[1475] - xx[912] * xx[1585];
   pm_math_quatInverseXform(xx + 615, xx + 1531, xx + 1587);
   pm_math_cross3(xx + 1531, xx + 626, xx + 1590);
   xx[1593] = xx[1512] + xx[1590];
@@ -5748,7 +5748,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1587] = xx[479] * xx[1589] + xx[583] * xx[1591] - xx[586] * xx[1590];
   xx[1588] = xx[911] * xx[460] + xx[1111] * xx[1535] + xx[802] * xx[1536] + xx
     [789] * xx[1538] + xx[1115] * xx[1505] + xx[700] * xx[1528] + xx[650] * xx
-    [1529] + xx[944] * xx[1530] - xx[1587] * xx[912];
+    [1529] + xx[944] * xx[1530] - xx[912] * xx[1587];
   pm_math_quatInverseXform(xx + 615, xx + 1460, xx + 1589);
   pm_math_cross3(xx + 1460, xx + 626, xx + 1592);
   xx[1599] = xx[1466] + xx[1592];
@@ -5758,38 +5758,38 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1589] = xx[479] * xx[1591] + xx[583] * xx[1593] - xx[586] * xx[1592];
   xx[1590] = xx[911] * xx[463] + xx[1111] * xx[171] + xx[802] * xx[176] + xx[789]
     * xx[761] + xx[1115] * xx[172] + xx[700] * xx[174] + xx[650] * xx[760] + xx
-    [944] * xx[762] - xx[1589] * xx[912];
+    [944] * xx[762] - xx[912] * xx[1589];
   xx[1591] = xx[1086] * xx[910] + xx[1161] * xx[1082] + xx[1177] * xx[1102] +
     xx[1178] * xx[1108] + xx[1158] * xx[1080] + xx[1159] * xx[1081] + xx[1162] *
     xx[1092] + xx[1163] * xx[1093] + xx[840] * xx[940] + xx[1172] * xx[1101] -
     xx[906] * xx[1109] - xx[1166] * xx[1543] - xx[1171] * xx[1544];
   xx[1592] = xx[1086] * xx[1131] + xx[1161] * xx[1234] + xx[1177] * xx[1235] +
     xx[1178] * xx[1258] + xx[1158] * xx[1136] + xx[1159] * xx[1223] + xx[1162] *
-    xx[1224] + xx[1163] * xx[1225] - xx[1549] * xx[840];
+    xx[1224] + xx[1163] * xx[1225] - xx[840] * xx[1549];
   xx[1593] = xx[1086] * xx[1199] + xx[1161] * xx[1301] + xx[1177] * xx[1310] +
     xx[1178] * xx[1313] + xx[1158] * xx[1299] + xx[1159] * xx[1300] + xx[1162] *
-    xx[1303] + xx[1163] * xx[1304] - xx[1559] * xx[840];
+    xx[1303] + xx[1163] * xx[1304] - xx[840] * xx[1559];
   xx[1594] = xx[1086] * xx[1180] + xx[1161] * xx[1205] + xx[1177] * xx[1231] +
     xx[1178] * xx[1242] + xx[1158] * xx[1203] + xx[1159] * xx[1204] + xx[1162] *
-    xx[1227] + xx[1163] * xx[1228] - xx[1561] * xx[840];
+    xx[1227] + xx[1163] * xx[1228] - xx[840] * xx[1561];
   xx[1595] = xx[1086] * xx[1265] + xx[1161] * xx[1369] + xx[1177] * xx[1370] +
     xx[1178] * xx[1393] + xx[1158] * xx[1270] + xx[1159] * xx[1358] + xx[1162] *
-    xx[1359] + xx[1163] * xx[1360] - xx[1579] * xx[840];
+    xx[1359] + xx[1163] * xx[1360] - xx[840] * xx[1579];
   xx[1596] = xx[1086] * xx[1333] + xx[1161] * xx[1436] + xx[1177] * xx[1445] +
     xx[1178] * xx[1448] + xx[1158] * xx[1434] + xx[1159] * xx[1435] + xx[1162] *
-    xx[1438] + xx[1163] * xx[1439] - xx[1581] * xx[840];
+    xx[1438] + xx[1163] * xx[1439] - xx[840] * xx[1581];
   xx[1599] = xx[1086] * xx[1314] + xx[1161] * xx[1339] + xx[1177] * xx[1366] +
     xx[1178] * xx[1377] + xx[1158] * xx[1337] + xx[1159] * xx[1338] + xx[1162] *
-    xx[1362] + xx[1163] * xx[1363] - xx[1583] * xx[840];
+    xx[1362] + xx[1163] * xx[1363] - xx[840] * xx[1583];
   xx[1600] = xx[1086] * xx[183] + xx[1161] * xx[763] + xx[1177] * xx[805] + xx
     [1178] * xx[807] + xx[1158] * xx[251] + xx[1159] * xx[550] + xx[1162] * xx
-    [1416] + xx[1163] * xx[1475] - xx[1585] * xx[840];
+    [1416] + xx[1163] * xx[1475] - xx[840] * xx[1585];
   xx[1601] = xx[1086] * xx[460] + xx[1161] * xx[1535] + xx[1177] * xx[1536] +
     xx[1178] * xx[1538] + xx[1158] * xx[1505] + xx[1159] * xx[1528] + xx[1162] *
-    xx[1529] + xx[1163] * xx[1530] - xx[1587] * xx[840];
+    xx[1529] + xx[1163] * xx[1530] - xx[840] * xx[1587];
   xx[1602] = xx[1086] * xx[463] + xx[1161] * xx[171] + xx[1177] * xx[176] + xx
     [1178] * xx[761] + xx[1158] * xx[172] + xx[1159] * xx[174] + xx[1162] * xx
-    [760] + xx[1163] * xx[762] - xx[1589] * xx[840];
+    [760] + xx[1163] * xx[762] - xx[840] * xx[1589];
   xx[1613] = xx[750] * xx[1131] + xx[949] * xx[1234] + xx[1103] * xx[1235] + xx
     [1107] * xx[1258] + xx[943] * xx[1136] + xx[948] * xx[1223] + xx[1098] * xx
     [1224] + xx[947] * xx[1225] - xx[751] * xx[1549];
@@ -5860,9 +5860,9 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1704] = xx[1665];
   pm_math_quatCompose(xx + 1630, xx + 1701, xx + 1705);
   xx[1630] = xx[1637] * xx[1634];
-  xx[1631] = xx[1654] * xx[1635];
+  xx[1631] = xx[1635] * xx[1654];
   xx[1632] = xx[1637] * xx[1654];
-  xx[1633] = xx[1634] * xx[1635];
+  xx[1633] = xx[1635] * xx[1634];
   xx[1669] = xx[19] * (xx[1632] - xx[1633]);
   xx[1709] = xx[1635] * xx[1635];
   xx[1710] = xx[1637] * xx[1637];
@@ -6046,7 +6046,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1769] = xx[1777] * xx[1706] + xx[1715] * xx[1777];
   xx[1783] = xx[1777] * xx[1705] - xx[1714] * xx[1777];
   xx[1786] = xx[1783] * xx[1654];
-  xx[1823] = xx[1769] * xx[1654];
+  xx[1823] = xx[1654] * xx[1769];
   xx[1824] = xx[1637] * xx[1769] + xx[1783] * xx[1635];
   xx[1859] = - xx[1786];
   xx[1860] = - xx[1823];
@@ -6054,7 +6054,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_cross3(xx + 1758, xx + 1859, xx + 1862);
   xx[1859] = xx[1769] + xx[19] * (xx[1862] + xx[1786] * xx[1634]);
   xx[1860] = xx[19] * (xx[1863] + xx[1823] * xx[1634]) - xx[1783];
-  xx[1861] = xx[19] * (xx[1864] - xx[1824] * xx[1634]);
+  xx[1861] = xx[19] * (xx[1864] - xx[1634] * xx[1824]);
   xx[1862] = xx[1791];
   xx[1863] = xx[1794];
   xx[1864] = xx[1797];
@@ -6103,7 +6103,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1317] = xx[1309] * xx[1706] + xx[1715] * xx[1309];
   xx[1716] = xx[1309] * xx[1705] - xx[1714] * xx[1309];
   xx[1724] = xx[1716] * xx[1654];
-  xx[1748] = xx[1317] * xx[1654];
+  xx[1748] = xx[1654] * xx[1317];
   xx[1769] = xx[1637] * xx[1317] + xx[1716] * xx[1635];
   xx[1799] = - xx[1724];
   xx[1800] = - xx[1748];
@@ -6111,7 +6111,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_cross3(xx + 1758, xx + 1799, xx + 1802);
   xx[1799] = xx[1317] + xx[19] * (xx[1802] + xx[1724] * xx[1634]);
   xx[1800] = xx[19] * (xx[1803] + xx[1748] * xx[1634]) - xx[1716];
-  xx[1801] = xx[19] * (xx[1804] - xx[1769] * xx[1634]);
+  xx[1801] = xx[19] * (xx[1804] - xx[1634] * xx[1769]);
   xx[1317] = xx[1796] - (pm_math_dot3(xx + 1778, xx + 1793) + pm_math_dot3(xx +
     1856, xx + 1799));
   xx[1716] = xx[1797] - (pm_math_dot3(xx + 1862, xx + 1793) + pm_math_dot3(xx +
@@ -6157,7 +6157,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1243] = xx[1238] * xx[1706] + xx[1715] * xx[1238];
   xx[1711] = xx[1238] * xx[1705] - xx[1714] * xx[1238];
   xx[1712] = xx[1711] * xx[1654];
-  xx[1713] = xx[1243] * xx[1654];
+  xx[1713] = xx[1654] * xx[1243];
   xx[1718] = xx[1637] * xx[1243] + xx[1711] * xx[1635];
   xx[1749] = - xx[1712];
   xx[1750] = - xx[1713];
@@ -6165,7 +6165,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_cross3(xx + 1758, xx + 1749, xx + 1755);
   xx[1749] = xx[1243] + xx[19] * (xx[1755] + xx[1712] * xx[1634]);
   xx[1750] = xx[19] * (xx[1756] + xx[1713] * xx[1634]) - xx[1711];
-  xx[1751] = xx[19] * (xx[1757] - xx[1718] * xx[1634]);
+  xx[1751] = xx[19] * (xx[1757] - xx[1634] * xx[1718]);
   xx[1243] = xx[1752] - (pm_math_dot3(xx + 1778, xx + 1729) + pm_math_dot3(xx +
     1856, xx + 1749));
   xx[1711] = xx[1753] - (pm_math_dot3(xx + 1862, xx + 1729) + pm_math_dot3(xx +
@@ -6319,9 +6319,9 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1804] = xx[1800];
   pm_math_quatCompose(xx + 1793, xx + 1801, xx + 1871);
   xx[1793] = xx[1797] * xx[1772];
-  xx[1794] = xx[1799] * xx[1783];
+  xx[1794] = xx[1783] * xx[1799];
   xx[1795] = xx[1797] * xx[1799];
-  xx[1796] = xx[1783] * xx[1772];
+  xx[1796] = xx[1772] * xx[1783];
   xx[1805] = xx[19] * (xx[1795] - xx[1796]);
   xx[1806] = xx[1783] * xx[1783];
   xx[1807] = xx[1797] * xx[1797];
@@ -6409,7 +6409,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[143] = xx[1772] * xx[1772];
   xx[1755] = (xx[143] + xx[1806]) * xx[19] - xx[21];
   xx[1786] = xx[1797] * xx[1783];
-  xx[1798] = xx[1799] * xx[1772];
+  xx[1798] = xx[1772] * xx[1799];
   xx[1800] = (xx[1786] + xx[1798]) * xx[19];
   xx[1806] = xx[19] * (xx[1794] - xx[1793]);
   xx[1878] = xx[19] * (xx[1786] - xx[1798]);
@@ -6561,7 +6561,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1452] = xx[1444] * xx[1872] + xx[1835] * xx[1444];
   xx[1839] = xx[1444] * xx[1871] - xx[1824] * xx[1444];
   xx[1884] = xx[1839] * xx[1799];
-  xx[1899] = xx[1799] * xx[1452];
+  xx[1899] = xx[1452] * xx[1799];
   xx[1919] = xx[1797] * xx[1452] + xx[1839] * xx[1783];
   xx[1950] = - xx[1884];
   xx[1951] = - xx[1899];
@@ -6569,7 +6569,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_cross3(xx + 1909, xx + 1950, xx + 1953);
   xx[1950] = xx[1452] + xx[19] * (xx[1953] + xx[1884] * xx[1772]);
   xx[1951] = xx[19] * (xx[1954] + xx[1899] * xx[1772]) - xx[1839];
-  xx[1952] = xx[19] * (xx[1955] - xx[1772] * xx[1919]);
+  xx[1952] = xx[19] * (xx[1955] - xx[1919] * xx[1772]);
   xx[1452] = xx[1947] - (pm_math_dot3(xx + 1927, xx + 1944) + pm_math_dot3(xx +
     2007, xx + 1950));
   xx[1839] = xx[1948] - (pm_math_dot3(xx + 2013, xx + 1944) + pm_math_dot3(xx +
@@ -6615,7 +6615,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1373] = xx[1372] * xx[1872] + xx[1835] * xx[1372];
   xx[1378] = xx[1372] * xx[1871] - xx[1824] * xx[1372];
   xx[1885] = xx[1378] * xx[1799];
-  xx[1889] = xx[1799] * xx[1373];
+  xx[1889] = xx[1373] * xx[1799];
   xx[1890] = xx[1797] * xx[1373] + xx[1378] * xx[1783];
   xx[1900] = - xx[1885];
   xx[1901] = - xx[1889];
@@ -6623,7 +6623,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_cross3(xx + 1909, xx + 1900, xx + 1906);
   xx[1900] = xx[1373] + xx[19] * (xx[1906] + xx[1885] * xx[1772]);
   xx[1901] = xx[19] * (xx[1907] + xx[1889] * xx[1772]) - xx[1378];
-  xx[1902] = xx[19] * (xx[1908] - xx[1772] * xx[1890]);
+  xx[1902] = xx[19] * (xx[1908] - xx[1890] * xx[1772]);
   xx[1373] = xx[1903] - (pm_math_dot3(xx + 1927, xx + 1875) + pm_math_dot3(xx +
     2007, xx + 1900));
   xx[1378] = xx[1904] - (pm_math_dot3(xx + 2013, xx + 1875) + pm_math_dot3(xx +
@@ -6643,7 +6643,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1480] = xx[374] * xx[1889] - xx[371] * xx[1890] - xx[369] * xx[1902];
   xx[1876] = xx[1324] * xx[183] + xx[1380] * xx[763] + xx[1271] * xx[805] + xx
     [1264] * xx[807] + xx[1384] * xx[251] + xx[1263] * xx[550] + xx[1269] * xx
-    [1416] + xx[1331] * xx[1475] - xx[1340] * xx[1480];
+    [1416] + xx[1331] * xx[1475] - xx[1480] * xx[1340];
   pm_math_cross3(xx + 1531, xx + 412, xx + 1889);
   xx[1900] = xx[1512] + xx[1889];
   xx[1901] = xx[1542] + xx[1890];
@@ -6653,7 +6653,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1514] = xx[374] * xx[1889] - xx[371] * xx[1890] - xx[369] * xx[1902];
   xx[1877] = xx[1324] * xx[460] + xx[1380] * xx[1535] + xx[1271] * xx[1536] +
     xx[1264] * xx[1538] + xx[1384] * xx[1505] + xx[1263] * xx[1528] + xx[1269] *
-    xx[1529] + xx[1331] * xx[1530] - xx[1340] * xx[1514];
+    xx[1529] + xx[1331] * xx[1530] - xx[1514] * xx[1340];
   pm_math_cross3(xx + 1460, xx + 412, xx + 1889);
   xx[1900] = xx[1466] + xx[1889];
   xx[1901] = xx[793] + xx[1890];
@@ -6663,29 +6663,29 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1468] = xx[374] * xx[1889] - xx[371] * xx[1890] - xx[369] * xx[1902];
   xx[1889] = xx[1324] * xx[463] + xx[1380] * xx[171] + xx[1271] * xx[176] + xx
     [1264] * xx[761] + xx[1384] * xx[172] + xx[1263] * xx[174] + xx[1269] * xx
-    [760] + xx[1331] * xx[762] - xx[1340] * xx[1468];
+    [760] + xx[1331] * xx[762] - xx[1468] * xx[1340];
   xx[1890] = xx[1356] * xx[1314] + xx[1437] * xx[1339] + xx[1446] * xx[1366] +
     xx[1447] * xx[1377] + xx[1368] * xx[1337] + xx[1428] * xx[1338] + xx[1441] *
     xx[1362] + xx[1433] * xx[1363] + xx[1315] * xx[1328] + xx[1443] * xx[1372] -
     xx[1322] * xx[1373] - xx[1432] * xx[1378] - xx[1442] * xx[1885];
   xx[1891] = xx[1356] * xx[183] + xx[1437] * xx[763] + xx[1446] * xx[805] + xx
     [1447] * xx[807] + xx[1368] * xx[251] + xx[1428] * xx[550] + xx[1441] * xx
-    [1416] + xx[1433] * xx[1475] - xx[1315] * xx[1480];
+    [1416] + xx[1433] * xx[1475] - xx[1480] * xx[1315];
   xx[1896] = xx[1356] * xx[460] + xx[1437] * xx[1535] + xx[1446] * xx[1536] +
     xx[1447] * xx[1538] + xx[1368] * xx[1505] + xx[1428] * xx[1528] + xx[1441] *
-    xx[1529] + xx[1433] * xx[1530] - xx[1315] * xx[1514];
+    xx[1529] + xx[1433] * xx[1530] - xx[1514] * xx[1315];
   xx[1900] = xx[1356] * xx[463] + xx[1437] * xx[171] + xx[1446] * xx[176] + xx
     [1447] * xx[761] + xx[1368] * xx[172] + xx[1428] * xx[174] + xx[1441] * xx
-    [760] + xx[1433] * xx[762] - xx[1315] * xx[1468];
+    [760] + xx[1433] * xx[762] - xx[1468] * xx[1315];
   xx[1901] = xx[1259] * xx[183] + xx[1353] * xx[763] + xx[1367] * xx[805] + xx
     [1376] * xx[807] + xx[1323] * xx[251] + xx[1351] * xx[550] + xx[1365] * xx
-    [1416] + xx[1352] * xx[1475] - xx[1260] * xx[1480];
+    [1416] + xx[1352] * xx[1475] - xx[1480] * xx[1260];
   xx[1480] = xx[1259] * xx[460] + xx[1353] * xx[1535] + xx[1367] * xx[1536] +
     xx[1376] * xx[1538] + xx[1323] * xx[1505] + xx[1351] * xx[1528] + xx[1365] *
-    xx[1529] + xx[1352] * xx[1530] - xx[1260] * xx[1514];
+    xx[1529] + xx[1352] * xx[1530] - xx[1514] * xx[1260];
   xx[1514] = xx[1259] * xx[463] + xx[1353] * xx[171] + xx[1367] * xx[176] + xx
     [1376] * xx[761] + xx[1323] * xx[172] + xx[1351] * xx[174] + xx[1365] * xx
-    [760] + xx[1352] * xx[762] - xx[1260] * xx[1468];
+    [760] + xx[1352] * xx[762] - xx[1468] * xx[1260];
   xx[1902] = - (xx[125] + xx[49]);
   xx[1903] = xx[128];
   xx[1904] = xx[129];
@@ -6694,7 +6694,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[49] = xx[59] * xx[55];
   xx[125] = xx[61] * xx[56];
   xx[128] = xx[59] * xx[61];
-  xx[1468] = xx[56] * xx[55];
+  xx[1468] = xx[55] * xx[56];
   xx[1902] = xx[19] * (xx[128] - xx[1468]);
   xx[1903] = xx[56] * xx[56];
   xx[1904] = xx[59] * xx[59];
@@ -6716,7 +6716,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[9] = xx[114] + xx[19] * xx[41] * xx[1905] - xx[0] + xx[1906];
   xx[1905] = xx[9] * xx[6];
   xx[1908] = xx[1913] * xx[6];
-  xx[1917] = xx[9] * xx[8] + xx[10] * xx[1913];
+  xx[1917] = xx[9] * xx[8] + xx[1913] * xx[10];
   xx[1919] = xx[1905];
   xx[1920] = - xx[1908];
   xx[1921] = - xx[1917];
@@ -6763,7 +6763,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[60] = xx[55] * xx[55];
   xx[62] = (xx[60] + xx[1903]) * xx[19] - xx[21];
   xx[136] = xx[59] * xx[56];
-  xx[137] = xx[61] * xx[55];
+  xx[137] = xx[55] * xx[61];
   xx[934] = (xx[136] + xx[137]) * xx[19];
   xx[1903] = xx[19] * (xx[125] - xx[49]);
   xx[1905] = xx[19] * (xx[136] - xx[137]);
@@ -6882,8 +6882,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_cross3(xx + 1481, xx + 1398, xx + 2045);
   xx[1481] = xx[1478] + xx[2045];
   xx[1478] = xx[1477] + xx[2046];
-  xx[1477] = xx[1478] * xx[354];
-  xx[1482] = xx[1481] * xx[354];
+  xx[1477] = xx[1478] * xx[356];
+  xx[1482] = xx[1481] * xx[356];
   xx[1483] = xx[145] + xx[151];
   xx[1931] = xx[1921] + xx[1948];
   xx[1934] = (xx[1954] - xx[271] * xx[135] * xx[138]) * xx[19] + xx[2023] + xx
@@ -6930,11 +6930,11 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_cross3(xx + 1531, xx + 1398, xx + 2045);
   xx[1531] = xx[1512] + xx[2045];
   xx[1512] = xx[1542] + xx[2046];
-  xx[1532] = xx[1512] * xx[354];
-  xx[1533] = xx[1531] * xx[354];
+  xx[1532] = xx[1512] * xx[356];
+  xx[1533] = xx[1531] * xx[356];
   xx[1542] = xx[316] - (xx[394] * (xx[1531] - (xx[352] * xx[1532] + xx[1533] *
-    xx[354]) * xx[19]) - (xx[1512] + xx[19] * (xx[352] * xx[1533] - xx[1532] *
-    xx[354])) * xx[397] - xx[1476] * xx[666]);
+    xx[356]) * xx[19]) - (xx[1512] + xx[19] * (xx[352] * xx[1533] - xx[1532] *
+    xx[356])) * xx[399] - xx[1476] * xx[666]);
   xx[316] = xx[1919] * xx[9] - xx[147] * xx[249] - xx[933] * xx[271] - xx[57] *
     xx[1908] + xx[1450] * xx[460] + xx[459] * xx[1535] + xx[185] * xx[1536] +
     xx[247] * xx[1538] + xx[623] * xx[1505] + xx[184] * xx[1528] + xx[182] * xx
@@ -6984,11 +6984,11 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_cross3(xx + 1460, xx + 1398, xx + 1531);
   xx[1460] = xx[1466] + xx[1531];
   xx[1461] = xx[793] + xx[1532];
-  xx[793] = xx[1461] * xx[354];
-  xx[1462] = xx[1460] * xx[354];
+  xx[793] = xx[1461] * xx[356];
+  xx[1462] = xx[1460] * xx[356];
   xx[1466] = xx[317] - (xx[394] * (xx[1460] - (xx[352] * xx[793] + xx[1462] *
-    xx[354]) * xx[19]) - (xx[1461] + xx[19] * (xx[352] * xx[1462] - xx[793] *
-    xx[354])) * xx[397] - xx[783] * xx[666]);
+    xx[356]) * xx[19]) - (xx[1461] + xx[19] * (xx[352] * xx[1462] - xx[793] *
+    xx[356])) * xx[399] - xx[783] * xx[666]);
   xx[317] = xx[1919] * xx[150] - xx[147] * xx[151] - xx[933] * xx[152] - xx[57] *
     xx[935] + xx[1450] * xx[463] + xx[459] * xx[171] + xx[185] * xx[176] + xx
     [247] * xx[761] + xx[623] * xx[172] + xx[184] * xx[174] + xx[182] * xx[760]
@@ -7249,8 +7249,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
     2042, xx + 2090))) + xx[1450] * xx[183] + xx[459] * xx[763] + xx[185] * xx
     [805] + xx[247] * xx[807] + xx[623] * xx[251] + xx[184] * xx[550] + xx[182] *
     xx[1416] + xx[292] * xx[1475] + xx[1457] * (xx[314] - (xx[394] * (xx[1481] -
-    (xx[352] * xx[1477] + xx[1482] * xx[354]) * xx[19]) - (xx[1478] + xx[19] *
-    (xx[352] * xx[1482] - xx[1477] * xx[354])) * xx[397] - xx[1459] * xx[666]));
+    (xx[352] * xx[1477] + xx[1482] * xx[356]) * xx[19]) - (xx[1478] + xx[19] *
+    (xx[352] * xx[1482] - xx[1477] * xx[356])) * xx[399] - xx[1459] * xx[666]));
   xx[2295] = xx[316];
   xx[2296] = xx[317];
   xx[2297] = xx[1513];
@@ -7346,10 +7346,10 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1089] = xx[415] * xx[1057];
   xx[1090] = xx[379] * xx[452];
   pm_math_cross3(xx + 1078, xx + 1088, xx + 1095);
-  xx[415] = xx[1057] * xx[354];
-  xx[418] = xx[327] * xx[354];
-  xx[452] = xx[327] - (xx[352] * xx[415] + xx[418] * xx[354]) * xx[19];
-  xx[460] = xx[1057] + xx[19] * (xx[352] * xx[418] - xx[415] * xx[354]);
+  xx[415] = xx[1057] * xx[356];
+  xx[418] = xx[327] * xx[356];
+  xx[452] = xx[327] - (xx[352] * xx[415] + xx[418] * xx[356]) * xx[19];
+  xx[460] = xx[1057] + xx[19] * (xx[352] * xx[418] - xx[415] * xx[356]);
   xx[415] = xx[379] - state[36];
   xx[1088] = xx[452];
   xx[1089] = xx[460];
@@ -7360,28 +7360,28 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_cross3(xx + 1088, xx + 1167, xx + 1173);
   xx[418] = xx[1173] - xx[50] * xx[460] * state[36];
   xx[463] = xx[1174] + xx[51] * xx[452] * state[36];
-  xx[502] = xx[463] * xx[354];
-  xx[520] = xx[354] * xx[418];
-  xx[544] = xx[418] + xx[19] * (xx[352] * xx[502] - xx[520] * xx[354]);
+  xx[502] = xx[463] * xx[356];
+  xx[520] = xx[356] * xx[418];
+  xx[544] = xx[418] + xx[19] * (xx[352] * xx[502] - xx[520] * xx[356]);
   pm_math_cross3(xx + 1078, xx + 1398, xx + 1088);
   pm_math_cross3(xx + 1078, xx + 1088, xx + 1167);
-  xx[418] = xx[1168] * xx[354];
-  xx[545] = xx[1167] * xx[354];
+  xx[418] = xx[1168] * xx[356];
+  xx[545] = xx[1167] * xx[356];
   xx[547] = xx[379] + xx[415];
   xx[415] = xx[458] * state[36];
-  xx[550] = xx[393] * (xx[1167] - (xx[352] * xx[418] + xx[545] * xx[354]) * xx
+  xx[550] = xx[393] * (xx[1167] - (xx[352] * xx[418] + xx[545] * xx[356]) * xx
                        [19] + xx[547] * xx[415]);
   xx[562] = xx[461] * state[36];
   xx[563] = (xx[547] * xx[562] + xx[1168] + xx[19] * (xx[352] * xx[545] - xx[418]
-              * xx[354])) * xx[393];
+              * xx[356])) * xx[393];
   xx[418] = xx[461] * xx[550] - xx[458] * xx[563] - xx[1175];
   xx[458] = xx[418] / xx[358];
   xx[461] = xx[550] - xx[357] * xx[458];
-  xx[545] = xx[563] + xx[396] * xx[458];
-  xx[547] = xx[354] * xx[545];
-  xx[588] = xx[354] * xx[461];
-  xx[589] = xx[461] + xx[19] * (xx[352] * xx[547] - xx[588] * xx[354]);
-  xx[461] = xx[545] - (xx[352] * xx[588] + xx[547] * xx[354]) * xx[19];
+  xx[545] = xx[563] + xx[398] * xx[458];
+  xx[547] = xx[356] * xx[545];
+  xx[588] = xx[356] * xx[461];
+  xx[589] = xx[461] + xx[19] * (xx[352] * xx[547] - xx[588] * xx[356]);
+  xx[461] = xx[545] - (xx[352] * xx[588] + xx[547] * xx[356]) * xx[19];
   xx[545] = (xx[1169] - ((xx[452] + xx[452]) * xx[415] + (xx[460] + xx[460]) *
               xx[562])) * xx[393];
   xx[1088] = xx[589];
@@ -7543,8 +7543,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1474] = xx[415];
   pm_math_matrix3x3Xform(xx + 1578, xx + 1472, xx + 1505);
   xx[1578] = - xx[329];
-  xx[1579] = - xx[399];
-  xx[1580] = - xx[398];
+  xx[1579] = - xx[376];
+  xx[1580] = - xx[400];
   xx[1581] = - xx[384];
   xx[1582] = - xx[643];
   xx[1583] = - xx[375];
@@ -7565,7 +7565,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[329] = xx[1095] + xx[544] + xx[1167] + xx[1303] + xx[1088] + xx[1459] + xx
     [1223] + xx[1478] + xx[1358] + xx[1000] + xx[1484] + xx[327];
   xx[375] = xx[1507] + xx[1514];
-  xx[379] = xx[1097] + xx[1175] + xx[52] * xx[458] + xx[1169] + xx[1305] + xx
+  xx[376] = xx[1097] + xx[1175] + xx[52] * xx[458] + xx[1169] + xx[1305] + xx
     [1090] + xx[1461] + xx[1225] + xx[1480] + xx[1360] + xx[1496] - xx[52] * xx
     [234] + xx[1486] + xx[375];
   pm_math_matrix3x3TransposeXform(xx + 1578, xx + 1472, xx + 1528);
@@ -7578,28 +7578,28 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1584] = xx[419];
   xx[1585] = xx[378];
   xx[1586] = xx[420];
-  pm_math_matrix3x3Xform(xx + 1578, xx + 1056, xx + 1472);
-  xx[377] = xx[1529] + xx[1473];
-  xx[378] = xx[461] + xx[1204] + xx[1338] + xx[1463] + xx[237] + xx[377];
-  xx[237] = (xx[329] * xx[195] + xx[379] * xx[201] + xx[378] * xx[291]) / xx[456];
-  xx[384] = xx[463] - (xx[352] * xx[520] + xx[502] * xx[354]) * xx[19];
-  xx[385] = xx[940] - (xx[193] * xx[999] + xx[946] * xx[205]) * xx[19];
-  xx[387] = xx[1506] + xx[1513];
+  pm_math_matrix3x3Xform(xx + 1578, xx + 1056, xx + 377);
+  xx[384] = xx[1529] + xx[378];
+  xx[385] = xx[461] + xx[1204] + xx[1338] + xx[1463] + xx[237] + xx[384];
+  xx[237] = (xx[329] * xx[195] + xx[376] * xx[201] + xx[385] * xx[291]) / xx[456];
+  xx[387] = xx[463] - (xx[352] * xx[520] + xx[502] * xx[356]) * xx[19];
+  xx[391] = xx[940] - (xx[193] * xx[999] + xx[946] * xx[205]) * xx[19];
+  xx[395] = xx[1506] + xx[1513];
   xx[1056] = xx[329] + xx[237] * xx[409];
-  xx[1057] = xx[1096] + xx[384] + xx[1168] + xx[1304] + xx[1089] + xx[1460] +
-    xx[1224] + xx[1479] + xx[1359] + xx[385] + xx[1485] + xx[387] + xx[513] *
+  xx[1057] = xx[1096] + xx[387] + xx[1168] + xx[1304] + xx[1089] + xx[1460] +
+    xx[1224] + xx[1479] + xx[1359] + xx[391] + xx[1485] + xx[395] + xx[513] *
     xx[237];
-  xx[1058] = xx[379] - xx[376] * xx[237];
+  xx[1058] = xx[376] - xx[354] * xx[237];
   pm_math_quatXform(xx + 214, xx + 1056, xx + 1088);
-  xx[329] = xx[1528] + xx[1472];
-  xx[379] = xx[1530] + xx[1474];
-  xx[1056] = xx[589] + xx[1203] + xx[1337] + xx[1462] + xx[1081] + xx[329] + xx
+  xx[329] = xx[1528] + xx[377];
+  xx[376] = xx[1530] + xx[379];
+  xx[377] = xx[589] + xx[1203] + xx[1337] + xx[1462] + xx[1081] + xx[329] + xx
     [392] * xx[237];
-  xx[1057] = xx[378] + xx[437] * xx[237];
-  xx[1058] = xx[545] + xx[1205] + xx[1339] + xx[1464] + xx[1010] + xx[379] + xx
+  xx[378] = xx[385] + xx[437] * xx[237];
+  xx[379] = xx[545] + xx[1205] + xx[1339] + xx[1464] + xx[1010] + xx[376] + xx
     [237] * xx[424];
-  pm_math_quatXform(xx + 214, xx + 1056, xx + 1080);
-  pm_math_cross3(xx + 551, xx + 1080, xx + 1056);
+  pm_math_quatXform(xx + 214, xx + 377, xx + 1056);
+  pm_math_cross3(xx + 551, xx + 1056, xx + 377);
   xx[1578] = xx[386];
   xx[1579] = xx[429];
   xx[1580] = xx[451];
@@ -7609,11 +7609,11 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1584] = xx[501];
   xx[1585] = xx[442];
   xx[1586] = xx[519];
-  xx[1167] = state[22];
-  xx[1168] = state[23];
-  xx[1169] = state[24];
-  pm_math_cross3(xx + 957, xx + 1167, xx + 1203);
-  pm_math_matrix3x3Xform(xx + 1578, xx + 1203, xx + 1223);
+  xx[1080] = state[22];
+  xx[1081] = state[23];
+  xx[1082] = state[24];
+  pm_math_cross3(xx + 957, xx + 1080, xx + 1167);
+  pm_math_matrix3x3Xform(xx + 1578, xx + 1167, xx + 1203);
   xx[1578] = xx[431];
   xx[1579] = xx[388];
   xx[1580] = xx[416];
@@ -7626,21 +7626,21 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[501] = xx[957] + xx[314];
   xx[502] = xx[958] + xx[316];
   xx[503] = xx[959] + xx[317];
-  pm_math_cross3(xx + 1167, xx + 265, xx + 957);
-  pm_math_cross3(xx + 501, xx + 957, xx + 1303);
+  pm_math_cross3(xx + 1080, xx + 265, xx + 957);
+  pm_math_cross3(xx + 501, xx + 957, xx + 1223);
   pm_math_cross3(xx + 760, xx + 444, xx + 501);
-  pm_math_cross3(xx + 760, xx + 501, xx + 1337);
-  pm_math_quatInverseXform(xx + 188, xx + 1337, xx + 501);
-  xx[314] = xx[1303] + xx[501];
-  xx[316] = xx[1304] + xx[502];
-  xx[317] = xx[1305] + xx[503];
+  pm_math_cross3(xx + 760, xx + 501, xx + 1303);
+  pm_math_quatInverseXform(xx + 188, xx + 1303, xx + 501);
+  xx[314] = xx[1223] + xx[501];
+  xx[316] = xx[1224] + xx[502];
+  xx[317] = xx[1225] + xx[503];
   xx[501] = xx[314];
   xx[502] = xx[316];
   xx[503] = xx[317];
   pm_math_matrix3x3Xform(xx + 1578, xx + 501, xx + 760);
-  xx[378] = xx[1223] + xx[760];
-  xx[386] = xx[1065] + xx[1088] + xx[1056] + xx[378];
-  pm_math_matrix3x3TransposeXform(xx + 1578, xx + 1203, xx + 1303);
+  xx[385] = xx[1203] + xx[760];
+  xx[386] = xx[1065] + xx[1088] + xx[377] + xx[385];
+  pm_math_matrix3x3TransposeXform(xx + 1578, xx + 1167, xx + 1223);
   xx[1578] = xx[510];
   xx[1579] = xx[555];
   xx[1580] = xx[556];
@@ -7651,27 +7651,27 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1585] = xx[561];
   xx[1586] = xx[425];
   pm_math_matrix3x3Xform(xx + 1578, xx + 501, xx + 555);
-  xx[388] = xx[1304] + xx[556];
-  xx[391] = xx[1081] + xx[388];
-  xx[395] = xx[1305] + xx[557];
-  xx[398] = xx[1082] + xx[395];
-  xx[399] = xx[1224] + xx[761];
-  xx[410] = xx[1066] + xx[1089] + xx[1057] + xx[399];
-  xx[416] = xx[1303] + xx[555];
-  xx[417] = xx[1080] + xx[416];
-  xx[419] = xx[1225] + xx[762];
-  xx[420] = xx[1067] + xx[1090] + xx[1058] + xx[419];
-  xx[501] = - (xx[386] - (xx[391] * xx[230] + xx[398] * xx[229]));
-  xx[502] = - (xx[410] + xx[417] * xx[230] - xx[398] * xx[228]);
-  xx[503] = - (xx[420] + xx[417] * xx[229] + xx[391] * xx[228]);
+  xx[388] = xx[1224] + xx[556];
+  xx[400] = xx[1057] + xx[388];
+  xx[410] = xx[1225] + xx[557];
+  xx[416] = xx[1058] + xx[410];
+  xx[417] = xx[1204] + xx[761];
+  xx[419] = xx[1066] + xx[1089] + xx[378] + xx[417];
+  xx[420] = xx[1223] + xx[555];
+  xx[422] = xx[1056] + xx[420];
+  xx[377] = xx[1205] + xx[762];
+  xx[378] = xx[1067] + xx[1090] + xx[379] + xx[377];
+  xx[501] = - (xx[386] - (xx[400] * xx[230] + xx[416] * xx[229]));
+  xx[502] = - (xx[419] + xx[422] * xx[230] - xx[416] * xx[228]);
+  xx[503] = - (xx[378] + xx[422] * xx[229] + xx[400] * xx[228]);
   solveSymmetricPosDef(xx + 592, xx + 501, 3, 1, xx + 555, xx + 559);
   xx[501] = xx[386] + xx[421] * xx[555] + xx[433] * xx[556] + xx[454] * xx[557];
-  xx[502] = xx[410] + xx[500] * xx[555] + xx[506] * xx[556] + xx[515] * xx[557];
-  xx[503] = xx[420] + xx[540] * xx[555] + xx[443] * xx[556] + xx[521] * xx[557];
+  xx[502] = xx[419] + xx[500] * xx[555] + xx[506] * xx[556] + xx[515] * xx[557];
+  xx[503] = xx[378] + xx[540] * xx[555] + xx[443] * xx[556] + xx[521] * xx[557];
   pm_math_quatXform(xx + 188, xx + 501, xx + 559);
-  xx[501] = xx[417] + xx[248] * xx[555] + xx[511] * xx[556] + xx[509] * xx[557];
-  xx[502] = xx[391] + xx[423] * xx[555] + xx[436] * xx[556] + xx[498] * xx[557];
-  xx[503] = xx[398] + xx[427] * xx[555] + xx[439] * xx[556] + xx[504] * xx[557];
+  xx[501] = xx[422] + xx[248] * xx[555] + xx[511] * xx[556] + xx[509] * xx[557];
+  xx[502] = xx[400] + xx[423] * xx[555] + xx[436] * xx[556] + xx[498] * xx[557];
+  xx[503] = xx[416] + xx[427] * xx[555] + xx[439] * xx[556] + xx[504] * xx[557];
   pm_math_quatXform(xx + 188, xx + 501, xx + 760);
   pm_math_cross3(xx + 444, xx + 760, xx + 501);
   xx[1578] = xx[328];
@@ -7686,8 +7686,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1056] = xx[249];
   xx[1057] = xx[271];
   xx[1058] = state[17];
-  pm_math_cross3(xx + 334, xx + 1056, xx + 1080);
-  pm_math_matrix3x3Xform(xx + 1578, xx + 1080, xx + 1088);
+  pm_math_cross3(xx + 334, xx + 1056, xx + 1088);
+  pm_math_matrix3x3Xform(xx + 1578, xx + 1088, xx + 1203);
   xx[1223] = xx[334] + xx[251];
   xx[1224] = xx[335] + xx[183];
   xx[1225] = xx[336] + xx[239];
@@ -7703,48 +7703,48 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[323] = xx[183];
   xx[324] = xx[239];
   pm_math_matrix3x3Xform(xx + 669, xx + 322, xx + 1223);
-  xx[251] = xx[1088] + xx[1223];
+  xx[251] = xx[1203] + xx[1223];
   xx[257] = xx[1002] + xx[559] + xx[501] + xx[251];
-  xx[328] = xx[1089] + xx[1224];
-  xx[386] = xx[1003] + xx[560] + xx[502] + xx[328];
-  pm_math_matrix3x3TransposeXform(xx + 669, xx + 1080, xx + 1303);
+  xx[328] = xx[1204] + xx[1224];
+  xx[378] = xx[1003] + xx[560] + xx[502] + xx[328];
+  pm_math_matrix3x3TransposeXform(xx + 669, xx + 1088, xx + 1303);
   pm_math_matrix3x3Xform(xx + 741, xx + 322, xx + 669);
   xx[322] = xx[1303] + xx[669];
   xx[323] = xx[760] + xx[322];
   xx[324] = xx[1304] + xx[670];
-  xx[391] = xx[761] + xx[324];
-  xx[398] = xx[1305] + xx[671];
-  xx[410] = xx[762] + xx[398];
+  xx[379] = xx[761] + xx[324];
+  xx[386] = xx[1305] + xx[671];
+  xx[400] = xx[762] + xx[386];
   xx[669] = xx[323];
-  xx[670] = xx[391];
-  xx[671] = xx[410];
-  xx[417] = xx[1090] + xx[1225];
-  xx[420] = xx[1004] + xx[561] + xx[503] + xx[417];
-  xx[501] = - (xx[257] - xx[386] * xx[89] + pm_math_dot3(xx + 111, xx + 669));
-  xx[502] = - (xx[257] * xx[89] + xx[386] + pm_math_dot3(xx + 753, xx + 669));
-  xx[503] = - (xx[420] + xx[391] * xx[67] - xx[323] * xx[68]);
+  xx[670] = xx[379];
+  xx[671] = xx[400];
+  xx[416] = xx[1205] + xx[1225];
+  xx[419] = xx[1004] + xx[561] + xx[503] + xx[416];
+  xx[501] = - (xx[257] - xx[378] * xx[89] + pm_math_dot3(xx + 111, xx + 669));
+  xx[502] = - (xx[257] * xx[89] + xx[378] + pm_math_dot3(xx + 753, xx + 669));
+  xx[503] = - (xx[419] + xx[379] * xx[67] - xx[323] * xx[68]);
   solveSymmetricPosDef(xx + 773, xx + 501, 3, 1, xx + 559, xx + 669);
   xx[501] = xx[257] + xx[663] * xx[559] + xx[692] * xx[560] + xx[765] * xx[561];
-  xx[502] = xx[386] + xx[687] * xx[559] + xx[695] * xx[560] + xx[767] * xx[561];
-  xx[503] = xx[420] + xx[273] * xx[559] + xx[447] * xx[560] + xx[715] * xx[561];
+  xx[502] = xx[378] + xx[687] * xx[559] + xx[695] * xx[560] + xx[767] * xx[561];
+  xx[503] = xx[419] + xx[273] * xx[559] + xx[447] * xx[560] + xx[715] * xx[561];
   pm_math_quatXform(xx + 178, xx + 501, xx + 669);
   xx[501] = xx[323] + xx[693] * xx[559] + xx[723] * xx[560] + xx[768] * xx[561];
-  xx[502] = xx[391] + xx[694] * xx[559] + xx[727] * xx[560] + xx[769] * xx[561];
-  xx[503] = xx[410] + xx[690] * xx[559] + xx[759] * xx[560] + xx[770] * xx[561];
+  xx[502] = xx[379] + xx[694] * xx[559] + xx[727] * xx[560] + xx[769] * xx[561];
+  xx[503] = xx[400] + xx[690] * xx[559] + xx[759] * xx[560] + xx[770] * xx[561];
   pm_math_quatXform(xx + 178, xx + 501, xx + 672);
   pm_math_cross3(xx + 277, xx + 672, xx + 501);
   xx[257] = xx[172] * state[10];
   xx[323] = xx[171] * state[10];
-  xx[386] = xx[820] - xx[865];
-  xx[391] = xx[821] - xx[868];
-  xx[410] = xx[823] - xx[866];
-  xx[420] = xx[824] - xx[869];
+  xx[378] = xx[820] - xx[865];
+  xx[379] = xx[821] - xx[868];
+  xx[400] = xx[823] - xx[866];
+  xx[419] = xx[824] - xx[869];
   xx[422] = xx[828] - xx[873];
-  xx[741] = xx[386];
-  xx[742] = xx[391];
+  xx[741] = xx[378];
+  xx[742] = xx[379];
   xx[743] = xx[822] - xx[871];
-  xx[744] = xx[410];
-  xx[745] = xx[420];
+  xx[744] = xx[400];
+  xx[745] = xx[419];
   xx[746] = xx[825] - xx[872];
   xx[747] = xx[175];
   xx[748] = xx[607];
@@ -7788,12 +7788,12 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[748] = xx[863];
   xx[749] = xx[393] + xx[864];
   pm_math_matrix3x3Xform(xx + 741, xx + 674, xx + 820);
-  xx[172] = xx[257] * xx[386] - xx[323] * xx[410] + xx[820];
-  xx[174] = xx[257] * xx[391] - xx[323] * xx[420] + xx[821];
-  xx[674] = (xx[813] - xx[849] - xx[853] - xx[876] - (xx[280] * xx[386] + xx[276]
-              * xx[391])) / xx[655];
-  xx[675] = (xx[816] - xx[852] - xx[854] - xx[879] - (xx[280] * xx[410] + xx[276]
-              * xx[420])) / xx[655];
+  xx[172] = xx[257] * xx[378] - xx[323] * xx[400] + xx[820];
+  xx[174] = xx[257] * xx[379] - xx[323] * xx[419] + xx[821];
+  xx[674] = (xx[813] - xx[849] - xx[853] - xx[876] - (xx[280] * xx[378] + xx[276]
+              * xx[379])) / xx[655];
+  xx[675] = (xx[816] - xx[852] - xx[854] - xx[879] - (xx[280] * xx[400] + xx[276]
+              * xx[419])) / xx[655];
   xx[676] = xx[610] / xx[655];
   xx[741] = xx[26];
   xx[742] = - xx[7];
@@ -7826,23 +7826,23 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_cross3(xx + 741, xx + 652, xx + 811);
   xx[29] = 9.806649999999999;
   xx[30] = xx[29] * xx[5];
-  xx[386] = xx[29] * xx[4];
-  xx[741] = xx[811] - xx[19] * (xx[20] * xx[30] + xx[31] * xx[386]);
-  xx[742] = xx[812] - (xx[386] * xx[4] + xx[30] * xx[5]) * xx[19] + xx[29];
-  xx[743] = (xx[20] * xx[386] - xx[31] * xx[30]) * xx[19] + xx[813];
+  xx[378] = xx[29] * xx[4];
+  xx[741] = xx[811] - xx[19] * (xx[20] * xx[30] + xx[31] * xx[378]);
+  xx[742] = xx[812] - (xx[378] * xx[4] + xx[30] * xx[5]) * xx[19] + xx[29];
+  xx[743] = (xx[20] * xx[378] - xx[31] * xx[30]) * xx[19] + xx[813];
   pm_math_quatInverseXform(xx + 15, xx + 741, xx + 29);
   xx[4] = 0.9928304695165694;
   xx[5] = 7.200670813652432e-6;
   xx[20] = 0.1195309949245745;
-  xx[386] = 7.013333919209806e-6;
-  xx[391] = 0.9999999999734306;
-  xx[410] = 1.987929622149476e-6;
-  xx[420] = 0.119530994935713;
+  xx[378] = 7.013333919209806e-6;
+  xx[379] = 0.9999999999734306;
+  xx[400] = 1.987929622149476e-6;
+  xx[419] = 0.119530994935713;
   xx[422] = 1.135366319023148e-6;
   xx[435] = 0.9928304695406913;
   xx[741] = xx[4] * inputDot[0] - xx[5] * inputDot[1] - xx[20] * inputDot[2];
-  xx[742] = xx[386] * inputDot[0] + xx[391] * inputDot[1] - xx[410] * inputDot[2];
-  xx[743] = xx[420] * inputDot[0] + xx[422] * inputDot[1] + xx[435] * inputDot[2];
+  xx[742] = xx[378] * inputDot[0] + xx[379] * inputDot[1] - xx[400] * inputDot[2];
+  xx[743] = xx[419] * inputDot[0] + xx[422] * inputDot[1] + xx[435] * inputDot[2];
   pm_math_cross3(xx + 35, xx + 741, xx + 811);
   pm_math_cross3(xx + 32, xx + 652, xx + 741);
   pm_math_cross3(xx + 32, xx + 741, xx + 652);
@@ -7865,9 +7865,9 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[653] = 0.02992188481855372 - (xx[163] * xx[18] + xx[742]) * xx[19];
   xx[654] = 0.1412955924490354 - (xx[19] * (xx[743] + xx[438]) - xx[4]);
   pm_math_cross3(xx + 25, xx + 652, xx + 741);
-  xx[5] = xx[30] + xx[19] * xx[812] + xx[33] + xx[386] * inputDdot[0] + xx[391] *
-    inputDdot[1] - xx[410] * inputDdot[2];
-  xx[18] = xx[31] + xx[19] * xx[813] + xx[34] + xx[420] * inputDdot[0] + xx[422]
+  xx[5] = xx[30] + xx[19] * xx[812] + xx[33] + xx[378] * inputDdot[0] + xx[379] *
+    inputDdot[1] - xx[400] * inputDdot[2];
+  xx[18] = xx[31] + xx[19] * xx[813] + xx[34] + xx[419] * inputDdot[0] + xx[422]
     * inputDdot[1] + xx[435] * inputDdot[2];
   xx[29] = xx[15] + xx[741];
   xx[30] = xx[5] + xx[742];
@@ -7876,17 +7876,17 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_cross3(xx + 35, xx + 652, xx + 29);
   pm_math_cross3(xx + 35, xx + 29, xx + 652);
   pm_math_quatInverseXform(xx + 330, xx + 652, xx + 29);
-  xx[386] = xx[16] * inputDot[6];
+  xx[378] = xx[16] * inputDot[6];
   xx[652] = xx[3];
   xx[653] = xx[7];
   xx[654] = xx[22];
   pm_math_cross3(xx + 652, xx + 760, xx + 741);
-  xx[3] = xx[32] + xx[29] - (xx[152] + xx[9]) * xx[386] + xx[741];
+  xx[3] = xx[32] + xx[29] - (xx[152] + xx[9]) * xx[378] + xx[741];
   xx[7] = xx[33] + xx[30] + xx[16] * inputDdot[6] + xx[742];
   xx[9] = xx[7] * xx[157] + xx[3] * xx[159];
   xx[22] = xx[3] - xx[19] * xx[9] * xx[159];
   xx[3] = xx[7] - xx[19] * xx[9] * xx[157];
-  xx[7] = xx[34] + (xx[150] + xx[150]) * xx[386] + xx[31] + xx[743];
+  xx[7] = xx[34] + (xx[150] + xx[150]) * xx[378] + xx[31] + xx[743];
   xx[9] = xx[7] - (xx[157] * xx[7] * xx[157] + xx[7] * xx[159] * xx[159]) * xx
     [19];
   xx[29] = xx[22];
@@ -7902,115 +7902,115 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[34] = xx[571] * state[28] * state[28];
   xx[150] = xx[308] * xx[308];
   xx[152] = (xx[150] + xx[309] * xx[309]) * xx[19] - xx[21];
-  xx[386] = xx[304] * xx[304];
-  xx[391] = xx[305] * xx[306];
-  xx[410] = xx[304] * xx[307];
-  xx[420] = xx[305] * xx[307];
+  xx[378] = xx[304] * xx[304];
+  xx[379] = xx[305] * xx[306];
+  xx[400] = xx[304] * xx[307];
+  xx[419] = xx[305] * xx[307];
   xx[422] = xx[304] * xx[306];
   xx[435] = xx[306] * xx[307];
   xx[451] = xx[304] * xx[305];
-  xx[669] = (xx[386] + xx[305] * xx[305]) * xx[19] - xx[21];
-  xx[670] = xx[19] * (xx[391] - xx[410]);
-  xx[671] = (xx[420] + xx[422]) * xx[19];
-  xx[672] = (xx[391] + xx[410]) * xx[19];
-  xx[673] = (xx[386] + xx[306] * xx[306]) * xx[19] - xx[21];
+  xx[669] = (xx[378] + xx[305] * xx[305]) * xx[19] - xx[21];
+  xx[670] = xx[19] * (xx[379] - xx[400]);
+  xx[671] = (xx[419] + xx[422]) * xx[19];
+  xx[672] = (xx[379] + xx[400]) * xx[19];
+  xx[673] = (xx[378] + xx[306] * xx[306]) * xx[19] - xx[21];
   xx[674] = xx[19] * (xx[435] - xx[451]);
-  xx[675] = xx[19] * (xx[420] - xx[422]);
+  xx[675] = xx[19] * (xx[419] - xx[422]);
   xx[676] = (xx[435] + xx[451]) * xx[19];
-  xx[677] = (xx[386] + xx[307] * xx[307]) * xx[19] - xx[21];
-  xx[386] = xx[340] * xx[426] - xx[466] * xx[320];
-  xx[391] = xx[495] * xx[340] - xx[517] * xx[320];
-  xx[410] = xx[523] * xx[340] - xx[320] * xx[432];
-  xx[741] = - (xx[340] * xx[386]);
-  xx[742] = - (xx[434] * xx[340] * xx[340] + xx[434] * xx[320] * xx[320]);
-  xx[743] = xx[320] * xx[386];
-  xx[744] = - (xx[340] * xx[391]);
+  xx[677] = (xx[378] + xx[307] * xx[307]) * xx[19] - xx[21];
+  xx[378] = xx[340] * xx[426] - xx[320] * xx[466];
+  xx[379] = xx[340] * xx[495] - xx[320] * xx[517];
+  xx[400] = xx[340] * xx[523] - xx[320] * xx[432];
+  xx[741] = - (xx[340] * xx[378]);
+  xx[742] = - (xx[340] * xx[340] * xx[434] + xx[320] * xx[320] * xx[434]);
+  xx[743] = xx[320] * xx[378];
+  xx[744] = - (xx[340] * xx[379]);
   xx[745] = - (xx[340] * xx[340] * xx[430] + xx[320] * xx[320] * xx[430]);
-  xx[746] = xx[320] * xx[391];
-  xx[747] = - (xx[340] * xx[410]);
-  xx[748] = - (xx[440] * xx[340] * xx[340] + xx[440] * xx[320] * xx[320]);
-  xx[749] = xx[320] * xx[410];
+  xx[746] = xx[320] * xx[379];
+  xx[747] = - (xx[340] * xx[400]);
+  xx[748] = - (xx[340] * xx[340] * xx[440] + xx[320] * xx[320] * xx[440]);
+  xx[749] = xx[320] * xx[400];
   pm_math_matrix3x3Compose(xx + 669, xx + 741, xx + 811);
-  xx[386] = xx[300] * xx[300];
-  xx[391] = xx[301] * xx[302];
-  xx[410] = xx[300] * xx[303];
-  xx[420] = xx[301] * xx[303];
+  xx[378] = xx[300] * xx[300];
+  xx[379] = xx[301] * xx[302];
+  xx[400] = xx[300] * xx[303];
+  xx[419] = xx[301] * xx[303];
   xx[422] = xx[300] * xx[302];
   xx[426] = xx[302] * xx[303];
   xx[430] = xx[300] * xx[301];
-  xx[669] = (xx[386] + xx[301] * xx[301]) * xx[19] - xx[21];
-  xx[670] = xx[19] * (xx[391] - xx[410]);
-  xx[671] = (xx[420] + xx[422]) * xx[19];
-  xx[672] = (xx[391] + xx[410]) * xx[19];
-  xx[673] = (xx[386] + xx[302] * xx[302]) * xx[19] - xx[21];
+  xx[669] = (xx[378] + xx[301] * xx[301]) * xx[19] - xx[21];
+  xx[670] = xx[19] * (xx[379] - xx[400]);
+  xx[671] = (xx[419] + xx[422]) * xx[19];
+  xx[672] = (xx[379] + xx[400]) * xx[19];
+  xx[673] = (xx[378] + xx[302] * xx[302]) * xx[19] - xx[21];
   xx[674] = xx[19] * (xx[426] - xx[430]);
-  xx[675] = xx[19] * (xx[420] - xx[422]);
+  xx[675] = xx[19] * (xx[419] - xx[422]);
   xx[676] = (xx[426] + xx[430]) * xx[19];
-  xx[677] = (xx[386] + xx[303] * xx[303]) * xx[19] - xx[21];
-  xx[386] = xx[450] * state[24] + xx[605] * state[22];
-  xx[391] = xx[450] * state[23] - xx[602] * state[22];
-  xx[410] = xx[602] * state[24] + xx[605] * state[23];
-  xx[420] = xx[606] * state[24] + xx[608] * state[22];
+  xx[677] = (xx[378] + xx[303] * xx[303]) * xx[19] - xx[21];
+  xx[378] = xx[450] * state[24] + xx[605] * state[22];
+  xx[379] = xx[450] * state[23] - xx[602] * state[22];
+  xx[400] = xx[602] * state[24] + xx[605] * state[23];
+  xx[419] = xx[606] * state[24] + xx[608] * state[22];
   xx[422] = xx[606] * state[23] + xx[541] * state[22];
   xx[426] = xx[541] * state[24] - xx[608] * state[23];
   xx[430] = xx[542] * state[22] - xx[609] * state[24];
   xx[432] = xx[609] * state[23] - xx[603] * state[22];
   xx[434] = xx[603] * state[24] - xx[542] * state[23];
-  xx[847] = - (xx[386] * state[24] + xx[391] * state[23]);
-  xx[848] = xx[391] * state[22] - xx[410] * state[24];
-  xx[849] = xx[410] * state[23] + xx[386] * state[22];
-  xx[850] = xx[420] * state[24] + xx[422] * state[23];
+  xx[847] = - (xx[378] * state[24] + xx[379] * state[23]);
+  xx[848] = xx[379] * state[22] - xx[400] * state[24];
+  xx[849] = xx[400] * state[23] + xx[378] * state[22];
+  xx[850] = xx[419] * state[24] + xx[422] * state[23];
   xx[851] = - (xx[426] * state[24] + xx[422] * state[22]);
-  xx[852] = xx[426] * state[23] - xx[420] * state[22];
+  xx[852] = xx[426] * state[23] - xx[419] * state[22];
   xx[853] = xx[430] * state[24] - xx[432] * state[23];
   xx[854] = xx[432] * state[22] - xx[434] * state[24];
   xx[855] = xx[434] * state[23] - xx[430] * state[22];
   pm_math_matrix3x3Compose(xx + 669, xx + 847, xx + 871);
-  xx[386] = xx[196] * xx[196];
-  xx[669] = (xx[386] + xx[558]) * xx[19] - xx[21];
+  xx[378] = xx[196] * xx[196];
+  xx[669] = (xx[378] + xx[558]) * xx[19] - xx[21];
   xx[670] = xx[524];
   xx[671] = (xx[543] + xx[539]) * xx[19];
   xx[672] = (xx[518] + xx[522]) * xx[19];
-  xx[673] = (xx[386] + xx[441]) * xx[19] - xx[21];
+  xx[673] = (xx[378] + xx[441]) * xx[19] - xx[21];
   xx[674] = xx[634];
   xx[675] = xx[587];
   xx[676] = (xx[565] + xx[629]) * xx[19];
-  xx[677] = (xx[386] + xx[505]) * xx[19] - xx[21];
+  xx[677] = (xx[378] + xx[505]) * xx[19] - xx[21];
   pm_math_matrix3x3Compose(xx + 871, xx + 669, xx + 1578);
-  xx[386] = xx[274] * xx[274];
-  xx[391] = xx[166] * xx[274];
-  xx[410] = xx[153] * xx[165];
-  xx[420] = xx[153] * xx[166];
-  xx[422] = xx[165] * xx[274];
+  xx[378] = xx[274] * xx[274];
+  xx[379] = xx[166] * xx[274];
+  xx[400] = xx[153] * xx[165];
+  xx[419] = xx[153] * xx[166];
+  xx[422] = xx[274] * xx[165];
   xx[426] = xx[166] * xx[165];
   xx[430] = xx[153] * xx[274];
-  xx[1756] = (xx[386] + xx[153] * xx[153]) * xx[19] - xx[21];
-  xx[1757] = xx[19] * (xx[391] - xx[410]);
-  xx[1758] = - ((xx[420] + xx[422]) * xx[19]);
-  xx[1759] = - ((xx[410] + xx[391]) * xx[19]);
-  xx[1760] = (xx[386] + xx[165] * xx[165]) * xx[19] - xx[21];
+  xx[1756] = (xx[378] + xx[153] * xx[153]) * xx[19] - xx[21];
+  xx[1757] = xx[19] * (xx[379] - xx[400]);
+  xx[1758] = - ((xx[419] + xx[422]) * xx[19]);
+  xx[1759] = - ((xx[400] + xx[379]) * xx[19]);
+  xx[1760] = (xx[378] + xx[165] * xx[165]) * xx[19] - xx[21];
   xx[1761] = xx[19] * (xx[426] - xx[430]);
-  xx[1762] = xx[19] * (xx[422] - xx[420]);
+  xx[1762] = xx[19] * (xx[422] - xx[419]);
   xx[1763] = (xx[426] + xx[430]) * xx[19];
-  xx[1764] = (xx[386] + xx[166] * xx[166]) * xx[19] - xx[21];
+  xx[1764] = (xx[378] + xx[166] * xx[166]) * xx[19] - xx[21];
   xx[153] = xx[678] * xx[249] - xx[256] * state[17];
   xx[165] = xx[271] * xx[256] - xx[590] * xx[249];
   xx[166] = xx[271] * xx[678] - xx[590] * state[17];
   xx[256] = xx[679] * state[17] - xx[682] * xx[249];
   xx[274] = xx[271] * xx[679] - xx[448] * xx[249];
-  xx[386] = xx[448] * state[17] - xx[271] * xx[682];
-  xx[391] = xx[449] * xx[249] - xx[683] * state[17];
-  xx[410] = xx[271] * xx[683] - xx[659] * xx[249];
-  xx[420] = xx[659] * state[17] - xx[271] * xx[449];
+  xx[378] = xx[448] * state[17] - xx[271] * xx[682];
+  xx[379] = xx[449] * xx[249] - xx[683] * state[17];
+  xx[400] = xx[271] * xx[683] - xx[659] * xx[249];
+  xx[419] = xx[659] * state[17] - xx[271] * xx[449];
   xx[1944] = xx[153] * state[17] - xx[165] * xx[271];
   xx[1945] = xx[166] * state[17] + xx[165] * xx[249];
   xx[1946] = - (xx[166] * xx[271] + xx[153] * xx[249]);
   xx[1947] = - (xx[256] * state[17] + xx[271] * xx[274]);
-  xx[1948] = xx[274] * xx[249] - xx[386] * state[17];
-  xx[1949] = xx[386] * xx[271] + xx[256] * xx[249];
-  xx[1950] = xx[391] * state[17] - xx[271] * xx[410];
-  xx[1951] = xx[410] * xx[249] - xx[420] * state[17];
-  xx[1952] = xx[271] * xx[420] - xx[391] * xx[249];
+  xx[1948] = xx[274] * xx[249] - xx[378] * state[17];
+  xx[1949] = xx[378] * xx[271] + xx[256] * xx[249];
+  xx[1950] = xx[379] * state[17] - xx[271] * xx[400];
+  xx[1951] = xx[400] * xx[249] - xx[419] * state[17];
+  xx[1952] = xx[271] * xx[419] - xx[379] * xx[249];
   pm_math_matrix3x3Compose(xx + 1756, xx + 1944, xx + 2022);
   xx[153] = xx[206] * xx[206];
   xx[165] = xx[207] * xx[208];
@@ -8024,122 +8024,122 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1763] = (xx[799] + xx[798]) * xx[19];
   xx[1764] = (xx[153] + xx[209] * xx[209]) * xx[19] - xx[21];
   pm_math_matrix3x3Compose(xx + 2022, xx + 1756, xx + 2045);
-  xx[153] = xx[157] * xx[159];
-  xx[165] = xx[19] * xx[153] * state[10] * state[10];
+  xx[153] = xx[210] * xx[210];
+  xx[165] = (xx[153] + xx[223]) * xx[19] - xx[21];
   xx[166] = xx[149] * xx[156];
-  xx[249] = xx[164] * xx[163];
-  xx[256] = xx[166] - xx[249];
-  xx[271] = xx[19] * xx[256];
-  xx[274] = xx[19] * xx[157] * xx[157] - xx[21];
-  xx[386] = xx[274] * state[10] * state[10];
-  xx[391] = xx[163] * xx[163];
-  xx[410] = (xx[391] + xx[149] * xx[149]) * xx[19] - xx[21];
-  xx[420] = xx[165] * xx[271] - xx[386] * xx[410];
-  xx[422] = xx[210] * xx[210];
-  xx[426] = (xx[422] + xx[223]) * xx[19] - xx[21];
-  xx[223] = xx[211] * xx[212];
+  xx[223] = xx[164] * xx[163];
+  xx[249] = xx[166] - xx[223];
+  xx[256] = xx[19] * xx[249];
+  xx[271] = xx[157] * xx[159];
+  xx[274] = xx[19] * xx[271] * state[10] * state[10];
+  xx[378] = xx[19] * xx[157] * xx[157] - xx[21];
+  xx[379] = xx[378] * state[10] * state[10];
+  xx[400] = xx[163] * xx[163];
+  xx[419] = (xx[400] + xx[149] * xx[149]) * xx[19] - xx[21];
+  xx[422] = xx[256] * xx[274] - xx[379] * xx[419];
+  xx[426] = xx[211] * xx[212];
   xx[430] = xx[210] * xx[213];
-  xx[432] = (xx[223] + xx[430]) * xx[19];
+  xx[432] = (xx[426] + xx[430]) * xx[19];
   xx[434] = xx[19] * xx[159] * xx[159] - xx[21];
   xx[435] = xx[434] * state[10] * state[10];
-  xx[440] = xx[165] * xx[410] - xx[271] * xx[435];
-  xx[441] = xx[410] * inputDot[6] * inputDot[6];
+  xx[440] = xx[274] * xx[419] - xx[435] * xx[256];
+  xx[441] = xx[419] * inputDot[6] * inputDot[6];
   xx[448] = xx[212] * xx[159] - xx[157] * xx[211];
   xx[449] = xx[448] * xx[448];
   xx[451] = xx[213] * xx[159] - xx[157] * xx[210];
   xx[455] = xx[451] * xx[451];
   xx[457] = (xx[449] + xx[455]) * xx[19] - xx[21];
-  xx[461] = xx[19] * xx[256] * inputDot[6] * inputDot[6];
-  xx[256] = xx[210] * xx[159] + xx[157] * xx[213];
-  xx[463] = xx[256] * xx[451];
+  xx[461] = xx[210] * xx[159] + xx[157] * xx[213];
+  xx[463] = xx[461] * xx[451];
   xx[466] = xx[157] * xx[212] + xx[211] * xx[159];
   xx[467] = xx[466] * xx[448];
   xx[495] = (xx[463] + xx[467]) * xx[19];
+  xx[499] = xx[19] * xx[249] * inputDot[6] * inputDot[6];
   xx[516] = - xx[448];
   xx[517] = xx[451];
-  xx[518] = xx[256];
+  xx[518] = xx[461];
   xx[519] = - xx[466];
   pm_math_quatCompose(xx + 330, xx + 516, xx + 797);
-  xx[499] = xx[797] * xx[797];
+  xx[249] = xx[797] * xx[797];
   xx[501] = xx[798] * xx[799];
   xx[502] = xx[797] * xx[800];
   xx[503] = xx[798] * xx[800];
   xx[505] = xx[797] * xx[799];
   xx[507] = xx[799] * xx[800];
   xx[508] = xx[797] * xx[798];
-  xx[2327] = (xx[499] + xx[798] * xx[798]) * xx[19] - xx[21];
+  xx[2327] = (xx[249] + xx[798] * xx[798]) * xx[19] - xx[21];
   xx[2328] = xx[19] * (xx[501] - xx[502]);
   xx[2329] = (xx[503] + xx[505]) * xx[19];
   xx[2330] = (xx[501] + xx[502]) * xx[19];
-  xx[2331] = (xx[499] + xx[799] * xx[799]) * xx[19] - xx[21];
+  xx[2331] = (xx[249] + xx[799] * xx[799]) * xx[19] - xx[21];
   xx[2332] = xx[19] * (xx[507] - xx[508]);
   xx[2333] = xx[19] * (xx[503] - xx[505]);
   xx[2334] = (xx[507] + xx[508]) * xx[19];
-  xx[2335] = (xx[499] + xx[800] * xx[800]) * xx[19] - xx[21];
-  xx[499] = xx[256] * inputDot[6];
+  xx[2335] = (xx[249] + xx[800] * xx[800]) * xx[19] - xx[21];
+  xx[249] = xx[461] * inputDot[6];
   xx[501] = xx[451] * inputDot[6];
-  xx[516] = xx[19] * (xx[499] * xx[448] - xx[466] * xx[501]);
-  xx[517] = - ((xx[501] * xx[448] + xx[466] * xx[499]) * xx[19]);
-  xx[518] = inputDot[6] - (xx[501] * xx[451] + xx[256] * xx[499]) * xx[19];
+  xx[516] = xx[19] * (xx[249] * xx[448] - xx[466] * xx[501]);
+  xx[517] = - ((xx[501] * xx[448] + xx[466] * xx[249]) * xx[19]);
+  xx[518] = inputDot[6] - (xx[501] * xx[451] + xx[461] * xx[249]) * xx[19];
   pm_math_matrix3x3PostCross(xx + 2327, xx + 516, xx + 2336);
-  xx[499] = xx[211] * state[10];
+  xx[249] = xx[211] * state[10];
   xx[501] = xx[212] * state[10];
-  xx[502] = xx[19] * (xx[213] * xx[499] - xx[210] * xx[501]);
+  xx[502] = xx[19] * (xx[213] * xx[249] - xx[210] * xx[501]);
   pm_math_quatInverseXform(xx + 206, xx + 1056, xx + 516);
-  pm_math_quatInverseXform(xx + 196, xx + 1167, xx + 206);
+  pm_math_quatInverseXform(xx + 196, xx + 1080, xx + 206);
   xx[196] = xx[320] * xx[205];
   xx[197] = xx[19] * xx[196] * xx[205] - xx[320];
   xx[198] = xx[206] + xx[197];
   xx[199] = xx[516] + xx[198];
-  xx[209] = (xx[210] * xx[499] + xx[213] * xx[501]) * xx[19];
+  xx[209] = (xx[210] * xx[249] + xx[213] * xx[501]) * xx[19];
   xx[210] = xx[19] * xx[193] * xx[196];
   xx[196] = xx[207] - xx[210];
   xx[503] = xx[517] + xx[196];
-  xx[505] = state[10] - (xx[211] * xx[499] + xx[212] * xx[501]) * xx[19];
+  xx[505] = state[10] - (xx[211] * xx[249] + xx[212] * xx[501]) * xx[19];
   xx[211] = xx[340] + state[28];
   xx[212] = xx[208] - xx[211];
-  xx[499] = xx[518] + xx[212];
+  xx[249] = xx[518] + xx[212];
   xx[522] = xx[502] + xx[199];
   xx[523] = xx[209] + xx[503];
-  xx[524] = xx[505] + xx[499];
+  xx[524] = xx[505] + xx[249];
   pm_math_matrix3x3PostCross(xx + 2336, xx + 522, xx + 2327);
   xx[501] = xx[164] * xx[149];
-  xx[507] = xx[156] * xx[163];
-  xx[508] = xx[166] + xx[249];
+  xx[507] = xx[163] * xx[156];
+  xx[508] = xx[166] + xx[223];
   xx[166] = xx[508] * xx[19];
-  xx[249] = (xx[391] + xx[156] * xx[156]) * xx[19] - xx[21];
+  xx[223] = (xx[400] + xx[156] * xx[156]) * xx[19] - xx[21];
   xx[510] = xx[164] * xx[156];
   xx[514] = xx[149] * xx[163];
   xx[519] = xx[501] - xx[507];
   xx[520] = xx[19] * xx[519];
   xx[522] = xx[510] + xx[514];
   xx[523] = xx[522] * xx[19];
-  xx[2336] = xx[410];
-  xx[2337] = xx[271];
+  xx[2336] = xx[419];
+  xx[2337] = xx[256];
   xx[2338] = (xx[501] + xx[507]) * xx[19];
   xx[2339] = xx[166];
-  xx[2340] = xx[249];
+  xx[2340] = xx[223];
   xx[2341] = xx[19] * (xx[510] - xx[514]);
   xx[2342] = xx[520];
   xx[2343] = xx[523];
-  xx[2344] = (xx[391] + xx[164] * xx[164]) * xx[19] - xx[21];
-  xx[271] = xx[19] * (xx[463] - xx[467]);
-  xx[391] = xx[466] * xx[451];
-  xx[410] = xx[256] * xx[448];
-  xx[463] = (xx[391] + xx[410]) * xx[19];
-  xx[467] = xx[256] * xx[256];
+  xx[2344] = (xx[400] + xx[164] * xx[164]) * xx[19] - xx[21];
+  xx[256] = xx[19] * (xx[463] - xx[467]);
+  xx[400] = xx[466] * xx[451];
+  xx[419] = xx[461] * xx[448];
+  xx[463] = (xx[400] + xx[419]) * xx[19];
+  xx[467] = xx[461] * xx[461];
   xx[501] = (xx[449] + xx[467]) * xx[19] - xx[21];
   xx[507] = xx[448] * xx[451];
-  xx[448] = xx[256] * xx[466];
-  xx[256] = xx[19] * (xx[507] - xx[448]);
-  xx[451] = xx[19] * (xx[410] - xx[391]);
+  xx[448] = xx[466] * xx[461];
+  xx[451] = xx[19] * (xx[507] - xx[448]);
+  xx[461] = xx[19] * (xx[419] - xx[400]);
   xx[2345] = xx[457];
-  xx[2346] = xx[271];
+  xx[2346] = xx[256];
   xx[2347] = - xx[463];
   xx[2348] = xx[495];
   xx[2349] = xx[501];
-  xx[2350] = xx[256];
-  xx[2351] = xx[451];
+  xx[2350] = xx[451];
+  xx[2351] = xx[461];
   xx[2352] = - ((xx[448] + xx[507]) * xx[19]);
   xx[2353] = (xx[449] + xx[466] * xx[466]) * xx[19] - xx[21];
   xx[589] = xx[502];
@@ -8148,13 +8148,13 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_matrix3x3PostCross(xx + 2345, xx + 589, xx + 2354);
   xx[589] = xx[199];
   xx[590] = xx[503];
-  xx[591] = xx[499];
+  xx[591] = xx[249];
   pm_math_matrix3x3PostCross(xx + 2354, xx + 589, xx + 2345);
-  xx[199] = xx[19] * (xx[223] - xx[430]);
+  xx[199] = xx[19] * (xx[426] - xx[430]);
   xx[209] = (xx[218] + xx[219]) * xx[19];
-  xx[218] = (xx[422] + xx[224]) * xx[19] - xx[21];
+  xx[218] = (xx[153] + xx[224]) * xx[19] - xx[21];
   xx[219] = xx[19] * (xx[222] - xx[221]);
-  xx[2354] = xx[426];
+  xx[2354] = xx[165];
   xx[2355] = xx[199];
   xx[2356] = xx[209];
   xx[2357] = xx[432];
@@ -8162,127 +8162,127 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[2359] = xx[219];
   xx[2360] = xx[220];
   xx[2361] = (xx[222] + xx[221]) * xx[19];
-  xx[2362] = (xx[422] + xx[213] * xx[213]) * xx[19] - xx[21];
+  xx[2362] = (xx[153] + xx[213] * xx[213]) * xx[19] - xx[21];
   pm_math_matrix3x3PostCross(xx + 2354, xx + 516, xx + 2363);
   xx[220] = xx[198];
   xx[221] = xx[196];
   xx[222] = xx[212];
   pm_math_matrix3x3PostCross(xx + 2363, xx + 220, xx + 2354);
   pm_math_matrix3x3PostCross(xx + 1756, xx + 206, xx + 2363);
-  xx[196] = - xx[210];
+  xx[153] = - xx[210];
   xx[206] = xx[197];
-  xx[207] = xx[196];
+  xx[207] = xx[153];
   xx[208] = - xx[211];
   pm_math_matrix3x3PostCross(xx + 2363, xx + 206, xx + 1756);
-  xx[198] = - xx[340];
+  xx[196] = - xx[340];
   xx[206] = xx[197];
-  xx[207] = xx[196];
-  xx[208] = xx[198];
+  xx[207] = xx[153];
+  xx[208] = xx[196];
   pm_math_matrix3x3PostCross(xx + 669, xx + 206, xx + 2363);
-  xx[196] = xx[2370] * state[28];
+  xx[153] = xx[2370] * state[28];
   xx[197] = xx[2364] * state[28];
-  xx[206] = xx[2367] * state[28];
-  xx[207] = xx[2363] * state[28];
-  xx[208] = xx[2366] * state[28];
-  xx[210] = xx[2369] * state[28];
-  xx[669] = xx[1756] + xx[605] * xx[196] - (xx[197] * xx[450] + xx[602] * xx[206]);
-  xx[670] = xx[1757] + xx[207] * xx[450] + xx[602] * xx[208] - xx[605] * xx[210];
+  xx[198] = xx[2367] * state[28];
+  xx[206] = xx[2363] * state[28];
+  xx[207] = xx[2366] * state[28];
+  xx[208] = xx[2369] * state[28];
+  xx[669] = xx[1756] + xx[605] * xx[153] - (xx[197] * xx[450] + xx[198] * xx[602]);
+  xx[670] = xx[1757] + xx[206] * xx[450] + xx[207] * xx[602] - xx[605] * xx[208];
   xx[671] = xx[1758];
-  xx[672] = xx[1759] + xx[606] * xx[197] - xx[206] * xx[541] - xx[608] * xx[196];
-  xx[673] = xx[1760] + xx[208] * xx[541] - xx[606] * xx[207] + xx[608] * xx[210];
+  xx[672] = xx[1759] + xx[606] * xx[197] - xx[198] * xx[541] - xx[153] * xx[608];
+  xx[673] = xx[1760] + xx[207] * xx[541] - xx[606] * xx[206] + xx[208] * xx[608];
   xx[674] = xx[1761];
-  xx[675] = xx[1762] - (xx[609] * xx[197] + xx[603] * xx[206] + xx[196] * xx[542]);
-  xx[676] = xx[1763] + xx[609] * xx[207] + xx[603] * xx[208] + xx[210] * xx[542];
+  xx[675] = xx[1762] - (xx[197] * xx[609] + xx[603] * xx[198] + xx[153] * xx[542]);
+  xx[676] = xx[1763] + xx[206] * xx[609] + xx[603] * xx[207] + xx[208] * xx[542];
   xx[677] = xx[1764];
   pm_math_matrix3x3Compose(xx + 732, xx + 669, xx + 1756);
-  xx[196] = xx[2354] + xx[1756];
+  xx[153] = xx[2354] + xx[1756];
   xx[197] = xx[2357] + xx[1759];
-  xx[206] = xx[19] * xx[153];
-  xx[153] = xx[2355] + xx[1757];
+  xx[198] = xx[19] * xx[271];
+  xx[206] = xx[2355] + xx[1757];
   xx[207] = xx[2358] + xx[1760];
   xx[208] = xx[2356] + xx[1758];
   xx[210] = xx[2359] + xx[1761];
-  xx[669] = xx[2345] + xx[196] * xx[274] - xx[197] * xx[206];
-  xx[670] = xx[2346] + xx[153] * xx[274] - xx[207] * xx[206];
-  xx[671] = xx[2347] + xx[208] * xx[274] - xx[210] * xx[206];
-  xx[672] = xx[2348] + xx[197] * xx[434] - xx[196] * xx[206];
-  xx[673] = xx[2349] + xx[207] * xx[434] - xx[153] * xx[206];
-  xx[674] = xx[2350] + xx[210] * xx[434] - xx[208] * xx[206];
+  xx[669] = xx[2345] + xx[153] * xx[378] - xx[197] * xx[198];
+  xx[670] = xx[2346] + xx[206] * xx[378] - xx[207] * xx[198];
+  xx[671] = xx[2347] + xx[208] * xx[378] - xx[210] * xx[198];
+  xx[672] = xx[2348] + xx[197] * xx[434] - xx[153] * xx[198];
+  xx[673] = xx[2349] + xx[207] * xx[434] - xx[206] * xx[198];
+  xx[674] = xx[2350] + xx[210] * xx[434] - xx[208] * xx[198];
   xx[675] = xx[2351] - (xx[2360] + xx[1762]);
   xx[676] = xx[2352] - (xx[2361] + xx[1763]);
   xx[677] = xx[2353] - (xx[2362] + xx[1764]);
   pm_math_matrix3x3Compose(xx + 2336, xx + 669, xx + 1756);
   xx[153] = (xx[150] + xx[310] * xx[310]) * xx[19] - xx[21];
-  xx[196] = (xx[31] + xx[32]) * xx[19];
-  xx[31] = xx[165] * xx[249] - xx[166] * xx[386];
-  xx[32] = xx[165] * xx[166] - xx[435] * xx[249];
+  xx[197] = (xx[31] + xx[32]) * xx[19];
+  xx[31] = xx[274] * xx[223] - xx[379] * xx[166];
+  xx[32] = xx[166] * xx[274] - xx[435] * xx[223];
   xx[166] = xx[19] * xx[508] * inputDot[6] * inputDot[6];
-  xx[197] = xx[249] * inputDot[6] * inputDot[6];
+  xx[206] = xx[223] * inputDot[6] * inputDot[6];
   xx[207] = xx[310] * xx[311];
   xx[208] = xx[308] * xx[309];
   xx[210] = (xx[207] + xx[208]) * xx[19];
   xx[211] = xx[309] * xx[311];
   xx[212] = xx[308] * xx[310];
   xx[213] = xx[19] * (xx[211] - xx[212]);
-  xx[220] = xx[165] * xx[523] - xx[520] * xx[386];
-  xx[221] = xx[520] * xx[165] - xx[523] * xx[435];
+  xx[220] = xx[523] * xx[274] - xx[379] * xx[520];
+  xx[221] = xx[274] * xx[520] - xx[435] * xx[523];
   xx[222] = xx[19] * xx[519] * inputDot[6] * inputDot[6];
   xx[223] = xx[19] * xx[522] * inputDot[6] * inputDot[6];
   xx[669] = xx[30] * xx[33] - xx[34] * xx[152] + xx[811] * xx[571] - xx[812] *
-    xx[533] + xx[1578] + xx[2045] + xx[420] * xx[426] + xx[432] * xx[440] - (xx
-    [441] * xx[457] + xx[461] * xx[495]) + (xx[2327] + xx[1756]) * xx[19];
-  xx[670] = xx[811] * xx[533] + xx[812] * xx[571] - (xx[30] * xx[152] + xx[33] *
-    xx[34]) + xx[1579] + xx[2046] + xx[199] * xx[420] + xx[218] * xx[440] - (xx
-    [271] * xx[441] + xx[461] * xx[501]) + (xx[2328] + xx[1757]) * xx[19];
-  xx[671] = xx[813] * xx[658] + xx[1580] + xx[2047] + xx[209] * xx[420] + xx[219]
-    * xx[440] + xx[463] * xx[441] - xx[256] * xx[461] + (xx[2329] + xx[1758]) *
+    xx[533] + xx[1578] + xx[2045] + xx[165] * xx[422] + xx[432] * xx[440] - (xx
+    [441] * xx[457] + xx[495] * xx[499]) + (xx[2327] + xx[1756]) * xx[19];
+  xx[670] = xx[811] * xx[533] + xx[812] * xx[571] - (xx[30] * xx[152] + xx[34] *
+    xx[33]) + xx[1579] + xx[2046] + xx[199] * xx[422] + xx[440] * xx[218] - (xx
+    [441] * xx[256] + xx[499] * xx[501]) + (xx[2328] + xx[1757]) * xx[19];
+  xx[671] = xx[813] * xx[658] + xx[1580] + xx[2047] + xx[209] * xx[422] + xx[219]
+    * xx[440] + xx[441] * xx[463] - xx[499] * xx[451] + (xx[2329] + xx[1758]) *
     xx[19];
-  xx[672] = xx[30] * xx[153] - xx[196] * xx[34] + xx[814] * xx[571] - xx[815] *
-    xx[533] + xx[1581] + xx[2048] + xx[426] * xx[31] + xx[432] * xx[32] - (xx
-    [166] * xx[457] + xx[495] * xx[197]) + (xx[2330] + xx[1759]) * xx[19];
-  xx[673] = xx[814] * xx[533] + xx[815] * xx[571] - (xx[30] * xx[196] + xx[34] *
+  xx[672] = xx[30] * xx[153] - xx[34] * xx[197] + xx[814] * xx[571] - xx[815] *
+    xx[533] + xx[1581] + xx[2048] + xx[165] * xx[31] + xx[432] * xx[32] - (xx
+    [166] * xx[457] + xx[495] * xx[206]) + (xx[2330] + xx[1759]) * xx[19];
+  xx[673] = xx[814] * xx[533] + xx[815] * xx[571] - (xx[197] * xx[30] + xx[34] *
     xx[153]) + xx[1582] + xx[2049] + xx[199] * xx[31] + xx[218] * xx[32] - (xx
-    [271] * xx[166] + xx[197] * xx[501]) + (xx[2331] + xx[1760]) * xx[19];
+    [256] * xx[166] + xx[206] * xx[501]) + (xx[2331] + xx[1760]) * xx[19];
   xx[674] = xx[816] * xx[658] + xx[1583] + xx[2050] + xx[209] * xx[31] + xx[219]
-    * xx[32] + xx[166] * xx[463] - xx[256] * xx[197] + (xx[2332] + xx[1761]) *
+    * xx[32] + xx[463] * xx[166] - xx[206] * xx[451] + (xx[2332] + xx[1761]) *
     xx[19];
-  xx[675] = xx[30] * xx[210] - xx[213] * xx[34] + xx[817] * xx[571] - xx[818] *
-    xx[533] + xx[1584] + xx[2051] + xx[426] * xx[220] + xx[432] * xx[221] - (xx
-    [222] * xx[457] + xx[223] * xx[495]) + (xx[2333] + xx[1762]) * xx[19];
-  xx[676] = xx[817] * xx[533] + xx[818] * xx[571] - (xx[30] * xx[213] + xx[34] *
-    xx[210]) + xx[1585] + xx[2052] + xx[199] * xx[220] + xx[218] * xx[221] -
-    (xx[271] * xx[222] + xx[223] * xx[501]) + (xx[2334] + xx[1763]) * xx[19];
+  xx[675] = xx[210] * xx[30] - xx[34] * xx[213] + xx[817] * xx[571] - xx[818] *
+    xx[533] + xx[1584] + xx[2051] + xx[220] * xx[165] + xx[432] * xx[221] - (xx
+    [222] * xx[457] + xx[495] * xx[223]) + (xx[2333] + xx[1762]) * xx[19];
+  xx[676] = xx[817] * xx[533] + xx[818] * xx[571] - (xx[213] * xx[30] + xx[210] *
+    xx[34]) + xx[1585] + xx[2052] + xx[199] * xx[220] + xx[221] * xx[218] - (xx
+    [222] * xx[256] + xx[223] * xx[501]) + (xx[2334] + xx[1763]) * xx[19];
   xx[677] = xx[819] * xx[658] + xx[1586] + xx[2053] + xx[209] * xx[220] + xx[219]
-    * xx[221] + xx[222] * xx[463] - xx[256] * xx[223] + (xx[2335] + xx[1764]) *
+    * xx[221] + xx[463] * xx[222] - xx[223] * xx[451] + (xx[2335] + xx[1764]) *
     xx[19];
   pm_math_matrix3x3Xform(xx + 669, xx + 231, xx + 501);
   xx[30] = state[28] * state[28];
   xx[34] = xx[240] * xx[30];
-  xx[199] = xx[30] * xx[238];
-  xx[30] = xx[311] * xx[199];
-  xx[209] = xx[311] * xx[34];
-  xx[218] = xx[309] * xx[199] - xx[310] * xx[34];
+  xx[165] = xx[30] * xx[238];
+  xx[30] = xx[311] * xx[165];
+  xx[199] = xx[311] * xx[34];
+  xx[209] = xx[309] * xx[165] - xx[310] * xx[34];
   xx[516] = - xx[30];
-  xx[517] = xx[209];
-  xx[518] = xx[218];
+  xx[517] = xx[199];
+  xx[518] = xx[209];
   pm_math_cross3(xx + 309, xx + 516, xx + 522);
   pm_math_matrix3x3Xform(xx + 741, xx + 244, xx + 516);
-  xx[219] = 0.02199704525612493;
-  xx[224] = xx[219] * xx[203];
-  xx[240] = 0.01270000000000017;
-  xx[249] = xx[240] * xx[192] + xx[202] * xx[219];
-  xx[192] = xx[240] * xx[203];
-  xx[589] = xx[224];
-  xx[590] = - xx[249];
+  xx[218] = 0.02199704525612493;
+  xx[219] = xx[218] * xx[203];
+  xx[224] = 0.01270000000000017;
+  xx[240] = xx[224] * xx[192] + xx[202] * xx[218];
+  xx[192] = xx[224] * xx[203];
+  xx[589] = xx[219];
+  xx[590] = - xx[240];
   xx[591] = xx[192];
   pm_math_cross3(xx + 253, xx + 589, xx + 652);
   xx[202] = state[26] * state[26];
-  xx[203] = ((xx[224] * xx[204] + xx[652]) * xx[19] - xx[240]) * xx[202];
-  xx[224] = (xx[653] - xx[204] * xx[249]) * xx[19] * xx[202];
-  xx[240] = (xx[219] + xx[19] * (xx[654] + xx[192] * xx[204])) * xx[202];
+  xx[203] = ((xx[219] * xx[204] + xx[652]) * xx[19] - xx[224]) * xx[202];
+  xx[219] = (xx[653] - xx[204] * xx[240]) * xx[19] * xx[202];
+  xx[224] = (xx[218] + xx[19] * (xx[654] + xx[192] * xx[204])) * xx[202];
   xx[253] = xx[516] + xx[203];
-  xx[254] = xx[517] + xx[224];
-  xx[255] = xx[518] + xx[240];
+  xx[254] = xx[517] + xx[219];
+  xx[255] = xx[518] + xx[224];
   pm_math_quatXform(xx + 304, xx + 253, xx + 516);
   pm_math_matrix3x3Xform(xx + 847, xx + 259, xx + 253);
   pm_math_matrix3x3Xform(xx + 847, xx + 265, xx + 589);
@@ -8298,19 +8298,19 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_quatXform(xx + 296, xx + 669, xx + 265);
   xx[192] = state[10] * state[10];
   xx[202] = xx[192] * xx[425];
-  xx[204] = xx[264] * xx[165] - xx[275] * xx[386] + xx[202];
-  xx[219] = xx[192] * xx[429];
-  xx[192] = xx[275] * xx[165] - xx[264] * xx[435] - xx[219];
-  xx[249] = xx[164] * xx[192];
-  xx[256] = xx[164] * xx[204];
-  xx[271] = xx[149] * xx[192] - xx[204] * xx[156];
-  xx[669] = - xx[249];
-  xx[670] = xx[256];
-  xx[671] = xx[271];
+  xx[204] = xx[264] * xx[274] - xx[275] * xx[379] + xx[202];
+  xx[218] = xx[192] * xx[429];
+  xx[192] = xx[275] * xx[274] - xx[264] * xx[435] - xx[218];
+  xx[240] = xx[164] * xx[192];
+  xx[249] = xx[164] * xx[204];
+  xx[256] = xx[149] * xx[192] - xx[204] * xx[156];
+  xx[669] = - xx[240];
+  xx[670] = xx[249];
+  xx[671] = xx[256];
   pm_math_cross3(xx + 284, xx + 669, xx + 672);
-  xx[391] = inputDot[6] * inputDot[6];
-  xx[410] = xx[164] * xx[17];
-  xx[422] = xx[391] * ((xx[20] * xx[156] + xx[410]) * xx[19] - xx[16]);
+  xx[271] = inputDot[6] * inputDot[6];
+  xx[400] = xx[164] * xx[17];
+  xx[419] = xx[271] * ((xx[20] * xx[156] + xx[400]) * xx[19] - xx[16]);
   xx[425] = xx[264] * xx[157] + xx[275] * xx[159];
   xx[426] = xx[275] - xx[19] * xx[425] * xx[159] + xx[428];
   xx[430] = xx[264] - xx[19] * xx[425] * xx[157] + xx[429];
@@ -8325,7 +8325,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[677] = xx[320] * xx[238];
   pm_math_quatXform(xx + 214, xx + 675, xx + 760);
   xx[160] = xx[282] + xx[760];
-  pm_math_cross3(xx + 1167, xx + 259, xx + 675);
+  pm_math_cross3(xx + 1080, xx + 259, xx + 675);
   xx[238] = (xx[315] - xx[291]) * state[26];
   xx[241] = xx[238] + xx[761];
   xx[243] = xx[19] * xx[321] * state[26];
@@ -8368,11 +8368,11 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[820] = xx[160];
   xx[821] = xx[241];
   xx[822] = xx[259];
-  pm_math_cross3(xx + 1167, xx + 820, xx + 259);
+  pm_math_cross3(xx + 1080, xx + 820, xx + 259);
   pm_math_quatXform(xx + 188, xx + 259, xx + 820);
-  xx[259] = xx[158] * xx[340];
-  xx[260] = - (xx[313] * xx[340]);
-  xx[261] = - (xx[158] * xx[320]);
+  xx[259] = xx[340] * xx[158];
+  xx[260] = - (xx[340] * xx[313]);
+  xx[261] = - (xx[320] * xx[158]);
   pm_math_quatXform(xx + 214, xx + 259, xx + 823);
   pm_math_quatXform(xx + 188, xx + 823, xx + 259);
   xx[823] = xx[820] + xx[259];
@@ -8393,7 +8393,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[158] = xx[833] * xx[833];
   xx[160] = xx[704] * xx[833];
   xx[241] = xx[699] * xx[701];
-  xx[264] = xx[699] * xx[704];
+  xx[264] = xx[704] * xx[699];
   xx[268] = xx[833] * xx[701];
   xx[269] = xx[704] * xx[701];
   xx[313] = xx[699] * xx[833];
@@ -8416,18 +8416,18 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[269] = xx[965] * state[54] - xx[832] * xx[241];
   xx[313] = xx[268] * xx[965] - xx[827] * xx[241];
   xx[449] = xx[827] * state[54] - xx[268] * xx[832];
-  xx[457] = xx[707] * xx[241] - xx[709] * state[54];
-  xx[463] = xx[268] * xx[709] - xx[826] * xx[241];
-  xx[466] = xx[826] * state[54] - xx[268] * xx[707];
+  xx[451] = xx[707] * xx[241] - xx[709] * state[54];
+  xx[457] = xx[268] * xx[709] - xx[826] * xx[241];
+  xx[463] = xx[826] * state[54] - xx[268] * xx[707];
   xx[1756] = xx[264] * state[54] - xx[158] * xx[268];
   xx[1757] = xx[160] * state[54] + xx[158] * xx[241];
   xx[1758] = - (xx[160] * xx[268] + xx[264] * xx[241]);
   xx[1759] = - (xx[269] * state[54] + xx[268] * xx[313]);
   xx[1760] = xx[313] * xx[241] - xx[449] * state[54];
   xx[1761] = xx[449] * xx[268] + xx[269] * xx[241];
-  xx[1762] = xx[457] * state[54] - xx[268] * xx[463];
-  xx[1763] = xx[463] * xx[241] - xx[466] * state[54];
-  xx[1764] = xx[268] * xx[466] - xx[457] * xx[241];
+  xx[1762] = xx[451] * state[54] - xx[268] * xx[457];
+  xx[1763] = xx[457] * xx[241] - xx[463] * state[54];
+  xx[1764] = xx[268] * xx[463] - xx[451] * xx[241];
   pm_math_matrix3x3Compose(xx + 1578, xx + 1756, xx + 2045);
   xx[158] = xx[705] * xx[706];
   xx[160] = xx[703] * xx[689];
@@ -8435,23 +8435,23 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[269] = xx[19] * xx[264];
   xx[313] = xx[19] * xx[681] * xx[688] * state[47] * state[47];
   xx[449] = (xx[19] * xx[681] * xx[681] - xx[21]) * state[47] * state[47];
-  xx[457] = xx[705] * xx[705];
-  xx[463] = (xx[457] + xx[689] * xx[689]) * xx[19] - xx[21];
-  xx[466] = xx[269] * xx[313] - xx[449] * xx[463];
-  xx[495] = (xx[19] * xx[688] * xx[688] - xx[21]) * state[47] * state[47];
-  xx[499] = xx[313] * xx[463] - xx[269] * xx[495];
-  xx[505] = xx[463] * inputDot[8] * inputDot[8];
+  xx[451] = xx[705] * xx[705];
+  xx[457] = (xx[451] + xx[689] * xx[689]) * xx[19] - xx[21];
+  xx[463] = xx[269] * xx[313] - xx[449] * xx[457];
+  xx[466] = (xx[19] * xx[688] * xx[688] - xx[21]) * state[47] * state[47];
+  xx[495] = xx[313] * xx[457] - xx[466] * xx[269];
+  xx[505] = xx[457] * inputDot[8] * inputDot[8];
   xx[508] = xx[716] * xx[688] - xx[681] * xx[712];
   xx[510] = xx[508] * xx[508];
   xx[514] = xx[688] * xx[772] + xx[681] * xx[711];
   xx[519] = xx[514] * xx[514];
   xx[520] = (xx[510] + xx[519]) * xx[19] - xx[21];
-  xx[533] = xx[19] * xx[264] * inputDot[8] * inputDot[8];
-  xx[264] = xx[716] * xx[681] + xx[688] * xx[712];
-  xx[539] = xx[508] * xx[264];
+  xx[533] = xx[716] * xx[681] + xx[688] * xx[712];
+  xx[539] = xx[508] * xx[533];
   xx[543] = xx[688] * xx[711] - xx[681] * xx[772];
   xx[558] = xx[543] * xx[514];
   xx[565] = (xx[539] - xx[558]) * xx[19];
+  xx[567] = xx[19] * xx[264] * inputDot[8] * inputDot[8];
   xx[675] = xx[705];
   xx[676] = xx[896];
   xx[677] = xx[703];
@@ -8459,77 +8459,77 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[820] = xx[508];
   xx[821] = - xx[514];
   xx[822] = xx[543];
-  xx[823] = xx[264];
+  xx[823] = xx[533];
   pm_math_quatCompose(xx + 675, xx + 820, xx + 861);
-  xx[567] = xx[861] * xx[861];
+  xx[264] = xx[861] * xx[861];
   xx[571] = xx[862] * xx[863];
   xx[584] = xx[861] * xx[864];
   xx[587] = xx[862] * xx[864];
   xx[604] = xx[861] * xx[863];
   xx[607] = xx[863] * xx[864];
   xx[610] = xx[861] * xx[862];
-  xx[1578] = (xx[567] + xx[862] * xx[862]) * xx[19] - xx[21];
+  xx[1578] = (xx[264] + xx[862] * xx[862]) * xx[19] - xx[21];
   xx[1579] = xx[19] * (xx[571] - xx[584]);
   xx[1580] = (xx[587] + xx[604]) * xx[19];
   xx[1581] = (xx[571] + xx[584]) * xx[19];
-  xx[1582] = (xx[567] + xx[863] * xx[863]) * xx[19] - xx[21];
+  xx[1582] = (xx[264] + xx[863] * xx[863]) * xx[19] - xx[21];
   xx[1583] = xx[19] * (xx[607] - xx[610]);
   xx[1584] = xx[19] * (xx[587] - xx[604]);
   xx[1585] = (xx[607] + xx[610]) * xx[19];
-  xx[1586] = (xx[567] + xx[864] * xx[864]) * xx[19] - xx[21];
-  xx[567] = xx[543] * inputDot[8];
+  xx[1586] = (xx[264] + xx[864] * xx[864]) * xx[19] - xx[21];
+  xx[264] = xx[543] * inputDot[8];
   xx[571] = xx[514] * inputDot[8];
-  xx[820] = xx[19] * (xx[508] * xx[567] + xx[571] * xx[264]);
-  xx[821] = - ((xx[567] * xx[264] - xx[508] * xx[571]) * xx[19]);
-  xx[822] = (xx[571] * xx[514] + xx[543] * xx[567]) * xx[19] - inputDot[8];
+  xx[820] = xx[19] * (xx[508] * xx[264] + xx[571] * xx[533]);
+  xx[821] = - ((xx[264] * xx[533] - xx[508] * xx[571]) * xx[19]);
+  xx[822] = (xx[571] * xx[514] + xx[543] * xx[264]) * xx[19] - inputDot[8];
   pm_math_matrix3x3PostCross(xx + 1578, xx + 820, xx + 2327);
-  xx[567] = xx[716] * state[47];
+  xx[264] = xx[716] * state[47];
   xx[571] = xx[712] * state[47];
-  xx[584] = (xx[567] * xx[711] + xx[571] * xx[772]) * xx[19];
-  xx[587] = xx[19] * (xx[567] * xx[772] - xx[571] * xx[711]);
-  xx[604] = state[47] - (xx[571] * xx[712] + xx[716] * xx[567]) * xx[19];
+  xx[584] = (xx[264] * xx[711] + xx[571] * xx[772]) * xx[19];
+  xx[587] = xx[19] * (xx[264] * xx[772] - xx[571] * xx[711]);
+  xx[604] = state[47] - (xx[571] * xx[712] + xx[716] * xx[264]) * xx[19];
   xx[716] = xx[584] + xx[241];
   xx[717] = xx[587] + xx[268];
   xx[718] = xx[604] + state[54];
   pm_math_matrix3x3PostCross(xx + 2327, xx + 716, xx + 1578);
-  xx[567] = xx[689] * xx[706];
-  xx[571] = xx[705] * xx[703];
+  xx[264] = xx[689] * xx[706];
+  xx[571] = xx[703] * xx[705];
   xx[607] = xx[160] + xx[158];
   xx[158] = xx[607] * xx[19];
-  xx[160] = (xx[457] + xx[703] * xx[703]) * xx[19] - xx[21];
+  xx[160] = (xx[451] + xx[703] * xx[703]) * xx[19] - xx[21];
   xx[610] = xx[705] * xx[689];
   xx[629] = xx[703] * xx[706];
-  xx[634] = xx[567] - xx[571];
+  xx[634] = xx[264] - xx[571];
   xx[642] = xx[19] * xx[634];
   xx[643] = xx[629] + xx[610];
   xx[658] = xx[643] * xx[19];
-  xx[2327] = xx[463];
+  xx[2327] = xx[457];
   xx[2328] = xx[269];
-  xx[2329] = (xx[567] + xx[571]) * xx[19];
+  xx[2329] = (xx[264] + xx[571]) * xx[19];
   xx[2330] = - xx[158];
   xx[2331] = xx[160];
   xx[2332] = xx[19] * (xx[610] - xx[629]);
   xx[2333] = xx[642];
   xx[2334] = - xx[658];
-  xx[2335] = (xx[457] + xx[706] * xx[706]) * xx[19] - xx[21];
-  xx[269] = xx[19] * (xx[558] + xx[539]);
-  xx[457] = xx[543] * xx[508];
-  xx[463] = xx[264] * xx[514];
-  xx[539] = (xx[457] - xx[463]) * xx[19];
-  xx[558] = xx[543] * xx[543];
-  xx[567] = (xx[510] + xx[558]) * xx[19] - xx[21];
-  xx[571] = xx[543] * xx[264];
+  xx[2335] = (xx[451] + xx[706] * xx[706]) * xx[19] - xx[21];
+  xx[264] = xx[19] * (xx[558] + xx[539]);
+  xx[269] = xx[543] * xx[508];
+  xx[451] = xx[514] * xx[533];
+  xx[457] = (xx[269] - xx[451]) * xx[19];
+  xx[539] = xx[543] * xx[543];
+  xx[558] = (xx[510] + xx[539]) * xx[19] - xx[21];
+  xx[571] = xx[543] * xx[533];
   xx[543] = xx[508] * xx[514];
   xx[508] = xx[19] * (xx[571] + xx[543]);
   xx[2345] = xx[520];
-  xx[2346] = - xx[269];
-  xx[2347] = xx[539];
+  xx[2346] = - xx[264];
+  xx[2347] = xx[457];
   xx[2348] = xx[565];
-  xx[2349] = xx[567];
+  xx[2349] = xx[558];
   xx[2350] = xx[508];
-  xx[2351] = - (xx[19] * (xx[463] + xx[457]));
+  xx[2351] = - (xx[19] * (xx[451] + xx[269]));
   xx[2352] = (xx[571] - xx[543]) * xx[19];
-  xx[2353] = (xx[510] + xx[264] * xx[264]) * xx[19] - xx[21];
+  xx[2353] = (xx[510] + xx[533] * xx[533]) * xx[19] - xx[21];
   xx[716] = xx[584];
   xx[717] = xx[587];
   xx[718] = xx[604];
@@ -8539,68 +8539,68 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[718] = state[54];
   pm_math_matrix3x3PostCross(xx + 2354, xx + 716, xx + 2345);
   pm_math_matrix3x3Compose(xx + 2327, xx + 2345, xx + 2354);
-  xx[264] = xx[313] * xx[160] + xx[449] * xx[158];
-  xx[510] = xx[313] * xx[158] + xx[495] * xx[160];
+  xx[510] = xx[313] * xx[160] + xx[449] * xx[158];
+  xx[514] = xx[158] * xx[313] + xx[466] * xx[160];
   xx[158] = xx[160] * inputDot[8] * inputDot[8];
   xx[160] = xx[19] * xx[607] * inputDot[8] * inputDot[8];
-  xx[514] = xx[313] * xx[642] + xx[495] * xx[658];
-  xx[584] = xx[313] * xx[658] + xx[642] * xx[449];
+  xx[533] = xx[313] * xx[642] + xx[466] * xx[658];
+  xx[584] = xx[658] * xx[313] + xx[449] * xx[642];
   xx[587] = xx[19] * xx[634] * inputDot[8] * inputDot[8];
   xx[604] = xx[19] * xx[643] * inputDot[8] * inputDot[8];
-  xx[2327] = xx[2045] + xx[951] * xx[466] + xx[965] * xx[499] - (xx[505] * xx
-    [520] + xx[533] * xx[565]) + (xx[1578] + xx[2354]) * xx[19];
-  xx[2328] = xx[2046] + xx[827] * xx[499] + xx[960] * xx[466] - (xx[533] * xx
-    [567] - xx[269] * xx[505]) + (xx[1579] + xx[2355]) * xx[19];
-  xx[2329] = xx[2047] + xx[961] * xx[466] + xx[832] * xx[499] - (xx[505] * xx
-    [539] + xx[533] * xx[508]) + (xx[1580] + xx[2356]) * xx[19];
-  xx[2330] = xx[2048] + xx[951] * xx[264] - xx[965] * xx[510] - (xx[565] * xx
-    [158] - xx[160] * xx[520]) + (xx[1581] + xx[2357]) * xx[19];
-  xx[2331] = xx[2049] + xx[960] * xx[264] - xx[827] * xx[510] - (xx[269] * xx
-    [160] + xx[158] * xx[567]) + (xx[1582] + xx[2358]) * xx[19];
-  xx[2332] = xx[2050] + xx[961] * xx[264] - xx[832] * xx[510] - (xx[508] * xx
-    [158] - xx[160] * xx[539]) + (xx[1583] + xx[2359]) * xx[19];
-  xx[2333] = xx[2051] + xx[965] * xx[514] - xx[951] * xx[584] - (xx[587] * xx
-    [520] - xx[604] * xx[565]) + (xx[1584] + xx[2360]) * xx[19];
-  xx[2334] = xx[2052] + xx[827] * xx[514] - xx[960] * xx[584] + xx[587] * xx[269]
-    + xx[604] * xx[567] + (xx[1585] + xx[2361]) * xx[19];
-  xx[2335] = xx[2053] + xx[832] * xx[514] - xx[961] * xx[584] - (xx[587] * xx
-    [539] - xx[604] * xx[508]) + (xx[1586] + xx[2362]) * xx[19];
+  xx[2327] = xx[2045] + xx[463] * xx[951] + xx[965] * xx[495] - (xx[505] * xx
+    [520] + xx[565] * xx[567]) + (xx[1578] + xx[2354]) * xx[19];
+  xx[2328] = xx[2046] + xx[495] * xx[827] + xx[960] * xx[463] - (xx[567] * xx
+    [558] - xx[505] * xx[264]) + (xx[1579] + xx[2355]) * xx[19];
+  xx[2329] = xx[2047] + xx[961] * xx[463] + xx[832] * xx[495] - (xx[505] * xx
+    [457] + xx[567] * xx[508]) + (xx[1580] + xx[2356]) * xx[19];
+  xx[2330] = xx[2048] + xx[510] * xx[951] - xx[965] * xx[514] - (xx[158] * xx
+    [565] - xx[160] * xx[520]) + (xx[1581] + xx[2357]) * xx[19];
+  xx[2331] = xx[2049] + xx[960] * xx[510] - xx[514] * xx[827] - (xx[160] * xx
+    [264] + xx[158] * xx[558]) + (xx[1582] + xx[2358]) * xx[19];
+  xx[2332] = xx[2050] + xx[961] * xx[510] - xx[832] * xx[514] - (xx[158] * xx
+    [508] - xx[457] * xx[160]) + (xx[1583] + xx[2359]) * xx[19];
+  xx[2333] = xx[2051] + xx[965] * xx[533] - xx[951] * xx[584] - (xx[587] * xx
+    [520] - xx[565] * xx[604]) + (xx[1584] + xx[2360]) * xx[19];
+  xx[2334] = xx[2052] + xx[827] * xx[533] - xx[960] * xx[584] + xx[264] * xx[587]
+    + xx[604] * xx[558] + (xx[1585] + xx[2361]) * xx[19];
+  xx[2335] = xx[2053] + xx[832] * xx[533] - xx[961] * xx[584] - (xx[457] * xx
+    [587] - xx[508] * xx[604]) + (xx[1586] + xx[2362]) * xx[19];
   pm_math_matrix3x3Xform(xx + 2327, xx + 897, xx + 820);
   pm_math_matrix3x3Xform(xx + 1756, xx + 69, xx + 823);
   pm_math_quatXform(xx + 922, xx + 823, xx + 826);
   xx[264] = state[47] * state[47];
-  xx[269] = xx[834] * xx[681] + xx[856] * xx[688];
-  xx[466] = xx[856] - xx[19] * xx[269] * xx[688];
-  xx[499] = xx[894] * xx[313] - xx[893] * xx[449] + xx[264] * xx[466];
-  xx[449] = xx[834] - xx[19] * xx[269] * xx[681];
-  xx[269] = xx[893] * xx[313] - xx[894] * xx[495] + xx[264] * xx[449];
-  xx[264] = xx[269] * xx[706];
-  xx[313] = xx[499] * xx[706];
-  xx[495] = xx[269] * xx[689] + xx[703] * xx[499];
+  xx[457] = xx[834] * xx[681] + xx[856] * xx[688];
+  xx[463] = xx[856] - xx[19] * xx[457] * xx[688];
+  xx[495] = xx[894] * xx[313] - xx[893] * xx[449] + xx[264] * xx[463];
+  xx[449] = xx[834] - xx[19] * xx[457] * xx[681];
+  xx[457] = xx[893] * xx[313] - xx[894] * xx[466] + xx[264] * xx[449];
+  xx[264] = xx[457] * xx[706];
+  xx[313] = xx[495] * xx[706];
+  xx[466] = xx[457] * xx[689] + xx[703] * xx[495];
   xx[823] = xx[264];
   xx[824] = - xx[313];
-  xx[825] = - xx[495];
+  xx[825] = - xx[466];
   pm_math_cross3(xx + 901, xx + 823, xx + 857);
   xx[508] = inputDot[8] * inputDot[8];
   xx[510] = xx[703] * xx[16];
   xx[514] = xx[16] * xx[706];
   xx[520] = xx[514] * xx[706];
-  xx[539] = xx[681] * xx[894] + xx[893] * xx[688];
-  xx[565] = 0.03194045367095626;
-  xx[567] = xx[893] - (xx[19] * xx[539] * xx[688] + xx[466]) + xx[565];
-  xx[584] = xx[894] - xx[19] * xx[539] * xx[681] - xx[449];
+  xx[533] = xx[681] * xx[894] + xx[893] * xx[688];
+  xx[558] = 0.03194045367095626;
+  xx[565] = xx[893] - (xx[19] * xx[533] * xx[688] + xx[463]) + xx[558];
+  xx[584] = xx[894] - xx[19] * xx[533] * xx[681] - xx[449];
   pm_math_cross3(xx + 716, xx + 69, xx + 823);
   pm_math_quatXform(xx + 889, xx + 823, xx + 880);
-  xx[539] = xx[881] + xx[893] * state[47];
+  xx[533] = xx[881] + xx[893] * state[47];
   xx[607] = xx[880] - xx[894] * state[47];
-  xx[610] = xx[539] * xx[681] + xx[688] * xx[607];
-  xx[629] = (xx[539] - xx[19] * xx[610] * xx[681] - (xx[856] + xx[904]) * state
+  xx[610] = xx[533] * xx[681] + xx[688] * xx[607];
+  xx[629] = (xx[533] - xx[19] * xx[610] * xx[681] - (xx[856] + xx[904]) * state
              [47]) * inputDot[8];
-  xx[539] = ((xx[834] - xx[867]) * state[47] + xx[607] - xx[19] * xx[610] * xx
+  xx[533] = ((xx[834] - xx[867]) * state[47] + xx[607] - xx[19] * xx[610] * xx
              [688]) * inputDot[8];
-  xx[607] = xx[539] * xx[706];
+  xx[607] = xx[533] * xx[706];
   xx[610] = xx[629] * xx[706];
-  xx[634] = xx[703] * xx[629] - xx[539] * xx[689];
+  xx[634] = xx[703] * xx[629] - xx[533] * xx[689];
   xx[865] = - xx[607];
   xx[866] = - xx[610];
   xx[867] = - xx[634];
@@ -8617,17 +8617,17 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[866] = - xx[658];
   xx[867] = - xx[662];
   pm_math_cross3(xx + 901, xx + 865, xx + 880);
-  xx[865] = xx[451];
+  xx[865] = xx[461];
   xx[866] = - ((xx[507] + xx[448]) * xx[19]);
   xx[867] = xx[21] - (xx[455] + xx[467]) * xx[19];
   pm_math_cross3(xx + 865, xx + 231, xx + 957);
   pm_math_quatXform(xx + 797, xx + 957, xx + 865);
-  xx[448] = xx[164] * xx[426];
-  xx[451] = xx[164] * xx[430];
-  xx[455] = xx[149] * xx[426] + xx[156] * xx[430];
+  xx[448] = xx[426] * xx[164];
+  xx[455] = xx[164] * xx[430];
+  xx[461] = xx[426] * xx[149] + xx[430] * xx[156];
   xx[797] = - xx[448];
-  xx[798] = - xx[451];
-  xx[799] = xx[455];
+  xx[798] = - xx[455];
+  xx[799] = xx[461];
   pm_math_cross3(xx + 284, xx + 797, xx + 957);
   xx[467] = xx[149] * xx[16];
   xx[507] = xx[17] * xx[163];
@@ -8637,81 +8637,81 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[797] = xx[665];
   xx[798] = xx[23];
   xx[799] = xx[28] - xx[29];
-  pm_math_quatInverseXform(xx + 178, xx + 797, xx + 1088);
+  pm_math_quatInverseXform(xx + 178, xx + 797, xx + 1203);
   pm_math_cross3(xx + 797, xx + 277, xx + 1223);
   xx[151] = xx[9] + xx[431];
   xx[797] = xx[22] + xx[29] * xx[280] + xx[176] + xx[1223];
   xx[798] = xx[3] + xx[29] * xx[276] + xx[442] + xx[1224];
   xx[799] = xx[151] + xx[1225];
   pm_math_quatInverseXform(xx + 178, xx + 797, xx + 1223);
-  xx[9] = xx[559] - (pm_math_dot3(xx + 684, xx + 1088) + pm_math_dot3(xx + 724,
+  xx[9] = xx[559] - (pm_math_dot3(xx + 684, xx + 1203) + pm_math_dot3(xx + 724,
     xx + 1223));
-  xx[257] = xx[560] - (pm_math_dot3(xx + 756, xx + 1088) + pm_math_dot3(xx + 883,
+  xx[257] = xx[560] - (pm_math_dot3(xx + 756, xx + 1203) + pm_math_dot3(xx + 883,
     xx + 1223));
-  xx[323] = xx[561] - (pm_math_dot3(xx + 886, xx + 1088) + pm_math_dot3(xx + 829,
+  xx[323] = xx[561] - (pm_math_dot3(xx + 886, xx + 1203) + pm_math_dot3(xx + 829,
     xx + 1223));
-  xx[559] = xx[1088] + xx[9] + xx[89] * xx[257] + xx[1080];
-  xx[560] = xx[1089] - xx[89] * xx[9] + xx[257] + xx[1081];
-  xx[561] = xx[1090] + xx[323] + xx[1082];
+  xx[559] = xx[1203] + xx[9] + xx[89] * xx[257] + xx[1088];
+  xx[560] = xx[1204] - xx[89] * xx[9] + xx[257] + xx[1089];
+  xx[561] = xx[1205] + xx[323] + xx[1090];
   pm_math_quatInverseXform(xx + 188, xx + 559, xx + 797);
-  pm_math_cross3(xx + 559, xx + 444, xx + 1088);
+  pm_math_cross3(xx + 559, xx + 444, xx + 1203);
   xx[559] = xx[1223] + xx[90] * xx[9] - xx[109] * xx[257] - xx[68] * xx[323] +
-    xx[177] + xx[1088];
+    xx[177] + xx[1203];
   xx[560] = xx[1224] + xx[109] * xx[9] + xx[90] * xx[257] + xx[67] * xx[323] +
-    xx[183] + xx[1089];
-  xx[561] = xx[1225] + xx[110] * xx[9] + xx[691] * xx[257] + xx[239] + xx[1090];
-  pm_math_quatInverseXform(xx + 188, xx + 559, xx + 1088);
+    xx[183] + xx[1204];
+  xx[561] = xx[1225] + xx[110] * xx[9] + xx[691] * xx[257] + xx[239] + xx[1205];
+  pm_math_quatInverseXform(xx + 188, xx + 559, xx + 1203);
   xx[431] = xx[555] - (pm_math_dot3(xx + 719, xx + 797) + pm_math_dot3(xx + 835,
-    xx + 1088));
+    xx + 1203));
   xx[555] = xx[556] - (pm_math_dot3(xx + 728, xx + 797) + pm_math_dot3(xx + 841,
-    xx + 1088));
+    xx + 1203));
   xx[556] = xx[557] - (pm_math_dot3(xx + 844, xx + 797) + pm_math_dot3(xx + 696,
-    xx + 1088));
-  xx[559] = xx[797] + xx[431] + xx[1203];
-  xx[560] = xx[798] + xx[555] + xx[1204];
-  xx[561] = xx[799] + xx[556] + xx[1205];
+    xx + 1203));
+  xx[559] = xx[797] + xx[431] + xx[1167];
+  xx[560] = xx[798] + xx[555] + xx[1168];
+  xx[561] = xx[799] + xx[556] + xx[1169];
   pm_math_quatInverseXform(xx + 214, xx + 559, xx + 797);
   pm_math_cross3(xx + 559, xx + 551, xx + 1223);
-  xx[559] = xx[1088] + xx[230] * xx[555] + xx[229] * xx[556] + xx[314] + xx[1223];
-  xx[560] = xx[1089] - xx[230] * xx[431] + xx[228] * xx[556] + xx[316] + xx[1224];
-  xx[561] = xx[1090] - xx[229] * xx[431] - xx[228] * xx[555] + xx[317] + xx[1225];
-  pm_math_quatInverseXform(xx + 214, xx + 559, xx + 1088);
-  xx[557] = pm_math_dot3(xx + 638, xx + 797) + pm_math_dot3(xx + 381, xx + 1088)
+  xx[559] = xx[1203] + xx[230] * xx[555] + xx[229] * xx[556] + xx[314] + xx[1223];
+  xx[560] = xx[1204] - xx[230] * xx[431] + xx[228] * xx[556] + xx[316] + xx[1224];
+  xx[561] = xx[1205] - xx[229] * xx[431] - xx[228] * xx[555] + xx[317] + xx[1225];
+  pm_math_quatInverseXform(xx + 214, xx + 559, xx + 1203);
+  xx[557] = pm_math_dot3(xx + 638, xx + 797) + pm_math_dot3(xx + 381, xx + 1203)
     - xx[237];
   xx[237] = xx[799] + xx[557] * xx[201] + xx[415];
-  xx[559] = xx[1088] + xx[338];
+  xx[559] = xx[1203] + xx[338];
   xx[799] = xx[797] + xx[557] * xx[195] - xx[380];
   xx[800] = xx[798] + xx[390];
   xx[801] = xx[237];
   pm_math_cross3(xx + 799, xx + 244, xx + 1223);
   xx[560] = xx[559] + xx[1223];
-  xx[561] = xx[1089] + xx[557] * xx[291] + xx[1006];
+  xx[561] = xx[1204] + xx[557] * xx[291] + xx[1006];
   xx[667] = xx[561] + xx[1224];
   xx[671] = xx[667] * xx[205];
   xx[679] = xx[560] * xx[205];
   xx[682] = xx[234] + xx[668] * xx[237] + xx[534] * (xx[560] - (xx[193] * xx[671]
     + xx[679] * xx[205]) * xx[19]) + (xx[667] + xx[19] * (xx[193] * xx[679] -
     xx[671] * xx[205])) * xx[569];
-  xx[1223] = xx[19] * (xx[457] + xx[463]);
+  xx[1223] = xx[19] * (xx[269] + xx[451]);
   xx[1224] = - ((xx[571] - xx[543]) * xx[19]);
-  xx[1225] = (xx[519] + xx[558]) * xx[19] - xx[21];
+  xx[1225] = (xx[519] + xx[539]) * xx[19] - xx[21];
   pm_math_cross3(xx + 1223, xx + 897, xx + 1303);
   pm_math_quatXform(xx + 861, xx + 1303, xx + 1223);
-  xx[234] = xx[567] * xx[706];
-  xx[457] = xx[706] * xx[584];
-  xx[463] = xx[703] * xx[584] - xx[567] * xx[689];
+  xx[234] = xx[565] * xx[706];
+  xx[269] = xx[706] * xx[584];
+  xx[451] = xx[703] * xx[584] - xx[565] * xx[689];
   xx[861] = - xx[234];
-  xx[862] = - xx[457];
-  xx[863] = - xx[463];
+  xx[862] = - xx[269];
+  xx[863] = - xx[451];
   pm_math_cross3(xx + 901, xx + 861, xx + 1303);
   xx[519] = xx[16] * xx[689];
-  xx[543] = xx[705] * xx[514];
+  xx[539] = xx[705] * xx[514];
   pm_math_quatInverseXform(xx + 675, xx + 35, xx + 861);
-  xx[558] = xx[681] * xx[862] + xx[861] * xx[688];
-  xx[560] = xx[861] - xx[19] * xx[558] * xx[688];
-  xx[571] = xx[862] - xx[19] * xx[558] * xx[681];
-  xx[558] = xx[863] - inputDot[8];
-  xx[667] = xx[558] - (xx[681] * xx[681] * xx[558] + xx[688] * xx[558] * xx[688])
+  xx[543] = xx[681] * xx[862] + xx[861] * xx[688];
+  xx[560] = xx[861] - xx[19] * xx[543] * xx[688];
+  xx[571] = xx[862] - xx[19] * xx[543] * xx[681];
+  xx[543] = xx[863] - inputDot[8];
+  xx[667] = xx[543] - (xx[681] * xx[681] * xx[543] + xx[688] * xx[543] * xx[688])
     * xx[19];
   xx[671] = xx[667] + state[47];
   xx[1337] = xx[560];
@@ -8783,20 +8783,20 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1586] = xx[722];
   xx[965] = xx[861];
   xx[966] = xx[862];
-  xx[967] = xx[558];
+  xx[967] = xx[543];
   xx[708] = 4.000000007367204e-3;
-  xx[972] = xx[565] - xx[466];
+  xx[972] = xx[558] - xx[463];
   xx[973] = - xx[449];
   xx[974] = xx[175] - (xx[708] - (xx[681] * xx[708] * xx[681] + xx[708] * xx[688]
     * xx[688]) * xx[19]);
   pm_math_cross3(xx + 965, xx + 972, xx + 1020);
   pm_math_cross3(xx + 965, xx + 1020, xx + 1023);
   xx[449] = xx[681] * xx[1024] + xx[1023] * xx[688];
-  xx[466] = xx[667] + xx[671];
+  xx[463] = xx[667] + xx[671];
   xx[667] = xx[856] * state[47];
-  xx[671] = xx[1023] - xx[19] * xx[449] * xx[688] + xx[466] * xx[667];
+  xx[671] = xx[1023] - xx[19] * xx[449] * xx[688] + xx[463] * xx[667];
   xx[708] = xx[834] * state[47];
-  xx[710] = xx[466] * xx[708] + xx[1024] - xx[19] * xx[449] * xx[681];
+  xx[710] = xx[463] * xx[708] + xx[1024] - xx[19] * xx[449] * xx[681];
   xx[449] = xx[1025] - (xx[681] * xx[681] * xx[1025] + xx[1025] * xx[688] * xx
                         [688]) * xx[19] - ((xx[560] + xx[560]) * xx[667] + (xx
     [571] + xx[571]) * xx[708]);
@@ -8804,7 +8804,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[966] = xx[710];
   xx[967] = xx[449];
   pm_math_matrix3x3Xform(xx + 1578, xx + 965, xx + 1020);
-  xx[466] = xx[709] * (xx[1017] - xx[1035] - xx[1031] - xx[1053]) - xx[711] *
+  xx[463] = xx[709] * (xx[1017] - xx[1035] - xx[1031] - xx[1053]) - xx[711] *
     (xx[1018] - xx[1036] - xx[1034] - xx[1054]) + xx[1022];
   xx[1578] = xx[952];
   xx[1579] = xx[1039];
@@ -8862,20 +8862,20 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[677] = xx[708];
   xx[678] = xx[712];
   pm_math_cross3(xx + 676, xx + 972, xx + 900);
-  xx[667] = xx[1014] + xx[1017] + (xx[863] + xx[558]) * xx[675] + xx[900];
-  xx[558] = xx[1015] + xx[1018] - xx[16] * inputDdot[8] + xx[901];
-  xx[676] = xx[558] * xx[681] + xx[667] * xx[688];
+  xx[667] = xx[1014] + xx[1017] + (xx[863] + xx[543]) * xx[675] + xx[900];
+  xx[543] = xx[1015] + xx[1018] - xx[16] * inputDdot[8] + xx[901];
+  xx[676] = xx[543] * xx[681] + xx[667] * xx[688];
   xx[677] = xx[667] - xx[19] * xx[676] * xx[688];
-  xx[667] = xx[558] - xx[19] * xx[676] * xx[681];
-  xx[558] = xx[1016] + xx[1019] - (xx[861] + xx[861]) * xx[675] + xx[902];
-  xx[675] = xx[558] - (xx[681] * xx[558] * xx[681] + xx[558] * xx[688] * xx[688])
+  xx[667] = xx[543] - xx[19] * xx[676] * xx[681];
+  xx[543] = xx[1016] + xx[1019] - (xx[861] + xx[861]) * xx[675] + xx[902];
+  xx[675] = xx[543] - (xx[681] * xx[543] * xx[681] + xx[543] * xx[688] * xx[688])
     * xx[19];
   xx[861] = xx[677];
   xx[862] = xx[667];
   xx[863] = xx[675];
-  xx[558] = pm_math_dot3(xx + 965, xx + 969) + pm_math_dot3(xx + 1011, xx + 861);
-  xx[676] = (xx[1461] + xx[1339] + xx[718] + xx[466] + (xx[1358] + xx[560]) *
-             xx[834] - (xx[1359] + xx[571]) * xx[856]) / xx[1027] + xx[558];
+  xx[543] = pm_math_dot3(xx + 965, xx + 969) + pm_math_dot3(xx + 1011, xx + 861);
+  xx[676] = (xx[1461] + xx[1339] + xx[718] + xx[463] + (xx[1358] + xx[560]) *
+             xx[834] - (xx[1359] + xx[571]) * xx[856]) / xx[1027] + xx[543];
   xx[678] = xx[714] + xx[709];
   xx[681] = xx[716] - xx[711];
   xx[861] = xx[678];
@@ -8894,40 +8894,40 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
     1068, xx + 965));
   xx[708] = xx[825] - (pm_math_dot3(xx + 1071, xx + 900) + pm_math_dot3(xx + 993,
     xx + 965));
-  xx[709] = (xx[507] + xx[149] * xx[20]) * xx[19] * xx[391];
-  xx[20] = (xx[410] + xx[149] * xx[467]) * xx[19];
-  xx[410] = xx[19] * (xx[438] - xx[149] * xx[17]) * xx[391];
-  xx[391] = (xx[467] * xx[163] + xx[17] * xx[156]) * xx[19];
+  xx[709] = xx[271] * (xx[507] + xx[149] * xx[20]) * xx[19];
+  xx[20] = (xx[400] + xx[149] * xx[467]) * xx[19];
+  xx[400] = xx[19] * (xx[438] - xx[149] * xx[17]) * xx[271];
+  xx[271] = (xx[467] * xx[163] + xx[17] * xx[156]) * xx[19];
   pm_math_matrix3x3Compose(xx + 811, xx + 573, xx + 965);
   xx[17] = xx[474] * state[30] * state[30];
   xx[438] = xx[19] * xx[568] * state[30] * state[30];
-  xx[467] = (xx[211] + xx[212]) * xx[19];
-  xx[211] = xx[19] * xx[572] * state[30] * state[30];
-  xx[212] = xx[646] * xx[646];
-  xx[572] = (xx[212] + xx[1116]) * xx[19] - xx[21];
+  xx[467] = xx[19] * xx[572] * state[30] * state[30];
+  xx[474] = (xx[211] + xx[212]) * xx[19];
+  xx[211] = xx[646] * xx[646];
+  xx[572] = (xx[211] + xx[1116]) * xx[19] - xx[21];
   xx[573] = xx[1091];
   xx[574] = (xx[1106] + xx[1105]) * xx[19];
   xx[575] = (xx[1083] + xx[1084]) * xx[19];
-  xx[576] = (xx[212] + xx[1075]) * xx[19] - xx[21];
+  xx[576] = (xx[211] + xx[1075]) * xx[19] - xx[21];
   xx[577] = xx[1119];
   xx[578] = xx[1123];
   xx[579] = (xx[1117] + xx[1118]) * xx[19];
-  xx[580] = (xx[212] + xx[1076]) * xx[19] - xx[21];
+  xx[580] = (xx[211] + xx[1076]) * xx[19] - xx[21];
   pm_math_matrix3x3Compose(xx + 871, xx + 572, xx + 1011);
-  xx[212] = xx[785] * xx[785];
-  xx[474] = xx[786] * xx[787];
-  xx[1028] = (xx[212] + xx[1150]) * xx[19] - xx[21];
-  xx[1029] = xx[19] * (xx[474] - xx[1110]);
+  xx[211] = xx[785] * xx[785];
+  xx[212] = xx[786] * xx[787];
+  xx[1028] = (xx[211] + xx[1150]) * xx[19] - xx[21];
+  xx[1029] = xx[19] * (xx[212] - xx[1110]);
   xx[1030] = (xx[945] + xx[1104]) * xx[19];
-  xx[1031] = (xx[474] + xx[1110]) * xx[19];
-  xx[1032] = (xx[212] + xx[1154]) * xx[19] - xx[21];
+  xx[1031] = (xx[212] + xx[1110]) * xx[19];
+  xx[1032] = (xx[211] + xx[1154]) * xx[19] - xx[21];
   xx[1033] = xx[19] * (xx[1149] - xx[1148]);
   xx[1034] = xx[1128];
   xx[1035] = (xx[1149] + xx[1148]) * xx[19];
-  xx[1036] = (xx[212] + xx[788] * xx[788]) * xx[19] - xx[21];
+  xx[1036] = (xx[211] + xx[788] * xx[788]) * xx[19] - xx[21];
   pm_math_matrix3x3Compose(xx + 2022, xx + 1028, xx + 1043);
-  xx[212] = xx[936] * xx[936];
-  xx[474] = (xx[212] + xx[636]) * xx[19] - xx[21];
+  xx[211] = xx[936] * xx[936];
+  xx[212] = (xx[211] + xx[636]) * xx[19] - xx[21];
   xx[507] = xx[937] * xx[938];
   xx[568] = xx[936] * xx[939];
   xx[581] = (xx[507] + xx[568]) * xx[19];
@@ -8972,7 +8972,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[823] = xx[938] * state[10];
   xx[824] = xx[19] * (xx[939] * xx[798] - xx[936] * xx[823]);
   pm_math_quatInverseXform(xx + 785, xx + 1056, xx + 861);
-  pm_math_quatInverseXform(xx + 646, xx + 1167, xx + 785);
+  pm_math_quatInverseXform(xx + 646, xx + 1080, xx + 785);
   xx[646] = xx[340] * xx[475];
   xx[647] = xx[481] * xx[320] - xx[194] * xx[340];
   xx[481] = xx[320] * xx[475];
@@ -9002,8 +9002,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[869] = (xx[722] + xx[772]) * xx[19];
   xx[896] = xx[718] * xx[718];
   xx[904] = (xx[711] + xx[896]) * xx[19] - xx[21];
-  xx[910] = xx[712] * xx[636];
-  xx[636] = xx[718] * xx[764];
+  xx[910] = xx[636] * xx[712];
+  xx[636] = xx[764] * xx[718];
   xx[712] = xx[19] * (xx[910] - xx[636]);
   xx[718] = xx[19] * (xx[772] - xx[722]);
   xx[1756] = xx[716];
@@ -9025,9 +9025,9 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_matrix3x3PostCross(xx + 2045, xx + 935, xx + 1756);
   xx[649] = xx[19] * (xx[507] - xx[568]);
   xx[507] = (xx[564] + xx[631]) * xx[19];
-  xx[564] = (xx[212] + xx[637]) * xx[19] - xx[21];
+  xx[564] = (xx[211] + xx[637]) * xx[19] - xx[21];
   xx[568] = xx[19] * (xx[635] - xx[633]);
-  xx[2045] = xx[474];
+  xx[2045] = xx[212];
   xx[2046] = xx[649];
   xx[2047] = xx[507];
   xx[2048] = xx[581];
@@ -9035,7 +9035,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[2050] = xx[568];
   xx[2051] = xx[632];
   xx[2052] = (xx[635] + xx[633]) * xx[19];
-  xx[2053] = (xx[212] + xx[939] * xx[939]) * xx[19] - xx[21];
+  xx[2053] = (xx[211] + xx[939] * xx[939]) * xx[19] - xx[21];
   pm_math_matrix3x3PostCross(xx + 2045, xx + 861, xx + 2327);
   xx[631] = xx[646];
   xx[632] = xx[647];
@@ -9050,69 +9050,69 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[632] = xx[825];
   xx[633] = xx[798];
   pm_math_matrix3x3PostCross(xx + 572, xx + 631, xx + 2327);
-  xx[212] = xx[2328] * state[30];
+  xx[211] = xx[2328] * state[30];
   xx[481] = xx[2331] * state[30];
   xx[572] = xx[2334] * state[30];
   xx[573] = xx[2333] * state[30];
   xx[574] = xx[2327] * state[30];
   xx[575] = xx[2330] * state[30];
-  xx[2327] = xx[1028] + xx[212] * xx[450] + xx[481] * xx[602] - xx[605] * xx[572];
+  xx[2327] = xx[1028] + xx[211] * xx[450] + xx[481] * xx[602] - xx[605] * xx[572];
   xx[2328] = xx[1029] + xx[605] * xx[573] - (xx[574] * xx[450] + xx[575] * xx
     [602]);
   xx[2329] = xx[1030];
-  xx[2330] = xx[1031] + xx[481] * xx[541] - xx[606] * xx[212] + xx[572] * xx[608];
+  xx[2330] = xx[1031] + xx[481] * xx[541] - xx[606] * xx[211] + xx[572] * xx[608];
   xx[2331] = xx[1032] + xx[606] * xx[574] - xx[575] * xx[541] - xx[573] * xx[608];
   xx[2332] = xx[1033];
-  xx[2333] = xx[1034] + xx[212] * xx[609] + xx[603] * xx[481] + xx[572] * xx[542];
+  xx[2333] = xx[1034] + xx[211] * xx[609] + xx[603] * xx[481] + xx[572] * xx[542];
   xx[2334] = xx[1035] - (xx[574] * xx[609] + xx[603] * xx[575] + xx[573] * xx
     [542]);
   xx[2335] = xx[1036];
   pm_math_matrix3x3Compose(xx + 732, xx + 2327, xx + 572);
-  xx[212] = xx[2045] + xx[572];
+  xx[211] = xx[2045] + xx[572];
   xx[481] = xx[2048] + xx[575];
   xx[631] = xx[2046] + xx[573];
   xx[632] = xx[2049] + xx[576];
   xx[633] = xx[2047] + xx[574];
   xx[635] = xx[2050] + xx[577];
-  xx[1028] = xx[1756] + xx[212] * xx[274] - xx[481] * xx[206];
-  xx[1029] = xx[1757] + xx[631] * xx[274] - xx[632] * xx[206];
-  xx[1030] = xx[1758] + xx[633] * xx[274] - xx[635] * xx[206];
-  xx[1031] = xx[1759] + xx[481] * xx[434] - xx[212] * xx[206];
-  xx[1032] = xx[1760] + xx[632] * xx[434] - xx[631] * xx[206];
-  xx[1033] = xx[1761] + xx[635] * xx[434] - xx[633] * xx[206];
+  xx[1028] = xx[1756] + xx[211] * xx[378] - xx[481] * xx[198];
+  xx[1029] = xx[1757] + xx[631] * xx[378] - xx[632] * xx[198];
+  xx[1030] = xx[1758] + xx[633] * xx[378] - xx[635] * xx[198];
+  xx[1031] = xx[1759] + xx[481] * xx[434] - xx[211] * xx[198];
+  xx[1032] = xx[1760] + xx[632] * xx[434] - xx[631] * xx[198];
+  xx[1033] = xx[1761] + xx[635] * xx[434] - xx[633] * xx[198];
   xx[1034] = xx[1762] - (xx[2051] + xx[578]);
   xx[1035] = xx[1763] - (xx[2052] + xx[579]);
   xx[1036] = xx[1764] - (xx[2053] + xx[580]);
   pm_math_matrix3x3Compose(xx + 2336, xx + 1028, xx + 572);
-  xx[212] = xx[19] * xx[480] * state[30] * state[30];
+  xx[211] = xx[19] * xx[480] * state[30] * state[30];
   xx[480] = xx[477] * state[30] * state[30];
   xx[477] = xx[19] * xx[566] * state[30] * state[30];
   xx[481] = xx[19] * (xx[207] - xx[208]);
   xx[207] = (xx[150] + xx[311] * xx[311]) * xx[19] - xx[21];
-  xx[1028] = xx[965] - (xx[17] * xx[152] - xx[438] * xx[33] + xx[467] * xx[211])
-    + xx[1011] + xx[1043] + xx[474] * xx[420] + xx[581] * xx[440] - (xx[441] *
-    xx[716] + xx[797] * xx[461]) + (xx[1578] + xx[572]) * xx[19];
-  xx[1029] = xx[966] - (xx[212] * xx[152] + xx[480] * xx[33] - xx[467] * xx[477])
-    + xx[1012] + xx[1044] + xx[649] * xx[420] + xx[564] * xx[440] - (xx[868] *
-    xx[441] + xx[461] * xx[904]) + (xx[1579] + xx[573]) * xx[19];
-  xx[1030] = xx[967] + xx[1013] + xx[1045] + xx[507] * xx[420] + xx[568] * xx
-    [440] + xx[869] * xx[441] - xx[712] * xx[461] + (xx[1580] + xx[574]) * xx[19];
-  xx[1031] = xx[968] - (xx[17] * xx[196] - xx[438] * xx[153] + xx[211] * xx[481])
-    + xx[1014] + xx[1046] + xx[474] * xx[31] + xx[581] * xx[32] - (xx[166] * xx
-    [716] + xx[797] * xx[197]) + (xx[1581] + xx[575]) * xx[19];
-  xx[1032] = xx[969] - (xx[212] * xx[196] + xx[480] * xx[153] - xx[477] * xx[481])
-    + xx[1015] + xx[1047] + xx[649] * xx[31] + xx[564] * xx[32] - (xx[868] * xx
-    [166] + xx[197] * xx[904]) + (xx[1582] + xx[576]) * xx[19];
+  xx[1028] = xx[965] - (xx[17] * xx[152] - xx[33] * xx[438] + xx[467] * xx[474])
+    + xx[1011] + xx[1043] + xx[422] * xx[212] + xx[581] * xx[440] - (xx[441] *
+    xx[716] + xx[499] * xx[797]) + (xx[1578] + xx[572]) * xx[19];
+  xx[1029] = xx[966] - (xx[211] * xx[152] + xx[480] * xx[33] - xx[477] * xx[474])
+    + xx[1012] + xx[1044] + xx[649] * xx[422] + xx[440] * xx[564] - (xx[441] *
+    xx[868] + xx[499] * xx[904]) + (xx[1579] + xx[573]) * xx[19];
+  xx[1030] = xx[967] + xx[1013] + xx[1045] + xx[507] * xx[422] + xx[568] * xx
+    [440] + xx[441] * xx[869] - xx[499] * xx[712] + (xx[1580] + xx[574]) * xx[19];
+  xx[1031] = xx[968] - (xx[197] * xx[17] - xx[438] * xx[153] + xx[481] * xx[467])
+    + xx[1014] + xx[1046] + xx[31] * xx[212] + xx[581] * xx[32] - (xx[166] * xx
+    [716] + xx[206] * xx[797]) + (xx[1581] + xx[575]) * xx[19];
+  xx[1032] = xx[969] - (xx[197] * xx[211] + xx[480] * xx[153] - xx[481] * xx[477])
+    + xx[1015] + xx[1047] + xx[649] * xx[31] + xx[32] * xx[564] - (xx[166] * xx
+    [868] + xx[206] * xx[904]) + (xx[1582] + xx[576]) * xx[19];
   xx[1033] = xx[970] + xx[1016] + xx[1048] + xx[507] * xx[31] + xx[568] * xx[32]
-    + xx[869] * xx[166] - xx[712] * xx[197] + (xx[1583] + xx[577]) * xx[19];
-  xx[1034] = xx[971] - (xx[17] * xx[213] - xx[438] * xx[210] + xx[211] * xx[207])
-    + xx[1017] + xx[1049] + xx[474] * xx[220] + xx[581] * xx[221] - (xx[222] *
-    xx[716] + xx[797] * xx[223]) + (xx[1584] + xx[578]) * xx[19];
-  xx[1035] = xx[972] - (xx[212] * xx[213] + xx[480] * xx[210] - xx[477] * xx[207])
-    + xx[1018] + xx[1050] + xx[649] * xx[220] + xx[564] * xx[221] - (xx[868] *
-    xx[222] + xx[223] * xx[904]) + (xx[1585] + xx[579]) * xx[19];
+    + xx[869] * xx[166] - xx[206] * xx[712] + (xx[1583] + xx[577]) * xx[19];
+  xx[1034] = xx[971] - (xx[213] * xx[17] - xx[210] * xx[438] + xx[467] * xx[207])
+    + xx[1017] + xx[1049] + xx[220] * xx[212] + xx[581] * xx[221] - (xx[222] *
+    xx[716] + xx[223] * xx[797]) + (xx[1584] + xx[578]) * xx[19];
+  xx[1035] = xx[972] - (xx[213] * xx[211] + xx[210] * xx[480] - xx[477] * xx[207])
+    + xx[1018] + xx[1050] + xx[649] * xx[220] + xx[221] * xx[564] - (xx[222] *
+    xx[868] + xx[223] * xx[904]) + (xx[1585] + xx[579]) * xx[19];
   xx[1036] = xx[973] + xx[1019] + xx[1051] + xx[507] * xx[220] + xx[568] * xx
-    [221] + xx[869] * xx[222] - xx[712] * xx[223] + (xx[1586] + xx[580]) * xx[19];
+    [221] + xx[869] * xx[222] - xx[223] * xx[712] + (xx[1586] + xx[580]) * xx[19];
   pm_math_matrix3x3Xform(xx + 1028, xx + 231, xx + 572);
   xx[17] = xx[194] * xx[620] + xx[619] * xx[475];
   xx[575] = - xx[614];
@@ -9126,8 +9126,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_quatXform(xx + 308, xx + 575, xx + 578);
   pm_math_matrix3x3Xform(xx + 741, xx + 626, xx + 575);
   xx[631] = xx[575] + xx[203];
-  xx[632] = xx[576] + xx[224];
-  xx[633] = xx[577] + xx[240];
+  xx[632] = xx[576] + xx[219];
+  xx[633] = xx[577] + xx[224];
   pm_math_quatXform(xx + 304, xx + 631, xx + 575);
   pm_math_matrix3x3Xform(xx + 847, xx + 794, xx + 631);
   xx[646] = xx[631] + xx[589];
@@ -9139,8 +9139,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[786] = xx[647] + xx[653];
   xx[787] = xx[648] + xx[654];
   pm_math_quatXform(xx + 296, xx + 785, xx + 646);
-  xx[17] = xx[803] * xx[165] - xx[804] * xx[386] + xx[202];
-  xx[150] = xx[804] * xx[165] - xx[803] * xx[435] - xx[219];
+  xx[17] = xx[803] * xx[274] - xx[804] * xx[379] + xx[202];
+  xx[150] = xx[804] * xx[274] - xx[803] * xx[435] - xx[218];
   xx[194] = xx[164] * xx[150];
   xx[200] = xx[164] * xx[17];
   xx[208] = xx[149] * xx[150] - xx[17] * xx[156];
@@ -9152,14 +9152,14 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[212] = xx[804] - xx[19] * xx[211] * xx[159] + xx[428];
   xx[438] = xx[803] - xx[19] * xx[211] * xx[157] + xx[429];
   xx[211] = xx[950] * state[30];
-  xx[474] = xx[955] * state[30];
+  xx[467] = xx[955] * state[30];
   xx[475] = xx[19] * xx[956] * state[30];
   xx[785] = xx[211] - xx[625] * xx[340];
-  xx[786] = xx[474] + xx[320] * xx[622] - xx[340] * xx[621];
+  xx[786] = xx[467] + xx[320] * xx[622] - xx[340] * xx[621];
   xx[787] = xx[475] + xx[625] * xx[320];
   pm_math_quatXform(xx + 214, xx + 785, xx + 619);
   xx[477] = xx[282] + xx[619];
-  pm_math_cross3(xx + 1167, xx + 794, xx + 785);
+  pm_math_cross3(xx + 1080, xx + 794, xx + 785);
   xx[480] = xx[238] + xx[620];
   xx[507] = xx[621] - xx[243];
   xx[619] = xx[477] + xx[785];
@@ -9199,11 +9199,11 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[808] = xx[477];
   xx[809] = xx[480];
   xx[810] = xx[507];
-  pm_math_cross3(xx + 1167, xx + 808, xx + 861);
+  pm_math_cross3(xx + 1080, xx + 808, xx + 861);
   pm_math_quatXform(xx + 188, xx + 861, xx + 808);
-  xx[861] = xx[340] * xx[474];
-  xx[862] = xx[475] * xx[320] - xx[340] * xx[211];
-  xx[863] = - (xx[320] * xx[474]);
+  xx[861] = xx[340] * xx[467];
+  xx[862] = xx[320] * xx[475] - xx[340] * xx[211];
+  xx[863] = - (xx[320] * xx[467]);
   pm_math_quatXform(xx + 214, xx + 861, xx + 930);
   pm_math_quatXform(xx + 188, xx + 930, xx + 861);
   xx[930] = xx[808] + xx[861];
@@ -9211,27 +9211,27 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[932] = xx[810] + xx[863];
   pm_math_quatXform(xx + 178, xx + 930, xx + 808);
   xx[211] = xx[785] + xx[808];
-  xx[474] = xx[786] + xx[809];
-  xx[475] = xx[474] * xx[157] + xx[211] * xx[159];
+  xx[467] = xx[786] + xx[809];
+  xx[475] = xx[467] * xx[157] + xx[211] * xx[159];
   xx[477] = xx[787] + xx[810];
   xx[785] = xx[19] * xx[159] * xx[581] - xx[625] + xx[211] - xx[19] * xx[475] *
     xx[159];
-  xx[786] = xx[614] + xx[19] * xx[157] * xx[581] + xx[474] - xx[19] * xx[475] *
+  xx[786] = xx[614] + xx[19] * xx[157] * xx[581] + xx[467] - xx[19] * xx[475] *
     xx[157];
   xx[787] = xx[477] - (xx[157] * xx[477] * xx[157] + xx[477] * xx[159] * xx[159])
     * xx[19];
   pm_math_quatXform(xx + 330, xx + 785, xx + 808);
   xx[211] = xx[1527] * xx[1527];
-  xx[474] = xx[1132] * xx[1527];
+  xx[467] = xx[1132] * xx[1527];
   xx[475] = xx[161] * xx[1087];
   xx[477] = xx[1132] * xx[161];
-  xx[480] = xx[1527] * xx[1087];
+  xx[480] = xx[1087] * xx[1527];
   xx[507] = xx[1132] * xx[1087];
   xx[564] = xx[161] * xx[1527];
   xx[965] = (xx[211] + xx[161] * xx[161]) * xx[19] - xx[21];
-  xx[966] = xx[19] * (xx[474] - xx[475]);
+  xx[966] = xx[19] * (xx[467] - xx[475]);
   xx[967] = - ((xx[477] + xx[480]) * xx[19]);
-  xx[968] = - ((xx[475] + xx[474]) * xx[19]);
+  xx[968] = - ((xx[475] + xx[467]) * xx[19]);
   xx[969] = (xx[211] + xx[1087] * xx[1087]) * xx[19] - xx[21];
   xx[970] = xx[19] * (xx[507] - xx[564]);
   xx[971] = xx[19] * (xx[480] - xx[477]);
@@ -9239,38 +9239,38 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[973] = (xx[211] + xx[1132] * xx[1132]) * xx[19] - xx[21];
   xx[161] = xx[53] * state[43];
   xx[211] = xx[53] * state[44];
-  xx[474] = state[43] - (xx[53] * xx[161] - xx[54] * xx[211]) * xx[19];
-  xx[475] = xx[1558] * xx[474] - xx[1517] * state[45];
+  xx[467] = state[43] - (xx[53] * xx[161] - xx[54] * xx[211]) * xx[19];
+  xx[475] = xx[1558] * xx[467] - xx[1517] * state[45];
   xx[477] = state[44] - xx[19] * (xx[54] * xx[161] + xx[53] * xx[211]);
-  xx[161] = xx[477] * xx[1517] - xx[1557] * xx[474];
+  xx[161] = xx[477] * xx[1517] - xx[1557] * xx[467];
   xx[211] = xx[477] * xx[1558] - xx[1557] * state[45];
-  xx[480] = xx[1576] * state[45] - xx[1539] * xx[474];
-  xx[507] = xx[477] * xx[1576] - xx[1519] * xx[474];
+  xx[480] = xx[1576] * state[45] - xx[1539] * xx[467];
+  xx[507] = xx[477] * xx[1576] - xx[1519] * xx[467];
   xx[564] = xx[1519] * state[45] - xx[477] * xx[1539];
-  xx[566] = xx[1508] * xx[474] - xx[1510] * state[45];
-  xx[568] = xx[477] * xx[1510] - xx[1534] * xx[474];
+  xx[566] = xx[1508] * xx[467] - xx[1510] * state[45];
+  xx[568] = xx[477] * xx[1510] - xx[1534] * xx[467];
   xx[581] = xx[1534] * state[45] - xx[477] * xx[1508];
   xx[1011] = xx[475] * state[45] - xx[161] * xx[477];
-  xx[1012] = xx[211] * state[45] + xx[161] * xx[474];
-  xx[1013] = - (xx[211] * xx[477] + xx[475] * xx[474]);
+  xx[1012] = xx[211] * state[45] + xx[161] * xx[467];
+  xx[1013] = - (xx[211] * xx[477] + xx[475] * xx[467]);
   xx[1014] = - (xx[480] * state[45] + xx[477] * xx[507]);
-  xx[1015] = xx[507] * xx[474] - xx[564] * state[45];
-  xx[1016] = xx[564] * xx[477] + xx[480] * xx[474];
+  xx[1015] = xx[507] * xx[467] - xx[564] * state[45];
+  xx[1016] = xx[564] * xx[477] + xx[480] * xx[467];
   xx[1017] = xx[566] * state[45] - xx[477] * xx[568];
-  xx[1018] = xx[568] * xx[474] - xx[581] * state[45];
-  xx[1019] = xx[477] * xx[581] - xx[566] * xx[474];
+  xx[1018] = xx[568] * xx[467] - xx[581] * state[45];
+  xx[1019] = xx[477] * xx[581] - xx[566] * xx[467];
   pm_math_matrix3x3Compose(xx + 965, xx + 1011, xx + 1028);
-  xx[161] = xx[1085] * xx[1133];
-  xx[211] = xx[1500] * xx[154];
-  xx[475] = xx[161] - xx[211];
-  xx[480] = xx[19] * xx[475];
-  xx[507] = xx[19] * xx[1134] * xx[1465] * state[38] * state[38];
+  xx[161] = xx[19] * xx[1134] * xx[1465] * state[38] * state[38];
+  xx[211] = xx[1085] * xx[1133];
+  xx[475] = xx[1500] * xx[154];
+  xx[480] = xx[211] - xx[475];
+  xx[507] = xx[19] * xx[480];
   xx[564] = (xx[19] * xx[1134] * xx[1134] - xx[21]) * state[38] * state[38];
   xx[566] = xx[154] * xx[154];
   xx[568] = (xx[566] + xx[1085] * xx[1085]) * xx[19] - xx[21];
-  xx[581] = xx[480] * xx[507] - xx[564] * xx[568];
+  xx[581] = xx[161] * xx[507] - xx[564] * xx[568];
   xx[614] = (xx[19] * xx[1465] * xx[1465] - xx[21]) * state[38] * state[38];
-  xx[625] = xx[507] * xx[568] - xx[614] * xx[480];
+  xx[625] = xx[161] * xx[568] - xx[614] * xx[507];
   xx[635] = xx[568] * inputDot[11] * inputDot[11];
   xx[637] = xx[1516] * xx[1465] - xx[1134] * xx[1503];
   xx[649] = xx[637] * xx[637];
@@ -9282,7 +9282,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[772] = xx[1465] * xx[1501] - xx[1134] * xx[1518];
   xx[785] = xx[772] * xx[711];
   xx[786] = (xx[764] - xx[785]) * xx[19];
-  xx[787] = xx[19] * xx[475] * inputDot[11] * inputDot[11];
+  xx[787] = xx[19] * xx[480] * inputDot[11] * inputDot[11];
   xx[861] = xx[154];
   xx[862] = xx[1085];
   xx[863] = xx[1133];
@@ -9292,69 +9292,69 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[937] = xx[772];
   xx[938] = xx[722];
   pm_math_quatCompose(xx + 861, xx + 935, xx + 965);
-  xx[475] = xx[965] * xx[965];
+  xx[480] = xx[965] * xx[965];
   xx[788] = xx[966] * xx[967];
   xx[797] = xx[965] * xx[968];
   xx[798] = xx[966] * xx[968];
   xx[803] = xx[965] * xx[967];
   xx[804] = xx[967] * xx[968];
   xx[832] = xx[965] * xx[966];
-  xx[1043] = (xx[475] + xx[966] * xx[966]) * xx[19] - xx[21];
+  xx[1043] = (xx[480] + xx[966] * xx[966]) * xx[19] - xx[21];
   xx[1044] = xx[19] * (xx[788] - xx[797]);
   xx[1045] = (xx[798] + xx[803]) * xx[19];
   xx[1046] = (xx[788] + xx[797]) * xx[19];
-  xx[1047] = (xx[475] + xx[967] * xx[967]) * xx[19] - xx[21];
+  xx[1047] = (xx[480] + xx[967] * xx[967]) * xx[19] - xx[21];
   xx[1048] = xx[19] * (xx[804] - xx[832]);
   xx[1049] = xx[19] * (xx[798] - xx[803]);
   xx[1050] = (xx[804] + xx[832]) * xx[19];
-  xx[1051] = (xx[475] + xx[968] * xx[968]) * xx[19] - xx[21];
-  xx[475] = xx[711] * inputDot[11];
+  xx[1051] = (xx[480] + xx[968] * xx[968]) * xx[19] - xx[21];
+  xx[480] = xx[711] * inputDot[11];
   xx[788] = xx[772] * inputDot[11];
-  xx[930] = - (xx[19] * (xx[475] * xx[722] + xx[637] * xx[788]));
-  xx[931] = (xx[788] * xx[722] - xx[637] * xx[475]) * xx[19];
-  xx[932] = inputDot[11] - (xx[475] * xx[711] + xx[772] * xx[788]) * xx[19];
+  xx[930] = - (xx[19] * (xx[480] * xx[722] + xx[637] * xx[788]));
+  xx[931] = (xx[788] * xx[722] - xx[637] * xx[480]) * xx[19];
+  xx[932] = inputDot[11] - (xx[480] * xx[711] + xx[772] * xx[788]) * xx[19];
   pm_math_matrix3x3PostCross(xx + 1043, xx + 930, xx + 1527);
-  xx[475] = xx[1516] * state[38];
+  xx[480] = xx[1516] * state[38];
   xx[788] = xx[1503] * state[38];
-  xx[797] = (xx[475] * xx[1501] + xx[788] * xx[1518]) * xx[19];
-  xx[798] = xx[19] * (xx[475] * xx[1518] - xx[788] * xx[1501]);
-  xx[803] = state[38] - (xx[788] * xx[1503] + xx[1516] * xx[475]) * xx[19];
-  xx[930] = xx[797] + xx[474];
+  xx[797] = (xx[480] * xx[1501] + xx[788] * xx[1518]) * xx[19];
+  xx[798] = xx[19] * (xx[480] * xx[1518] - xx[788] * xx[1501]);
+  xx[803] = state[38] - (xx[788] * xx[1503] + xx[1516] * xx[480]) * xx[19];
+  xx[930] = xx[797] + xx[467];
   xx[931] = xx[798] + xx[477];
   xx[932] = xx[803] + state[45];
   pm_math_matrix3x3PostCross(xx + 1527, xx + 930, xx + 1043);
-  xx[475] = xx[1085] * xx[1500];
+  xx[480] = xx[1500] * xx[1085];
   xx[788] = xx[154] * xx[1133];
-  xx[804] = xx[161] + xx[211];
-  xx[161] = xx[804] * xx[19];
-  xx[211] = (xx[566] + xx[1133] * xx[1133]) * xx[19] - xx[21];
+  xx[804] = xx[211] + xx[475];
+  xx[211] = xx[804] * xx[19];
+  xx[475] = (xx[566] + xx[1133] * xx[1133]) * xx[19] - xx[21];
   xx[832] = xx[1500] * xx[1133];
   xx[833] = xx[1085] * xx[154];
-  xx[868] = xx[475] - xx[788];
+  xx[868] = xx[480] - xx[788];
   xx[869] = xx[19] * xx[868];
   xx[904] = xx[832] + xx[833];
   xx[925] = xx[904] * xx[19];
   xx[1527] = xx[568];
-  xx[1528] = xx[480];
-  xx[1529] = (xx[475] + xx[788]) * xx[19];
-  xx[1530] = xx[161];
-  xx[1531] = xx[211];
+  xx[1528] = xx[507];
+  xx[1529] = (xx[480] + xx[788]) * xx[19];
+  xx[1530] = xx[211];
+  xx[1531] = xx[475];
   xx[1532] = xx[19] * (xx[832] - xx[833]);
   xx[1533] = xx[869];
   xx[1534] = xx[925];
   xx[1535] = (xx[566] + xx[1500] * xx[1500]) * xx[19] - xx[21];
-  xx[475] = xx[19] * (xx[785] + xx[764]);
-  xx[480] = xx[637] * xx[772];
-  xx[566] = xx[722] * xx[711];
-  xx[568] = (xx[480] - xx[566]) * xx[19];
+  xx[480] = xx[19] * (xx[785] + xx[764]);
+  xx[507] = xx[637] * xx[772];
+  xx[566] = xx[711] * xx[722];
+  xx[568] = (xx[507] - xx[566]) * xx[19];
   xx[764] = xx[772] * xx[772];
   xx[785] = (xx[649] + xx[764]) * xx[19] - xx[21];
   xx[788] = xx[772] * xx[722];
   xx[772] = xx[637] * xx[711];
   xx[637] = xx[19] * (xx[788] + xx[772]);
-  xx[711] = - (xx[19] * (xx[566] + xx[480]));
+  xx[711] = - (xx[19] * (xx[566] + xx[507]));
   xx[1578] = xx[716];
-  xx[1579] = - xx[475];
+  xx[1579] = - xx[480];
   xx[1580] = xx[568];
   xx[1581] = xx[786];
   xx[1582] = xx[785];
@@ -9366,51 +9366,51 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[931] = xx[798];
   xx[932] = xx[803];
   pm_math_matrix3x3PostCross(xx + 1578, xx + 930, xx + 1756);
-  xx[930] = xx[474];
+  xx[930] = xx[467];
   xx[931] = xx[477];
   xx[932] = state[45];
   pm_math_matrix3x3PostCross(xx + 1756, xx + 930, xx + 1578);
   pm_math_matrix3x3Compose(xx + 1527, xx + 1578, xx + 1756);
-  xx[480] = xx[507] * xx[211] - xx[564] * xx[161];
-  xx[566] = xx[161] * xx[507] - xx[614] * xx[211];
-  xx[161] = xx[19] * xx[804] * inputDot[11] * inputDot[11];
-  xx[649] = xx[211] * inputDot[11] * inputDot[11];
-  xx[211] = xx[925] * xx[507] - xx[564] * xx[869];
-  xx[722] = xx[507] * xx[869] - xx[614] * xx[925];
+  xx[507] = xx[161] * xx[475] - xx[564] * xx[211];
+  xx[566] = xx[211] * xx[161] - xx[614] * xx[475];
+  xx[211] = xx[19] * xx[804] * inputDot[11] * inputDot[11];
+  xx[649] = xx[475] * inputDot[11] * inputDot[11];
+  xx[475] = xx[925] * xx[161] - xx[564] * xx[869];
+  xx[722] = xx[161] * xx[869] - xx[614] * xx[925];
   xx[797] = xx[19] * xx[868] * inputDot[11] * inputDot[11];
   xx[798] = xx[19] * xx[904] * inputDot[11] * inputDot[11];
   xx[1527] = xx[1028] + xx[581] * xx[1517] + xx[1576] * xx[625] - (xx[635] * xx
     [716] + xx[786] * xx[787]) + (xx[1043] + xx[1756]) * xx[19];
   xx[1528] = xx[1029] + xx[625] * xx[1519] + xx[1557] * xx[581] - (xx[787] * xx
-    [785] - xx[635] * xx[475]) + (xx[1044] + xx[1757]) * xx[19];
+    [785] - xx[635] * xx[480]) + (xx[1044] + xx[1757]) * xx[19];
   xx[1529] = xx[1030] + xx[1558] * xx[581] + xx[1539] * xx[625] - (xx[635] * xx
     [568] + xx[787] * xx[637]) + (xx[1045] + xx[1758]) * xx[19];
-  xx[1530] = xx[1031] + xx[480] * xx[1517] + xx[1576] * xx[566] - (xx[161] * xx
+  xx[1530] = xx[1031] + xx[507] * xx[1517] + xx[1576] * xx[566] - (xx[211] * xx
     [716] + xx[786] * xx[649]) + (xx[1046] + xx[1759]) * xx[19];
-  xx[1531] = xx[1032] + xx[566] * xx[1519] + xx[1557] * xx[480] - (xx[649] * xx
-    [785] - xx[475] * xx[161]) + (xx[1047] + xx[1760]) * xx[19];
-  xx[1532] = xx[1033] + xx[1558] * xx[480] + xx[1539] * xx[566] - (xx[568] * xx
-    [161] + xx[649] * xx[637]) + (xx[1048] + xx[1761]) * xx[19];
-  xx[1533] = xx[1034] + xx[211] * xx[1517] + xx[1576] * xx[722] - (xx[797] * xx
+  xx[1531] = xx[1032] + xx[566] * xx[1519] + xx[1557] * xx[507] - (xx[649] * xx
+    [785] - xx[480] * xx[211]) + (xx[1047] + xx[1760]) * xx[19];
+  xx[1532] = xx[1033] + xx[1558] * xx[507] + xx[1539] * xx[566] - (xx[568] * xx
+    [211] + xx[649] * xx[637]) + (xx[1048] + xx[1761]) * xx[19];
+  xx[1533] = xx[1034] + xx[475] * xx[1517] + xx[1576] * xx[722] - (xx[797] * xx
     [716] + xx[786] * xx[798]) + (xx[1049] + xx[1762]) * xx[19];
-  xx[1534] = xx[1035] + xx[722] * xx[1519] + xx[1557] * xx[211] - (xx[798] * xx
-    [785] - xx[475] * xx[797]) + (xx[1050] + xx[1763]) * xx[19];
-  xx[1535] = xx[1036] + xx[1558] * xx[211] + xx[1539] * xx[722] - (xx[568] * xx
+  xx[1534] = xx[1035] + xx[722] * xx[1519] + xx[1557] * xx[475] - (xx[798] * xx
+    [785] - xx[480] * xx[797]) + (xx[1050] + xx[1763]) * xx[19];
+  xx[1535] = xx[1036] + xx[1558] * xx[475] + xx[1539] * xx[722] - (xx[568] * xx
     [797] + xx[637] * xx[798]) + (xx[1051] + xx[1764]) * xx[19];
   pm_math_matrix3x3Xform(xx + 1527, xx + 897, xx + 935);
   pm_math_matrix3x3Xform(xx + 1011, xx + 69, xx + 938);
   pm_math_quatXform(xx + 1571, xx + 938, xx + 950);
-  xx[211] = state[38] * state[38];
-  xx[475] = xx[1546] * xx[1134] - xx[1541] * xx[1465];
-  xx[480] = xx[1541] + xx[19] * xx[475] * xx[1465];
-  xx[566] = xx[1525] * xx[507] - xx[1524] * xx[564] - xx[211] * xx[480];
-  xx[564] = xx[1546] - xx[19] * xx[475] * xx[1134];
-  xx[475] = xx[1524] * xx[507] - xx[1525] * xx[614] + xx[211] * xx[564];
-  xx[211] = xx[475] * xx[1500];
-  xx[507] = xx[566] * xx[1500];
-  xx[568] = xx[475] * xx[1085] - xx[566] * xx[1133];
-  xx[938] = - xx[211];
-  xx[939] = xx[507];
+  xx[475] = state[38] * state[38];
+  xx[480] = xx[1546] * xx[1134] - xx[1541] * xx[1465];
+  xx[507] = xx[1541] + xx[19] * xx[480] * xx[1465];
+  xx[566] = xx[1525] * xx[161] - xx[1524] * xx[564] - xx[475] * xx[507];
+  xx[564] = xx[1546] - xx[19] * xx[480] * xx[1134];
+  xx[480] = xx[1524] * xx[161] - xx[1525] * xx[614] + xx[475] * xx[564];
+  xx[161] = xx[480] * xx[1500];
+  xx[475] = xx[566] * xx[1500];
+  xx[568] = xx[480] * xx[1085] - xx[566] * xx[1133];
+  xx[938] = - xx[161];
+  xx[939] = xx[475];
   xx[940] = xx[568];
   pm_math_cross3(xx + 1550, xx + 938, xx + 954);
   xx[581] = inputDot[11] * inputDot[11];
@@ -9420,7 +9420,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[716] = xx[1500] * xx[637];
   xx[722] = xx[1134] * xx[1525] + xx[1524] * xx[1465];
   xx[785] = 0.03194045367095631;
-  xx[786] = xx[1524] - (xx[19] * xx[722] * xx[1465] - xx[480]) + xx[785];
+  xx[786] = xx[1524] - (xx[19] * xx[722] * xx[1465] - xx[507]) + xx[785];
   xx[803] = xx[1525] - xx[19] * xx[722] * xx[1134] - xx[564];
   pm_math_cross3(xx + 930, xx + 69, xx + 938);
   pm_math_quatXform(xx + 1520, xx + 938, xx + 969);
@@ -9464,7 +9464,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_cross3(xx + 284, xx + 900, xx + 1014);
   pm_math_quatInverseXform(xx + 615, xx + 799, xx + 900);
   pm_math_cross3(xx + 799, xx + 626, xx + 1017);
-  xx[896] = xx[1090] + xx[372];
+  xx[896] = xx[1205] + xx[372];
   xx[1020] = xx[559] + xx[1017];
   xx[1021] = xx[561] + xx[1018];
   xx[1022] = xx[896] + xx[1019];
@@ -9500,36 +9500,36 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1025] = xx[960] * xx[52];
   pm_math_cross3(xx + 1020, xx + 1023, xx + 1028);
   pm_math_quatInverseXform(xx + 1520, xx + 1020, xx + 1023);
-  xx[961] = xx[1023] + xx[474];
-  xx[474] = xx[1024] + xx[477];
+  xx[961] = xx[1023] + xx[467];
+  xx[467] = xx[1024] + xx[477];
   xx[477] = xx[1025] + state[45];
   xx[1031] = xx[961];
-  xx[1032] = xx[474];
+  xx[1032] = xx[467];
   xx[1033] = xx[477];
   xx[1034] = xx[961] * xx[78];
-  xx[1035] = xx[474] * xx[79];
+  xx[1035] = xx[467] * xx[79];
   xx[1036] = xx[477] * xx[80];
   pm_math_cross3(xx + 1031, xx + 1034, xx + 1037);
   pm_math_cross3(xx + 1023, xx + 930, xx + 1031);
   xx[930] = xx[1037] + xx[78] * xx[1031];
   xx[931] = xx[1038] + xx[79] * xx[1032];
   xx[1034] = xx[1023] + xx[961];
-  xx[1035] = xx[1024] + xx[474];
+  xx[1035] = xx[1024] + xx[467];
   xx[1036] = xx[1025] + xx[477];
   pm_math_cross3(xx + 1034, xx + 938, xx + 1023);
   pm_math_cross3(xx + 1020, xx + 1524, xx + 938);
   pm_math_cross3(xx + 1020, xx + 938, xx + 1034);
   pm_math_quatInverseXform(xx + 1520, xx + 1034, xx + 938);
-  xx[474] = (xx[1023] + xx[938]) * xx[73];
+  xx[467] = (xx[1023] + xx[938]) * xx[73];
   xx[477] = (xx[1024] + xx[939]) * xx[73];
   xx[932] = (xx[1025] + xx[940]) * xx[73];
-  xx[938] = xx[474];
+  xx[938] = xx[467];
   xx[939] = xx[477];
   xx[940] = xx[932];
   xx[961] = xx[930] - xx[931] * xx[89] + pm_math_dot3(xx + 111, xx + 938);
   xx[968] = xx[930] * xx[89] + xx[931] + pm_math_dot3(xx + 753, xx + 938);
   xx[938] = xx[1039] + xx[80] * xx[1033];
-  xx[939] = xx[938] + xx[67] * xx[477] - xx[68] * xx[474];
+  xx[939] = xx[938] + xx[67] * xx[477] - xx[68] * xx[467];
   xx[1020] = - xx[961];
   xx[1021] = - xx[968];
   xx[1022] = - xx[939];
@@ -9538,7 +9538,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1021] = xx[931] - xx[713] * xx[1023] + xx[79] * xx[1024];
   xx[1022] = xx[938] + xx[80] * xx[1025];
   pm_math_quatXform(xx + 1520, xx + 1020, xx + 1031);
-  xx[1020] = xx[474] + xx[731] * xx[1023] - xx[806] * xx[1024] - xx[870] * xx
+  xx[1020] = xx[467] + xx[731] * xx[1023] - xx[806] * xx[1024] - xx[870] * xx
     [1025];
   xx[1021] = xx[477] + xx[806] * xx[1023] + xx[731] * xx[1024] + xx[908] * xx
     [1025];
@@ -9565,24 +9565,24 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1037] = xx[966];
   xx[1038] = xx[860];
   xx[1028] = 7.174999998974562e-3;
-  xx[1039] = xx[785] + xx[480];
+  xx[1039] = xx[785] + xx[507];
   xx[1040] = - xx[564];
   xx[1041] = xx[175] - ((xx[1134] * xx[1028] * xx[1134] + xx[1028] * xx[1465] *
     xx[1465]) * xx[19] - xx[1028]);
   pm_math_cross3(xx + 1036, xx + 1039, xx + 1052);
-  pm_math_cross3(xx + 1036, xx + 1052, xx + 1087);
-  xx[480] = xx[1134] * xx[1088] + xx[1087] * xx[1465];
+  pm_math_cross3(xx + 1036, xx + 1052, xx + 1091);
+  xx[507] = xx[1134] * xx[1092] + xx[1091] * xx[1465];
   xx[564] = xx[946] + xx[960];
   xx[785] = xx[1541] * state[38];
-  xx[946] = xx[1087] - xx[19] * xx[480] * xx[1465] - xx[564] * xx[785];
+  xx[946] = xx[1091] - xx[19] * xx[507] * xx[1465] - xx[564] * xx[785];
   xx[960] = xx[1546] * state[38];
-  xx[1028] = xx[564] * xx[960] + xx[1088] - xx[19] * xx[480] * xx[1134];
-  xx[480] = (xx[910] + xx[910]) * xx[785] - (xx[945] + xx[945]) * xx[960] + xx
-    [1089] - (xx[1134] * xx[1134] * xx[1089] + xx[1089] * xx[1465] * xx[1465]) *
+  xx[1028] = xx[564] * xx[960] + xx[1092] - xx[19] * xx[507] * xx[1134];
+  xx[507] = (xx[910] + xx[910]) * xx[785] - (xx[945] + xx[945]) * xx[960] + xx
+    [1093] - (xx[1134] * xx[1134] * xx[1093] + xx[1093] * xx[1465] * xx[1465]) *
     xx[19];
   xx[1036] = xx[946];
   xx[1037] = xx[1028];
-  xx[1038] = xx[480];
+  xx[1038] = xx[507];
   pm_math_matrix3x3Xform(xx + 1043, xx + 1036, xx + 1052);
   xx[564] = xx[940] * (xx[1644] - xx[1662] - xx[1658] - xx[1680]) - xx[999] *
     (xx[1645] - xx[1663] - xx[1661] - xx[1681]) + xx[1054];
@@ -9630,24 +9630,24 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1050] = 0.02992259737327991 - (xx[1026] * xx[154] + xx[1053]) * xx[19];
   xx[1051] = 0.1534399415345039 - (xx[19] * (xx[1054] + xx[1029]) - xx[4]);
   pm_math_cross3(xx + 25, xx + 1049, xx + 1052);
-  xx[1087] = xx[15] + xx[1052];
-  xx[1088] = xx[5] + xx[1053];
-  xx[1089] = xx[18] + xx[1054];
-  pm_math_quatInverseXform(xx + 861, xx + 1087, xx + 1052);
-  pm_math_cross3(xx + 35, xx + 1049, xx + 1087);
-  pm_math_cross3(xx + 35, xx + 1087, xx + 1049);
-  pm_math_quatInverseXform(xx + 861, xx + 1049, xx + 1087);
+  xx[1091] = xx[15] + xx[1052];
+  xx[1092] = xx[5] + xx[1053];
+  xx[1093] = xx[18] + xx[1054];
+  pm_math_quatInverseXform(xx + 861, xx + 1091, xx + 1052);
+  pm_math_cross3(xx + 35, xx + 1049, xx + 1091);
+  pm_math_cross3(xx + 35, xx + 1091, xx + 1049);
+  pm_math_quatInverseXform(xx + 861, xx + 1049, xx + 1091);
   xx[4] = xx[614] * inputDot[11];
   xx[861] = xx[945];
   xx[862] = xx[960];
   xx[863] = xx[966];
   pm_math_cross3(xx + 861, xx + 1039, xx + 1049);
-  xx[861] = xx[1052] + xx[1087] - (xx[967] + xx[860]) * xx[4] + xx[1049];
-  xx[860] = xx[1053] + xx[1088] + xx[614] * inputDdot[11] + xx[1050];
+  xx[861] = xx[1052] + xx[1091] - (xx[967] + xx[860]) * xx[4] + xx[1049];
+  xx[860] = xx[1053] + xx[1092] + xx[614] * inputDdot[11] + xx[1050];
   xx[862] = xx[860] * xx[1134] + xx[861] * xx[1465];
   xx[863] = xx[861] - xx[19] * xx[862] * xx[1465];
   xx[861] = xx[860] - xx[19] * xx[862] * xx[1134];
-  xx[860] = xx[1054] + (xx[965] + xx[965]) * xx[4] + xx[1089] + xx[1051];
+  xx[860] = xx[1054] + (xx[965] + xx[965]) * xx[4] + xx[1093] + xx[1051];
   xx[4] = xx[860] - (xx[1134] * xx[860] * xx[1134] + xx[860] * xx[1465] * xx
                      [1465]) * xx[19];
   xx[965] = xx[863];
@@ -9664,14 +9664,14 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[967] = xx[1020] - xx[862];
   pm_math_quatInverseXform(xx + 1520, xx + 965, xx + 1031);
   pm_math_cross3(xx + 965, xx + 1524, xx + 1034);
-  xx[945] = xx[4] + xx[480];
+  xx[945] = xx[4] + xx[507];
   xx[965] = xx[863] - xx[862] * xx[1546] + xx[946] + xx[1034];
   xx[966] = xx[861] - xx[862] * xx[1541] + xx[1028] + xx[1035];
   xx[967] = xx[945] + xx[1036];
   pm_math_quatInverseXform(xx + 1520, xx + 965, xx + 1034);
   xx[4] = xx[1023] - (pm_math_dot3(xx + 1608, xx + 1031) + pm_math_dot3(xx +
     1686, xx + 1034));
-  xx[480] = xx[1024] - (pm_math_dot3(xx + 1692, xx + 1031) + pm_math_dot3(xx +
+  xx[507] = xx[1024] - (pm_math_dot3(xx + 1692, xx + 1031) + pm_math_dot3(xx +
     1695, xx + 1034));
   xx[960] = xx[1025] - (pm_math_dot3(xx + 1698, xx + 1031) + pm_math_dot3(xx +
     1620, xx + 1034));
@@ -9748,57 +9748,57 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1022] = xx[1186] * state[10];
   xx[1023] = xx[19] * (xx[1187] * xx[1021] - xx[1184] * xx[1022]);
   pm_math_quatInverseXform(xx + 1143, xx + 1056, xx + 1024);
-  pm_math_quatInverseXform(xx + 1139, xx + 1167, xx + 1087);
+  pm_math_quatInverseXform(xx + 1139, xx + 1080, xx + 1091);
   xx[1040] = xx[469] * xx[340];
   xx[1041] = xx[340] * xx[347] - xx[320] * xx[473];
   xx[473] = xx[469] * xx[320];
-  xx[1090] = xx[1040];
-  xx[1091] = xx[1041];
-  xx[1092] = - xx[473];
-  pm_math_cross3(xx + 1200, xx + 1090, xx + 1104);
-  xx[1075] = xx[19] * (xx[1104] + xx[339] * xx[1040]) - xx[320];
-  xx[1040] = xx[1087] + xx[1075];
+  xx[1104] = xx[1040];
+  xx[1105] = xx[1041];
+  xx[1106] = - xx[473];
+  pm_math_cross3(xx + 1200, xx + 1104, xx + 1108);
+  xx[1075] = xx[19] * (xx[1108] + xx[339] * xx[1040]) - xx[320];
+  xx[1040] = xx[1091] + xx[1075];
   xx[1076] = xx[1024] + xx[1040];
   xx[1078] = (xx[1184] * xx[1021] + xx[1187] * xx[1022]) * xx[19];
-  xx[1083] = xx[19] * (xx[1105] + xx[339] * xx[1041]);
-  xx[1041] = xx[1088] + xx[1083];
+  xx[1083] = xx[19] * (xx[1109] + xx[339] * xx[1041]);
+  xx[1041] = xx[1092] + xx[1083];
   xx[1084] = xx[1025] + xx[1041];
-  xx[1090] = state[10] - (xx[1185] * xx[1021] + xx[1186] * xx[1022]) * xx[19];
-  xx[1021] = (xx[1106] - xx[339] * xx[473]) * xx[19] - xx[340];
+  xx[1087] = state[10] - (xx[1185] * xx[1021] + xx[1186] * xx[1022]) * xx[19];
+  xx[1021] = (xx[1110] - xx[339] * xx[473]) * xx[19] - xx[340];
   xx[473] = xx[1021] - state[32];
-  xx[1022] = xx[1089] + xx[473];
-  xx[1091] = xx[1026] + xx[1022];
+  xx[1022] = xx[1093] + xx[473];
+  xx[1101] = xx[1026] + xx[1022];
   xx[1104] = xx[1023] + xx[1076];
   xx[1105] = xx[1078] + xx[1084];
-  xx[1106] = xx[1090] + xx[1091];
+  xx[1106] = xx[1087] + xx[1101];
   pm_math_matrix3x3PostCross(xx + 1580, xx + 1104, xx + 1138);
-  xx[1092] = xx[19] * (xx[967] - xx[1005]);
+  xx[1102] = xx[19] * (xx[967] - xx[1005]);
   xx[967] = xx[999] * xx[490];
   xx[1005] = xx[966] * xx[488];
-  xx[1093] = (xx[967] + xx[1005]) * xx[19];
-  xx[1101] = xx[966] * xx[966];
-  xx[1102] = (xx[489] + xx[1101]) * xx[19] - xx[21];
-  xx[1104] = xx[488] * xx[490];
+  xx[1104] = (xx[967] + xx[1005]) * xx[19];
+  xx[1105] = xx[966] * xx[966];
+  xx[1106] = (xx[489] + xx[1105]) * xx[19] - xx[21];
+  xx[1108] = xx[490] * xx[488];
   xx[488] = xx[999] * xx[966];
-  xx[490] = xx[19] * (xx[1104] - xx[488]);
+  xx[490] = xx[19] * (xx[1108] - xx[488]);
   xx[966] = xx[19] * (xx[1005] - xx[967]);
   xx[1571] = xx[965];
-  xx[1572] = xx[1092];
-  xx[1573] = - xx[1093];
+  xx[1572] = xx[1102];
+  xx[1573] = - xx[1104];
   xx[1574] = xx[1007];
-  xx[1575] = xx[1102];
+  xx[1575] = xx[1106];
   xx[1576] = xx[490];
   xx[1577] = xx[966];
-  xx[1578] = - ((xx[488] + xx[1104]) * xx[19]);
+  xx[1578] = - ((xx[488] + xx[1108]) * xx[19]);
   xx[1579] = (xx[489] + xx[999] * xx[999]) * xx[19] - xx[21];
-  xx[1108] = xx[1023];
-  xx[1109] = xx[1078];
-  xx[1110] = xx[1090];
-  pm_math_matrix3x3PostCross(xx + 1571, xx + 1108, xx + 1580);
-  xx[1108] = xx[1076];
-  xx[1109] = xx[1084];
-  xx[1110] = xx[1091];
-  pm_math_matrix3x3PostCross(xx + 1580, xx + 1108, xx + 1571);
+  xx[1116] = xx[1023];
+  xx[1117] = xx[1078];
+  xx[1118] = xx[1087];
+  pm_math_matrix3x3PostCross(xx + 1571, xx + 1116, xx + 1580);
+  xx[1116] = xx[1076];
+  xx[1117] = xx[1084];
+  xx[1118] = xx[1101];
+  pm_math_matrix3x3PostCross(xx + 1580, xx + 1116, xx + 1571);
   xx[489] = xx[19] * (xx[485] - xx[486]);
   xx[485] = (xx[941] + xx[1094]) * xx[19];
   xx[486] = (xx[482] + xx[1122]) * xx[19] - xx[21];
@@ -9817,7 +9817,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1024] = xx[1041];
   xx[1025] = xx[1022];
   pm_math_matrix3x3PostCross(xx + 1116, xx + 1023, xx + 1580);
-  pm_math_matrix3x3PostCross(xx + 1527, xx + 1087, xx + 1116);
+  pm_math_matrix3x3PostCross(xx + 1527, xx + 1091, xx + 1116);
   xx[1022] = xx[1075];
   xx[1023] = xx[1083];
   xx[1024] = xx[473];
@@ -9853,12 +9853,12 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[999] = xx[1584] + xx[1120];
   xx[1005] = xx[1582] + xx[1118];
   xx[1021] = xx[1585] + xx[1121];
-  xx[1043] = xx[1571] + xx[473] * xx[274] - xx[482] * xx[206];
-  xx[1044] = xx[1572] + xx[967] * xx[274] - xx[999] * xx[206];
-  xx[1045] = xx[1573] + xx[1005] * xx[274] - xx[1021] * xx[206];
-  xx[1046] = xx[1574] + xx[482] * xx[434] - xx[473] * xx[206];
-  xx[1047] = xx[1575] + xx[999] * xx[434] - xx[967] * xx[206];
-  xx[1048] = xx[1576] + xx[1021] * xx[434] - xx[1005] * xx[206];
+  xx[1043] = xx[1571] + xx[473] * xx[378] - xx[482] * xx[198];
+  xx[1044] = xx[1572] + xx[967] * xx[378] - xx[999] * xx[198];
+  xx[1045] = xx[1573] + xx[1005] * xx[378] - xx[1021] * xx[198];
+  xx[1046] = xx[1574] + xx[482] * xx[434] - xx[473] * xx[198];
+  xx[1047] = xx[1575] + xx[999] * xx[434] - xx[967] * xx[198];
+  xx[1048] = xx[1576] + xx[1021] * xx[434] - xx[1005] * xx[198];
   xx[1049] = xx[1577] - (xx[1586] + xx[1122]);
   xx[1050] = xx[1578] - (xx[1587] + xx[1123]);
   xx[1051] = xx[1579] - (xx[1588] + xx[1124]);
@@ -9866,31 +9866,31 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[473] = xx[19] * xx[472] * state[32] * state[32];
   xx[472] = xx[470] * state[32] * state[32];
   xx[470] = xx[19] * xx[476] * state[32] * state[32];
-  xx[1043] = xx[1031] - (xx[483] * xx[152] - xx[33] * xx[468] + xx[467] * xx[478])
-    + xx[1505] + xx[1547] + xx[420] * xx[484] + xx[487] * xx[440] - (xx[441] *
-    xx[965] + xx[461] * xx[1007]) + (xx[1138] + xx[1116]) * xx[19];
-  xx[1044] = xx[1032] - (xx[473] * xx[152] + xx[33] * xx[472] - xx[467] * xx[470])
-    + xx[1506] + xx[1548] + xx[489] * xx[420] + xx[440] * xx[486] - (xx[1092] *
-    xx[441] + xx[461] * xx[1102]) + (xx[1139] + xx[1117]) * xx[19];
-  xx[1045] = xx[1033] + xx[1507] + xx[1549] + xx[485] * xx[420] + xx[941] * xx
-    [440] + xx[441] * xx[1093] - xx[461] * xx[490] + (xx[1140] + xx[1118]) * xx
+  xx[1043] = xx[1031] - (xx[483] * xx[152] - xx[468] * xx[33] + xx[478] * xx[474])
+    + xx[1505] + xx[1547] + xx[484] * xx[422] + xx[487] * xx[440] - (xx[441] *
+    xx[965] + xx[1007] * xx[499]) + (xx[1138] + xx[1116]) * xx[19];
+  xx[1044] = xx[1032] - (xx[473] * xx[152] + xx[33] * xx[472] - xx[470] * xx[474])
+    + xx[1506] + xx[1548] + xx[489] * xx[422] + xx[440] * xx[486] - (xx[441] *
+    xx[1102] + xx[499] * xx[1106]) + (xx[1139] + xx[1117]) * xx[19];
+  xx[1045] = xx[1033] + xx[1507] + xx[1549] + xx[485] * xx[422] + xx[941] * xx
+    [440] + xx[441] * xx[1104] - xx[499] * xx[490] + (xx[1140] + xx[1118]) * xx
     [19];
-  xx[1046] = xx[1034] - (xx[196] * xx[483] - xx[468] * xx[153] + xx[481] * xx
-    [478]) + xx[1508] + xx[1550] + xx[484] * xx[31] + xx[487] * xx[32] - (xx[166]
-    * xx[965] + xx[1007] * xx[197]) + (xx[1141] + xx[1119]) * xx[19];
-  xx[1047] = xx[1035] - (xx[473] * xx[196] + xx[472] * xx[153] - xx[481] * xx
-    [470]) + xx[1509] + xx[1551] + xx[489] * xx[31] + xx[486] * xx[32] - (xx
-    [1092] * xx[166] + xx[197] * xx[1102]) + (xx[1142] + xx[1120]) * xx[19];
+  xx[1046] = xx[1034] - (xx[483] * xx[197] - xx[468] * xx[153] + xx[478] * xx
+    [481]) + xx[1508] + xx[1550] + xx[484] * xx[31] + xx[487] * xx[32] - (xx[166]
+    * xx[965] + xx[1007] * xx[206]) + (xx[1141] + xx[1119]) * xx[19];
+  xx[1047] = xx[1035] - (xx[197] * xx[473] + xx[472] * xx[153] - xx[481] * xx
+    [470]) + xx[1509] + xx[1551] + xx[489] * xx[31] + xx[32] * xx[486] - (xx[166]
+    * xx[1102] + xx[206] * xx[1106]) + (xx[1142] + xx[1120]) * xx[19];
   xx[1048] = xx[1036] + xx[1510] + xx[1552] + xx[485] * xx[31] + xx[941] * xx[32]
-    + xx[166] * xx[1093] - xx[490] * xx[197] + (xx[1143] + xx[1121]) * xx[19];
-  xx[1049] = xx[1037] - (xx[213] * xx[483] - xx[468] * xx[210] + xx[478] * xx
+    + xx[166] * xx[1104] - xx[206] * xx[490] + (xx[1143] + xx[1121]) * xx[19];
+  xx[1049] = xx[1037] - (xx[483] * xx[213] - xx[210] * xx[468] + xx[478] * xx
     [207]) + xx[1511] + xx[1553] + xx[484] * xx[220] + xx[487] * xx[221] - (xx
-    [222] * xx[965] + xx[223] * xx[1007]) + (xx[1144] + xx[1122]) * xx[19];
-  xx[1050] = xx[1038] - (xx[473] * xx[213] + xx[472] * xx[210] - xx[470] * xx
-    [207]) + xx[1512] + xx[1554] + xx[489] * xx[220] + xx[486] * xx[221] - (xx
-    [1092] * xx[222] + xx[223] * xx[1102]) + (xx[1145] + xx[1123]) * xx[19];
+    [222] * xx[965] + xx[1007] * xx[223]) + (xx[1144] + xx[1122]) * xx[19];
+  xx[1050] = xx[1038] - (xx[213] * xx[473] + xx[210] * xx[472] - xx[470] * xx
+    [207]) + xx[1512] + xx[1554] + xx[489] * xx[220] + xx[221] * xx[486] - (xx
+    [222] * xx[1102] + xx[223] * xx[1106]) + (xx[1145] + xx[1123]) * xx[19];
   xx[1051] = xx[1039] + xx[1513] + xx[1555] + xx[485] * xx[220] + xx[941] * xx
-    [221] + xx[222] * xx[1093] - xx[490] * xx[223] + (xx[1146] + xx[1124]) * xx
+    [221] + xx[222] * xx[1104] - xx[223] * xx[490] + (xx[1146] + xx[1124]) * xx
     [19];
   pm_math_matrix3x3Xform(xx + 1043, xx + 231, xx + 482);
   xx[468] = xx[469] * xx[529] - xx[530] * xx[347];
@@ -9901,12 +9901,12 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[347] = state[32] * state[32];
   xx[485] = (xx[529] + xx[19] * (xx[1021] - xx[1208])) * xx[347];
   xx[486] = ((xx[1022] - xx[1206]) * xx[19] - xx[530]) * xx[347];
-  xx[487] = (xx[1023] - xx[339] * xx[468]) * xx[19] * xx[347];
+  xx[487] = xx[347] * (xx[1023] - xx[339] * xx[468]) * xx[19];
   pm_math_quatXform(xx + 308, xx + 485, xx + 468);
   pm_math_matrix3x3Xform(xx + 741, xx + 536, xx + 485);
   xx[1021] = xx[485] + xx[203];
-  xx[1022] = xx[486] + xx[224];
-  xx[1023] = xx[487] + xx[240];
+  xx[1022] = xx[486] + xx[219];
+  xx[1023] = xx[487] + xx[224];
   pm_math_quatXform(xx + 304, xx + 1021, xx + 485);
   pm_math_matrix3x3Xform(xx + 847, xx + 1151, xx + 1021);
   xx[1024] = xx[1021] + xx[589];
@@ -9918,8 +9918,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1032] = xx[1025] + xx[653];
   xx[1033] = xx[1026] + xx[654];
   pm_math_quatXform(xx + 296, xx + 1031, xx + 1024);
-  xx[339] = xx[1147] * xx[165] - xx[1165] * xx[386] + xx[202];
-  xx[347] = xx[1165] * xx[165] - xx[1147] * xx[435] - xx[219];
+  xx[339] = xx[1147] * xx[274] - xx[1165] * xx[379] + xx[202];
+  xx[347] = xx[1165] * xx[274] - xx[1147] * xx[435] - xx[218];
   xx[472] = xx[164] * xx[347];
   xx[473] = xx[164] * xx[339];
   xx[476] = xx[149] * xx[347] - xx[339] * xx[156];
@@ -9938,7 +9938,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1033] = xx[529] + xx[535] * xx[320];
   pm_math_quatXform(xx + 214, xx + 1031, xx + 530);
   xx[535] = xx[282] + xx[530];
-  pm_math_cross3(xx + 1167, xx + 1151, xx + 1031);
+  pm_math_cross3(xx + 1080, xx + 1151, xx + 1031);
   xx[941] = xx[238] + xx[531];
   xx[530] = xx[532] - xx[243];
   xx[1037] = xx[535] + xx[1031];
@@ -9978,11 +9978,11 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1046] = xx[535];
   xx[1047] = xx[941];
   xx[1048] = xx[530];
-  pm_math_cross3(xx + 1167, xx + 1046, xx + 530);
+  pm_math_cross3(xx + 1080, xx + 1046, xx + 530);
   pm_math_quatXform(xx + 188, xx + 530, xx + 1046);
-  xx[530] = xx[512] * xx[340];
-  xx[531] = xx[529] * xx[320] - xx[478] * xx[340];
-  xx[532] = - (xx[512] * xx[320]);
+  xx[530] = xx[340] * xx[512];
+  xx[531] = xx[320] * xx[529] - xx[340] * xx[478];
+  xx[532] = - (xx[320] * xx[512]);
   pm_math_quatXform(xx + 214, xx + 530, xx + 1049);
   pm_math_quatXform(xx + 188, xx + 1049, xx + 529);
   xx[1049] = xx[1046] + xx[529];
@@ -10029,190 +10029,190 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1037] = xx[1630] * xx[532] - xx[1632] * state[63];
   xx[1038] = xx[941] * xx[1632] - xx[1669] * xx[532];
   xx[1039] = xx[1669] * state[63] - xx[941] * xx[1630];
-  xx[1138] = xx[535] * state[63] - xx[478] * xx[941];
+  xx[1138] = xx[535] * state[63] - xx[941] * xx[478];
   xx[1139] = xx[512] * state[63] + xx[478] * xx[532];
-  xx[1140] = - (xx[512] * xx[941] + xx[535] * xx[532]);
+  xx[1140] = - (xx[941] * xx[512] + xx[532] * xx[535]);
   xx[1141] = - (xx[965] * state[63] + xx[941] * xx[967]);
-  xx[1142] = xx[967] * xx[532] - xx[1005] * state[63];
-  xx[1143] = xx[1005] * xx[941] + xx[965] * xx[532];
+  xx[1142] = xx[532] * xx[967] - xx[1005] * state[63];
+  xx[1143] = xx[941] * xx[1005] + xx[965] * xx[532];
   xx[1144] = xx[1037] * state[63] - xx[941] * xx[1038];
-  xx[1145] = xx[1038] * xx[532] - xx[1039] * state[63];
-  xx[1146] = xx[941] * xx[1039] - xx[1037] * xx[532];
+  xx[1145] = xx[532] * xx[1038] - xx[1039] * state[63];
+  xx[1146] = xx[941] * xx[1039] - xx[532] * xx[1037];
   pm_math_matrix3x3Compose(xx + 1116, xx + 1138, xx + 1147);
-  xx[478] = xx[19] * xx[1222] * xx[1266] * state[56] * state[56];
-  xx[512] = xx[1625] * xx[1267];
-  xx[535] = xx[1628] * xx[1629];
-  xx[965] = xx[512] + xx[535];
-  xx[967] = xx[19] * xx[965];
+  xx[478] = xx[1625] * xx[1267];
+  xx[512] = xx[1628] * xx[1629];
+  xx[535] = xx[478] + xx[512];
+  xx[965] = xx[19] * xx[535];
+  xx[967] = xx[19] * xx[1222] * xx[1266] * state[56] * state[56];
   xx[1005] = (xx[19] * xx[1222] * xx[1222] - xx[21]) * state[56] * state[56];
   xx[1037] = xx[1628] * xx[1628];
   xx[1038] = (xx[1037] + xx[1267] * xx[1267]) * xx[19] - xx[21];
-  xx[1039] = xx[478] * xx[967] - xx[1005] * xx[1038];
+  xx[1039] = xx[965] * xx[967] - xx[1005] * xx[1038];
   xx[1040] = (xx[19] * xx[1266] * xx[1266] - xx[21]) * state[56] * state[56];
-  xx[1041] = xx[478] * xx[1038] - xx[967] * xx[1040];
+  xx[1041] = xx[967] * xx[1038] - xx[965] * xx[1040];
   xx[1046] = xx[1038] * inputDot[9] * inputDot[9];
   xx[1047] = xx[1637] * xx[1266] - xx[1222] * xx[1635];
   xx[1048] = xx[1047] * xx[1047];
   xx[1049] = xx[1266] * xx[1654] + xx[1222] * xx[1634];
   xx[1050] = xx[1049] * xx[1049];
   xx[1051] = (xx[1048] + xx[1050]) * xx[19] - xx[21];
-  xx[1075] = xx[19] * xx[965] * inputDot[9] * inputDot[9];
-  xx[965] = xx[1637] * xx[1222] + xx[1266] * xx[1635];
-  xx[1076] = xx[1047] * xx[965];
+  xx[1075] = xx[19] * xx[535] * inputDot[9] * inputDot[9];
+  xx[535] = xx[1637] * xx[1222] + xx[1266] * xx[1635];
+  xx[1076] = xx[1047] * xx[535];
   xx[1078] = xx[1266] * xx[1634] - xx[1222] * xx[1654];
   xx[1083] = xx[1078] * xx[1049];
   xx[1084] = (xx[1076] - xx[1083]) * xx[19];
-  xx[1087] = xx[1628];
-  xx[1088] = xx[1267];
-  xx[1089] = xx[1625];
-  xx[1090] = xx[1719];
-  xx[1091] = xx[1047];
-  xx[1092] = - xx[1049];
-  xx[1093] = xx[1078];
-  xx[1094] = xx[965];
-  pm_math_quatCompose(xx + 1087, xx + 1091, xx + 1116);
-  xx[1091] = xx[1116] * xx[1116];
-  xx[1092] = xx[1117] * xx[1118];
-  xx[1093] = xx[1116] * xx[1119];
-  xx[1094] = xx[1117] * xx[1119];
-  xx[1102] = xx[1116] * xx[1118];
-  xx[1105] = xx[1118] * xx[1119];
-  xx[1106] = xx[1116] * xx[1117];
-  xx[1206] = (xx[1091] + xx[1117] * xx[1117]) * xx[19] - xx[21];
-  xx[1207] = xx[19] * (xx[1092] - xx[1093]);
-  xx[1208] = (xx[1094] + xx[1102]) * xx[19];
-  xx[1209] = (xx[1092] + xx[1093]) * xx[19];
-  xx[1210] = (xx[1091] + xx[1118] * xx[1118]) * xx[19] - xx[21];
-  xx[1211] = xx[19] * (xx[1105] - xx[1106]);
-  xx[1212] = xx[19] * (xx[1094] - xx[1102]);
-  xx[1213] = (xx[1105] + xx[1106]) * xx[19];
-  xx[1214] = (xx[1091] + xx[1119] * xx[1119]) * xx[19] - xx[21];
-  xx[1091] = xx[1078] * inputDot[9];
-  xx[1092] = xx[1049] * inputDot[9];
-  xx[1108] = xx[19] * (xx[1047] * xx[1091] + xx[1092] * xx[965]);
-  xx[1109] = - ((xx[1091] * xx[965] - xx[1047] * xx[1092]) * xx[19]);
-  xx[1110] = (xx[1092] * xx[1049] + xx[1078] * xx[1091]) * xx[19] - inputDot[9];
-  pm_math_matrix3x3PostCross(xx + 1206, xx + 1108, xx + 1505);
-  xx[1091] = xx[1637] * state[56];
-  xx[1092] = xx[1635] * state[56];
-  xx[1093] = (xx[1091] * xx[1634] + xx[1092] * xx[1654]) * xx[19];
-  xx[1094] = xx[19] * (xx[1091] * xx[1654] - xx[1092] * xx[1634]);
-  xx[1102] = state[56] - (xx[1092] * xx[1635] + xx[1637] * xx[1091]) * xx[19];
-  xx[1108] = xx[1093] + xx[532];
-  xx[1109] = xx[1094] + xx[941];
-  xx[1110] = xx[1102] + state[63];
-  pm_math_matrix3x3PostCross(xx + 1505, xx + 1108, xx + 1206);
-  xx[1091] = xx[1625] * xx[1628];
-  xx[1092] = xx[1267] * xx[1629];
-  xx[1105] = xx[512] - xx[535];
-  xx[512] = xx[1105] * xx[19];
-  xx[535] = (xx[1037] + xx[1625] * xx[1625]) * xx[19] - xx[21];
-  xx[1106] = xx[1625] * xx[1629];
-  xx[1108] = xx[1628] * xx[1267];
-  xx[1109] = xx[1092] + xx[1091];
-  xx[1110] = xx[19] * xx[1109];
-  xx[1112] = xx[1108] - xx[1106];
-  xx[1113] = xx[1112] * xx[19];
-  xx[1505] = xx[1038];
-  xx[1506] = xx[967];
-  xx[1507] = (xx[1091] - xx[1092]) * xx[19];
-  xx[1508] = xx[512];
-  xx[1509] = xx[535];
-  xx[1510] = - (xx[19] * (xx[1106] + xx[1108]));
-  xx[1511] = - xx[1110];
-  xx[1512] = xx[1113];
-  xx[1513] = (xx[1037] + xx[1629] * xx[1629]) * xx[19] - xx[21];
-  xx[967] = xx[19] * (xx[1083] + xx[1076]);
+  xx[1091] = xx[1628];
+  xx[1092] = xx[1267];
+  xx[1093] = xx[1625];
+  xx[1094] = xx[1719];
+  xx[1116] = xx[1047];
+  xx[1117] = - xx[1049];
+  xx[1118] = xx[1078];
+  xx[1119] = xx[535];
+  pm_math_quatCompose(xx + 1091, xx + 1116, xx + 1120);
+  xx[1087] = xx[1120] * xx[1120];
+  xx[1101] = xx[1121] * xx[1122];
+  xx[1102] = xx[1120] * xx[1123];
+  xx[1104] = xx[1121] * xx[1123];
+  xx[1106] = xx[1120] * xx[1122];
+  xx[1109] = xx[1122] * xx[1123];
+  xx[1110] = xx[1120] * xx[1121];
+  xx[1198] = (xx[1087] + xx[1121] * xx[1121]) * xx[19] - xx[21];
+  xx[1199] = xx[19] * (xx[1101] - xx[1102]);
+  xx[1200] = (xx[1104] + xx[1106]) * xx[19];
+  xx[1201] = (xx[1101] + xx[1102]) * xx[19];
+  xx[1202] = (xx[1087] + xx[1122] * xx[1122]) * xx[19] - xx[21];
+  xx[1203] = xx[19] * (xx[1109] - xx[1110]);
+  xx[1204] = xx[19] * (xx[1104] - xx[1106]);
+  xx[1205] = (xx[1109] + xx[1110]) * xx[19];
+  xx[1206] = (xx[1087] + xx[1123] * xx[1123]) * xx[19] - xx[21];
+  xx[1087] = xx[1078] * inputDot[9];
+  xx[1101] = xx[1049] * inputDot[9];
+  xx[1112] = xx[19] * (xx[1047] * xx[1087] + xx[1101] * xx[535]);
+  xx[1113] = - ((xx[1087] * xx[535] - xx[1047] * xx[1101]) * xx[19]);
+  xx[1114] = (xx[1101] * xx[1049] + xx[1078] * xx[1087]) * xx[19] - inputDot[9];
+  pm_math_matrix3x3PostCross(xx + 1198, xx + 1112, xx + 1207);
+  xx[1087] = xx[1637] * state[56];
+  xx[1101] = xx[1635] * state[56];
+  xx[1102] = (xx[1087] * xx[1634] + xx[1101] * xx[1654]) * xx[19];
+  xx[1104] = xx[19] * (xx[1087] * xx[1654] - xx[1101] * xx[1634]);
+  xx[1106] = state[56] - (xx[1101] * xx[1635] + xx[1637] * xx[1087]) * xx[19];
+  xx[1112] = xx[1102] + xx[532];
+  xx[1113] = xx[1104] + xx[941];
+  xx[1114] = xx[1106] + state[63];
+  pm_math_matrix3x3PostCross(xx + 1207, xx + 1112, xx + 1198);
+  xx[1087] = xx[1625] * xx[1628];
+  xx[1101] = xx[1267] * xx[1629];
+  xx[1109] = xx[478] - xx[512];
+  xx[478] = xx[1109] * xx[19];
+  xx[512] = (xx[1037] + xx[1625] * xx[1625]) * xx[19] - xx[21];
+  xx[1110] = xx[1625] * xx[1629];
+  xx[1112] = xx[1628] * xx[1267];
+  xx[1113] = xx[1101] + xx[1087];
+  xx[1114] = xx[19] * xx[1113];
+  xx[1116] = xx[1112] - xx[1110];
+  xx[1117] = xx[1116] * xx[19];
+  xx[1207] = xx[1038];
+  xx[1208] = xx[965];
+  xx[1209] = (xx[1087] - xx[1101]) * xx[19];
+  xx[1210] = xx[478];
+  xx[1211] = xx[512];
+  xx[1212] = - (xx[19] * (xx[1110] + xx[1112]));
+  xx[1213] = - xx[1114];
+  xx[1214] = xx[1117];
+  xx[1215] = (xx[1037] + xx[1629] * xx[1629]) * xx[19] - xx[21];
+  xx[965] = xx[19] * (xx[1083] + xx[1076]);
   xx[1037] = xx[1047] * xx[1078];
-  xx[1038] = xx[1049] * xx[965];
+  xx[1038] = xx[535] * xx[1049];
   xx[1076] = (xx[1037] - xx[1038]) * xx[19];
   xx[1083] = xx[1078] * xx[1078];
-  xx[1091] = (xx[1048] + xx[1083]) * xx[19] - xx[21];
-  xx[1092] = xx[1078] * xx[965];
+  xx[1087] = (xx[1048] + xx[1083]) * xx[19] - xx[21];
+  xx[1101] = xx[1078] * xx[535];
   xx[1078] = xx[1047] * xx[1049];
-  xx[1047] = xx[19] * (xx[1092] + xx[1078]);
-  xx[1527] = xx[1051];
-  xx[1528] = - xx[967];
-  xx[1529] = xx[1076];
-  xx[1530] = xx[1084];
-  xx[1531] = xx[1091];
-  xx[1532] = xx[1047];
-  xx[1533] = - (xx[19] * (xx[1038] + xx[1037]));
-  xx[1534] = (xx[1092] - xx[1078]) * xx[19];
-  xx[1535] = (xx[1048] + xx[965] * xx[965]) * xx[19] - xx[21];
-  xx[1120] = xx[1093];
-  xx[1121] = xx[1094];
-  xx[1122] = xx[1102];
-  pm_math_matrix3x3PostCross(xx + 1527, xx + 1120, xx + 1547);
-  xx[1120] = xx[532];
-  xx[1121] = xx[941];
-  xx[1122] = state[63];
-  pm_math_matrix3x3PostCross(xx + 1547, xx + 1120, xx + 1527);
-  pm_math_matrix3x3Compose(xx + 1505, xx + 1527, xx + 1547);
-  xx[965] = xx[478] * xx[535] - xx[1005] * xx[512];
-  xx[1048] = xx[478] * xx[512] - xx[1040] * xx[535];
-  xx[512] = xx[19] * xx[1105] * inputDot[9] * inputDot[9];
-  xx[1049] = xx[535] * inputDot[9] * inputDot[9];
-  xx[535] = xx[478] * xx[1113] + xx[1110] * xx[1005];
-  xx[1093] = xx[478] * xx[1110] + xx[1040] * xx[1113];
-  xx[1094] = xx[19] * xx[1112] * inputDot[9] * inputDot[9];
-  xx[1102] = xx[19] * xx[1109] * inputDot[9] * inputDot[9];
-  xx[1505] = xx[1147] + xx[1039] * xx[1653] + xx[1746] * xx[1041] - (xx[1046] *
-    xx[1051] + xx[1075] * xx[1084]) + (xx[1206] + xx[1547]) * xx[19];
-  xx[1506] = xx[1148] + xx[1041] * xx[1665] + xx[1727] * xx[1039] - (xx[1075] *
-    xx[1091] - xx[967] * xx[1046]) + (xx[1207] + xx[1548]) * xx[19];
-  xx[1507] = xx[1149] + xx[1728] * xx[1039] + xx[1709] * xx[1041] - (xx[1046] *
-    xx[1076] + xx[1075] * xx[1047]) + (xx[1208] + xx[1549]) * xx[19];
-  xx[1508] = xx[1150] + xx[965] * xx[1653] + xx[1746] * xx[1048] - (xx[512] *
-    xx[1051] + xx[1084] * xx[1049]) + (xx[1209] + xx[1550]) * xx[19];
-  xx[1509] = xx[1151] + xx[1048] * xx[1665] + xx[1727] * xx[965] - (xx[1049] *
-    xx[1091] - xx[967] * xx[512]) + (xx[1210] + xx[1551]) * xx[19];
-  xx[1510] = xx[1152] + xx[1728] * xx[965] + xx[1709] * xx[1048] - (xx[512] *
-    xx[1076] + xx[1047] * xx[1049]) + (xx[1211] + xx[1552]) * xx[19];
-  xx[1511] = xx[1153] + xx[535] * xx[1653] - xx[1746] * xx[1093] - (xx[1094] *
-    xx[1084] - xx[1102] * xx[1051]) + (xx[1212] + xx[1553]) * xx[19];
-  xx[1512] = xx[1154] + xx[1727] * xx[535] - xx[1093] * xx[1665] - (xx[967] *
-    xx[1102] + xx[1094] * xx[1091]) + (xx[1213] + xx[1554]) * xx[19];
-  xx[1513] = xx[1155] + xx[1728] * xx[535] - xx[1709] * xx[1093] - (xx[1047] *
-    xx[1094] - xx[1102] * xx[1076]) + (xx[1214] + xx[1555]) * xx[19];
-  pm_math_matrix3x3Xform(xx + 1505, xx + 897, xx + 1108);
-  pm_math_matrix3x3Xform(xx + 1138, xx + 69, xx + 1112);
-  pm_math_quatXform(xx + 1741, xx + 1112, xx + 1138);
-  xx[535] = state[56] * state[56];
-  xx[965] = xx[1714] * xx[1266] - xx[1715] * xx[1222];
-  xx[967] = xx[1714] - xx[19] * xx[965] * xx[1266];
-  xx[1039] = xx[1706] * xx[478] - xx[1705] * xx[1005] + xx[535] * xx[967];
-  xx[1005] = xx[1715] + xx[19] * xx[965] * xx[1222];
-  xx[965] = xx[1705] * xx[478] - xx[1706] * xx[1040] - xx[535] * xx[1005];
-  xx[478] = xx[965] * xx[1629];
-  xx[535] = xx[1039] * xx[1629];
-  xx[1040] = xx[965] * xx[1267] - xx[1039] * xx[1625];
-  xx[1112] = xx[478];
-  xx[1113] = - xx[535];
-  xx[1114] = xx[1040];
-  pm_math_cross3(xx + 1720, xx + 1112, xx + 1141);
+  xx[1047] = xx[19] * (xx[1101] + xx[1078]);
+  xx[1505] = xx[1051];
+  xx[1506] = - xx[965];
+  xx[1507] = xx[1076];
+  xx[1508] = xx[1084];
+  xx[1509] = xx[1087];
+  xx[1510] = xx[1047];
+  xx[1511] = - (xx[19] * (xx[1038] + xx[1037]));
+  xx[1512] = (xx[1101] - xx[1078]) * xx[19];
+  xx[1513] = (xx[1048] + xx[535] * xx[535]) * xx[19] - xx[21];
+  xx[1182] = xx[1102];
+  xx[1183] = xx[1104];
+  xx[1184] = xx[1106];
+  pm_math_matrix3x3PostCross(xx + 1505, xx + 1182, xx + 1527);
+  xx[1182] = xx[532];
+  xx[1183] = xx[941];
+  xx[1184] = state[63];
+  pm_math_matrix3x3PostCross(xx + 1527, xx + 1182, xx + 1505);
+  pm_math_matrix3x3Compose(xx + 1207, xx + 1505, xx + 1527);
+  xx[535] = xx[967] * xx[512] - xx[478] * xx[1005];
+  xx[1048] = xx[478] * xx[967] - xx[1040] * xx[512];
+  xx[478] = xx[19] * xx[1109] * inputDot[9] * inputDot[9];
+  xx[1049] = xx[512] * inputDot[9] * inputDot[9];
+  xx[512] = xx[1117] * xx[967] + xx[1114] * xx[1005];
+  xx[1102] = xx[1114] * xx[967] + xx[1117] * xx[1040];
+  xx[1104] = xx[19] * xx[1116] * inputDot[9] * inputDot[9];
+  xx[1106] = xx[19] * xx[1113] * inputDot[9] * inputDot[9];
+  xx[1207] = xx[1147] + xx[1653] * xx[1039] + xx[1746] * xx[1041] - (xx[1046] *
+    xx[1051] + xx[1075] * xx[1084]) + (xx[1198] + xx[1527]) * xx[19];
+  xx[1208] = xx[1148] + xx[1665] * xx[1041] + xx[1727] * xx[1039] - (xx[1075] *
+    xx[1087] - xx[965] * xx[1046]) + (xx[1199] + xx[1528]) * xx[19];
+  xx[1209] = xx[1149] + xx[1728] * xx[1039] + xx[1709] * xx[1041] - (xx[1076] *
+    xx[1046] + xx[1047] * xx[1075]) + (xx[1200] + xx[1529]) * xx[19];
+  xx[1210] = xx[1150] + xx[1653] * xx[535] + xx[1746] * xx[1048] - (xx[478] *
+    xx[1051] + xx[1049] * xx[1084]) + (xx[1201] + xx[1530]) * xx[19];
+  xx[1211] = xx[1151] + xx[1665] * xx[1048] + xx[1727] * xx[535] - (xx[1049] *
+    xx[1087] - xx[965] * xx[478]) + (xx[1202] + xx[1531]) * xx[19];
+  xx[1212] = xx[1152] + xx[1728] * xx[535] + xx[1709] * xx[1048] - (xx[1076] *
+    xx[478] + xx[1049] * xx[1047]) + (xx[1203] + xx[1532]) * xx[19];
+  xx[1213] = xx[1153] + xx[1653] * xx[512] - xx[1746] * xx[1102] - (xx[1104] *
+    xx[1084] - xx[1106] * xx[1051]) + (xx[1204] + xx[1533]) * xx[19];
+  xx[1214] = xx[1154] + xx[1727] * xx[512] - xx[1665] * xx[1102] - (xx[965] *
+    xx[1106] + xx[1104] * xx[1087]) + (xx[1205] + xx[1534]) * xx[19];
+  xx[1215] = xx[1155] + xx[1728] * xx[512] - xx[1709] * xx[1102] - (xx[1047] *
+    xx[1104] - xx[1076] * xx[1106]) + (xx[1206] + xx[1535]) * xx[19];
+  pm_math_matrix3x3Xform(xx + 1207, xx + 897, xx + 1112);
+  pm_math_matrix3x3Xform(xx + 1138, xx + 69, xx + 1116);
+  pm_math_quatXform(xx + 1741, xx + 1116, xx + 1138);
+  xx[512] = state[56] * state[56];
+  xx[535] = xx[1714] * xx[1266] - xx[1715] * xx[1222];
+  xx[965] = xx[1714] - xx[19] * xx[535] * xx[1266];
+  xx[1039] = xx[1706] * xx[967] - xx[1705] * xx[1005] + xx[512] * xx[965];
+  xx[1005] = xx[1715] + xx[19] * xx[535] * xx[1222];
+  xx[535] = xx[1705] * xx[967] - xx[1706] * xx[1040] - xx[512] * xx[1005];
+  xx[512] = xx[535] * xx[1629];
+  xx[967] = xx[1039] * xx[1629];
+  xx[1040] = xx[535] * xx[1267] - xx[1625] * xx[1039];
+  xx[1116] = xx[512];
+  xx[1117] = - xx[967];
+  xx[1118] = xx[1040];
+  pm_math_cross3(xx + 1720, xx + 1116, xx + 1141);
   xx[1041] = inputDot[9] * inputDot[9];
   xx[1047] = xx[1625] * xx[16];
   xx[1048] = xx[16] * xx[1629];
   xx[1051] = xx[1048] * xx[1629];
   xx[1076] = xx[1222] * xx[1706] + xx[1705] * xx[1266];
-  xx[1084] = xx[1705] - (xx[19] * xx[1076] * xx[1266] + xx[967]) + xx[565];
-  xx[1091] = xx[1706] - xx[19] * xx[1076] * xx[1222] + xx[1005];
-  pm_math_cross3(xx + 1120, xx + 69, xx + 1112);
-  pm_math_quatXform(xx + 1701, xx + 1112, xx + 1144);
+  xx[1084] = xx[1705] - (xx[19] * xx[1076] * xx[1266] + xx[965]) + xx[558];
+  xx[1087] = xx[1706] - xx[19] * xx[1076] * xx[1222] + xx[1005];
+  pm_math_cross3(xx + 1182, xx + 69, xx + 1116);
+  pm_math_quatXform(xx + 1701, xx + 1116, xx + 1144);
   xx[1076] = xx[1145] + xx[1705] * state[56];
-  xx[1093] = xx[1144] - xx[1706] * state[56];
-  xx[1105] = xx[1076] * xx[1222] + xx[1266] * xx[1093];
-  xx[1106] = ((xx[1723] - xx[1714]) * state[56] + xx[1076] - xx[19] * xx[1105] *
+  xx[1102] = xx[1144] - xx[1706] * state[56];
+  xx[1109] = xx[1076] * xx[1222] + xx[1266] * xx[1102];
+  xx[1110] = ((xx[1723] - xx[1714]) * state[56] + xx[1076] - xx[19] * xx[1109] *
               xx[1222]) * inputDot[9];
-  xx[1076] = ((xx[1717] - xx[1715]) * state[56] + xx[1093] - xx[19] * xx[1105] *
+  xx[1076] = ((xx[1717] - xx[1715]) * state[56] + xx[1102] - xx[19] * xx[1109] *
               xx[1266]) * inputDot[9];
-  xx[1093] = xx[1076] * xx[1629];
-  xx[1105] = xx[1106] * xx[1629];
-  xx[1123] = xx[1076] * xx[1267] + xx[1625] * xx[1106];
-  xx[1146] = - xx[1093];
-  xx[1147] = - xx[1105];
-  xx[1148] = - xx[1123];
+  xx[1102] = xx[1076] * xx[1629];
+  xx[1109] = xx[1110] * xx[1629];
+  xx[1119] = xx[1076] * xx[1267] + xx[1625] * xx[1110];
+  xx[1146] = - xx[1102];
+  xx[1147] = - xx[1109];
+  xx[1148] = - xx[1119];
   pm_math_cross3(xx + 1720, xx + 1146, xx + 1149);
   xx[1124] = xx[1145] * state[56];
   xx[1128] = xx[1144] * state[56];
@@ -10220,15 +10220,15 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1132] = xx[19] * xx[1266] * xx[1131] - xx[1124];
   xx[1124] = xx[1128] + xx[19] * xx[1222] * xx[1131];
   xx[1128] = xx[1124] * xx[1629];
-  xx[1131] = xx[1132] * xx[1629];
+  xx[1131] = xx[1629] * xx[1132];
   xx[1134] = xx[1124] * xx[1267] - xx[1625] * xx[1132];
   xx[1144] = xx[1128];
   xx[1145] = - xx[1131];
   xx[1146] = xx[1134];
   pm_math_cross3(xx + 1720, xx + 1144, xx + 1152);
   xx[1144] = xx[966];
-  xx[1145] = - ((xx[1104] + xx[488]) * xx[19]);
-  xx[1146] = xx[21] - (xx[491] + xx[1101]) * xx[19];
+  xx[1145] = - ((xx[1108] + xx[488]) * xx[19]);
+  xx[1146] = xx[21] - (xx[491] + xx[1105]) * xx[19];
   pm_math_cross3(xx + 1144, xx + 231, xx + 1155);
   pm_math_quatXform(xx + 1052, xx + 1155, xx + 1144);
   xx[488] = xx[164] * xx[489];
@@ -10239,129 +10239,129 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1054] = xx[966];
   pm_math_cross3(xx + 284, xx + 1052, xx + 1155);
   pm_math_cross3(xx + 799, xx + 536, xx + 1052);
-  xx[1182] = xx[559] + xx[1052];
-  xx[1183] = xx[561] + xx[1053];
-  xx[1184] = xx[896] + xx[1054];
-  pm_math_quatInverseXform(xx + 525, xx + 1182, xx + 1052);
-  pm_math_quatInverseXform(xx + 525, xx + 799, xx + 1182);
+  xx[1185] = xx[559] + xx[1052];
+  xx[1186] = xx[561] + xx[1053];
+  xx[1187] = xx[896] + xx[1054];
+  pm_math_quatInverseXform(xx + 525, xx + 1185, xx + 1052);
+  pm_math_quatInverseXform(xx + 525, xx + 799, xx + 1185);
   xx[1054] = xx[790] + xx[494] * xx[1052] + xx[497] * xx[1053] - xx[492] * xx
-    [1184];
-  xx[1182] = xx[19] * (xx[1037] + xx[1038]);
-  xx[1183] = - ((xx[1092] - xx[1078]) * xx[19]);
-  xx[1184] = (xx[1050] + xx[1083]) * xx[19] - xx[21];
-  pm_math_cross3(xx + 1182, xx + 897, xx + 1185);
-  pm_math_quatXform(xx + 1116, xx + 1185, xx + 1182);
+    [1187];
+  xx[1185] = xx[19] * (xx[1037] + xx[1038]);
+  xx[1186] = - ((xx[1101] - xx[1078]) * xx[19]);
+  xx[1187] = (xx[1050] + xx[1083]) * xx[19] - xx[21];
+  pm_math_cross3(xx + 1185, xx + 897, xx + 1198);
+  pm_math_quatXform(xx + 1120, xx + 1198, xx + 1185);
   xx[790] = xx[1084] * xx[1629];
-  xx[1037] = xx[1091] * xx[1629];
-  xx[1038] = xx[1084] * xx[1267] + xx[1625] * xx[1091];
-  xx[1116] = - xx[790];
-  xx[1117] = - xx[1037];
-  xx[1118] = - xx[1038];
-  pm_math_cross3(xx + 1720, xx + 1116, xx + 1185);
+  xx[1037] = xx[1629] * xx[1087];
+  xx[1038] = xx[1084] * xx[1267] + xx[1625] * xx[1087];
+  xx[1120] = - xx[790];
+  xx[1121] = - xx[1037];
+  xx[1122] = - xx[1038];
+  pm_math_cross3(xx + 1720, xx + 1120, xx + 1198);
   xx[1050] = xx[16] * xx[1267];
   xx[1052] = xx[1628] * xx[1048];
-  pm_math_quatInverseXform(xx + 1087, xx + 35, xx + 1116);
-  xx[1053] = xx[1222] * xx[1117] + xx[1116] * xx[1266];
-  xx[1055] = xx[1116] - xx[19] * xx[1053] * xx[1266];
-  xx[1078] = xx[1117] - xx[19] * xx[1053] * xx[1222];
-  xx[1053] = xx[1118] - inputDot[9];
+  pm_math_quatInverseXform(xx + 1091, xx + 35, xx + 1120);
+  xx[1053] = xx[1222] * xx[1121] + xx[1120] * xx[1266];
+  xx[1055] = xx[1120] - xx[19] * xx[1053] * xx[1266];
+  xx[1078] = xx[1121] - xx[19] * xx[1053] * xx[1222];
+  xx[1053] = xx[1122] - inputDot[9];
   xx[1083] = xx[1053] - (xx[1222] * xx[1222] * xx[1053] + xx[1266] * xx[1053] *
     xx[1266]) * xx[19];
-  xx[1092] = xx[1083] + state[56];
-  xx[1198] = xx[1055];
-  xx[1199] = xx[1078];
-  xx[1200] = xx[1092];
-  xx[1206] = xx[50] * xx[1055];
-  xx[1207] = xx[51] * xx[1078];
-  xx[1208] = xx[1092] * xx[52];
-  pm_math_cross3(xx + 1198, xx + 1206, xx + 1209);
-  pm_math_quatInverseXform(xx + 1701, xx + 1198, xx + 1206);
-  xx[1101] = xx[1206] + xx[532];
-  xx[532] = xx[1207] + xx[941];
-  xx[941] = xx[1208] + state[63];
-  xx[1212] = xx[1101];
-  xx[1213] = xx[532];
-  xx[1214] = xx[941];
-  xx[1226] = xx[1101] * xx[78];
-  xx[1227] = xx[532] * xx[79];
-  xx[1228] = xx[941] * xx[80];
-  pm_math_cross3(xx + 1212, xx + 1226, xx + 1238);
-  pm_math_cross3(xx + 1206, xx + 1120, xx + 1212);
-  xx[1104] = xx[1238] + xx[78] * xx[1212];
-  xx[1119] = xx[1239] + xx[79] * xx[1213];
-  xx[1120] = xx[1206] + xx[1101];
-  xx[1121] = xx[1207] + xx[532];
-  xx[1122] = xx[1208] + xx[941];
-  pm_math_cross3(xx + 1120, xx + 1112, xx + 1206);
-  pm_math_cross3(xx + 1198, xx + 1705, xx + 1112);
-  pm_math_cross3(xx + 1198, xx + 1112, xx + 1120);
-  pm_math_quatInverseXform(xx + 1701, xx + 1120, xx + 1112);
-  xx[532] = (xx[1206] + xx[1112]) * xx[73];
-  xx[941] = (xx[1207] + xx[1113]) * xx[73];
-  xx[1101] = (xx[1208] + xx[1114]) * xx[73];
-  xx[1112] = xx[532];
-  xx[1113] = xx[941];
-  xx[1114] = xx[1101];
-  xx[1120] = xx[1104] - xx[1119] * xx[89] + pm_math_dot3(xx + 111, xx + 1112);
-  xx[1121] = xx[1104] * xx[89] + xx[1119] + pm_math_dot3(xx + 753, xx + 1112);
-  xx[1112] = xx[1240] + xx[80] * xx[1214];
-  xx[1113] = xx[1112] + xx[67] * xx[941] - xx[68] * xx[532];
-  xx[1198] = - xx[1120];
-  xx[1199] = - xx[1121];
-  xx[1200] = - xx[1113];
-  solveSymmetricPosDef(xx + 1732, xx + 1198, 3, 1, xx + 1206, xx + 1212);
-  xx[1198] = xx[1104] + xx[78] * xx[1206] + xx[140] * xx[1207];
-  xx[1199] = xx[1119] - xx[713] * xx[1206] + xx[79] * xx[1207];
-  xx[1200] = xx[1112] + xx[80] * xx[1208];
-  pm_math_quatXform(xx + 1701, xx + 1198, xx + 1212);
-  xx[1198] = xx[532] + xx[731] * xx[1206] - xx[806] * xx[1207] - xx[870] * xx
-    [1208];
-  xx[1199] = xx[941] + xx[806] * xx[1206] + xx[731] * xx[1207] + xx[908] * xx
-    [1208];
-  xx[1200] = xx[1101] + xx[909] * xx[1206] + xx[927] * xx[1207];
-  pm_math_quatXform(xx + 1701, xx + 1198, xx + 1226);
-  pm_math_cross3(xx + 1705, xx + 1226, xx + 1198);
-  xx[1114] = xx[1078] * state[56];
-  xx[1122] = xx[1055] * state[56];
-  xx[1136] = xx[1817] - xx[1781];
-  xx[1147] = xx[1818] - xx[1784];
-  xx[1148] = xx[1820] - xx[1782];
-  xx[1160] = xx[1821] - xx[1785];
-  xx[1164] = xx[1825] - xx[1789];
-  xx[1505] = xx[1136];
-  xx[1506] = xx[1147];
+  xx[1101] = xx[1083] + state[56];
+  xx[1201] = xx[1055];
+  xx[1202] = xx[1078];
+  xx[1203] = xx[1101];
+  xx[1204] = xx[50] * xx[1055];
+  xx[1205] = xx[51] * xx[1078];
+  xx[1206] = xx[1101] * xx[52];
+  pm_math_cross3(xx + 1201, xx + 1204, xx + 1207);
+  pm_math_quatInverseXform(xx + 1701, xx + 1201, xx + 1204);
+  xx[1105] = xx[1204] + xx[532];
+  xx[532] = xx[1205] + xx[941];
+  xx[941] = xx[1206] + state[63];
+  xx[1210] = xx[1105];
+  xx[1211] = xx[532];
+  xx[1212] = xx[941];
+  xx[1213] = xx[1105] * xx[78];
+  xx[1214] = xx[532] * xx[79];
+  xx[1215] = xx[941] * xx[80];
+  pm_math_cross3(xx + 1210, xx + 1213, xx + 1226);
+  pm_math_cross3(xx + 1204, xx + 1182, xx + 1210);
+  xx[1108] = xx[1226] + xx[78] * xx[1210];
+  xx[1123] = xx[1227] + xx[79] * xx[1211];
+  xx[1182] = xx[1204] + xx[1105];
+  xx[1183] = xx[1205] + xx[532];
+  xx[1184] = xx[1206] + xx[941];
+  pm_math_cross3(xx + 1182, xx + 1116, xx + 1204);
+  pm_math_cross3(xx + 1201, xx + 1705, xx + 1116);
+  pm_math_cross3(xx + 1201, xx + 1116, xx + 1182);
+  pm_math_quatInverseXform(xx + 1701, xx + 1182, xx + 1116);
+  xx[532] = (xx[1204] + xx[1116]) * xx[73];
+  xx[941] = (xx[1205] + xx[1117]) * xx[73];
+  xx[1105] = (xx[1206] + xx[1118]) * xx[73];
+  xx[1116] = xx[532];
+  xx[1117] = xx[941];
+  xx[1118] = xx[1105];
+  xx[1136] = xx[1108] - xx[1123] * xx[89] + pm_math_dot3(xx + 111, xx + 1116);
+  xx[1147] = xx[1108] * xx[89] + xx[1123] + pm_math_dot3(xx + 753, xx + 1116);
+  xx[1116] = xx[1228] + xx[80] * xx[1212];
+  xx[1117] = xx[1116] + xx[67] * xx[941] - xx[68] * xx[532];
+  xx[1182] = - xx[1136];
+  xx[1183] = - xx[1147];
+  xx[1184] = - xx[1117];
+  solveSymmetricPosDef(xx + 1732, xx + 1182, 3, 1, xx + 1201, xx + 1204);
+  xx[1182] = xx[1108] + xx[78] * xx[1201] + xx[140] * xx[1202];
+  xx[1183] = xx[1123] - xx[713] * xx[1201] + xx[79] * xx[1202];
+  xx[1184] = xx[1116] + xx[80] * xx[1203];
+  pm_math_quatXform(xx + 1701, xx + 1182, xx + 1204);
+  xx[1182] = xx[532] + xx[731] * xx[1201] - xx[806] * xx[1202] - xx[870] * xx
+    [1203];
+  xx[1183] = xx[941] + xx[806] * xx[1201] + xx[731] * xx[1202] + xx[908] * xx
+    [1203];
+  xx[1184] = xx[1105] + xx[909] * xx[1201] + xx[927] * xx[1202];
+  pm_math_quatXform(xx + 1701, xx + 1182, xx + 1210);
+  pm_math_cross3(xx + 1705, xx + 1210, xx + 1182);
+  xx[1118] = xx[1078] * state[56];
+  xx[1148] = xx[1055] * state[56];
+  xx[1160] = xx[1817] - xx[1781];
+  xx[1164] = xx[1818] - xx[1784];
+  xx[1165] = xx[1820] - xx[1782];
+  xx[1170] = xx[1821] - xx[1785];
+  xx[1173] = xx[1825] - xx[1789];
+  xx[1505] = xx[1160];
+  xx[1506] = xx[1164];
   xx[1507] = xx[1819] - xx[1787];
-  xx[1508] = xx[1148];
-  xx[1509] = xx[1160];
+  xx[1508] = xx[1165];
+  xx[1509] = xx[1170];
   xx[1510] = xx[1822] - xx[1788];
   xx[1511] = xx[1616];
   xx[1512] = xx[1631];
-  xx[1513] = xx[1164];
-  xx[1238] = xx[1116];
-  xx[1239] = xx[1117];
-  xx[1240] = xx[1053];
-  xx[1165] = 3.99999999470772e-3;
-  xx[1242] = xx[565] - xx[967];
-  xx[1243] = xx[1005];
-  xx[1244] = xx[175] - (xx[1165] - (xx[1222] * xx[1165] * xx[1222] + xx[1165] *
+  xx[1513] = xx[1173];
+  xx[1212] = xx[1120];
+  xx[1213] = xx[1121];
+  xx[1214] = xx[1053];
+  xx[1174] = 3.99999999470772e-3;
+  xx[1226] = xx[558] - xx[965];
+  xx[1227] = xx[1005];
+  xx[1228] = xx[175] - (xx[1174] - (xx[1222] * xx[1174] * xx[1222] + xx[1174] *
     xx[1266] * xx[1266]) * xx[19]);
-  pm_math_cross3(xx + 1238, xx + 1242, xx + 1250);
-  pm_math_cross3(xx + 1238, xx + 1250, xx + 1282);
-  xx[565] = xx[1222] * xx[1283] + xx[1282] * xx[1266];
-  xx[967] = xx[1083] + xx[1092];
+  pm_math_cross3(xx + 1212, xx + 1226, xx + 1238);
+  pm_math_cross3(xx + 1212, xx + 1238, xx + 1242);
+  xx[558] = xx[1222] * xx[1243] + xx[1242] * xx[1266];
+  xx[965] = xx[1083] + xx[1101];
   xx[1005] = xx[1714] * state[56];
-  xx[1083] = xx[1282] - xx[19] * xx[565] * xx[1266] + xx[967] * xx[1005];
-  xx[1092] = xx[1715] * state[56];
-  xx[1165] = xx[1283] - xx[19] * xx[565] * xx[1222] - xx[967] * xx[1092];
-  xx[565] = (xx[1078] + xx[1078]) * xx[1092] - (xx[1055] + xx[1055]) * xx[1005]
-    + xx[1284] - (xx[1222] * xx[1222] * xx[1284] + xx[1284] * xx[1266] * xx[1266])
+  xx[1083] = xx[1242] - xx[19] * xx[558] * xx[1266] + xx[965] * xx[1005];
+  xx[1101] = xx[1715] * state[56];
+  xx[1174] = xx[1243] - xx[19] * xx[558] * xx[1222] - xx[965] * xx[1101];
+  xx[558] = (xx[1078] + xx[1078]) * xx[1101] - (xx[1055] + xx[1055]) * xx[1005]
+    + xx[1244] - (xx[1222] * xx[1222] * xx[1244] + xx[1244] * xx[1266] * xx[1266])
     * xx[19];
-  xx[1238] = xx[1083];
-  xx[1239] = xx[1165];
-  xx[1240] = xx[565];
-  pm_math_matrix3x3Xform(xx + 1505, xx + 1238, xx + 1250);
-  xx[967] = xx[1114] * (xx[1814] - xx[1832] - xx[1828] - xx[1850]) - xx[1122] *
-    (xx[1815] - xx[1833] - xx[1831] - xx[1851]) + xx[1252];
+  xx[1212] = xx[1083];
+  xx[1213] = xx[1174];
+  xx[1214] = xx[558];
+  pm_math_matrix3x3Xform(xx + 1505, xx + 1212, xx + 1238);
+  xx[965] = xx[1118] * (xx[1814] - xx[1832] - xx[1828] - xx[1850]) - xx[1148] *
+    (xx[1815] - xx[1833] - xx[1831] - xx[1851]) + xx[1240];
   xx[1505] = xx[1710];
   xx[1506] = xx[1836];
   xx[1507] = xx[1837];
@@ -10371,86 +10371,86 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1511] = xx[1841];
   xx[1512] = xx[1842];
   xx[1513] = xx[393] + xx[1843];
-  pm_math_matrix3x3Xform(xx + 1505, xx + 1238, xx + 1250);
-  xx[1005] = xx[1114] * xx[1136] - xx[1122] * xx[1148] + xx[1250];
-  xx[1055] = xx[1114] * xx[1147] - xx[1122] * xx[1160] + xx[1251];
-  xx[1238] = (xx[1810] - xx[1828] - xx[1832] - xx[1846] - (xx[1715] * xx[1136] +
-    xx[1714] * xx[1147])) / xx[1776];
-  xx[1239] = (xx[1813] - xx[1831] - xx[1833] - xx[1849] - (xx[1715] * xx[1148] +
-    xx[1714] * xx[1160])) / xx[1776];
-  xx[1240] = xx[1633] / xx[1776];
-  pm_math_quatInverseXform(xx + 1087, xx + 25, xx + 1250);
-  xx[1078] = xx[1250] - xx[1117] * inputDot[9];
-  xx[1092] = xx[1251] + xx[1116] * inputDot[9];
-  xx[1117] = xx[1092] * xx[1222] + xx[1266] * xx[1078];
-  xx[1136] = xx[1078] - xx[19] * xx[1117] * xx[1266];
-  xx[1147] = xx[1092] - xx[19] * xx[1117] * xx[1222];
-  xx[1117] = xx[1252] - inputDdot[9];
-  xx[1148] = xx[1117] - (xx[1222] * xx[1222] * xx[1117] + xx[1266] * xx[1117] *
+  pm_math_matrix3x3Xform(xx + 1505, xx + 1212, xx + 1238);
+  xx[1005] = xx[1118] * xx[1160] - xx[1148] * xx[1165] + xx[1238];
+  xx[1055] = xx[1118] * xx[1164] - xx[1148] * xx[1170] + xx[1239];
+  xx[1212] = (xx[1810] - xx[1828] - xx[1832] - xx[1846] - (xx[1715] * xx[1160] +
+    xx[1714] * xx[1164])) / xx[1776];
+  xx[1213] = (xx[1813] - xx[1831] - xx[1833] - xx[1849] - (xx[1715] * xx[1165] +
+    xx[1714] * xx[1170])) / xx[1776];
+  xx[1214] = xx[1633] / xx[1776];
+  pm_math_quatInverseXform(xx + 1091, xx + 25, xx + 1238);
+  xx[1078] = xx[1238] - xx[1121] * inputDot[9];
+  xx[1101] = xx[1239] + xx[1120] * inputDot[9];
+  xx[1121] = xx[1101] * xx[1222] + xx[1266] * xx[1078];
+  xx[1160] = xx[1078] - xx[19] * xx[1121] * xx[1266];
+  xx[1164] = xx[1101] - xx[19] * xx[1121] * xx[1222];
+  xx[1121] = xx[1240] - inputDdot[9];
+  xx[1165] = xx[1121] - (xx[1222] * xx[1222] * xx[1121] + xx[1266] * xx[1121] *
     xx[1266]) * xx[19];
-  xx[1250] = xx[1136];
-  xx[1251] = xx[1147];
-  xx[1252] = xx[1148];
-  xx[1282] = xx[1747] / xx[1776];
-  xx[1283] = xx[1768] / xx[1776];
-  xx[1284] = (xx[1164] - (xx[1715] * xx[1841] + xx[1714] * xx[1842])) / xx[1776];
-  xx[1160] = xx[1625] * xx[175];
-  xx[1164] = xx[1048] - xx[175] * xx[1267];
-  xx[1337] = xx[1160];
-  xx[1338] = xx[1164];
-  xx[1339] = xx[1047];
-  pm_math_cross3(xx + 1720, xx + 1337, xx + 1358);
-  xx[1170] = xx[1628] * xx[1047];
-  xx[1337] = - (0.08825748853214695 + (xx[1628] * xx[1160] + xx[1358]) * xx[19]
+  xx[1238] = xx[1160];
+  xx[1239] = xx[1164];
+  xx[1240] = xx[1165];
+  xx[1242] = xx[1747] / xx[1776];
+  xx[1243] = xx[1768] / xx[1776];
+  xx[1244] = (xx[1173] - (xx[1715] * xx[1841] + xx[1714] * xx[1842])) / xx[1776];
+  xx[1170] = xx[1625] * xx[175];
+  xx[1173] = xx[1048] - xx[175] * xx[1267];
+  xx[1250] = xx[1170];
+  xx[1251] = xx[1173];
+  xx[1252] = xx[1047];
+  pm_math_cross3(xx + 1720, xx + 1250, xx + 1282);
+  xx[1176] = xx[1628] * xx[1047];
+  xx[1250] = - (0.08825748853214695 + (xx[1628] * xx[1170] + xx[1282]) * xx[19]
                 - xx[16]);
-  xx[1338] = 0.02992204813763048 - (xx[1628] * xx[1164] + xx[1359]) * xx[19];
-  xx[1339] = - (0.1297164406712666 + xx[175] + xx[19] * (xx[1360] + xx[1170]));
-  pm_math_cross3(xx + 25, xx + 1337, xx + 1358);
-  xx[1462] = xx[15] + xx[1358];
-  xx[1463] = xx[5] + xx[1359];
-  xx[1464] = xx[18] + xx[1360];
-  pm_math_quatInverseXform(xx + 1087, xx + 1462, xx + 1358);
-  pm_math_cross3(xx + 35, xx + 1337, xx + 1462);
-  pm_math_cross3(xx + 35, xx + 1462, xx + 1337);
-  pm_math_quatInverseXform(xx + 1087, xx + 1337, xx + 1462);
-  xx[1087] = xx[16] * inputDot[9];
-  xx[1088] = xx[1078];
-  xx[1089] = xx[1092];
-  xx[1090] = xx[1117];
-  pm_math_cross3(xx + 1088, xx + 1242, xx + 1337);
-  xx[1078] = xx[1358] + xx[1462] + (xx[1118] + xx[1053]) * xx[1087] + xx[1337];
-  xx[1053] = xx[1359] + xx[1463] - xx[16] * inputDdot[9] + xx[1338];
-  xx[1088] = xx[1053] * xx[1222] + xx[1078] * xx[1266];
-  xx[1089] = xx[1078] - xx[19] * xx[1088] * xx[1266];
-  xx[1078] = xx[1053] - xx[19] * xx[1088] * xx[1222];
-  xx[1053] = xx[1360] + xx[1464] - (xx[1116] + xx[1116]) * xx[1087] + xx[1339];
-  xx[1087] = xx[1053] - (xx[1222] * xx[1053] * xx[1222] + xx[1053] * xx[1266] *
+  xx[1251] = 0.02992204813763048 - (xx[1628] * xx[1173] + xx[1283]) * xx[19];
+  xx[1252] = - (0.1297164406712666 + xx[175] + xx[19] * (xx[1284] + xx[1176]));
+  pm_math_cross3(xx + 25, xx + 1250, xx + 1282);
+  xx[1337] = xx[15] + xx[1282];
+  xx[1338] = xx[5] + xx[1283];
+  xx[1339] = xx[18] + xx[1284];
+  pm_math_quatInverseXform(xx + 1091, xx + 1337, xx + 1282);
+  pm_math_cross3(xx + 35, xx + 1250, xx + 1337);
+  pm_math_cross3(xx + 35, xx + 1337, xx + 1250);
+  pm_math_quatInverseXform(xx + 1091, xx + 1250, xx + 1337);
+  xx[1091] = xx[16] * inputDot[9];
+  xx[1092] = xx[1078];
+  xx[1093] = xx[1101];
+  xx[1094] = xx[1121];
+  pm_math_cross3(xx + 1092, xx + 1226, xx + 1250);
+  xx[1078] = xx[1282] + xx[1337] + (xx[1122] + xx[1053]) * xx[1091] + xx[1250];
+  xx[1053] = xx[1283] + xx[1338] - xx[16] * inputDdot[9] + xx[1251];
+  xx[1092] = xx[1053] * xx[1222] + xx[1078] * xx[1266];
+  xx[1093] = xx[1078] - xx[19] * xx[1092] * xx[1266];
+  xx[1078] = xx[1053] - xx[19] * xx[1092] * xx[1222];
+  xx[1053] = xx[1284] + xx[1339] - (xx[1120] + xx[1120]) * xx[1091] + xx[1252];
+  xx[1091] = xx[1053] - (xx[1222] * xx[1053] * xx[1222] + xx[1053] * xx[1266] *
     xx[1266]) * xx[19];
-  xx[1116] = xx[1089];
-  xx[1117] = xx[1078];
-  xx[1118] = xx[1087];
-  xx[1053] = pm_math_dot3(xx + 1238, xx + 1250) + pm_math_dot3(xx + 1282, xx +
-    1116);
-  xx[1088] = (xx[1211] + xx[1214] + xx[1200] + xx[967] - ((xx[1226] + xx[1005]) *
-    xx[1715] + (xx[1227] + xx[1055]) * xx[1714])) / xx[1776] + xx[1053];
-  xx[1090] = xx[1136] + xx[1114];
-  xx[1092] = xx[1147] - xx[1122];
-  xx[1116] = xx[1090];
-  xx[1117] = xx[1092];
-  xx[1118] = xx[1148] - xx[1088];
-  pm_math_quatInverseXform(xx + 1701, xx + 1116, xx + 1198);
-  pm_math_cross3(xx + 1116, xx + 1705, xx + 1212);
-  xx[1114] = xx[1087] + xx[565];
-  xx[1116] = xx[1089] + xx[1088] * xx[1715] + xx[1083] + xx[1212];
-  xx[1117] = xx[1078] + xx[1088] * xx[1714] + xx[1165] + xx[1213];
-  xx[1118] = xx[1114] + xx[1214];
-  pm_math_quatInverseXform(xx + 1701, xx + 1116, xx + 1212);
-  xx[565] = xx[1206] - (pm_math_dot3(xx + 1778, xx + 1198) + pm_math_dot3(xx +
-    1856, xx + 1212));
-  xx[1087] = xx[1207] - (pm_math_dot3(xx + 1862, xx + 1198) + pm_math_dot3(xx +
-    1865, xx + 1212));
-  xx[1116] = xx[1208] - (pm_math_dot3(xx + 1868, xx + 1198) + pm_math_dot3(xx +
-    1790, xx + 1212));
+  xx[1120] = xx[1093];
+  xx[1121] = xx[1078];
+  xx[1122] = xx[1091];
+  xx[1053] = pm_math_dot3(xx + 1212, xx + 1238) + pm_math_dot3(xx + 1242, xx +
+    1120);
+  xx[1092] = (xx[1209] + xx[1206] + xx[1184] + xx[965] - ((xx[1210] + xx[1005]) *
+    xx[1715] + (xx[1211] + xx[1055]) * xx[1714])) / xx[1776] + xx[1053];
+  xx[1094] = xx[1160] + xx[1118];
+  xx[1101] = xx[1164] - xx[1148];
+  xx[1120] = xx[1094];
+  xx[1121] = xx[1101];
+  xx[1122] = xx[1165] - xx[1092];
+  pm_math_quatInverseXform(xx + 1701, xx + 1120, xx + 1182);
+  pm_math_cross3(xx + 1120, xx + 1705, xx + 1204);
+  xx[1118] = xx[1091] + xx[558];
+  xx[1120] = xx[1093] + xx[1092] * xx[1715] + xx[1083] + xx[1204];
+  xx[1121] = xx[1078] + xx[1092] * xx[1714] + xx[1174] + xx[1205];
+  xx[1122] = xx[1118] + xx[1206];
+  pm_math_quatInverseXform(xx + 1701, xx + 1120, xx + 1204);
+  xx[558] = xx[1201] - (pm_math_dot3(xx + 1778, xx + 1182) + pm_math_dot3(xx +
+    1856, xx + 1204));
+  xx[1091] = xx[1202] - (pm_math_dot3(xx + 1862, xx + 1182) + pm_math_dot3(xx +
+    1865, xx + 1204));
+  xx[1120] = xx[1203] - (pm_math_dot3(xx + 1868, xx + 1182) + pm_math_dot3(xx +
+    1790, xx + 1204));
   pm_math_matrix3x3Compose(xx + 811, xx + 360, xx + 1505);
   xx[360] = xx[349] * state[34] * state[34];
   xx[349] = xx[19] * xx[355] * state[34] * state[34];
@@ -10487,155 +10487,155 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[366] = xx[365] * xx[365];
   xx[367] = xx[1321] * xx[159] - xx[157] * xx[1318];
   xx[368] = xx[367] * xx[367];
-  xx[1117] = (xx[366] + xx[368]) * xx[19] - xx[21];
-  xx[1118] = xx[1318] * xx[159] + xx[157] * xx[1321];
-  xx[1122] = xx[1118] * xx[367];
-  xx[1136] = xx[157] * xx[1320] + xx[1319] * xx[159];
-  xx[1147] = xx[1136] * xx[365];
-  xx[1160] = (xx[1122] + xx[1147]) * xx[19];
-  xx[1198] = - xx[365];
-  xx[1199] = xx[367];
-  xx[1200] = xx[1118];
-  xx[1201] = - xx[1136];
-  pm_math_quatCompose(xx + 330, xx + 1198, xx + 1206);
-  xx[1164] = xx[1206] * xx[1206];
-  xx[1173] = xx[1207] * xx[1208];
-  xx[1174] = xx[1206] * xx[1209];
-  xx[1176] = xx[1207] * xx[1209];
-  xx[1179] = xx[1206] * xx[1208];
-  xx[1180] = xx[1208] * xx[1209];
-  xx[1191] = xx[1206] * xx[1207];
-  xx[1589] = (xx[1164] + xx[1207] * xx[1207]) * xx[19] - xx[21];
-  xx[1590] = xx[19] * (xx[1173] - xx[1174]);
-  xx[1591] = (xx[1176] + xx[1179]) * xx[19];
-  xx[1592] = (xx[1173] + xx[1174]) * xx[19];
-  xx[1593] = (xx[1164] + xx[1208] * xx[1208]) * xx[19] - xx[21];
-  xx[1594] = xx[19] * (xx[1180] - xx[1191]);
-  xx[1595] = xx[19] * (xx[1176] - xx[1179]);
-  xx[1596] = (xx[1180] + xx[1191]) * xx[19];
-  xx[1597] = (xx[1164] + xx[1209] * xx[1209]) * xx[19] - xx[21];
-  xx[1164] = xx[1118] * inputDot[6];
-  xx[1173] = xx[367] * inputDot[6];
-  xx[1198] = xx[19] * (xx[1164] * xx[365] - xx[1136] * xx[1173]);
-  xx[1199] = - ((xx[1173] * xx[365] + xx[1136] * xx[1164]) * xx[19]);
-  xx[1200] = inputDot[6] - (xx[1173] * xx[367] + xx[1118] * xx[1164]) * xx[19];
-  pm_math_matrix3x3PostCross(xx + 1589, xx + 1198, xx + 1611);
-  xx[1164] = xx[1319] * state[10];
-  xx[1173] = xx[1320] * state[10];
-  xx[1174] = xx[19] * (xx[1321] * xx[1164] - xx[1318] * xx[1173]);
-  pm_math_quatInverseXform(xx + 1277, xx + 1056, xx + 1198);
-  pm_math_quatInverseXform(xx + 1273, xx + 1167, xx + 1212);
-  xx[1176] = xx[350] * xx[340];
-  xx[1179] = xx[340] * xx[344] - xx[320] * xx[348];
+  xx[1121] = (xx[366] + xx[368]) * xx[19] - xx[21];
+  xx[1122] = xx[1318] * xx[159] + xx[157] * xx[1321];
+  xx[1148] = xx[1122] * xx[367];
+  xx[1160] = xx[157] * xx[1320] + xx[1319] * xx[159];
+  xx[1164] = xx[1160] * xx[365];
+  xx[1170] = (xx[1148] + xx[1164]) * xx[19];
+  xx[1201] = - xx[365];
+  xx[1202] = xx[367];
+  xx[1203] = xx[1122];
+  xx[1204] = - xx[1160];
+  pm_math_quatCompose(xx + 330, xx + 1201, xx + 1205);
+  xx[1173] = xx[1205] * xx[1205];
+  xx[1179] = xx[1206] * xx[1207];
+  xx[1180] = xx[1205] * xx[1208];
+  xx[1182] = xx[1206] * xx[1208];
+  xx[1183] = xx[1205] * xx[1207];
+  xx[1184] = xx[1207] * xx[1208];
+  xx[1191] = xx[1205] * xx[1206];
+  xx[1589] = (xx[1173] + xx[1206] * xx[1206]) * xx[19] - xx[21];
+  xx[1590] = xx[19] * (xx[1179] - xx[1180]);
+  xx[1591] = (xx[1182] + xx[1183]) * xx[19];
+  xx[1592] = (xx[1179] + xx[1180]) * xx[19];
+  xx[1593] = (xx[1173] + xx[1207] * xx[1207]) * xx[19] - xx[21];
+  xx[1594] = xx[19] * (xx[1184] - xx[1191]);
+  xx[1595] = xx[19] * (xx[1182] - xx[1183]);
+  xx[1596] = (xx[1184] + xx[1191]) * xx[19];
+  xx[1597] = (xx[1173] + xx[1208] * xx[1208]) * xx[19] - xx[21];
+  xx[1173] = xx[1122] * inputDot[6];
+  xx[1179] = xx[367] * inputDot[6];
+  xx[1182] = xx[19] * (xx[1173] * xx[365] - xx[1160] * xx[1179]);
+  xx[1183] = - ((xx[1179] * xx[365] + xx[1160] * xx[1173]) * xx[19]);
+  xx[1184] = inputDot[6] - (xx[1179] * xx[367] + xx[1122] * xx[1173]) * xx[19];
+  pm_math_matrix3x3PostCross(xx + 1589, xx + 1182, xx + 1611);
+  xx[1173] = xx[1319] * state[10];
+  xx[1179] = xx[1320] * state[10];
+  xx[1180] = xx[19] * (xx[1321] * xx[1173] - xx[1318] * xx[1179]);
+  pm_math_quatInverseXform(xx + 1277, xx + 1056, xx + 1182);
+  pm_math_quatInverseXform(xx + 1273, xx + 1080, xx + 1201);
+  xx[1191] = xx[350] * xx[340];
+  xx[1193] = xx[340] * xx[344] - xx[320] * xx[348];
   xx[348] = xx[350] * xx[320];
-  xx[1226] = - xx[1176];
-  xx[1227] = xx[1179];
-  xx[1228] = xx[348];
-  pm_math_cross3(xx + 1334, xx + 1226, xx + 1238);
-  xx[1180] = xx[19] * (xx[1238] + xx[345] * xx[1176]) - xx[320];
-  xx[1176] = xx[1212] + xx[1180];
-  xx[1191] = xx[1198] + xx[1176];
-  xx[1193] = (xx[1318] * xx[1164] + xx[1321] * xx[1173]) * xx[19];
-  xx[1194] = xx[19] * (xx[1239] - xx[345] * xx[1179]);
-  xx[1179] = xx[1213] + xx[1194];
-  xx[1201] = xx[1199] + xx[1179];
-  xx[1202] = state[10] - (xx[1319] * xx[1164] + xx[1320] * xx[1173]) * xx[19];
-  xx[1164] = (xx[1240] - xx[345] * xx[348]) * xx[19] - xx[340];
-  xx[348] = xx[1164] - state[34];
-  xx[1173] = xx[1214] + xx[348];
-  xx[1210] = xx[1200] + xx[1173];
-  xx[1226] = xx[1174] + xx[1191];
-  xx[1227] = xx[1193] + xx[1201];
-  xx[1228] = xx[1202] + xx[1210];
+  xx[1210] = - xx[1191];
+  xx[1211] = xx[1193];
+  xx[1212] = xx[348];
+  pm_math_cross3(xx + 1334, xx + 1210, xx + 1213);
+  xx[1194] = xx[19] * (xx[1213] + xx[345] * xx[1191]) - xx[320];
+  xx[1191] = xx[1201] + xx[1194];
+  xx[1204] = xx[1182] + xx[1191];
+  xx[1210] = (xx[1318] * xx[1173] + xx[1321] * xx[1179]) * xx[19];
+  xx[1211] = xx[19] * (xx[1214] - xx[345] * xx[1193]);
+  xx[1193] = xx[1202] + xx[1211];
+  xx[1212] = xx[1183] + xx[1193];
+  xx[1219] = state[10] - (xx[1319] * xx[1173] + xx[1320] * xx[1179]) * xx[19];
+  xx[1173] = (xx[1215] - xx[345] * xx[348]) * xx[19] - xx[340];
+  xx[348] = xx[1173] - state[34];
+  xx[1179] = xx[1203] + xx[348];
+  xx[1213] = xx[1184] + xx[1179];
+  xx[1226] = xx[1180] + xx[1204];
+  xx[1227] = xx[1210] + xx[1212];
+  xx[1228] = xx[1219] + xx[1213];
   pm_math_matrix3x3PostCross(xx + 1611, xx + 1226, xx + 1589);
-  xx[1215] = xx[19] * (xx[1122] - xx[1147]);
-  xx[1122] = xx[1136] * xx[367];
-  xx[1147] = xx[1118] * xx[365];
-  xx[1219] = (xx[1122] + xx[1147]) * xx[19];
-  xx[1222] = xx[1118] * xx[1118];
+  xx[1214] = xx[19] * (xx[1148] - xx[1164]);
+  xx[1148] = xx[1160] * xx[367];
+  xx[1164] = xx[1122] * xx[365];
+  xx[1215] = (xx[1148] + xx[1164]) * xx[19];
+  xx[1222] = xx[1122] * xx[1122];
   xx[1226] = (xx[366] + xx[1222]) * xx[19] - xx[21];
   xx[1227] = xx[365] * xx[367];
-  xx[365] = xx[1136] * xx[1118];
+  xx[365] = xx[1122] * xx[1160];
   xx[367] = xx[19] * (xx[1227] - xx[365]);
-  xx[1118] = xx[19] * (xx[1147] - xx[1122]);
-  xx[1611] = xx[1117];
-  xx[1612] = xx[1215];
-  xx[1613] = - xx[1219];
-  xx[1614] = xx[1160];
+  xx[1122] = xx[19] * (xx[1164] - xx[1148]);
+  xx[1611] = xx[1121];
+  xx[1612] = xx[1214];
+  xx[1613] = - xx[1215];
+  xx[1614] = xx[1170];
   xx[1615] = xx[1226];
   xx[1616] = xx[367];
-  xx[1617] = xx[1118];
+  xx[1617] = xx[1122];
   xx[1618] = - ((xx[365] + xx[1227]) * xx[19]);
-  xx[1619] = (xx[366] + xx[1136] * xx[1136]) * xx[19] - xx[21];
-  xx[1238] = xx[1174];
-  xx[1239] = xx[1193];
-  xx[1240] = xx[1202];
+  xx[1619] = (xx[366] + xx[1160] * xx[1160]) * xx[19] - xx[21];
+  xx[1238] = xx[1180];
+  xx[1239] = xx[1210];
+  xx[1240] = xx[1219];
   pm_math_matrix3x3PostCross(xx + 1611, xx + 1238, xx + 1637);
-  xx[1238] = xx[1191];
-  xx[1239] = xx[1201];
-  xx[1240] = xx[1210];
+  xx[1238] = xx[1204];
+  xx[1239] = xx[1212];
+  xx[1240] = xx[1213];
   pm_math_matrix3x3PostCross(xx + 1637, xx + 1238, xx + 1611);
   xx[366] = xx[19] * (xx[362] - xx[363]);
   xx[362] = (xx[1195] + xx[1229]) * xx[19];
   xx[363] = (xx[359] + xx[1256]) * xx[19] - xx[21];
-  xx[1122] = xx[19] * (xx[1254] - xx[1247]);
+  xx[1148] = xx[19] * (xx[1254] - xx[1247]);
   xx[1637] = xx[361];
   xx[1638] = xx[366];
   xx[1639] = xx[362];
   xx[1640] = xx[364];
   xx[1641] = xx[363];
-  xx[1642] = xx[1122];
+  xx[1642] = xx[1148];
   xx[1643] = xx[1246];
   xx[1644] = (xx[1254] + xx[1247]) * xx[19];
   xx[1645] = (xx[359] + xx[1321] * xx[1321]) * xx[19] - xx[21];
-  pm_math_matrix3x3PostCross(xx + 1637, xx + 1198, xx + 1250);
-  xx[1198] = xx[1176];
-  xx[1199] = xx[1179];
-  xx[1200] = xx[1173];
-  pm_math_matrix3x3PostCross(xx + 1250, xx + 1198, xx + 1637);
-  pm_math_matrix3x3PostCross(xx + 1571, xx + 1212, xx + 1250);
-  xx[1198] = xx[1180];
-  xx[1199] = xx[1194];
-  xx[1200] = xx[348];
-  pm_math_matrix3x3PostCross(xx + 1250, xx + 1198, xx + 1571);
-  xx[1198] = xx[1180];
-  xx[1199] = xx[1194];
-  xx[1200] = xx[1164];
-  pm_math_matrix3x3PostCross(xx + 1527, xx + 1198, xx + 1250);
+  pm_math_matrix3x3PostCross(xx + 1637, xx + 1182, xx + 1250);
+  xx[1182] = xx[1191];
+  xx[1183] = xx[1193];
+  xx[1184] = xx[1179];
+  pm_math_matrix3x3PostCross(xx + 1250, xx + 1182, xx + 1637);
+  pm_math_matrix3x3PostCross(xx + 1571, xx + 1201, xx + 1250);
+  xx[1182] = xx[1194];
+  xx[1183] = xx[1211];
+  xx[1184] = xx[348];
+  pm_math_matrix3x3PostCross(xx + 1250, xx + 1182, xx + 1571);
+  xx[1182] = xx[1194];
+  xx[1183] = xx[1211];
+  xx[1184] = xx[1173];
+  pm_math_matrix3x3PostCross(xx + 1527, xx + 1182, xx + 1250);
   xx[348] = xx[1257] * state[34];
   xx[359] = xx[1251] * state[34];
-  xx[1136] = xx[1254] * state[34];
-  xx[1147] = xx[1250] * state[34];
-  xx[1164] = xx[1253] * state[34];
-  xx[1173] = xx[1256] * state[34];
-  xx[1250] = xx[1571] + xx[605] * xx[348] - (xx[359] * xx[450] + xx[602] * xx
-    [1136]);
-  xx[1251] = xx[1572] + xx[1147] * xx[450] + xx[602] * xx[1164] - xx[605] * xx
-    [1173];
+  xx[1160] = xx[1254] * state[34];
+  xx[1164] = xx[1250] * state[34];
+  xx[1173] = xx[1253] * state[34];
+  xx[1179] = xx[1256] * state[34];
+  xx[1250] = xx[1571] + xx[348] * xx[605] - (xx[359] * xx[450] + xx[1160] * xx
+    [602]);
+  xx[1251] = xx[1572] + xx[1164] * xx[450] + xx[1173] * xx[602] - xx[1179] * xx
+    [605];
   xx[1252] = xx[1573];
-  xx[1253] = xx[1574] + xx[606] * xx[359] - xx[1136] * xx[541] - xx[608] * xx
-    [348];
-  xx[1254] = xx[1575] + xx[1164] * xx[541] - xx[606] * xx[1147] + xx[608] * xx
-    [1173];
+  xx[1253] = xx[1574] + xx[359] * xx[606] - xx[1160] * xx[541] - xx[348] * xx
+    [608];
+  xx[1254] = xx[1575] + xx[1173] * xx[541] - xx[1164] * xx[606] + xx[1179] * xx
+    [608];
   xx[1255] = xx[1576];
-  xx[1256] = xx[1577] - (xx[609] * xx[359] + xx[603] * xx[1136] + xx[348] * xx
+  xx[1256] = xx[1577] - (xx[359] * xx[609] + xx[1160] * xx[603] + xx[348] * xx
     [542]);
-  xx[1257] = xx[1578] + xx[609] * xx[1147] + xx[603] * xx[1164] + xx[1173] * xx
+  xx[1257] = xx[1578] + xx[1164] * xx[609] + xx[1173] * xx[603] + xx[1179] * xx
     [542];
   xx[1258] = xx[1579];
   pm_math_matrix3x3Compose(xx + 732, xx + 1250, xx + 1527);
   xx[348] = xx[1637] + xx[1527];
   xx[359] = xx[1640] + xx[1530];
-  xx[1136] = xx[1638] + xx[1528];
-  xx[1147] = xx[1641] + xx[1531];
-  xx[1164] = xx[1639] + xx[1529];
-  xx[1173] = xx[1642] + xx[1532];
-  xx[1250] = xx[1611] + xx[348] * xx[274] - xx[359] * xx[206];
-  xx[1251] = xx[1612] + xx[1136] * xx[274] - xx[1147] * xx[206];
-  xx[1252] = xx[1613] + xx[1164] * xx[274] - xx[1173] * xx[206];
-  xx[1253] = xx[1614] + xx[359] * xx[434] - xx[348] * xx[206];
-  xx[1254] = xx[1615] + xx[1147] * xx[434] - xx[1136] * xx[206];
-  xx[1255] = xx[1616] + xx[1173] * xx[434] - xx[1164] * xx[206];
+  xx[1160] = xx[1638] + xx[1528];
+  xx[1164] = xx[1641] + xx[1531];
+  xx[1173] = xx[1639] + xx[1529];
+  xx[1179] = xx[1642] + xx[1532];
+  xx[1250] = xx[1611] + xx[348] * xx[378] - xx[359] * xx[198];
+  xx[1251] = xx[1612] + xx[1160] * xx[378] - xx[1164] * xx[198];
+  xx[1252] = xx[1613] + xx[1173] * xx[378] - xx[1179] * xx[198];
+  xx[1253] = xx[1614] + xx[359] * xx[434] - xx[348] * xx[198];
+  xx[1254] = xx[1615] + xx[1164] * xx[434] - xx[1160] * xx[198];
+  xx[1255] = xx[1616] + xx[1179] * xx[434] - xx[1173] * xx[198];
   xx[1256] = xx[1617] - (xx[1643] + xx[1533]);
   xx[1257] = xx[1618] - (xx[1644] + xx[1534]);
   xx[1258] = xx[1619] - (xx[1645] + xx[1535]);
@@ -10643,32 +10643,32 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[348] = xx[19] * xx[343] * state[34] * state[34];
   xx[343] = xx[342] * state[34] * state[34];
   xx[342] = xx[19] * xx[353] * state[34] * state[34];
-  xx[1250] = xx[1505] - (xx[360] * xx[152] + xx[33] * xx[349] + xx[467] * xx[355])
-    + xx[1547] + xx[1580] + xx[420] * xx[361] + xx[364] * xx[440] - (xx[441] *
-    xx[1117] + xx[461] * xx[1160]) + (xx[1589] + xx[1527]) * xx[19];
-  xx[1251] = xx[1506] - (xx[348] * xx[152] + xx[33] * xx[343] + xx[467] * xx[342])
-    + xx[1548] + xx[1581] + xx[366] * xx[420] + xx[440] * xx[363] - (xx[1215] *
-    xx[441] + xx[461] * xx[1226]) + (xx[1590] + xx[1528]) * xx[19];
-  xx[1252] = xx[1507] + xx[1549] + xx[1582] + xx[362] * xx[420] + xx[1122] * xx
-    [440] + xx[441] * xx[1219] - xx[461] * xx[367] + (xx[1591] + xx[1529]) * xx
+  xx[1250] = xx[1505] - (xx[360] * xx[152] + xx[33] * xx[349] + xx[355] * xx[474])
+    + xx[1547] + xx[1580] + xx[361] * xx[422] + xx[364] * xx[440] - (xx[441] *
+    xx[1121] + xx[1170] * xx[499]) + (xx[1589] + xx[1527]) * xx[19];
+  xx[1251] = xx[1506] - (xx[348] * xx[152] + xx[343] * xx[33] + xx[342] * xx[474])
+    + xx[1548] + xx[1581] + xx[366] * xx[422] + xx[363] * xx[440] - (xx[441] *
+    xx[1214] + xx[499] * xx[1226]) + (xx[1590] + xx[1528]) * xx[19];
+  xx[1252] = xx[1507] + xx[1549] + xx[1582] + xx[362] * xx[422] + xx[1148] * xx
+    [440] + xx[1215] * xx[441] - xx[367] * xx[499] + (xx[1591] + xx[1529]) * xx
     [19];
-  xx[1253] = xx[1508] - (xx[196] * xx[360] + xx[349] * xx[153] + xx[481] * xx
-    [355]) + xx[1550] + xx[1583] + xx[361] * xx[31] + xx[364] * xx[32] - (xx[166]
-    * xx[1117] + xx[1160] * xx[197]) + (xx[1592] + xx[1530]) * xx[19];
-  xx[1254] = xx[1509] - (xx[348] * xx[196] + xx[343] * xx[153] + xx[481] * xx
-    [342]) + xx[1551] + xx[1584] + xx[366] * xx[31] + xx[363] * xx[32] - (xx
-    [1215] * xx[166] + xx[197] * xx[1226]) + (xx[1593] + xx[1531]) * xx[19];
-  xx[1255] = xx[1510] + xx[1552] + xx[1585] + xx[362] * xx[31] + xx[1122] * xx
-    [32] + xx[166] * xx[1219] - xx[367] * xx[197] + (xx[1594] + xx[1532]) * xx
+  xx[1253] = xx[1508] - (xx[197] * xx[360] + xx[349] * xx[153] + xx[355] * xx
+    [481]) + xx[1550] + xx[1583] + xx[361] * xx[31] + xx[364] * xx[32] - (xx[166]
+    * xx[1121] + xx[1170] * xx[206]) + (xx[1592] + xx[1530]) * xx[19];
+  xx[1254] = xx[1509] - (xx[197] * xx[348] + xx[343] * xx[153] + xx[342] * xx
+    [481]) + xx[1551] + xx[1584] + xx[366] * xx[31] + xx[363] * xx[32] - (xx
+    [1214] * xx[166] + xx[206] * xx[1226]) + (xx[1593] + xx[1531]) * xx[19];
+  xx[1255] = xx[1510] + xx[1552] + xx[1585] + xx[362] * xx[31] + xx[1148] * xx
+    [32] + xx[1215] * xx[166] - xx[206] * xx[367] + (xx[1594] + xx[1532]) * xx
     [19];
-  xx[1256] = xx[1511] - (xx[213] * xx[360] + xx[349] * xx[210] + xx[355] * xx
+  xx[1256] = xx[1511] - (xx[360] * xx[213] + xx[210] * xx[349] + xx[355] * xx
     [207]) + xx[1553] + xx[1586] + xx[361] * xx[220] + xx[364] * xx[221] - (xx
-    [222] * xx[1117] + xx[223] * xx[1160]) + (xx[1595] + xx[1533]) * xx[19];
+    [222] * xx[1121] + xx[1170] * xx[223]) + (xx[1595] + xx[1533]) * xx[19];
   xx[1257] = xx[1512] - (xx[348] * xx[213] + xx[343] * xx[210] + xx[342] * xx
     [207]) + xx[1554] + xx[1587] + xx[366] * xx[220] + xx[363] * xx[221] - (xx
-    [1215] * xx[222] + xx[223] * xx[1226]) + (xx[1596] + xx[1534]) * xx[19];
-  xx[1258] = xx[1513] + xx[1555] + xx[1588] + xx[362] * xx[220] + xx[1122] * xx
-    [221] + xx[222] * xx[1219] - xx[367] * xx[223] + (xx[1597] + xx[1535]) * xx
+    [1214] * xx[222] + xx[223] * xx[1226]) + (xx[1596] + xx[1534]) * xx[19];
+  xx[1258] = xx[1513] + xx[1555] + xx[1588] + xx[362] * xx[220] + xx[1148] * xx
+    [221] + xx[1215] * xx[222] - xx[367] * xx[223] + (xx[1597] + xx[1535]) * xx
     [19];
   pm_math_matrix3x3Xform(xx + 1250, xx + 231, xx + 359);
   xx[207] = xx[350] * xx[389] - xx[406] * xx[344];
@@ -10683,116 +10683,116 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_quatXform(xx + 308, xx + 362, xx + 342);
   pm_math_matrix3x3Xform(xx + 741, xx + 412, xx + 348);
   xx[362] = xx[348] + xx[203];
-  xx[363] = xx[349] + xx[224];
-  xx[364] = xx[350] + xx[240];
+  xx[363] = xx[349] + xx[219];
+  xx[364] = xx[350] + xx[224];
   pm_math_quatXform(xx + 304, xx + 362, xx + 348);
   pm_math_matrix3x3Xform(xx + 847, xx + 1285, xx + 362);
-  xx[1193] = xx[362] + xx[589];
-  xx[1194] = xx[363] + xx[590];
-  xx[1195] = xx[364] + xx[591];
-  pm_math_quatXform(xx + 300, xx + 1193, xx + 362);
-  pm_math_matrix3x3Xform(xx + 1944, xx + 1289, xx + 1193);
-  xx[1198] = xx[1193] + xx[652];
-  xx[1199] = xx[1194] + xx[653];
-  xx[1200] = xx[1195] + xx[654];
-  pm_math_quatXform(xx + 296, xx + 1198, xx + 1193);
-  xx[207] = xx[1281] * xx[165] - xx[1296] * xx[386] + xx[202];
-  xx[345] = xx[1296] * xx[165] - xx[1281] * xx[435] - xx[219];
-  xx[353] = xx[164] * xx[345];
-  xx[355] = xx[164] * xx[207];
-  xx[366] = xx[149] * xx[345] - xx[207] * xx[156];
-  xx[1198] = - xx[353];
-  xx[1199] = xx[355];
-  xx[1200] = xx[366];
-  pm_math_cross3(xx + 284, xx + 1198, xx + 1212);
+  xx[1182] = xx[362] + xx[589];
+  xx[1183] = xx[363] + xx[590];
+  xx[1184] = xx[364] + xx[591];
+  pm_math_quatXform(xx + 300, xx + 1182, xx + 362);
+  pm_math_matrix3x3Xform(xx + 1944, xx + 1289, xx + 1182);
+  xx[1193] = xx[1182] + xx[652];
+  xx[1194] = xx[1183] + xx[653];
+  xx[1195] = xx[1184] + xx[654];
+  pm_math_quatXform(xx + 296, xx + 1193, xx + 1182);
+  xx[207] = xx[1281] * xx[274] - xx[1296] * xx[379] + xx[202];
+  xx[345] = xx[1296] * xx[274] - xx[1281] * xx[435] - xx[218];
+  xx[353] = xx[345] * xx[164];
+  xx[355] = xx[207] * xx[164];
+  xx[366] = xx[345] * xx[149] - xx[207] * xx[156];
+  xx[1193] = - xx[353];
+  xx[1194] = xx[355];
+  xx[1195] = xx[366];
+  pm_math_cross3(xx + 284, xx + 1193, xx + 1201);
   xx[367] = xx[1281] * xx[157] + xx[1296] * xx[159];
   xx[389] = xx[1296] - xx[19] * xx[367] * xx[159] + xx[428];
   xx[406] = xx[1281] - xx[19] * xx[367] * xx[157] + xx[429];
   xx[367] = xx[1342] * state[34];
-  xx[467] = xx[1347] * state[34];
+  xx[474] = xx[1347] * state[34];
   xx[481] = xx[19] * xx[1344] * state[34];
-  xx[1198] = xx[367] - xx[411] * xx[340];
-  xx[1199] = xx[467] + xx[340] * xx[407] + xx[320] * xx[408];
-  xx[1200] = xx[481] + xx[411] * xx[320];
-  pm_math_quatXform(xx + 214, xx + 1198, xx + 1238);
-  xx[407] = xx[282] + xx[1238];
-  pm_math_cross3(xx + 1167, xx + 1285, xx + 1198);
-  xx[408] = xx[238] + xx[1239];
-  xx[411] = xx[1240] - xx[243];
-  xx[1238] = xx[407] + xx[1198];
-  xx[1239] = xx[408] + xx[1199];
-  xx[1240] = xx[411] + xx[1200];
-  pm_math_quatXform(xx + 188, xx + 1238, xx + 1198);
-  xx[1117] = xx[334] + xx[1198];
-  pm_math_cross3(xx + 1056, xx + 1289, xx + 1238);
-  xx[1122] = xx[335] + xx[1199];
-  xx[1136] = xx[336] + xx[1200];
-  xx[1198] = xx[1117] + xx[1238];
-  xx[1199] = xx[1122] + xx[1239];
-  xx[1200] = xx[1136] + xx[1240];
-  pm_math_quatXform(xx + 178, xx + 1198, xx + 1238);
-  xx[1147] = xx[669] + xx[1238];
-  xx[1160] = xx[1147] - xx[1281] * state[10];
-  xx[1164] = xx[670] + xx[1239];
-  xx[1173] = xx[1164] + xx[1296] * state[10];
-  xx[1174] = xx[1173] * xx[157] + xx[159] * xx[1160];
-  xx[1176] = (xx[425] + xx[1160] - xx[19] * xx[1174] * xx[159]) * inputDot[6];
-  xx[1160] = xx[164] * xx[1176];
-  xx[1179] = (xx[432] + xx[1173] - xx[19] * xx[1174] * xx[157]) * inputDot[6];
-  xx[1173] = xx[164] * xx[1179];
-  xx[1174] = xx[149] * xx[1176] + xx[1179] * xx[156];
-  xx[1198] = - xx[1160];
-  xx[1199] = - xx[1173];
-  xx[1200] = xx[1174];
-  pm_math_cross3(xx + 284, xx + 1198, xx + 1238);
-  xx[1180] = xx[1164] * state[10];
-  xx[1164] = xx[1147] * state[10];
-  xx[1147] = xx[1180] * xx[159] - xx[157] * xx[1164];
-  xx[1198] = xx[1117];
-  xx[1199] = xx[1122];
-  xx[1200] = xx[1136];
-  pm_math_cross3(xx + 1056, xx + 1198, xx + 1242);
-  pm_math_quatXform(xx + 178, xx + 1242, xx + 1198);
-  xx[1242] = xx[407];
-  xx[1243] = xx[408];
-  xx[1244] = xx[411];
-  pm_math_cross3(xx + 1167, xx + 1242, xx + 1246);
+  xx[1193] = xx[367] - xx[411] * xx[340];
+  xx[1194] = xx[474] + xx[340] * xx[407] + xx[320] * xx[408];
+  xx[1195] = xx[481] + xx[411] * xx[320];
+  pm_math_quatXform(xx + 214, xx + 1193, xx + 1210);
+  xx[407] = xx[282] + xx[1210];
+  pm_math_cross3(xx + 1080, xx + 1285, xx + 1193);
+  xx[408] = xx[238] + xx[1211];
+  xx[411] = xx[1212] - xx[243];
+  xx[1210] = xx[407] + xx[1193];
+  xx[1211] = xx[408] + xx[1194];
+  xx[1212] = xx[411] + xx[1195];
+  pm_math_quatXform(xx + 188, xx + 1210, xx + 1193);
+  xx[1121] = xx[334] + xx[1193];
+  pm_math_cross3(xx + 1056, xx + 1289, xx + 1210);
+  xx[1148] = xx[335] + xx[1194];
+  xx[1160] = xx[336] + xx[1195];
+  xx[1193] = xx[1121] + xx[1210];
+  xx[1194] = xx[1148] + xx[1211];
+  xx[1195] = xx[1160] + xx[1212];
+  pm_math_quatXform(xx + 178, xx + 1193, xx + 1210);
+  xx[1164] = xx[669] + xx[1210];
+  xx[1170] = xx[1164] - xx[1281] * state[10];
+  xx[1173] = xx[670] + xx[1211];
+  xx[1179] = xx[1173] + xx[1296] * state[10];
+  xx[1180] = xx[1179] * xx[157] + xx[159] * xx[1170];
+  xx[1191] = (xx[425] + xx[1170] - xx[19] * xx[1180] * xx[159]) * inputDot[6];
+  xx[1170] = xx[164] * xx[1191];
+  xx[1193] = (xx[432] + xx[1179] - xx[19] * xx[1180] * xx[157]) * inputDot[6];
+  xx[1179] = xx[164] * xx[1193];
+  xx[1180] = xx[149] * xx[1191] + xx[1193] * xx[156];
+  xx[1210] = - xx[1170];
+  xx[1211] = - xx[1179];
+  xx[1212] = xx[1180];
+  pm_math_cross3(xx + 284, xx + 1210, xx + 1213);
+  xx[1194] = xx[1173] * state[10];
+  xx[1173] = xx[1164] * state[10];
+  xx[1164] = xx[1194] * xx[159] - xx[157] * xx[1173];
+  xx[1210] = xx[1121];
+  xx[1211] = xx[1148];
+  xx[1212] = xx[1160];
+  pm_math_cross3(xx + 1056, xx + 1210, xx + 1238);
+  pm_math_quatXform(xx + 178, xx + 1238, xx + 1210);
+  xx[1238] = xx[407];
+  xx[1239] = xx[408];
+  xx[1240] = xx[411];
+  pm_math_cross3(xx + 1080, xx + 1238, xx + 1242);
+  pm_math_quatXform(xx + 188, xx + 1242, xx + 1238);
+  xx[1242] = xx[340] * xx[474];
+  xx[1243] = xx[320] * xx[481] - xx[340] * xx[367];
+  xx[1244] = - (xx[320] * xx[474]);
+  pm_math_quatXform(xx + 214, xx + 1242, xx + 1246);
   pm_math_quatXform(xx + 188, xx + 1246, xx + 1242);
-  xx[1246] = xx[467] * xx[340];
-  xx[1247] = xx[481] * xx[320] - xx[367] * xx[340];
-  xx[1248] = - (xx[467] * xx[320]);
-  pm_math_quatXform(xx + 214, xx + 1246, xx + 1250);
-  pm_math_quatXform(xx + 188, xx + 1250, xx + 1246);
-  xx[1250] = xx[1242] + xx[1246];
-  xx[1251] = xx[1243] + xx[1247];
-  xx[1252] = xx[1244] + xx[1248];
-  pm_math_quatXform(xx + 178, xx + 1250, xx + 1242);
-  xx[367] = xx[1198] + xx[1242];
-  xx[407] = xx[1199] + xx[1243];
+  xx[1246] = xx[1238] + xx[1242];
+  xx[1247] = xx[1239] + xx[1243];
+  xx[1248] = xx[1240] + xx[1244];
+  pm_math_quatXform(xx + 178, xx + 1246, xx + 1238);
+  xx[367] = xx[1210] + xx[1238];
+  xx[407] = xx[1211] + xx[1239];
   xx[408] = xx[407] * xx[157] + xx[367] * xx[159];
-  xx[411] = xx[1200] + xx[1244];
-  xx[1198] = xx[19] * xx[159] * xx[1147] - xx[1180] + xx[367] - xx[19] * xx[408]
+  xx[411] = xx[1212] + xx[1240];
+  xx[1210] = xx[19] * xx[159] * xx[1164] - xx[1194] + xx[367] - xx[19] * xx[408]
     * xx[159];
-  xx[1199] = xx[1164] + xx[19] * xx[157] * xx[1147] + xx[407] - xx[19] * xx[408]
+  xx[1211] = xx[1173] + xx[19] * xx[157] * xx[1164] + xx[407] - xx[19] * xx[408]
     * xx[157];
-  xx[1200] = xx[411] - (xx[157] * xx[411] * xx[157] + xx[411] * xx[159] * xx[159])
+  xx[1212] = xx[411] - (xx[157] * xx[411] * xx[157] + xx[411] * xx[159] * xx[159])
     * xx[19];
-  pm_math_quatXform(xx + 330, xx + 1198, xx + 1242);
+  pm_math_quatXform(xx + 330, xx + 1210, xx + 1238);
   xx[367] = xx[1823] * xx[1823];
   xx[407] = xx[1766] * xx[1823];
   xx[408] = xx[1] * xx[1407];
-  xx[411] = xx[1] * xx[1766];
-  xx[467] = xx[1823] * xx[1407];
+  xx[411] = xx[1766] * xx[1];
+  xx[474] = xx[1823] * xx[1407];
   xx[481] = xx[1766] * xx[1407];
-  xx[1117] = xx[1] * xx[1823];
+  xx[1121] = xx[1] * xx[1823];
   xx[1250] = (xx[367] + xx[1] * xx[1]) * xx[19] - xx[21];
   xx[1251] = xx[19] * (xx[407] - xx[408]);
-  xx[1252] = - ((xx[411] + xx[467]) * xx[19]);
+  xx[1252] = - ((xx[411] + xx[474]) * xx[19]);
   xx[1253] = - ((xx[408] + xx[407]) * xx[19]);
   xx[1254] = (xx[367] + xx[1407] * xx[1407]) * xx[19] - xx[21];
-  xx[1255] = xx[19] * (xx[481] - xx[1117]);
-  xx[1256] = xx[19] * (xx[467] - xx[411]);
-  xx[1257] = (xx[481] + xx[1117]) * xx[19];
+  xx[1255] = xx[19] * (xx[481] - xx[1121]);
+  xx[1256] = xx[19] * (xx[474] - xx[411]);
+  xx[1257] = (xx[481] + xx[1121]) * xx[19];
   xx[1258] = (xx[367] + xx[1766] * xx[1766]) * xx[19] - xx[21];
   xx[1] = xx[53] * state[70];
   xx[367] = xx[53] * state[71];
@@ -10803,193 +10803,193 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[53] = xx[411] * xx[1806] - xx[1800] * state[72];
   xx[54] = xx[1878] * state[72] - xx[1798] * xx[407];
   xx[367] = xx[411] * xx[1878] - xx[1786] * xx[407];
-  xx[467] = xx[1786] * state[72] - xx[411] * xx[1798];
+  xx[474] = xx[1786] * state[72] - xx[411] * xx[1798];
   xx[481] = xx[1793] * xx[407] - xx[1795] * state[72];
-  xx[1117] = xx[411] * xx[1795] - xx[1805] * xx[407];
-  xx[1122] = xx[1805] * state[72] - xx[411] * xx[1793];
+  xx[1121] = xx[411] * xx[1795] - xx[1805] * xx[407];
+  xx[1148] = xx[1805] * state[72] - xx[411] * xx[1793];
   xx[1273] = xx[408] * state[72] - xx[1] * xx[411];
   xx[1274] = xx[53] * state[72] + xx[1] * xx[407];
   xx[1275] = - (xx[53] * xx[411] + xx[408] * xx[407]);
   xx[1276] = - (xx[54] * state[72] + xx[411] * xx[367]);
-  xx[1277] = xx[367] * xx[407] - xx[467] * state[72];
-  xx[1278] = xx[467] * xx[411] + xx[54] * xx[407];
-  xx[1279] = xx[481] * state[72] - xx[411] * xx[1117];
-  xx[1280] = xx[1117] * xx[407] - xx[1122] * state[72];
-  xx[1281] = xx[411] * xx[1122] - xx[481] * xx[407];
+  xx[1277] = xx[367] * xx[407] - xx[474] * state[72];
+  xx[1278] = xx[474] * xx[411] + xx[54] * xx[407];
+  xx[1279] = xx[481] * state[72] - xx[411] * xx[1121];
+  xx[1280] = xx[1121] * xx[407] - xx[1148] * state[72];
+  xx[1281] = xx[411] * xx[1148] - xx[481] * xx[407];
   pm_math_matrix3x3Compose(xx + 1250, xx + 1273, xx + 1282);
   xx[1] = xx[19] * xx[1357] * xx[1401] * state[65] * state[65];
   xx[53] = xx[1769] * xx[1769];
   xx[54] = (xx[53] + xx[1402] * xx[1402]) * xx[19] - xx[21];
-  xx[367] = xx[1765] * xx[1402];
-  xx[408] = xx[1769] * xx[1770];
-  xx[467] = xx[367] + xx[408];
-  xx[481] = xx[19] * xx[467];
-  xx[1117] = (xx[19] * xx[1401] * xx[1401] - xx[21]) * state[65] * state[65];
-  xx[1122] = xx[1] * xx[54] + xx[481] * xx[1117];
-  xx[1136] = (xx[19] * xx[1357] * xx[1357] - xx[21]) * state[65] * state[65];
-  xx[1147] = xx[481] * xx[1] + xx[1136] * xx[54];
-  xx[1164] = xx[54] * inputDot[10] * inputDot[10];
-  xx[1180] = xx[1797] * xx[1401] - xx[1357] * xx[1783];
-  xx[1191] = xx[1180] * xx[1180];
-  xx[1198] = xx[1401] * xx[1799] + xx[1357] * xx[1772];
-  xx[1199] = xx[1198] * xx[1198];
-  xx[1200] = (xx[1191] + xx[1199]) * xx[19] - xx[21];
-  xx[1201] = xx[19] * xx[467] * inputDot[10] * inputDot[10];
-  xx[467] = xx[1797] * xx[1357] + xx[1401] * xx[1783];
-  xx[1202] = xx[1180] * xx[467];
-  xx[1210] = xx[1401] * xx[1772] - xx[1357] * xx[1799];
-  xx[1215] = xx[1210] * xx[1198];
-  xx[1219] = (xx[1202] - xx[1215]) * xx[19];
+  xx[367] = (xx[19] * xx[1401] * xx[1401] - xx[21]) * state[65] * state[65];
+  xx[408] = xx[1765] * xx[1402];
+  xx[474] = xx[1769] * xx[1770];
+  xx[481] = xx[408] + xx[474];
+  xx[1121] = xx[19] * xx[481];
+  xx[1148] = xx[1] * xx[54] + xx[367] * xx[1121];
+  xx[1160] = (xx[19] * xx[1357] * xx[1357] - xx[21]) * state[65] * state[65];
+  xx[1164] = xx[1121] * xx[1] + xx[1160] * xx[54];
+  xx[1173] = xx[54] * inputDot[10] * inputDot[10];
+  xx[1194] = xx[1797] * xx[1401] - xx[1357] * xx[1783];
+  xx[1195] = xx[1194] * xx[1194];
+  xx[1204] = xx[1401] * xx[1799] + xx[1357] * xx[1772];
+  xx[1210] = xx[1204] * xx[1204];
+  xx[1211] = (xx[1195] + xx[1210]) * xx[19] - xx[21];
+  xx[1212] = xx[1797] * xx[1357] + xx[1401] * xx[1783];
+  xx[1219] = xx[1194] * xx[1212];
+  xx[1226] = xx[1401] * xx[1772] - xx[1357] * xx[1799];
+  xx[1228] = xx[1226] * xx[1204];
+  xx[1229] = (xx[1219] - xx[1228]) * xx[19];
+  xx[1231] = xx[19] * xx[481] * inputDot[10] * inputDot[10];
   xx[1250] = xx[1769];
   xx[1251] = xx[1879];
   xx[1252] = xx[1765];
   xx[1253] = xx[1770];
-  xx[1254] = xx[1180];
-  xx[1255] = - xx[1198];
-  xx[1256] = xx[1210];
-  xx[1257] = xx[467];
+  xx[1254] = xx[1194];
+  xx[1255] = - xx[1204];
+  xx[1256] = xx[1226];
+  xx[1257] = xx[1212];
   pm_math_quatCompose(xx + 1250, xx + 1254, xx + 1316);
-  xx[1226] = xx[1316] * xx[1316];
-  xx[1228] = xx[1317] * xx[1318];
-  xx[1229] = xx[1316] * xx[1319];
-  xx[1231] = xx[1317] * xx[1319];
-  xx[1234] = xx[1316] * xx[1318];
-  xx[1235] = xx[1318] * xx[1319];
+  xx[481] = xx[1316] * xx[1316];
+  xx[1234] = xx[1317] * xx[1318];
+  xx[1235] = xx[1316] * xx[1319];
+  xx[1242] = xx[1317] * xx[1319];
+  xx[1243] = xx[1316] * xx[1318];
+  xx[1244] = xx[1318] * xx[1319];
   xx[1246] = xx[1316] * xx[1317];
-  xx[1341] = (xx[1226] + xx[1317] * xx[1317]) * xx[19] - xx[21];
-  xx[1342] = xx[19] * (xx[1228] - xx[1229]);
-  xx[1343] = (xx[1231] + xx[1234]) * xx[19];
-  xx[1344] = (xx[1228] + xx[1229]) * xx[19];
-  xx[1345] = (xx[1226] + xx[1318] * xx[1318]) * xx[19] - xx[21];
-  xx[1346] = xx[19] * (xx[1235] - xx[1246]);
-  xx[1347] = xx[19] * (xx[1231] - xx[1234]);
-  xx[1348] = (xx[1235] + xx[1246]) * xx[19];
-  xx[1349] = (xx[1226] + xx[1319] * xx[1319]) * xx[19] - xx[21];
-  xx[1226] = xx[1210] * inputDot[10];
-  xx[1228] = xx[1198] * inputDot[10];
-  xx[1246] = xx[19] * (xx[1180] * xx[1226] + xx[1228] * xx[467]);
-  xx[1247] = - ((xx[1226] * xx[467] - xx[1180] * xx[1228]) * xx[19]);
-  xx[1248] = (xx[1228] * xx[1198] + xx[1210] * xx[1226]) * xx[19] - inputDot[10];
-  pm_math_matrix3x3PostCross(xx + 1341, xx + 1246, xx + 1505);
-  xx[1226] = xx[1797] * state[65];
-  xx[1228] = xx[1783] * state[65];
-  xx[1229] = (xx[1226] * xx[1772] + xx[1228] * xx[1799]) * xx[19];
-  xx[1231] = xx[19] * (xx[1226] * xx[1799] - xx[1228] * xx[1772]);
-  xx[1234] = state[65] - (xx[1228] * xx[1783] + xx[1797] * xx[1226]) * xx[19];
-  xx[1246] = xx[1229] + xx[407];
-  xx[1247] = xx[1231] + xx[411];
-  xx[1248] = xx[1234] + state[72];
+  xx[1341] = (xx[481] + xx[1317] * xx[1317]) * xx[19] - xx[21];
+  xx[1342] = xx[19] * (xx[1234] - xx[1235]);
+  xx[1343] = (xx[1242] + xx[1243]) * xx[19];
+  xx[1344] = (xx[1234] + xx[1235]) * xx[19];
+  xx[1345] = (xx[481] + xx[1318] * xx[1318]) * xx[19] - xx[21];
+  xx[1346] = xx[19] * (xx[1244] - xx[1246]);
+  xx[1347] = xx[19] * (xx[1242] - xx[1243]);
+  xx[1348] = (xx[1244] + xx[1246]) * xx[19];
+  xx[1349] = (xx[481] + xx[1319] * xx[1319]) * xx[19] - xx[21];
+  xx[481] = xx[1226] * inputDot[10];
+  xx[1234] = xx[1204] * inputDot[10];
+  xx[1242] = xx[19] * (xx[1194] * xx[481] + xx[1234] * xx[1212]);
+  xx[1243] = - ((xx[481] * xx[1212] - xx[1194] * xx[1234]) * xx[19]);
+  xx[1244] = (xx[1234] * xx[1204] + xx[1226] * xx[481]) * xx[19] - inputDot[10];
+  pm_math_matrix3x3PostCross(xx + 1341, xx + 1242, xx + 1505);
+  xx[481] = xx[1797] * state[65];
+  xx[1234] = xx[1783] * state[65];
+  xx[1235] = (xx[481] * xx[1772] + xx[1234] * xx[1799]) * xx[19];
+  xx[1242] = xx[19] * (xx[481] * xx[1799] - xx[1234] * xx[1772]);
+  xx[1243] = state[65] - (xx[1234] * xx[1783] + xx[1797] * xx[481]) * xx[19];
+  xx[1246] = xx[1235] + xx[407];
+  xx[1247] = xx[1242] + xx[411];
+  xx[1248] = xx[1243] + state[72];
   pm_math_matrix3x3PostCross(xx + 1505, xx + 1246, xx + 1341);
-  xx[1226] = xx[1765] * xx[1769];
-  xx[1228] = xx[1402] * xx[1770];
-  xx[1235] = xx[408] - xx[367];
-  xx[367] = xx[1235] * xx[19];
-  xx[408] = (xx[53] + xx[1765] * xx[1765]) * xx[19] - xx[21];
+  xx[481] = xx[1765] * xx[1769];
+  xx[1234] = xx[1770] * xx[1402];
+  xx[1244] = xx[474] - xx[408];
+  xx[408] = xx[1244] * xx[19];
+  xx[474] = (xx[53] + xx[1765] * xx[1765]) * xx[19] - xx[21];
   xx[1246] = xx[1765] * xx[1770];
   xx[1247] = xx[1769] * xx[1402];
-  xx[1248] = xx[1228] + xx[1226];
+  xx[1248] = xx[1234] + xx[481];
   xx[1254] = xx[19] * xx[1248];
   xx[1255] = xx[1246] - xx[1247];
   xx[1256] = xx[1255] * xx[19];
   xx[1505] = xx[54];
-  xx[1506] = - xx[481];
-  xx[1507] = (xx[1226] - xx[1228]) * xx[19];
-  xx[1508] = xx[367];
-  xx[1509] = xx[408];
+  xx[1506] = - xx[1121];
+  xx[1507] = (xx[481] - xx[1234]) * xx[19];
+  xx[1508] = xx[408];
+  xx[1509] = xx[474];
   xx[1510] = xx[19] * (xx[1246] + xx[1247]);
   xx[1511] = - xx[1254];
   xx[1512] = xx[1256];
   xx[1513] = (xx[53] + xx[1770] * xx[1770]) * xx[19] - xx[21];
-  xx[53] = xx[19] * (xx[1215] + xx[1202]);
-  xx[54] = xx[1180] * xx[1210];
-  xx[481] = xx[467] * xx[1198];
-  xx[1202] = (xx[54] - xx[481]) * xx[19];
-  xx[1215] = xx[1210] * xx[1210];
-  xx[1226] = (xx[1191] + xx[1215]) * xx[19] - xx[21];
-  xx[1228] = xx[1210] * xx[467];
-  xx[1210] = xx[1180] * xx[1198];
-  xx[1180] = xx[19] * (xx[1228] + xx[1210]);
-  xx[1527] = xx[1200];
+  xx[53] = xx[19] * (xx[1228] + xx[1219]);
+  xx[54] = xx[1194] * xx[1226];
+  xx[481] = xx[1212] * xx[1204];
+  xx[1121] = (xx[54] - xx[481]) * xx[19];
+  xx[1219] = xx[1226] * xx[1226];
+  xx[1228] = (xx[1195] + xx[1219]) * xx[19] - xx[21];
+  xx[1234] = xx[1226] * xx[1212];
+  xx[1226] = xx[1194] * xx[1204];
+  xx[1194] = xx[19] * (xx[1234] + xx[1226]);
+  xx[1527] = xx[1211];
   xx[1528] = - xx[53];
-  xx[1529] = xx[1202];
-  xx[1530] = xx[1219];
-  xx[1531] = xx[1226];
-  xx[1532] = xx[1180];
+  xx[1529] = xx[1121];
+  xx[1530] = xx[1229];
+  xx[1531] = xx[1228];
+  xx[1532] = xx[1194];
   xx[1533] = - (xx[19] * (xx[481] + xx[54]));
-  xx[1534] = (xx[1228] - xx[1210]) * xx[19];
-  xx[1535] = (xx[1191] + xx[467] * xx[467]) * xx[19] - xx[21];
-  xx[1294] = xx[1229];
-  xx[1295] = xx[1231];
-  xx[1296] = xx[1234];
+  xx[1534] = (xx[1234] - xx[1226]) * xx[19];
+  xx[1535] = (xx[1195] + xx[1212] * xx[1212]) * xx[19] - xx[21];
+  xx[1294] = xx[1235];
+  xx[1295] = xx[1242];
+  xx[1296] = xx[1243];
   pm_math_matrix3x3PostCross(xx + 1527, xx + 1294, xx + 1547);
   xx[1294] = xx[407];
   xx[1295] = xx[411];
   xx[1296] = state[72];
   pm_math_matrix3x3PostCross(xx + 1547, xx + 1294, xx + 1527);
   pm_math_matrix3x3Compose(xx + 1505, xx + 1527, xx + 1547);
-  xx[467] = xx[1] * xx[408] - xx[1136] * xx[367];
-  xx[1191] = xx[1] * xx[367] - xx[1117] * xx[408];
-  xx[367] = xx[19] * xx[1235] * inputDot[10] * inputDot[10];
-  xx[1198] = xx[408] * inputDot[10] * inputDot[10];
-  xx[408] = xx[1] * xx[1256] + xx[1254] * xx[1136];
-  xx[1229] = xx[1] * xx[1254] + xx[1117] * xx[1256];
-  xx[1231] = xx[19] * xx[1255] * inputDot[10] * inputDot[10];
-  xx[1234] = xx[19] * xx[1248] * inputDot[10] * inputDot[10];
-  xx[1505] = xx[1282] + xx[1878] * xx[1122] - xx[1147] * xx[1755] - (xx[1164] *
-    xx[1200] - xx[1201] * xx[1219]) + (xx[1341] + xx[1547]) * xx[19];
-  xx[1506] = xx[1283] + xx[1122] * xx[1786] - xx[1800] * xx[1147] + xx[53] * xx
-    [1164] + xx[1201] * xx[1226] + (xx[1342] + xx[1548]) * xx[19];
-  xx[1507] = xx[1284] + xx[1798] * xx[1122] - xx[1806] * xx[1147] - (xx[1164] *
-    xx[1202] - xx[1201] * xx[1180]) + (xx[1343] + xx[1549]) * xx[19];
-  xx[1508] = xx[1285] + xx[467] * xx[1755] + xx[1878] * xx[1191] - (xx[367] *
-    xx[1200] + xx[1219] * xx[1198]) + (xx[1344] + xx[1550]) * xx[19];
-  xx[1509] = xx[1286] + xx[1191] * xx[1786] + xx[1800] * xx[467] - (xx[1198] *
-    xx[1226] - xx[53] * xx[367]) + (xx[1345] + xx[1551]) * xx[19];
-  xx[1510] = xx[1287] + xx[1806] * xx[467] + xx[1798] * xx[1191] - (xx[367] *
-    xx[1202] + xx[1180] * xx[1198]) + (xx[1346] + xx[1552]) * xx[19];
-  xx[1511] = xx[1288] + xx[408] * xx[1755] - xx[1878] * xx[1229] - (xx[1231] *
-    xx[1219] - xx[1234] * xx[1200]) + (xx[1347] + xx[1553]) * xx[19];
-  xx[1512] = xx[1289] + xx[1800] * xx[408] - xx[1229] * xx[1786] - (xx[53] * xx
-    [1234] + xx[1231] * xx[1226]) + (xx[1348] + xx[1554]) * xx[19];
-  xx[1513] = xx[1290] + xx[1806] * xx[408] - xx[1798] * xx[1229] - (xx[1180] *
-    xx[1231] - xx[1234] * xx[1202]) + (xx[1349] + xx[1555]) * xx[19];
+  xx[1195] = xx[1] * xx[474] - xx[1160] * xx[408];
+  xx[1204] = xx[408] * xx[1] - xx[367] * xx[474];
+  xx[408] = xx[19] * xx[1244] * inputDot[10] * inputDot[10];
+  xx[1212] = xx[474] * inputDot[10] * inputDot[10];
+  xx[474] = xx[1256] * xx[1] + xx[1160] * xx[1254];
+  xx[1235] = xx[1] * xx[1254] + xx[367] * xx[1256];
+  xx[1242] = xx[19] * xx[1255] * inputDot[10] * inputDot[10];
+  xx[1243] = xx[19] * xx[1248] * inputDot[10] * inputDot[10];
+  xx[1505] = xx[1282] + xx[1878] * xx[1148] - xx[1164] * xx[1755] - (xx[1173] *
+    xx[1211] - xx[1229] * xx[1231]) + (xx[1341] + xx[1547]) * xx[19];
+  xx[1506] = xx[1283] + xx[1148] * xx[1786] - xx[1800] * xx[1164] + xx[1173] *
+    xx[53] + xx[1231] * xx[1228] + (xx[1342] + xx[1548]) * xx[19];
+  xx[1507] = xx[1284] + xx[1798] * xx[1148] - xx[1806] * xx[1164] - (xx[1173] *
+    xx[1121] - xx[1231] * xx[1194]) + (xx[1343] + xx[1549]) * xx[19];
+  xx[1508] = xx[1285] + xx[1195] * xx[1755] + xx[1878] * xx[1204] - (xx[408] *
+    xx[1211] + xx[1229] * xx[1212]) + (xx[1344] + xx[1550]) * xx[19];
+  xx[1509] = xx[1286] + xx[1204] * xx[1786] + xx[1800] * xx[1195] - (xx[1212] *
+    xx[1228] - xx[53] * xx[408]) + (xx[1345] + xx[1551]) * xx[19];
+  xx[1510] = xx[1287] + xx[1806] * xx[1195] + xx[1798] * xx[1204] - (xx[1121] *
+    xx[408] + xx[1212] * xx[1194]) + (xx[1346] + xx[1552]) * xx[19];
+  xx[1511] = xx[1288] + xx[474] * xx[1755] - xx[1878] * xx[1235] - (xx[1229] *
+    xx[1242] - xx[1243] * xx[1211]) + (xx[1347] + xx[1553]) * xx[19];
+  xx[1512] = xx[1289] + xx[1800] * xx[474] - xx[1235] * xx[1786] - (xx[53] * xx
+    [1243] + xx[1242] * xx[1228]) + (xx[1348] + xx[1554]) * xx[19];
+  xx[1513] = xx[1290] + xx[1806] * xx[474] - xx[1798] * xx[1235] - (xx[1194] *
+    xx[1242] - xx[1121] * xx[1243]) + (xx[1349] + xx[1555]) * xx[19];
   pm_math_matrix3x3Xform(xx + 1505, xx + 897, xx + 1246);
   pm_math_matrix3x3Xform(xx + 1273, xx + 69, xx + 1254);
   pm_math_quatXform(xx + 1892, xx + 1254, xx + 1273);
   xx[53] = state[65] * state[65];
-  xx[408] = xx[1824] * xx[1401] - xx[1835] * xx[1357];
-  xx[467] = xx[1824] - xx[19] * xx[408] * xx[1401];
-  xx[1122] = xx[1872] * xx[1] - xx[1871] * xx[1136] + xx[53] * xx[467];
-  xx[1136] = xx[1835] + xx[19] * xx[408] * xx[1357];
-  xx[408] = xx[1871] * xx[1] - xx[1872] * xx[1117] - xx[53] * xx[1136];
-  xx[1] = xx[408] * xx[1770];
-  xx[53] = xx[1122] * xx[1770];
-  xx[1117] = xx[408] * xx[1402] + xx[1122] * xx[1765];
+  xx[474] = xx[1824] * xx[1401] - xx[1835] * xx[1357];
+  xx[1121] = xx[1824] - xx[19] * xx[474] * xx[1401];
+  xx[1148] = xx[1872] * xx[1] - xx[1871] * xx[1160] + xx[53] * xx[1121];
+  xx[1160] = xx[1835] + xx[19] * xx[474] * xx[1357];
+  xx[474] = xx[1871] * xx[1] - xx[1872] * xx[367] - xx[53] * xx[1160];
+  xx[1] = xx[474] * xx[1770];
+  xx[53] = xx[1148] * xx[1770];
+  xx[367] = xx[474] * xx[1402] + xx[1148] * xx[1765];
   xx[1254] = - xx[1];
   xx[1255] = xx[53];
-  xx[1256] = - xx[1117];
+  xx[1256] = - xx[367];
   pm_math_cross3(xx + 1880, xx + 1254, xx + 1276);
-  xx[1147] = inputDot[10] * inputDot[10];
-  xx[1180] = xx[1765] * xx[16];
-  xx[1191] = xx[16] * xx[1770];
-  xx[1200] = xx[1191] * xx[1770];
-  xx[1202] = xx[1357] * xx[1872] + xx[1871] * xx[1401];
-  xx[1219] = 0.03194045367095628;
-  xx[1226] = xx[1871] - (xx[19] * xx[1202] * xx[1401] + xx[467]) + xx[1219];
-  xx[1229] = xx[1872] - xx[19] * xx[1202] * xx[1357] + xx[1136];
+  xx[1164] = inputDot[10] * inputDot[10];
+  xx[1194] = xx[1765] * xx[16];
+  xx[1195] = xx[16] * xx[1770];
+  xx[1204] = xx[1195] * xx[1770];
+  xx[1211] = xx[1357] * xx[1872] + xx[1871] * xx[1401];
+  xx[1228] = 0.03194045367095628;
+  xx[1229] = xx[1871] - (xx[19] * xx[1211] * xx[1401] + xx[1121]) + xx[1228];
+  xx[1235] = xx[1872] - xx[19] * xx[1211] * xx[1357] + xx[1160];
   pm_math_cross3(xx + 1294, xx + 69, xx + 1254);
   pm_math_quatXform(xx + 1801, xx + 1254, xx + 1279);
-  xx[1202] = xx[1280] + xx[1871] * state[65];
-  xx[1235] = xx[1279] - xx[1872] * state[65];
-  xx[1257] = xx[1202] * xx[1357] + xx[1401] * xx[1235];
-  xx[1258] = ((xx[1883] - xx[1824]) * state[65] + xx[1202] - xx[19] * xx[1257] *
+  xx[1211] = xx[1280] + xx[1871] * state[65];
+  xx[1244] = xx[1279] - xx[1872] * state[65];
+  xx[1257] = xx[1211] * xx[1357] + xx[1401] * xx[1244];
+  xx[1258] = ((xx[1883] - xx[1824]) * state[65] + xx[1211] - xx[19] * xx[1257] *
               xx[1357]) * inputDot[10];
-  xx[1202] = ((xx[1874] - xx[1835]) * state[65] + xx[1235] - xx[19] * xx[1257] *
+  xx[1211] = ((xx[1874] - xx[1835]) * state[65] + xx[1244] - xx[19] * xx[1257] *
               xx[1401]) * inputDot[10];
-  xx[1235] = xx[1202] * xx[1770];
+  xx[1244] = xx[1211] * xx[1770];
   xx[1257] = xx[1258] * xx[1770];
-  xx[1262] = xx[1765] * xx[1258] - xx[1202] * xx[1402];
-  xx[1281] = xx[1235];
+  xx[1262] = xx[1765] * xx[1258] - xx[1211] * xx[1402];
+  xx[1281] = xx[1244];
   xx[1282] = xx[1257];
   xx[1283] = - xx[1262];
   pm_math_cross3(xx + 1880, xx + 1281, xx + 1284);
@@ -11005,54 +11005,54 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1281] = xx[1268];
   xx[1282] = - xx[1279];
   pm_math_cross3(xx + 1880, xx + 1280, xx + 1287);
-  xx[1280] = xx[1118];
+  xx[1280] = xx[1122];
   xx[1281] = - ((xx[1227] + xx[365]) * xx[19]);
   xx[1282] = xx[21] - (xx[368] + xx[1222]) * xx[19];
   pm_math_cross3(xx + 1280, xx + 231, xx + 1290);
-  pm_math_quatXform(xx + 1206, xx + 1290, xx + 1280);
-  xx[365] = xx[164] * xx[389];
+  pm_math_quatXform(xx + 1205, xx + 1290, xx + 1280);
+  xx[365] = xx[389] * xx[164];
   xx[368] = xx[164] * xx[406];
-  xx[1118] = xx[149] * xx[389] + xx[156] * xx[406];
-  xx[1206] = - xx[365];
-  xx[1207] = - xx[368];
-  xx[1208] = xx[1118];
-  pm_math_cross3(xx + 284, xx + 1206, xx + 1290);
-  pm_math_cross3(xx + 799, xx + 412, xx + 1206);
-  xx[1325] = xx[559] + xx[1206];
-  xx[1326] = xx[561] + xx[1207];
-  xx[1327] = xx[896] + xx[1208];
-  pm_math_quatInverseXform(xx + 402, xx + 1325, xx + 1206);
+  xx[1122] = xx[389] * xx[149] + xx[406] * xx[156];
+  xx[1205] = - xx[365];
+  xx[1206] = - xx[368];
+  xx[1207] = xx[1122];
+  pm_math_cross3(xx + 284, xx + 1205, xx + 1290);
+  pm_math_cross3(xx + 799, xx + 412, xx + 1205);
+  xx[1325] = xx[559] + xx[1205];
+  xx[1326] = xx[561] + xx[1206];
+  xx[1327] = xx[896] + xx[1207];
+  pm_math_quatInverseXform(xx + 402, xx + 1325, xx + 1205);
   pm_math_quatInverseXform(xx + 402, xx + 799, xx + 1325);
-  xx[896] = xx[651] + xx[374] * xx[1206] - xx[371] * xx[1207] - xx[369] * xx
+  xx[896] = xx[651] + xx[374] * xx[1205] - xx[371] * xx[1206] - xx[369] * xx
     [1327];
-  xx[1206] = xx[19] * (xx[54] + xx[481]);
-  xx[1207] = - ((xx[1228] - xx[1210]) * xx[19]);
-  xx[1208] = (xx[1199] + xx[1215]) * xx[19] - xx[21];
-  pm_math_cross3(xx + 1206, xx + 897, xx + 1325);
-  pm_math_quatXform(xx + 1316, xx + 1325, xx + 1206);
-  xx[54] = xx[1226] * xx[1770];
-  xx[481] = xx[1229] * xx[1770];
-  xx[651] = xx[1765] * xx[1229] - xx[1226] * xx[1402];
+  xx[1205] = xx[19] * (xx[54] + xx[481]);
+  xx[1206] = - ((xx[1234] - xx[1226]) * xx[19]);
+  xx[1207] = (xx[1210] + xx[1219]) * xx[19] - xx[21];
+  pm_math_cross3(xx + 1205, xx + 897, xx + 1325);
+  pm_math_quatXform(xx + 1316, xx + 1325, xx + 1205);
+  xx[54] = xx[1229] * xx[1770];
+  xx[481] = xx[1235] * xx[1770];
+  xx[651] = xx[1765] * xx[1235] - xx[1229] * xx[1402];
   xx[1316] = xx[54];
   xx[1317] = xx[481];
   xx[1318] = - xx[651];
   pm_math_cross3(xx + 1880, xx + 1316, xx + 1319);
-  xx[1199] = xx[16] * xx[1402];
-  xx[1209] = xx[1769] * xx[1191];
+  xx[1208] = xx[16] * xx[1402];
+  xx[1210] = xx[1769] * xx[1195];
   pm_math_quatInverseXform(xx + 1250, xx + 35, xx + 1316);
-  xx[1210] = xx[1357] * xx[1317] + xx[1316] * xx[1401];
-  xx[1215] = xx[1316] - xx[19] * xx[1210] * xx[1401];
-  xx[1222] = xx[1317] - xx[19] * xx[1210] * xx[1357];
-  xx[1210] = xx[1318] - inputDot[10];
-  xx[1227] = xx[1210] - (xx[1357] * xx[1357] * xx[1210] + xx[1401] * xx[1210] *
+  xx[1219] = xx[1357] * xx[1317] + xx[1316] * xx[1401];
+  xx[1222] = xx[1316] - xx[19] * xx[1219] * xx[1401];
+  xx[1226] = xx[1317] - xx[19] * xx[1219] * xx[1357];
+  xx[1219] = xx[1318] - inputDot[10];
+  xx[1227] = xx[1219] - (xx[1357] * xx[1357] * xx[1219] + xx[1401] * xx[1219] *
     xx[1401]) * xx[19];
-  xx[1228] = xx[1227] + state[65];
-  xx[1325] = xx[1215];
-  xx[1326] = xx[1222];
-  xx[1327] = xx[1228];
-  xx[1332] = xx[50] * xx[1215];
-  xx[1333] = xx[51] * xx[1222];
-  xx[1334] = xx[1228] * xx[52];
+  xx[1234] = xx[1227] + state[65];
+  xx[1325] = xx[1222];
+  xx[1326] = xx[1226];
+  xx[1327] = xx[1234];
+  xx[1332] = xx[50] * xx[1222];
+  xx[1333] = xx[51] * xx[1226];
+  xx[1334] = xx[1234] * xx[52];
   pm_math_cross3(xx + 1325, xx + 1332, xx + 1335);
   pm_math_quatInverseXform(xx + 1801, xx + 1325, xx + 1332);
   xx[50] = xx[1332] + xx[407];
@@ -11100,8 +11100,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1327] = xx[407] + xx[909] * xx[1332] + xx[927] * xx[1333];
   pm_math_quatXform(xx + 1801, xx + 1325, xx + 1344);
   pm_math_cross3(xx + 1871, xx + 1344, xx + 1325);
-  xx[1256] = xx[1222] * state[65];
-  xx[1295] = xx[1215] * state[65];
+  xx[1256] = xx[1226] * state[65];
+  xx[1295] = xx[1222] * state[65];
   xx[1296] = xx[1968] - xx[1932];
   xx[1299] = xx[1969] - xx[1935];
   xx[1300] = xx[1971] - xx[1933];
@@ -11118,28 +11118,28 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1513] = xx[1310];
   xx[1346] = xx[1316];
   xx[1347] = xx[1317];
-  xx[1348] = xx[1210];
+  xx[1348] = xx[1219];
   xx[143] = 3.999999996613603e-3;
-  xx[1358] = xx[1219] - xx[467];
-  xx[1359] = xx[1136];
+  xx[1358] = xx[1228] - xx[1121];
+  xx[1359] = xx[1160];
   xx[1360] = 1.587500000000039e-3 - (xx[143] - (xx[1357] * xx[143] * xx[1357] +
     xx[143] * xx[1401] * xx[1401]) * xx[19]);
   pm_math_cross3(xx + 1346, xx + 1358, xx + 1361);
   pm_math_cross3(xx + 1346, xx + 1361, xx + 1372);
   xx[143] = xx[1357] * xx[1373] + xx[1372] * xx[1401];
-  xx[467] = xx[1227] + xx[1228];
-  xx[1136] = xx[1824] * state[65];
-  xx[1219] = xx[1372] - xx[19] * xx[143] * xx[1401] + xx[467] * xx[1136];
-  xx[1227] = xx[1835] * state[65];
-  xx[1228] = xx[1373] - xx[19] * xx[143] * xx[1357] - xx[467] * xx[1227];
-  xx[143] = (xx[1222] + xx[1222]) * xx[1227] - (xx[1215] + xx[1215]) * xx[1136]
+  xx[1121] = xx[1227] + xx[1234];
+  xx[1160] = xx[1824] * state[65];
+  xx[1227] = xx[1372] - xx[19] * xx[143] * xx[1401] + xx[1121] * xx[1160];
+  xx[1228] = xx[1835] * state[65];
+  xx[1234] = xx[1373] - xx[19] * xx[143] * xx[1357] - xx[1121] * xx[1228];
+  xx[143] = (xx[1226] + xx[1226]) * xx[1228] - (xx[1222] + xx[1222]) * xx[1160]
     + xx[1374] - (xx[1357] * xx[1357] * xx[1374] + xx[1374] * xx[1401] * xx[1401])
     * xx[19];
-  xx[1346] = xx[1219];
-  xx[1347] = xx[1228];
+  xx[1346] = xx[1227];
+  xx[1347] = xx[1234];
   xx[1348] = xx[143];
   pm_math_matrix3x3Xform(xx + 1505, xx + 1346, xx + 1361);
-  xx[467] = xx[1256] * (xx[1965] - xx[1983] - xx[1979] - xx[2001]) - xx[1295] *
+  xx[1121] = xx[1256] * (xx[1965] - xx[1983] - xx[1979] - xx[2001]) - xx[1295] *
     (xx[1966] - xx[1984] - xx[1982] - xx[2002]) + xx[1363];
   xx[1505] = xx[1807];
   xx[1506] = xx[1987];
@@ -11151,19 +11151,19 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1512] = xx[1993];
   xx[1513] = xx[393] + xx[1994];
   pm_math_matrix3x3Xform(xx + 1505, xx + 1346, xx + 1361);
-  xx[1136] = xx[1256] * xx[1296] - xx[1295] * xx[1300] + xx[1361];
-  xx[1215] = xx[1256] * xx[1299] - xx[1295] * xx[1309] + xx[1362];
+  xx[1160] = xx[1256] * xx[1296] - xx[1295] * xx[1300] + xx[1361];
+  xx[1222] = xx[1256] * xx[1299] - xx[1295] * xx[1309] + xx[1362];
   xx[1346] = (xx[1961] - xx[1979] - xx[1983] - xx[1997] - (xx[1835] * xx[1296] +
     xx[1824] * xx[1299])) / xx[1898];
   xx[1347] = (xx[1964] - xx[1982] - xx[1984] - xx[2000] - (xx[1835] * xx[1300] +
     xx[1824] * xx[1309])) / xx[1898];
   xx[1348] = xx[1796] / xx[1898];
   pm_math_quatInverseXform(xx + 1250, xx + 25, xx + 1361);
-  xx[1222] = xx[1361] - xx[1317] * inputDot[10];
-  xx[1227] = xx[1362] + xx[1316] * inputDot[10];
-  xx[1296] = xx[1227] * xx[1357] + xx[1401] * xx[1222];
-  xx[1299] = xx[1222] - xx[19] * xx[1296] * xx[1401];
-  xx[1300] = xx[1227] - xx[19] * xx[1296] * xx[1357];
+  xx[1226] = xx[1361] - xx[1317] * inputDot[10];
+  xx[1228] = xx[1362] + xx[1316] * inputDot[10];
+  xx[1296] = xx[1228] * xx[1357] + xx[1401] * xx[1226];
+  xx[1299] = xx[1226] - xx[19] * xx[1296] * xx[1401];
+  xx[1300] = xx[1228] - xx[19] * xx[1296] * xx[1357];
   xx[1296] = xx[1363] - inputDdot[10];
   xx[1309] = xx[1296] - (xx[1357] * xx[1357] * xx[1296] + xx[1401] * xx[1296] *
     xx[1401]) * xx[19];
@@ -11175,12 +11175,12 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1374] = (xx[1310] - (xx[1835] * xx[1992] + xx[1824] * xx[1993])) / xx[1898];
   xx[1310] = 1.587499999999983e-3;
   xx[1313] = xx[1765] * xx[1310];
-  xx[1314] = xx[1310] * xx[1402] - xx[1191];
+  xx[1314] = xx[1310] * xx[1402] - xx[1195];
   xx[1377] = xx[1313];
   xx[1378] = xx[1314];
-  xx[1379] = xx[1180];
+  xx[1379] = xx[1194];
   pm_math_cross3(xx + 1880, xx + 1377, xx + 1385);
-  xx[1317] = xx[1769] * xx[1180];
+  xx[1317] = xx[1769] * xx[1194];
   xx[1377] = - (0.1492477869940503 + (xx[1769] * xx[1313] + xx[1385]) * xx[19] -
                 xx[16]);
   xx[1378] = 0.02992151662180351 - (xx[1769] * xx[1314] + xx[1386]) * xx[19];
@@ -11194,25 +11194,25 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_cross3(xx + 35, xx + 1416, xx + 1377);
   pm_math_quatInverseXform(xx + 1250, xx + 1377, xx + 1416);
   xx[1250] = xx[16] * inputDot[10];
-  xx[1251] = xx[1222];
-  xx[1252] = xx[1227];
+  xx[1251] = xx[1226];
+  xx[1252] = xx[1228];
   xx[1253] = xx[1296];
   pm_math_cross3(xx + 1251, xx + 1358, xx + 1377);
-  xx[1222] = xx[1385] + xx[1416] + (xx[1318] + xx[1210]) * xx[1250] + xx[1377];
-  xx[1210] = xx[1386] + xx[1417] - xx[16] * inputDdot[10] + xx[1378];
-  xx[1227] = xx[1210] * xx[1357] + xx[1222] * xx[1401];
-  xx[1251] = xx[1222] - xx[19] * xx[1227] * xx[1401];
-  xx[1222] = xx[1210] - xx[19] * xx[1227] * xx[1357];
-  xx[1210] = xx[1387] + xx[1418] - (xx[1316] + xx[1316]) * xx[1250] + xx[1379];
-  xx[1227] = xx[1210] - (xx[1357] * xx[1210] * xx[1357] + xx[1210] * xx[1401] *
+  xx[1226] = xx[1385] + xx[1416] + (xx[1318] + xx[1219]) * xx[1250] + xx[1377];
+  xx[1219] = xx[1386] + xx[1417] - xx[16] * inputDdot[10] + xx[1378];
+  xx[1228] = xx[1219] * xx[1357] + xx[1226] * xx[1401];
+  xx[1251] = xx[1226] - xx[19] * xx[1228] * xx[1401];
+  xx[1226] = xx[1219] - xx[19] * xx[1228] * xx[1357];
+  xx[1219] = xx[1387] + xx[1418] - (xx[1316] + xx[1316]) * xx[1250] + xx[1379];
+  xx[1228] = xx[1219] - (xx[1357] * xx[1219] * xx[1357] + xx[1219] * xx[1401] *
     xx[1401]) * xx[19];
   xx[1357] = xx[1251];
-  xx[1358] = xx[1222];
-  xx[1359] = xx[1227];
-  xx[1210] = pm_math_dot3(xx + 1346, xx + 1361) + pm_math_dot3(xx + 1372, xx +
+  xx[1358] = xx[1226];
+  xx[1359] = xx[1228];
+  xx[1219] = pm_math_dot3(xx + 1346, xx + 1361) + pm_math_dot3(xx + 1372, xx +
     1357);
-  xx[1250] = (xx[1337] + xx[1343] + xx[1327] + xx[467] - ((xx[1344] + xx[1136]) *
-    xx[1835] + (xx[1345] + xx[1215]) * xx[1824])) / xx[1898] + xx[1210];
+  xx[1250] = (xx[1337] + xx[1343] + xx[1327] + xx[1121] - ((xx[1344] + xx[1160])
+    * xx[1835] + (xx[1345] + xx[1222]) * xx[1824])) / xx[1898] + xx[1219];
   xx[1252] = xx[1299] + xx[1256];
   xx[1253] = xx[1300] - xx[1295];
   xx[1325] = xx[1252];
@@ -11220,14 +11220,14 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1327] = xx[1309] - xx[1250];
   pm_math_quatInverseXform(xx + 1801, xx + 1325, xx + 1341);
   pm_math_cross3(xx + 1325, xx + 1871, xx + 1344);
-  xx[1256] = xx[1227] + xx[143];
-  xx[1325] = xx[1251] + xx[1250] * xx[1835] + xx[1219] + xx[1344];
-  xx[1326] = xx[1222] + xx[1250] * xx[1824] + xx[1228] + xx[1345];
+  xx[1256] = xx[1228] + xx[143];
+  xx[1325] = xx[1251] + xx[1250] * xx[1835] + xx[1227] + xx[1344];
+  xx[1326] = xx[1226] + xx[1250] * xx[1824] + xx[1234] + xx[1345];
   xx[1327] = xx[1256] + xx[1346];
   pm_math_quatInverseXform(xx + 1801, xx + 1325, xx + 1344);
   xx[143] = xx[1332] - (pm_math_dot3(xx + 1927, xx + 1341) + pm_math_dot3(xx +
     2007, xx + 1344));
-  xx[1227] = xx[1333] - (pm_math_dot3(xx + 2013, xx + 1341) + pm_math_dot3(xx +
+  xx[1228] = xx[1333] - (pm_math_dot3(xx + 2013, xx + 1341) + pm_math_dot3(xx +
     2016, xx + 1344));
   xx[1295] = xx[1334] - (pm_math_dot3(xx + 2019, xx + 1341) + pm_math_dot3(xx +
     1941, xx + 1344));
@@ -11240,8 +11240,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1327] = xx[1300];
   xx[1328] = xx[1310];
   pm_math_quatCompose(xx + 11, xx + 1325, xx + 1332);
-  xx[1313] = xx[1300] * xx[1296];
-  xx[1314] = xx[1310] * xx[1299];
+  xx[1313] = xx[1296] * xx[1300];
+  xx[1314] = xx[1299] * xx[1310];
   xx[1316] = xx[1300] * xx[1310];
   xx[1318] = xx[1296] * xx[1299];
   xx[1325] = xx[1299] * xx[1299];
@@ -11259,7 +11259,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1328] = 0.03194045367095624;
   xx[1344] = xx[114] - (xx[19] * xx[1327] * xx[42] + xx[1339]) + xx[1328];
   xx[1327] = xx[1344] * xx[6];
-  xx[1345] = xx[6] * xx[1338];
+  xx[1345] = xx[1338] * xx[6];
   xx[1346] = xx[10] * xx[1338] - xx[1344] * xx[8];
   xx[1347] = - xx[1327];
   xx[1348] = - xx[1345];
@@ -11268,8 +11268,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1347] = xx[16] * xx[8];
   xx[1348] = xx[16] * xx[6];
   xx[1349] = xx[2] * xx[1348];
-  xx[1350] = xx[19] * xx[351] * state[36] * state[36];
-  xx[351] = xx[400] * state[36] * state[36];
+  xx[1350] = xx[19] * xx[396] * state[36] * state[36];
+  xx[396] = xx[401] * state[36] * state[36];
   xx[1354] = xx[1329] * xx[1329];
   xx[1505] = (xx[1354] + xx[624]) * xx[19] - xx[21];
   xx[1506] = xx[1491];
@@ -11339,9 +11339,9 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[1364] = xx[1455] * state[10];
   xx[1366] = xx[19] * (xx[1456] * xx[1363] - xx[1453] * xx[1364]);
   pm_math_quatInverseXform(xx + 1412, xx + 1056, xx + 1372);
-  pm_math_quatInverseXform(xx + 1408, xx + 1167, xx + 1377);
-  xx[1369] = xx[320] * xx[354];
-  xx[1370] = xx[19] * xx[1369] * xx[354] - xx[320];
+  pm_math_quatInverseXform(xx + 1408, xx + 1080, xx + 1377);
+  xx[1369] = xx[320] * xx[356];
+  xx[1370] = xx[19] * xx[1369] * xx[356] - xx[320];
   xx[1375] = xx[1377] + xx[1370];
   xx[1381] = xx[1372] + xx[1375];
   xx[1382] = (xx[1453] * xx[1363] + xx[1456] * xx[1364]) * xx[19];
@@ -11409,68 +11409,68 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_matrix3x3PostCross(xx + 1589, xx + 871, xx + 1611);
   xx[871] = xx[1370];
   xx[872] = xx[169];
-  xx[873] = xx[198];
+  xx[873] = xx[196];
   pm_math_matrix3x3PostCross(xx + 1505, xx + 871, xx + 1589);
   xx[169] = xx[1596] * state[36];
   xx[170] = xx[1590] * state[36];
   xx[187] = xx[1593] * state[36];
-  xx[198] = xx[1589] * state[36];
+  xx[196] = xx[1589] * state[36];
   xx[272] = xx[1592] * state[36];
   xx[871] = xx[1595] * state[36];
-  xx[1505] = xx[1611] + xx[605] * xx[169] - (xx[170] * xx[450] + xx[602] * xx
-    [187]);
-  xx[1506] = xx[1612] + xx[198] * xx[450] + xx[602] * xx[272] - xx[605] * xx[871];
+  xx[1505] = xx[1611] + xx[605] * xx[169] - (xx[170] * xx[450] + xx[187] * xx
+    [602]);
+  xx[1506] = xx[1612] + xx[196] * xx[450] + xx[272] * xx[602] - xx[605] * xx[871];
   xx[1507] = xx[1613];
-  xx[1508] = xx[1614] + xx[606] * xx[170] - xx[187] * xx[541] - xx[608] * xx[169];
-  xx[1509] = xx[1615] + xx[272] * xx[541] - xx[606] * xx[198] + xx[608] * xx[871];
+  xx[1508] = xx[1614] + xx[606] * xx[170] - xx[187] * xx[541] - xx[169] * xx[608];
+  xx[1509] = xx[1615] + xx[272] * xx[541] - xx[606] * xx[196] + xx[871] * xx[608];
   xx[1510] = xx[1616];
-  xx[1511] = xx[1617] - (xx[609] * xx[170] + xx[603] * xx[187] + xx[169] * xx
+  xx[1511] = xx[1617] - (xx[170] * xx[609] + xx[603] * xx[187] + xx[169] * xx
     [542]);
-  xx[1512] = xx[1618] + xx[609] * xx[198] + xx[603] * xx[272] + xx[871] * xx[542];
+  xx[1512] = xx[1618] + xx[196] * xx[609] + xx[603] * xx[272] + xx[871] * xx[542];
   xx[1513] = xx[1619];
   pm_math_matrix3x3Compose(xx + 732, xx + 1505, xx + 871);
   xx[169] = xx[1580] + xx[871];
   xx[170] = xx[1583] + xx[874];
   xx[187] = xx[1581] + xx[872];
-  xx[198] = xx[1584] + xx[875];
+  xx[196] = xx[1584] + xx[875];
   xx[272] = xx[1582] + xx[873];
   xx[450] = xx[1585] + xx[876];
-  xx[732] = xx[1571] + xx[169] * xx[274] - xx[170] * xx[206];
-  xx[733] = xx[1572] + xx[187] * xx[274] - xx[198] * xx[206];
-  xx[734] = xx[1573] + xx[272] * xx[274] - xx[450] * xx[206];
-  xx[735] = xx[1574] + xx[170] * xx[434] - xx[169] * xx[206];
-  xx[736] = xx[1575] + xx[198] * xx[434] - xx[187] * xx[206];
-  xx[737] = xx[1576] + xx[450] * xx[434] - xx[272] * xx[206];
+  xx[732] = xx[1571] + xx[169] * xx[378] - xx[170] * xx[198];
+  xx[733] = xx[1572] + xx[187] * xx[378] - xx[196] * xx[198];
+  xx[734] = xx[1573] + xx[272] * xx[378] - xx[450] * xx[198];
+  xx[735] = xx[1574] + xx[170] * xx[434] - xx[169] * xx[198];
+  xx[736] = xx[1575] + xx[196] * xx[434] - xx[187] * xx[198];
+  xx[737] = xx[1576] + xx[450] * xx[434] - xx[272] * xx[198];
   xx[738] = xx[1577] - (xx[1586] + xx[877]);
   xx[739] = xx[1578] - (xx[1587] + xx[878]);
   xx[740] = xx[1579] - (xx[1588] + xx[879]);
   pm_math_matrix3x3Compose(xx + 2336, xx + 732, xx + 871);
-  xx[732] = xx[33] * xx[1350] - xx[351] * xx[152] + xx[811] * xx[400] - xx[812] *
-    xx[356] + xx[1527] + xx[1547] + xx[420] * xx[252] + xx[570] * xx[440] - (xx
-    [441] * xx[645] + xx[461] * xx[1362]) + (xx[1410] + xx[871]) * xx[19];
-  xx[733] = xx[811] * xx[356] + xx[812] * xx[400] - (xx[1350] * xx[152] + xx[33]
-    * xx[351]) + xx[1528] + xx[1548] + xx[630] * xx[420] + xx[440] * xx[167] -
-    (xx[1397] * xx[441] + xx[461] * xx[1408]) + (xx[1411] + xx[872]) * xx[19];
-  xx[734] = xx[813] * xx[401] + xx[1529] + xx[1549] + xx[258] * xx[420] + xx[168]
-    * xx[440] + xx[441] * xx[1401] - xx[461] * xx[641] + (xx[1412] + xx[873]) *
+  xx[732] = xx[1350] * xx[33] - xx[396] * xx[152] + xx[811] * xx[401] - xx[812] *
+    xx[397] + xx[1527] + xx[1547] + xx[252] * xx[422] + xx[570] * xx[440] - (xx
+    [441] * xx[645] + xx[1362] * xx[499]) + (xx[1410] + xx[871]) * xx[19];
+  xx[733] = xx[811] * xx[397] + xx[812] * xx[401] - (xx[1350] * xx[152] + xx[396]
+    * xx[33]) + xx[1528] + xx[1548] + xx[630] * xx[422] + xx[167] * xx[440] -
+    (xx[441] * xx[1397] + xx[499] * xx[1408]) + (xx[1411] + xx[872]) * xx[19];
+  xx[734] = xx[813] * xx[351] + xx[1529] + xx[1549] + xx[258] * xx[422] + xx[168]
+    * xx[440] + xx[1401] * xx[441] - xx[641] * xx[499] + (xx[1412] + xx[873]) *
     xx[19];
-  xx[735] = xx[1350] * xx[153] - xx[196] * xx[351] + xx[814] * xx[400] - xx[815]
-    * xx[356] + xx[1530] + xx[1550] + xx[31] * xx[252] + xx[570] * xx[32] - (xx
-    [166] * xx[645] + xx[197] * xx[1362]) + (xx[1413] + xx[874]) * xx[19];
-  xx[736] = xx[814] * xx[356] + xx[815] * xx[400] - (xx[1350] * xx[196] + xx[351]
-    * xx[153]) + xx[1531] + xx[1551] + xx[630] * xx[31] + xx[32] * xx[167] -
-    (xx[166] * xx[1397] + xx[197] * xx[1408]) + (xx[1414] + xx[875]) * xx[19];
-  xx[737] = xx[816] * xx[401] + xx[1532] + xx[1552] + xx[258] * xx[31] + xx[168]
-    * xx[32] + xx[166] * xx[1401] - xx[641] * xx[197] + (xx[1415] + xx[876]) *
+  xx[735] = xx[1350] * xx[153] - xx[396] * xx[197] + xx[814] * xx[401] - xx[815]
+    * xx[397] + xx[1530] + xx[1550] + xx[252] * xx[31] + xx[570] * xx[32] - (xx
+    [166] * xx[645] + xx[1362] * xx[206]) + (xx[1413] + xx[874]) * xx[19];
+  xx[736] = xx[814] * xx[397] + xx[815] * xx[401] - (xx[197] * xx[1350] + xx[396]
+    * xx[153]) + xx[1531] + xx[1551] + xx[630] * xx[31] + xx[167] * xx[32] -
+    (xx[1397] * xx[166] + xx[206] * xx[1408]) + (xx[1414] + xx[875]) * xx[19];
+  xx[737] = xx[816] * xx[351] + xx[1532] + xx[1552] + xx[258] * xx[31] + xx[168]
+    * xx[32] + xx[1401] * xx[166] - xx[206] * xx[641] + (xx[1415] + xx[876]) *
     xx[19];
-  xx[738] = xx[1350] * xx[210] - xx[213] * xx[351] + xx[817] * xx[400] - xx[818]
-    * xx[356] + xx[1533] + xx[1553] + xx[220] * xx[252] + xx[570] * xx[221] -
-    (xx[222] * xx[645] + xx[223] * xx[1362]) + (xx[1416] + xx[877]) * xx[19];
-  xx[739] = xx[817] * xx[356] + xx[818] * xx[400] - (xx[213] * xx[1350] + xx[210]
-    * xx[351]) + xx[1534] + xx[1554] + xx[630] * xx[220] + xx[221] * xx[167] -
-    (xx[222] * xx[1397] + xx[223] * xx[1408]) + (xx[1417] + xx[878]) * xx[19];
-  xx[740] = xx[819] * xx[401] + xx[1535] + xx[1555] + xx[258] * xx[220] + xx[168]
-    * xx[221] + xx[222] * xx[1401] - xx[223] * xx[641] + (xx[1418] + xx[879]) *
+  xx[738] = xx[210] * xx[1350] - xx[396] * xx[213] + xx[817] * xx[401] - xx[818]
+    * xx[397] + xx[1533] + xx[1553] + xx[252] * xx[220] + xx[570] * xx[221] -
+    (xx[222] * xx[645] + xx[1362] * xx[223]) + (xx[1416] + xx[877]) * xx[19];
+  xx[739] = xx[817] * xx[397] + xx[818] * xx[401] - (xx[1350] * xx[213] + xx[396]
+    * xx[210]) + xx[1534] + xx[1554] + xx[630] * xx[220] + xx[167] * xx[221] -
+    (xx[1397] * xx[222] + xx[223] * xx[1408]) + (xx[1417] + xx[878]) * xx[19];
+  xx[740] = xx[819] * xx[351] + xx[1535] + xx[1555] + xx[258] * xx[220] + xx[168]
+    * xx[221] + xx[1401] * xx[222] - xx[641] * xx[223] + (xx[1418] + xx[879]) *
     xx[19];
   pm_math_matrix3x3Xform(xx + 732, xx + 231, xx + 31);
   xx[152] = state[36] * state[36];
@@ -11479,130 +11479,130 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[152] = xx[311] * xx[167];
   xx[168] = xx[311] * xx[153];
   xx[169] = xx[309] * xx[167] - xx[310] * xx[153];
-  xx[732] = - xx[152];
-  xx[733] = xx[168];
-  xx[734] = xx[169];
-  pm_math_cross3(xx + 309, xx + 732, xx + 735);
-  pm_math_matrix3x3Xform(xx + 741, xx + 1398, xx + 309);
-  xx[732] = xx[309] + xx[203];
-  xx[733] = xx[310] + xx[224];
-  xx[734] = xx[311] + xx[240];
-  pm_math_quatXform(xx + 304, xx + 732, xx + 309);
-  pm_math_matrix3x3Xform(xx + 847, xx + 1404, xx + 304);
-  xx[732] = xx[304] + xx[589];
-  xx[733] = xx[305] + xx[590];
-  xx[734] = xx[306] + xx[591];
-  pm_math_quatXform(xx + 300, xx + 732, xx + 304);
+  xx[196] = - xx[152];
+  xx[197] = xx[168];
+  xx[198] = xx[169];
+  pm_math_cross3(xx + 309, xx + 196, xx + 732);
+  pm_math_matrix3x3Xform(xx + 741, xx + 1398, xx + 196);
+  xx[309] = xx[196] + xx[203];
+  xx[310] = xx[197] + xx[219];
+  xx[311] = xx[198] + xx[224];
+  pm_math_quatXform(xx + 304, xx + 309, xx + 196);
+  pm_math_matrix3x3Xform(xx + 847, xx + 1404, xx + 219);
+  xx[304] = xx[219] + xx[589];
+  xx[305] = xx[220] + xx[590];
+  xx[306] = xx[221] + xx[591];
+  pm_math_quatXform(xx + 300, xx + 304, xx + 219);
   pm_math_matrix3x3Xform(xx + 1944, xx + 1420, xx + 300);
-  xx[589] = xx[300] + xx[652];
-  xx[590] = xx[301] + xx[653];
-  xx[591] = xx[302] + xx[654];
-  pm_math_quatXform(xx + 296, xx + 589, xx + 300);
-  xx[170] = xx[262] * xx[165] - xx[1425] * xx[386] + xx[202];
-  xx[187] = xx[1425] * xx[165] - xx[262] * xx[435] - xx[219];
-  xx[165] = xx[164] * xx[187];
-  xx[196] = xx[164] * xx[170];
-  xx[198] = xx[149] * xx[187] - xx[170] * xx[156];
-  xx[219] = - xx[165];
-  xx[220] = xx[196];
-  xx[221] = xx[198];
-  pm_math_cross3(xx + 284, xx + 219, xx + 296);
-  xx[202] = xx[262] * xx[157] + xx[1425] * xx[159];
-  xx[203] = xx[1425] - xx[19] * xx[202] * xx[159] + xx[428];
-  xx[206] = xx[262] - xx[19] * xx[202] * xx[157] + xx[429];
-  xx[202] = xx[1426] * state[36];
-  xx[210] = xx[453] * state[36];
-  xx[219] = xx[202] - xx[340] * xx[462];
-  xx[220] = - (xx[210] + xx[340] * xx[465] + xx[341] * xx[320]);
-  xx[221] = xx[320] * xx[462];
-  pm_math_quatXform(xx + 214, xx + 219, xx + 589);
-  xx[213] = xx[282] + xx[589];
-  pm_math_cross3(xx + 1167, xx + 1404, xx + 219);
-  xx[224] = xx[238] + xx[590];
-  xx[238] = xx[591] - xx[243];
-  xx[589] = xx[213] + xx[219];
-  xx[590] = xx[224] + xx[220];
-  xx[591] = xx[238] + xx[221];
-  pm_math_quatXform(xx + 188, xx + 589, xx + 219);
-  xx[240] = xx[334] + xx[219];
-  pm_math_cross3(xx + 1056, xx + 1420, xx + 589);
-  xx[243] = xx[335] + xx[220];
-  xx[219] = xx[336] + xx[221];
-  xx[334] = xx[240] + xx[589];
-  xx[335] = xx[243] + xx[590];
-  xx[336] = xx[219] + xx[591];
-  pm_math_quatXform(xx + 178, xx + 334, xx + 589);
-  xx[220] = xx[669] + xx[589];
-  xx[221] = xx[220] - xx[262] * state[10];
-  xx[252] = xx[670] + xx[590];
-  xx[258] = xx[252] + xx[1425] * state[10];
-  xx[262] = xx[258] * xx[157] + xx[159] * xx[221];
-  xx[272] = (xx[425] + xx[221] - xx[19] * xx[262] * xx[159]) * inputDot[6];
-  xx[221] = xx[164] * xx[272];
-  xx[274] = (xx[432] + xx[258] - xx[19] * xx[262] * xx[157]) * inputDot[6];
-  xx[258] = xx[164] * xx[274];
-  xx[262] = xx[149] * xx[272] + xx[274] * xx[156];
-  xx[334] = - xx[221];
-  xx[335] = - xx[258];
-  xx[336] = xx[262];
-  pm_math_cross3(xx + 284, xx + 334, xx + 589);
-  xx[282] = xx[252] * state[10];
-  xx[252] = xx[220] * state[10];
-  xx[220] = xx[282] * xx[159] - xx[157] * xx[252];
-  xx[334] = xx[240];
-  xx[335] = xx[243];
-  xx[336] = xx[219];
-  pm_math_cross3(xx + 1056, xx + 334, xx + 652);
-  pm_math_quatXform(xx + 178, xx + 652, xx + 334);
-  xx[652] = xx[213];
-  xx[653] = xx[224];
+  xx[303] = xx[300] + xx[652];
+  xx[304] = xx[301] + xx[653];
+  xx[305] = xx[302] + xx[654];
+  pm_math_quatXform(xx + 296, xx + 303, xx + 300);
+  xx[170] = xx[262] * xx[274] - xx[1425] * xx[379] + xx[202];
+  xx[187] = xx[1425] * xx[274] - xx[262] * xx[435] - xx[218];
+  xx[202] = xx[164] * xx[187];
+  xx[203] = xx[164] * xx[170];
+  xx[210] = xx[149] * xx[187] - xx[170] * xx[156];
+  xx[296] = - xx[202];
+  xx[297] = xx[203];
+  xx[298] = xx[210];
+  pm_math_cross3(xx + 284, xx + 296, xx + 303);
+  xx[213] = xx[262] * xx[157] + xx[1425] * xx[159];
+  xx[218] = xx[1425] - xx[19] * xx[213] * xx[159] + xx[428];
+  xx[224] = xx[262] - xx[19] * xx[213] * xx[157] + xx[429];
+  xx[213] = xx[1426] * state[36];
+  xx[252] = xx[453] * state[36];
+  xx[296] = xx[213] - xx[340] * xx[462];
+  xx[297] = - (xx[252] + xx[340] * xx[465] + xx[341] * xx[320]);
+  xx[298] = xx[320] * xx[462];
+  pm_math_quatXform(xx + 214, xx + 296, xx + 309);
+  xx[258] = xx[282] + xx[309];
+  pm_math_cross3(xx + 1080, xx + 1404, xx + 296);
+  xx[272] = xx[238] + xx[310];
+  xx[238] = xx[311] - xx[243];
+  xx[309] = xx[258] + xx[296];
+  xx[310] = xx[272] + xx[297];
+  xx[311] = xx[238] + xx[298];
+  pm_math_quatXform(xx + 188, xx + 309, xx + 296);
+  xx[243] = xx[334] + xx[296];
+  pm_math_cross3(xx + 1056, xx + 1420, xx + 309);
+  xx[274] = xx[335] + xx[297];
+  xx[282] = xx[336] + xx[298];
+  xx[296] = xx[243] + xx[309];
+  xx[297] = xx[274] + xx[310];
+  xx[298] = xx[282] + xx[311];
+  pm_math_quatXform(xx + 178, xx + 296, xx + 309);
+  xx[296] = xx[669] + xx[309];
+  xx[297] = xx[296] - xx[262] * state[10];
+  xx[262] = xx[670] + xx[310];
+  xx[298] = xx[262] + xx[1425] * state[10];
+  xx[299] = xx[298] * xx[157] + xx[159] * xx[297];
+  xx[306] = (xx[425] + xx[297] - xx[19] * xx[299] * xx[159]) * inputDot[6];
+  xx[297] = xx[164] * xx[306];
+  xx[307] = (xx[432] + xx[298] - xx[19] * xx[299] * xx[157]) * inputDot[6];
+  xx[298] = xx[164] * xx[307];
+  xx[299] = xx[149] * xx[306] + xx[307] * xx[156];
+  xx[309] = - xx[297];
+  xx[310] = - xx[298];
+  xx[311] = xx[299];
+  pm_math_cross3(xx + 284, xx + 309, xx + 334);
+  xx[309] = xx[262] * state[10];
+  xx[262] = xx[296] * state[10];
+  xx[296] = xx[309] * xx[159] - xx[157] * xx[262];
+  xx[589] = xx[243];
+  xx[590] = xx[274];
+  xx[591] = xx[282];
+  pm_math_cross3(xx + 1056, xx + 589, xx + 652);
+  pm_math_quatXform(xx + 178, xx + 652, xx + 589);
+  xx[652] = xx[258];
+  xx[653] = xx[272];
   xx[654] = xx[238];
-  pm_math_cross3(xx + 1167, xx + 652, xx + 732);
-  pm_math_quatXform(xx + 188, xx + 732, xx + 652);
-  xx[732] = - (xx[210] * xx[340]);
-  xx[733] = - (xx[202] * xx[340]);
-  xx[734] = xx[210] * xx[320];
-  pm_math_quatXform(xx + 214, xx + 732, xx + 738);
-  pm_math_quatXform(xx + 188, xx + 738, xx + 732);
-  xx[738] = xx[652] + xx[732];
-  xx[739] = xx[653] + xx[733];
-  xx[740] = xx[654] + xx[734];
+  pm_math_cross3(xx + 1080, xx + 652, xx + 735);
+  pm_math_quatXform(xx + 188, xx + 735, xx + 652);
+  xx[735] = - (xx[340] * xx[252]);
+  xx[736] = - (xx[340] * xx[213]);
+  xx[737] = xx[320] * xx[252];
+  pm_math_quatXform(xx + 214, xx + 735, xx + 738);
+  pm_math_quatXform(xx + 188, xx + 738, xx + 735);
+  xx[738] = xx[652] + xx[735];
+  xx[739] = xx[653] + xx[736];
+  xx[740] = xx[654] + xx[737];
   pm_math_quatXform(xx + 178, xx + 738, xx + 652);
-  xx[202] = xx[334] + xx[652];
-  xx[210] = xx[335] + xx[653];
-  xx[213] = xx[210] * xx[157] + xx[202] * xx[159];
-  xx[219] = xx[336] + xx[654];
-  xx[334] = xx[19] * xx[159] * xx[220] - xx[282] + xx[202] - xx[19] * xx[213] *
+  xx[213] = xx[589] + xx[652];
+  xx[238] = xx[590] + xx[653];
+  xx[243] = xx[238] * xx[157] + xx[213] * xx[159];
+  xx[252] = xx[591] + xx[654];
+  xx[589] = xx[19] * xx[159] * xx[296] - xx[309] + xx[213] - xx[19] * xx[243] *
     xx[159];
-  xx[335] = xx[252] + xx[19] * xx[157] * xx[220] + xx[210] - xx[19] * xx[213] *
+  xx[590] = xx[262] + xx[19] * xx[157] * xx[296] + xx[238] - xx[19] * xx[243] *
     xx[157];
-  xx[336] = xx[219] - (xx[157] * xx[219] * xx[157] + xx[219] * xx[159] * xx[159])
+  xx[591] = xx[252] - (xx[157] * xx[252] * xx[157] + xx[252] * xx[159] * xx[159])
     * xx[19];
-  pm_math_quatXform(xx + 330, xx + 334, xx + 652);
+  pm_math_quatXform(xx + 330, xx + 589, xx + 309);
   xx[157] = xx[126] * xx[126];
   xx[159] = xx[130] * xx[126];
-  xx[202] = xx[127] * xx[129];
-  xx[210] = xx[130] * xx[127];
-  xx[213] = xx[126] * xx[129];
-  xx[219] = xx[130] * xx[129];
-  xx[220] = xx[127] * xx[126];
-  xx[738] = (xx[157] + xx[127] * xx[127]) * xx[19] - xx[21];
-  xx[739] = xx[19] * (xx[159] - xx[202]);
-  xx[740] = - ((xx[210] + xx[213]) * xx[19]);
-  xx[741] = - ((xx[202] + xx[159]) * xx[19]);
-  xx[742] = (xx[157] + xx[129] * xx[129]) * xx[19] - xx[21];
-  xx[743] = xx[19] * (xx[219] - xx[220]);
-  xx[744] = xx[19] * (xx[213] - xx[210]);
-  xx[745] = (xx[219] + xx[220]) * xx[19];
-  xx[746] = (xx[157] + xx[130] * xx[130]) * xx[19] - xx[21];
+  xx[213] = xx[127] * xx[129];
+  xx[238] = xx[130] * xx[127];
+  xx[243] = xx[126] * xx[129];
+  xx[252] = xx[130] * xx[129];
+  xx[258] = xx[127] * xx[126];
+  xx[735] = (xx[157] + xx[127] * xx[127]) * xx[19] - xx[21];
+  xx[736] = xx[19] * (xx[159] - xx[213]);
+  xx[737] = - ((xx[238] + xx[243]) * xx[19]);
+  xx[738] = - ((xx[213] + xx[159]) * xx[19]);
+  xx[739] = (xx[157] + xx[129] * xx[129]) * xx[19] - xx[21];
+  xx[740] = xx[19] * (xx[252] - xx[258]);
+  xx[741] = xx[19] * (xx[243] - xx[238]);
+  xx[742] = (xx[252] + xx[258]) * xx[19];
+  xx[743] = (xx[157] + xx[130] * xx[130]) * xx[19] - xx[21];
   xx[126] = xx[1903] * xx[72] - xx[62] * state[8];
   xx[127] = xx[74] * xx[62] - xx[934] * xx[72];
   xx[129] = xx[74] * xx[1903] - xx[934] * state[8];
   xx[130] = xx[1905] * state[8] - xx[137] * xx[72];
   xx[157] = xx[74] * xx[1905] - xx[136] * xx[72];
   xx[159] = xx[136] * state[8] - xx[74] * xx[137];
-  xx[202] = xx[49] * xx[72] - xx[128] * state[8];
-  xx[210] = xx[74] * xx[128] - xx[1902] * xx[72];
+  xx[213] = xx[49] * xx[72] - xx[128] * state[8];
+  xx[238] = xx[74] * xx[128] - xx[1902] * xx[72];
   xx[128] = xx[1902] * state[8] - xx[74] * xx[49];
   xx[811] = xx[126] * state[8] - xx[127] * xx[74];
   xx[812] = xx[129] * state[8] + xx[127] * xx[72];
@@ -11610,301 +11610,301 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[814] = - (xx[130] * state[8] + xx[74] * xx[157]);
   xx[815] = xx[157] * xx[72] - xx[159] * state[8];
   xx[816] = xx[159] * xx[74] + xx[130] * xx[72];
-  xx[817] = xx[202] * state[8] - xx[74] * xx[210];
-  xx[818] = xx[210] * xx[72] - xx[128] * state[8];
-  xx[819] = xx[74] * xx[128] - xx[202] * xx[72];
-  pm_math_matrix3x3Compose(xx + 738, xx + 811, xx + 847);
-  xx[49] = xx[19] * xx[41] * xx[42] * state[1] * state[1];
-  xx[126] = xx[2] * xx[6];
-  xx[127] = xx[10] * xx[8];
-  xx[128] = xx[126] - xx[127];
-  xx[129] = xx[19] * xx[128];
+  xx[817] = xx[213] * state[8] - xx[74] * xx[238];
+  xx[818] = xx[238] * xx[72] - xx[128] * state[8];
+  xx[819] = xx[74] * xx[128] - xx[213] * xx[72];
+  pm_math_matrix3x3Compose(xx + 735, xx + 811, xx + 847);
+  xx[49] = xx[2] * xx[6];
+  xx[126] = xx[10] * xx[8];
+  xx[127] = xx[49] - xx[126];
+  xx[128] = xx[19] * xx[127];
+  xx[129] = xx[19] * xx[41] * xx[42] * state[1] * state[1];
   xx[130] = (xx[19] * xx[41] * xx[41] - xx[21]) * state[1] * state[1];
   xx[157] = xx[2] * xx[2];
   xx[159] = (xx[157] + xx[8] * xx[8]) * xx[19] - xx[21];
-  xx[202] = xx[49] * xx[129] - xx[130] * xx[159];
-  xx[210] = (xx[19] * xx[42] * xx[42] - xx[21]) * state[1] * state[1];
-  xx[213] = xx[49] * xx[159] - xx[129] * xx[210];
-  xx[219] = xx[159] * inputDot[7] * inputDot[7];
-  xx[220] = xx[1296] * xx[1296];
-  xx[224] = (xx[220] + xx[1325]) * xx[19] - xx[21];
-  xx[238] = xx[19] * xx[128] * inputDot[7] * inputDot[7];
-  xx[128] = xx[1296] * xx[1310];
-  xx[240] = xx[1300] * xx[1299];
-  xx[243] = (xx[128] - xx[240]) * xx[19];
-  xx[252] = xx[1332] * xx[1332];
-  xx[282] = xx[1333] * xx[1334];
-  xx[299] = xx[1332] * xx[1335];
-  xx[303] = xx[1333] * xx[1335];
-  xx[307] = xx[1332] * xx[1334];
-  xx[320] = xx[1334] * xx[1335];
-  xx[330] = xx[1332] * xx[1333];
-  xx[738] = (xx[252] + xx[1333] * xx[1333]) * xx[19] - xx[21];
-  xx[739] = xx[19] * (xx[282] - xx[299]);
-  xx[740] = (xx[303] + xx[307]) * xx[19];
-  xx[741] = (xx[282] + xx[299]) * xx[19];
-  xx[742] = (xx[252] + xx[1334] * xx[1334]) * xx[19] - xx[21];
-  xx[743] = xx[19] * (xx[320] - xx[330]);
-  xx[744] = xx[19] * (xx[303] - xx[307]);
-  xx[745] = (xx[320] + xx[330]) * xx[19];
-  xx[746] = (xx[252] + xx[1335] * xx[1335]) * xx[19] - xx[21];
-  xx[252] = xx[1300] * inputDot[7];
-  xx[282] = xx[1299] * inputDot[7];
-  xx[330] = xx[19] * (xx[1296] * xx[252] + xx[282] * xx[1310]);
-  xx[331] = - ((xx[252] * xx[1310] - xx[1296] * xx[282]) * xx[19]);
-  xx[332] = (xx[282] * xx[1299] + xx[1300] * xx[252]) * xx[19] - inputDot[7];
-  pm_math_matrix3x3PostCross(xx + 738, xx + 330, xx + 871);
-  xx[252] = xx[59] * state[1];
-  xx[282] = xx[56] * state[1];
-  xx[299] = (xx[252] * xx[55] + xx[282] * xx[61]) * xx[19];
-  xx[303] = xx[19] * (xx[252] * xx[61] - xx[282] * xx[55]);
-  xx[55] = state[1] - (xx[282] * xx[56] + xx[59] * xx[252]) * xx[19];
-  xx[330] = xx[299] + xx[72];
-  xx[331] = xx[303] + xx[74];
-  xx[332] = xx[55] + state[8];
-  pm_math_matrix3x3PostCross(xx + 871, xx + 330, xx + 738);
+  xx[213] = xx[128] * xx[129] - xx[130] * xx[159];
+  xx[238] = (xx[19] * xx[42] * xx[42] - xx[21]) * state[1] * state[1];
+  xx[243] = xx[129] * xx[159] - xx[238] * xx[128];
+  xx[252] = xx[159] * inputDot[7] * inputDot[7];
+  xx[258] = xx[1296] * xx[1296];
+  xx[262] = (xx[258] + xx[1325]) * xx[19] - xx[21];
+  xx[272] = xx[1296] * xx[1310];
+  xx[274] = xx[1300] * xx[1299];
+  xx[282] = (xx[272] - xx[274]) * xx[19];
+  xx[296] = xx[19] * xx[127] * inputDot[7] * inputDot[7];
+  xx[127] = xx[1332] * xx[1332];
+  xx[320] = xx[1333] * xx[1334];
+  xx[330] = xx[1332] * xx[1335];
+  xx[331] = xx[1333] * xx[1335];
+  xx[332] = xx[1332] * xx[1334];
+  xx[333] = xx[1334] * xx[1335];
+  xx[340] = xx[1332] * xx[1333];
+  xx[735] = (xx[127] + xx[1333] * xx[1333]) * xx[19] - xx[21];
+  xx[736] = xx[19] * (xx[320] - xx[330]);
+  xx[737] = (xx[331] + xx[332]) * xx[19];
+  xx[738] = (xx[320] + xx[330]) * xx[19];
+  xx[739] = (xx[127] + xx[1334] * xx[1334]) * xx[19] - xx[21];
+  xx[740] = xx[19] * (xx[333] - xx[340]);
+  xx[741] = xx[19] * (xx[331] - xx[332]);
+  xx[742] = (xx[333] + xx[340]) * xx[19];
+  xx[743] = (xx[127] + xx[1335] * xx[1335]) * xx[19] - xx[21];
+  xx[127] = xx[1300] * inputDot[7];
+  xx[320] = xx[1299] * inputDot[7];
+  xx[330] = xx[19] * (xx[1296] * xx[127] + xx[320] * xx[1310]);
+  xx[331] = - ((xx[127] * xx[1310] - xx[1296] * xx[320]) * xx[19]);
+  xx[332] = (xx[320] * xx[1299] + xx[1300] * xx[127]) * xx[19] - inputDot[7];
+  pm_math_matrix3x3PostCross(xx + 735, xx + 330, xx + 871);
+  xx[127] = xx[59] * state[1];
+  xx[320] = xx[56] * state[1];
+  xx[330] = (xx[127] * xx[55] + xx[320] * xx[61]) * xx[19];
+  xx[331] = xx[19] * (xx[127] * xx[61] - xx[320] * xx[55]);
+  xx[55] = state[1] - (xx[320] * xx[56] + xx[59] * xx[127]) * xx[19];
+  xx[589] = xx[330] + xx[72];
+  xx[590] = xx[331] + xx[74];
+  xx[591] = xx[55] + state[8];
+  pm_math_matrix3x3PostCross(xx + 871, xx + 589, xx + 735);
   xx[56] = xx[6] * xx[8];
-  xx[59] = xx[2] * xx[10];
-  xx[61] = xx[127] + xx[126];
-  xx[72] = xx[61] * xx[19];
-  xx[74] = (xx[157] + xx[10] * xx[10]) * xx[19] - xx[21];
-  xx[126] = xx[2] * xx[8];
-  xx[127] = xx[10] * xx[6];
-  xx[252] = xx[56] - xx[59];
-  xx[282] = xx[19] * xx[252];
-  xx[307] = xx[127] + xx[126];
-  xx[320] = xx[307] * xx[19];
+  xx[59] = xx[10] * xx[2];
+  xx[61] = xx[126] + xx[49];
+  xx[49] = xx[61] * xx[19];
+  xx[72] = (xx[157] + xx[10] * xx[10]) * xx[19] - xx[21];
+  xx[74] = xx[2] * xx[8];
+  xx[126] = xx[10] * xx[6];
+  xx[127] = xx[56] - xx[59];
+  xx[320] = xx[19] * xx[127];
+  xx[332] = xx[126] + xx[74];
+  xx[333] = xx[332] * xx[19];
   xx[871] = xx[159];
-  xx[872] = xx[129];
+  xx[872] = xx[128];
   xx[873] = (xx[56] + xx[59]) * xx[19];
-  xx[874] = - xx[72];
-  xx[875] = xx[74];
-  xx[876] = xx[19] * (xx[126] - xx[127]);
-  xx[877] = xx[282];
-  xx[878] = - xx[320];
+  xx[874] = - xx[49];
+  xx[875] = xx[72];
+  xx[876] = xx[19] * (xx[74] - xx[126]);
+  xx[877] = xx[320];
+  xx[878] = - xx[333];
   xx[879] = (xx[157] + xx[6] * xx[6]) * xx[19] - xx[21];
-  xx[56] = xx[19] * (xx[240] + xx[128]);
+  xx[56] = xx[19] * (xx[274] + xx[272]);
   xx[59] = (xx[1313] - xx[1314]) * xx[19];
-  xx[126] = (xx[220] + xx[1326]) * xx[19] - xx[21];
-  xx[127] = xx[19] * (xx[1316] + xx[1318]);
-  xx[1410] = xx[224];
+  xx[74] = (xx[258] + xx[1326]) * xx[19] - xx[21];
+  xx[126] = xx[19] * (xx[1316] + xx[1318]);
+  xx[1410] = xx[262];
   xx[1411] = - xx[56];
   xx[1412] = xx[59];
-  xx[1413] = xx[243];
-  xx[1414] = xx[126];
-  xx[1415] = xx[127];
+  xx[1413] = xx[282];
+  xx[1414] = xx[74];
+  xx[1415] = xx[126];
   xx[1416] = - (xx[19] * (xx[1314] + xx[1313]));
   xx[1417] = (xx[1316] - xx[1318]) * xx[19];
-  xx[1418] = (xx[220] + xx[1310] * xx[1310]) * xx[19] - xx[21];
-  xx[330] = xx[299];
-  xx[331] = xx[303];
-  xx[332] = xx[55];
-  pm_math_matrix3x3PostCross(xx + 1410, xx + 330, xx + 1505);
+  xx[1418] = (xx[258] + xx[1310] * xx[1310]) * xx[19] - xx[21];
+  xx[589] = xx[330];
+  xx[590] = xx[331];
+  xx[591] = xx[55];
+  pm_math_matrix3x3PostCross(xx + 1410, xx + 589, xx + 1505);
   pm_math_matrix3x3PostCross(xx + 1505, xx + 75, xx + 1410);
   pm_math_matrix3x3Compose(xx + 871, xx + 1410, xx + 1505);
-  xx[55] = xx[49] * xx[74] + xx[130] * xx[72];
-  xx[75] = xx[49] * xx[72] + xx[210] * xx[74];
-  xx[72] = xx[74] * inputDot[7] * inputDot[7];
-  xx[74] = xx[19] * xx[61] * inputDot[7] * inputDot[7];
-  xx[61] = xx[49] * xx[282] + xx[210] * xx[320];
-  xx[76] = xx[49] * xx[320] + xx[282] * xx[130];
-  xx[77] = xx[19] * xx[252] * inputDot[7] * inputDot[7];
-  xx[128] = xx[19] * xx[307] * inputDot[7] * inputDot[7];
-  xx[871] = xx[847] + xx[62] * xx[202] + xx[1905] * xx[213] - (xx[219] * xx[224]
-    + xx[238] * xx[243]) + (xx[738] + xx[1505]) * xx[19];
-  xx[872] = xx[848] + xx[136] * xx[213] + xx[934] * xx[202] - (xx[238] * xx[126]
-    - xx[56] * xx[219]) + (xx[739] + xx[1506]) * xx[19];
-  xx[873] = xx[849] + xx[1903] * xx[202] + xx[137] * xx[213] - (xx[219] * xx[59]
-    + xx[238] * xx[127]) + (xx[740] + xx[1507]) * xx[19];
-  xx[874] = xx[850] + xx[62] * xx[55] - xx[1905] * xx[75] - (xx[243] * xx[72] -
-    xx[74] * xx[224]) + (xx[741] + xx[1508]) * xx[19];
-  xx[875] = xx[851] + xx[934] * xx[55] - xx[136] * xx[75] - (xx[56] * xx[74] +
-    xx[72] * xx[126]) + (xx[742] + xx[1509]) * xx[19];
-  xx[876] = xx[852] + xx[1903] * xx[55] - xx[137] * xx[75] - (xx[127] * xx[72] -
-    xx[74] * xx[59]) + (xx[743] + xx[1510]) * xx[19];
-  xx[877] = xx[853] + xx[1905] * xx[61] - xx[62] * xx[76] - (xx[77] * xx[224] -
-    xx[128] * xx[243]) + (xx[744] + xx[1511]) * xx[19];
-  xx[878] = xx[854] + xx[136] * xx[61] - xx[934] * xx[76] + xx[56] * xx[77] +
-    xx[128] * xx[126] + (xx[745] + xx[1512]) * xx[19];
-  xx[879] = xx[855] + xx[137] * xx[61] - xx[1903] * xx[76] - (xx[77] * xx[59] -
-    xx[127] * xx[128]) + (xx[746] + xx[1513]) * xx[19];
-  pm_math_matrix3x3Xform(xx + 871, xx + 897, xx + 330);
-  pm_math_matrix3x3Xform(xx + 811, xx + 69, xx + 333);
-  pm_math_quatXform(xx + 131, xx + 333, xx + 69);
+  xx[55] = xx[129] * xx[72] + xx[130] * xx[49];
+  xx[75] = xx[49] * xx[129] + xx[238] * xx[72];
+  xx[49] = xx[72] * inputDot[7] * inputDot[7];
+  xx[72] = xx[19] * xx[61] * inputDot[7] * inputDot[7];
+  xx[61] = xx[129] * xx[320] + xx[238] * xx[333];
+  xx[76] = xx[333] * xx[129] + xx[130] * xx[320];
+  xx[77] = xx[19] * xx[127] * inputDot[7] * inputDot[7];
+  xx[127] = xx[19] * xx[332] * inputDot[7] * inputDot[7];
+  xx[871] = xx[847] + xx[62] * xx[213] + xx[1905] * xx[243] - (xx[252] * xx[262]
+    + xx[282] * xx[296]) + (xx[735] + xx[1505]) * xx[19];
+  xx[872] = xx[848] + xx[136] * xx[243] + xx[934] * xx[213] - (xx[296] * xx[74]
+    - xx[252] * xx[56]) + (xx[736] + xx[1506]) * xx[19];
+  xx[873] = xx[849] + xx[1903] * xx[213] + xx[137] * xx[243] - (xx[252] * xx[59]
+    + xx[296] * xx[126]) + (xx[737] + xx[1507]) * xx[19];
+  xx[874] = xx[850] + xx[62] * xx[55] - xx[1905] * xx[75] - (xx[282] * xx[49] -
+    xx[72] * xx[262]) + (xx[738] + xx[1508]) * xx[19];
+  xx[875] = xx[851] + xx[934] * xx[55] - xx[136] * xx[75] - (xx[56] * xx[72] +
+    xx[49] * xx[74]) + (xx[739] + xx[1509]) * xx[19];
+  xx[876] = xx[852] + xx[1903] * xx[55] - xx[137] * xx[75] - (xx[49] * xx[126] -
+    xx[59] * xx[72]) + (xx[740] + xx[1510]) * xx[19];
+  xx[877] = xx[853] + xx[1905] * xx[61] - xx[76] * xx[62] - (xx[77] * xx[262] -
+    xx[282] * xx[127]) + (xx[741] + xx[1511]) * xx[19];
+  xx[878] = xx[854] + xx[61] * xx[136] - xx[934] * xx[76] + xx[77] * xx[56] +
+    xx[127] * xx[74] + (xx[742] + xx[1512]) * xx[19];
+  xx[879] = xx[855] + xx[137] * xx[61] - xx[1903] * xx[76] - (xx[59] * xx[77] -
+    xx[127] * xx[126]) + (xx[743] + xx[1513]) * xx[19];
+  pm_math_matrix3x3Xform(xx + 871, xx + 897, xx + 74);
+  pm_math_matrix3x3Xform(xx + 811, xx + 69, xx + 330);
+  pm_math_quatXform(xx + 131, xx + 330, xx + 69);
   xx[55] = state[1] * state[1];
-  xx[56] = xx[115] * xx[49] - xx[114] * xx[130] + xx[55] * xx[1339];
-  xx[59] = xx[114] * xx[49] - xx[115] * xx[210] + xx[55] * xx[1336];
-  xx[49] = xx[59] * xx[6];
-  xx[55] = xx[56] * xx[6];
-  xx[61] = xx[59] * xx[8] + xx[10] * xx[56];
-  xx[129] = xx[49];
-  xx[130] = - xx[55];
-  xx[131] = - xx[61];
-  pm_math_cross3(xx + 1914, xx + 129, xx + 132);
-  xx[62] = inputDot[7] * inputDot[7];
-  xx[75] = xx[10] * xx[16];
-  xx[76] = xx[1348] * xx[6];
-  pm_math_quatXform(xx + 63, xx + 117, xx + 129);
-  xx[117] = xx[130] + xx[114] * state[1];
-  xx[118] = xx[129] - xx[115] * state[1];
+  xx[56] = xx[115] * xx[129] - xx[114] * xx[130] + xx[55] * xx[1339];
+  xx[59] = xx[114] * xx[129] - xx[115] * xx[238] + xx[55] * xx[1336];
+  xx[55] = xx[59] * xx[6];
+  xx[61] = xx[56] * xx[6];
+  xx[62] = xx[59] * xx[8] + xx[56] * xx[10];
+  xx[128] = xx[55];
+  xx[129] = - xx[61];
+  xx[130] = - xx[62];
+  pm_math_cross3(xx + 1914, xx + 128, xx + 131);
+  xx[126] = inputDot[7] * inputDot[7];
+  xx[128] = xx[10] * xx[16];
+  xx[129] = xx[1348] * xx[6];
+  pm_math_quatXform(xx + 63, xx + 117, xx + 330);
+  xx[117] = xx[331] + xx[114] * state[1];
+  xx[118] = xx[330] - xx[115] * state[1];
   xx[119] = xx[117] * xx[41] + xx[42] * xx[118];
-  xx[126] = ((xx[1906] - xx[0]) * state[1] + xx[117] - xx[19] * xx[119] * xx[41])
+  xx[130] = ((xx[1906] - xx[0]) * state[1] + xx[117] - xx[19] * xx[119] * xx[41])
     * inputDot[7];
   xx[0] = (xx[118] - xx[19] * xx[119] * xx[42] - (xx[1907] + xx[1909]) * state[1])
     * inputDot[7];
   xx[117] = xx[0] * xx[6];
-  xx[118] = xx[126] * xx[6];
-  xx[119] = xx[10] * xx[126] - xx[0] * xx[8];
-  xx[333] = - xx[117];
-  xx[334] = - xx[118];
-  xx[335] = - xx[119];
-  pm_math_cross3(xx + 1914, xx + 333, xx + 732);
-  xx[127] = xx[130] * state[1];
-  xx[130] = xx[129] * state[1];
-  xx[129] = xx[127] * xx[42] - xx[41] * xx[130];
-  xx[131] = xx[19] * xx[42] * xx[129] - xx[127];
-  xx[127] = xx[130] + xx[19] * xx[41] * xx[129];
-  xx[129] = xx[127] * xx[6];
-  xx[130] = xx[6] * xx[131];
-  xx[6] = xx[127] * xx[8] + xx[10] * xx[131];
-  xx[333] = xx[129];
-  xx[334] = - xx[130];
-  xx[335] = - xx[6];
-  pm_math_cross3(xx + 1914, xx + 333, xx + 738);
-  xx[136] = xx[87] * xx[89] + xx[88] + pm_math_dot3(xx + 753, xx + 120);
+  xx[118] = xx[130] * xx[6];
+  xx[119] = xx[10] * xx[130] - xx[0] * xx[8];
+  xx[589] = - xx[117];
+  xx[590] = - xx[118];
+  xx[591] = - xx[119];
+  pm_math_cross3(xx + 1914, xx + 589, xx + 652);
+  xx[134] = xx[331] * state[1];
+  xx[136] = xx[330] * state[1];
+  xx[137] = xx[134] * xx[42] - xx[41] * xx[136];
+  xx[157] = xx[19] * xx[42] * xx[137] - xx[134];
+  xx[134] = xx[136] + xx[19] * xx[41] * xx[137];
+  xx[136] = xx[134] * xx[6];
+  xx[137] = xx[157] * xx[6];
+  xx[6] = xx[134] * xx[8] + xx[10] * xx[157];
+  xx[330] = xx[136];
+  xx[331] = - xx[137];
+  xx[332] = - xx[6];
+  pm_math_cross3(xx + 1914, xx + 330, xx + 589);
+  xx[159] = xx[87] * xx[89] + xx[88] + pm_math_dot3(xx + 753, xx + 120);
   xx[81] = xx[86] + xx[80] * xx[83];
   xx[82] = xx[81] + xx[67] * xx[124] - xx[68] * xx[123];
   xx[83] = - xx[48];
-  xx[84] = - xx[136];
+  xx[84] = - xx[159];
   xx[85] = - xx[82];
-  solveSymmetricPosDef(xx + 100, xx + 83, 3, 1, xx + 120, xx + 333);
+  solveSymmetricPosDef(xx + 100, xx + 83, 3, 1, xx + 120, xx + 330);
   xx[83] = xx[87] + xx[78] * xx[120] + xx[140] * xx[121];
   xx[84] = xx[88] - xx[713] * xx[120] + xx[79] * xx[121];
   xx[85] = xx[81] + xx[80] * xx[122];
-  pm_math_quatXform(xx + 63, xx + 83, xx + 333);
+  pm_math_quatXform(xx + 63, xx + 83, xx + 330);
   xx[83] = xx[123] + xx[731] * xx[120] - xx[806] * xx[121] - xx[870] * xx[122];
   xx[84] = xx[124] + xx[806] * xx[120] + xx[731] * xx[121] + xx[908] * xx[122];
   xx[85] = xx[47] + xx[909] * xx[120] + xx[927] * xx[121];
-  pm_math_quatXform(xx + 63, xx + 83, xx + 741);
-  pm_math_cross3(xx + 114, xx + 741, xx + 83);
+  pm_math_quatXform(xx + 63, xx + 83, xx + 735);
+  pm_math_cross3(xx + 114, xx + 735, xx + 83);
   xx[83] = xx[44] * state[1];
   xx[84] = xx[43] * state[1];
   xx[86] = xx[984] - xx[2033];
-  xx[137] = xx[985] - xx[2036];
-  xx[157] = xx[987] - xx[2034];
-  xx[159] = xx[988] - xx[2037];
-  xx[202] = xx[992] - xx[2041];
-  xx[811] = xx[86];
-  xx[812] = xx[137];
-  xx[813] = xx[986] - xx[2039];
-  xx[814] = xx[157];
-  xx[815] = xx[159];
-  xx[816] = xx[989] - xx[2040];
-  xx[817] = xx[60];
-  xx[818] = xx[125];
-  xx[819] = xx[202];
-  xx[743] = xx[38];
-  xx[744] = xx[39];
-  xx[745] = xx[24];
+  xx[213] = xx[985] - xx[2036];
+  xx[238] = xx[987] - xx[2034];
+  xx[243] = xx[988] - xx[2037];
+  xx[258] = xx[992] - xx[2041];
+  xx[737] = xx[86];
+  xx[738] = xx[213];
+  xx[739] = xx[986] - xx[2039];
+  xx[740] = xx[238];
+  xx[741] = xx[243];
+  xx[742] = xx[989] - xx[2040];
+  xx[743] = xx[60];
+  xx[744] = xx[125];
+  xx[745] = xx[258];
+  xx[746] = xx[38];
+  xx[747] = xx[39];
+  xx[748] = xx[24];
   xx[60] = 4.0000000045273e-3;
-  xx[746] = xx[1328] - xx[1339];
-  xx[747] = - xx[1336];
-  xx[748] = xx[175] - (xx[60] - (xx[41] * xx[60] * xx[41] + xx[60] * xx[42] *
+  xx[811] = xx[1328] - xx[1339];
+  xx[812] = - xx[1336];
+  xx[813] = xx[175] - (xx[60] - (xx[41] * xx[60] * xx[41] + xx[60] * xx[42] *
     xx[42]) * xx[19]);
-  pm_math_cross3(xx + 743, xx + 746, xx + 847);
-  pm_math_cross3(xx + 743, xx + 847, xx + 850);
-  xx[60] = xx[41] * xx[851] + xx[850] * xx[42];
+  pm_math_cross3(xx + 746, xx + 811, xx + 814);
+  pm_math_cross3(xx + 746, xx + 814, xx + 817);
+  xx[60] = xx[41] * xx[818] + xx[817] * xx[42];
   xx[125] = xx[45] + xx[46];
   xx[45] = xx[1906] * state[1];
-  xx[46] = xx[850] - xx[19] * xx[60] * xx[42] - xx[125] * xx[45];
-  xx[210] = xx[1907] * state[1];
-  xx[213] = xx[851] - xx[19] * xx[60] * xx[41] - xx[125] * xx[210];
-  xx[60] = (xx[43] + xx[43]) * xx[45] + (xx[44] + xx[44]) * xx[210] + xx[852] -
-    (xx[41] * xx[41] * xx[852] + xx[852] * xx[42] * xx[42]) * xx[19];
+  xx[46] = xx[817] - xx[19] * xx[60] * xx[42] - xx[125] * xx[45];
+  xx[262] = xx[1907] * state[1];
+  xx[272] = xx[818] - xx[19] * xx[60] * xx[41] - xx[125] * xx[262];
+  xx[60] = (xx[43] + xx[43]) * xx[45] + (xx[44] + xx[44]) * xx[262] + xx[819] -
+    (xx[41] * xx[41] * xx[819] + xx[819] * xx[42] * xx[42]) * xx[19];
   xx[43] = xx[46];
-  xx[44] = xx[213];
+  xx[44] = xx[272];
   xx[45] = xx[60];
-  pm_math_matrix3x3Xform(xx + 811, xx + 43, xx + 743);
+  pm_math_matrix3x3Xform(xx + 737, xx + 43, xx + 746);
   xx[125] = xx[83] * (xx[981] - xx[2066] - xx[2062] - xx[2084]) - xx[84] * (xx
-    [982] - xx[2067] - xx[2065] - xx[2085]) + xx[745];
-  xx[811] = xx[1904];
-  xx[812] = xx[2070];
-  xx[813] = xx[2071];
-  xx[814] = xx[2072];
-  xx[815] = xx[991];
-  xx[816] = xx[2074];
-  xx[817] = xx[2075];
-  xx[818] = xx[2076];
-  xx[819] = xx[393] + xx[2077];
-  pm_math_matrix3x3Xform(xx + 811, xx + 43, xx + 743);
-  xx[43] = xx[83] * xx[137] - xx[84] * xx[159] + xx[744];
-  xx[44] = xx[83] * xx[86] - xx[84] * xx[157] + xx[743];
-  xx[743] = (xx[977] - xx[2062] - xx[2066] - xx[2080] + xx[1906] * xx[137] - xx
+    [982] - xx[2067] - xx[2065] - xx[2085]) + xx[748];
+  xx[737] = xx[1904];
+  xx[738] = xx[2070];
+  xx[739] = xx[2071];
+  xx[740] = xx[2072];
+  xx[741] = xx[991];
+  xx[742] = xx[2074];
+  xx[743] = xx[2075];
+  xx[744] = xx[2076];
+  xx[745] = xx[393] + xx[2077];
+  pm_math_matrix3x3Xform(xx + 737, xx + 43, xx + 746);
+  xx[43] = xx[83] * xx[213] - xx[84] * xx[243] + xx[747];
+  xx[44] = xx[83] * xx[86] - xx[84] * xx[238] + xx[746];
+  xx[737] = (xx[977] - xx[2062] - xx[2066] - xx[2080] + xx[1906] * xx[213] - xx
              [1907] * xx[86]) / xx[1923];
-  xx[744] = (xx[980] - xx[2065] - xx[2067] - xx[2083] + xx[1906] * xx[159] - xx
-             [1907] * xx[157]) / xx[1923];
-  xx[745] = xx[990] / xx[1923];
-  pm_math_quatInverseXform(xx + 11, xx + 25, xx + 811);
-  xx[45] = xx[811] - xx[39] * inputDot[7];
-  xx[39] = xx[812] + xx[38] * inputDot[7];
+  xx[738] = (xx[980] - xx[2065] - xx[2067] - xx[2083] + xx[1906] * xx[243] - xx
+             [1907] * xx[238]) / xx[1923];
+  xx[739] = xx[990] / xx[1923];
+  pm_math_quatInverseXform(xx + 11, xx + 25, xx + 740);
+  xx[45] = xx[740] - xx[39] * inputDot[7];
+  xx[39] = xx[741] + xx[38] * inputDot[7];
   xx[86] = xx[39] * xx[41] + xx[42] * xx[45];
-  xx[137] = xx[45] - xx[19] * xx[86] * xx[42];
-  xx[157] = xx[39] - xx[19] * xx[86] * xx[41];
-  xx[86] = xx[813] - inputDdot[7];
-  xx[159] = xx[86] - (xx[41] * xx[41] * xx[86] + xx[42] * xx[86] * xx[42]) * xx
+  xx[213] = xx[45] - xx[19] * xx[86] * xx[42];
+  xx[238] = xx[39] - xx[19] * xx[86] * xx[41];
+  xx[86] = xx[742] - inputDdot[7];
+  xx[243] = xx[86] - (xx[41] * xx[41] * xx[86] + xx[42] * xx[86] * xx[42]) * xx
     [19];
-  xx[811] = xx[137];
-  xx[812] = xx[157];
-  xx[813] = xx[159];
-  xx[814] = xx[1913] / xx[1923];
-  xx[815] = xx[1468] / xx[1923];
-  xx[816] = (xx[202] + xx[1906] * xx[2076] - xx[1907] * xx[2075]) / xx[1923];
-  xx[202] = xx[10] * xx[175];
-  xx[210] = xx[1348] + xx[175] * xx[8];
-  xx[817] = xx[202];
-  xx[818] = xx[210];
-  xx[819] = xx[75];
-  pm_math_cross3(xx + 1914, xx + 817, xx + 847);
-  xx[220] = xx[2] * xx[75];
-  xx[817] = 0.1564468326892218 - ((xx[2] * xx[202] + xx[847]) * xx[19] - xx[16]);
-  xx[818] = 0.02992367610368172 - (xx[2] * xx[210] + xx[848]) * xx[19];
-  xx[819] = - (0.01163189793971064 + xx[175] + xx[19] * (xx[849] + xx[220]));
-  pm_math_cross3(xx + 25, xx + 817, xx + 847);
-  xx[25] = xx[15] + xx[847];
-  xx[26] = xx[5] + xx[848];
-  xx[27] = xx[18] + xx[849];
-  pm_math_quatInverseXform(xx + 11, xx + 25, xx + 847);
-  pm_math_cross3(xx + 35, xx + 817, xx + 25);
-  pm_math_cross3(xx + 35, xx + 25, xx + 817);
-  pm_math_quatInverseXform(xx + 11, xx + 817, xx + 25);
+  xx[740] = xx[213];
+  xx[741] = xx[238];
+  xx[742] = xx[243];
+  xx[743] = xx[1913] / xx[1923];
+  xx[744] = xx[1468] / xx[1923];
+  xx[745] = (xx[258] + xx[1906] * xx[2076] - xx[1907] * xx[2075]) / xx[1923];
+  xx[258] = xx[10] * xx[175];
+  xx[262] = xx[1348] + xx[175] * xx[8];
+  xx[746] = xx[258];
+  xx[747] = xx[262];
+  xx[748] = xx[128];
+  pm_math_cross3(xx + 1914, xx + 746, xx + 814);
+  xx[274] = xx[2] * xx[128];
+  xx[746] = 0.1564468326892218 - ((xx[2] * xx[258] + xx[814]) * xx[19] - xx[16]);
+  xx[747] = 0.02992367610368172 - (xx[2] * xx[262] + xx[815]) * xx[19];
+  xx[748] = - (0.01163189793971064 + xx[175] + xx[19] * (xx[816] + xx[274]));
+  pm_math_cross3(xx + 25, xx + 746, xx + 814);
+  xx[25] = xx[15] + xx[814];
+  xx[26] = xx[5] + xx[815];
+  xx[27] = xx[18] + xx[816];
+  pm_math_quatInverseXform(xx + 11, xx + 25, xx + 814);
+  pm_math_cross3(xx + 35, xx + 746, xx + 25);
+  pm_math_cross3(xx + 35, xx + 25, xx + 746);
+  pm_math_quatInverseXform(xx + 11, xx + 746, xx + 25);
   xx[5] = xx[16] * inputDot[7];
   xx[11] = xx[45];
   xx[12] = xx[39];
   xx[13] = xx[86];
-  pm_math_cross3(xx + 11, xx + 746, xx + 35);
-  xx[11] = xx[847] + xx[25] + (xx[40] + xx[24]) * xx[5] + xx[35];
-  xx[12] = xx[848] + xx[26] - xx[16] * inputDdot[7] + xx[36];
+  pm_math_cross3(xx + 11, xx + 811, xx + 35);
+  xx[11] = xx[814] + xx[25] + (xx[40] + xx[24]) * xx[5] + xx[35];
+  xx[12] = xx[815] + xx[26] - xx[16] * inputDdot[7] + xx[36];
   xx[13] = xx[12] * xx[41] + xx[11] * xx[42];
   xx[14] = xx[11] - xx[19] * xx[13] * xx[42];
   xx[11] = xx[12] - xx[19] * xx[13] * xx[41];
-  xx[12] = xx[849] + xx[27] - (xx[38] + xx[38]) * xx[5] + xx[37];
+  xx[12] = xx[816] + xx[27] - (xx[38] + xx[38]) * xx[5] + xx[37];
   xx[5] = xx[12] - (xx[41] * xx[12] * xx[41] + xx[12] * xx[42] * xx[42]) * xx[19];
   xx[24] = xx[14];
   xx[25] = xx[11];
   xx[26] = xx[5];
-  xx[12] = pm_math_dot3(xx + 743, xx + 811) + pm_math_dot3(xx + 814, xx + 24);
-  xx[13] = (xx[58] + xx[335] + xx[85] + xx[125] + (xx[742] + xx[43]) * xx[1906]
-            - (xx[741] + xx[44]) * xx[1907]) / xx[1923] + xx[12];
-  xx[15] = xx[137] + xx[83];
-  xx[18] = xx[157] - xx[84];
+  xx[12] = pm_math_dot3(xx + 737, xx + 740) + pm_math_dot3(xx + 743, xx + 24);
+  xx[13] = (xx[58] + xx[332] + xx[85] + xx[125] + (xx[736] + xx[43]) * xx[1906]
+            - (xx[735] + xx[44]) * xx[1907]) / xx[1923] + xx[12];
+  xx[15] = xx[213] + xx[83];
+  xx[18] = xx[238] - xx[84];
   xx[24] = xx[15];
   xx[25] = xx[18];
-  xx[26] = xx[159] - xx[13];
+  xx[26] = xx[243] - xx[13];
   pm_math_quatInverseXform(xx + 63, xx + 24, xx + 35);
   pm_math_cross3(xx + 24, xx + 114, xx + 38);
   xx[24] = xx[5] + xx[60];
   xx[25] = xx[14] + xx[13] * xx[1907] + xx[46] + xx[38];
-  xx[26] = xx[11] - xx[13] * xx[1906] + xx[213] + xx[39];
+  xx[26] = xx[11] - xx[13] * xx[1906] + xx[272] + xx[39];
   xx[27] = xx[24] + xx[40];
   pm_math_quatInverseXform(xx + 63, xx + 25, xx + 38);
   xx[5] = xx[120] - (pm_math_dot3(xx + 1956, xx + 35) + pm_math_dot3(xx + 2087,
@@ -11918,9 +11918,9 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[37] = xx[21] - (xx[644] + xx[1407]) * xx[19];
   pm_math_cross3(xx + 35, xx + 231, xx + 38);
   pm_math_quatXform(xx + 1385, xx + 38, xx + 35);
-  xx[21] = xx[164] * xx[203];
-  xx[27] = xx[164] * xx[206];
-  xx[38] = xx[149] * xx[203] + xx[156] * xx[206];
+  xx[21] = xx[164] * xx[218];
+  xx[27] = xx[164] * xx[224];
+  xx[38] = xx[149] * xx[218] + xx[156] * xx[224];
   xx[39] = - xx[21];
   xx[40] = - xx[27];
   xx[41] = xx[38];
@@ -11928,224 +11928,224 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_cross3(xx + 799, xx + 1398, xx + 39);
   xx[42] = xx[559] + xx[39];
   xx[39] = xx[561] + xx[40];
-  xx[40] = xx[39] * xx[354];
-  xx[41] = xx[42] * xx[354];
-  xx[45] = xx[458] + xx[394] * (xx[42] - (xx[352] * xx[40] + xx[41] * xx[354]) *
-    xx[19]) - (xx[39] + xx[19] * (xx[352] * xx[41] - xx[40] * xx[354])) * xx[397]
+  xx[40] = xx[39] * xx[356];
+  xx[41] = xx[42] * xx[356];
+  xx[45] = xx[458] + xx[394] * (xx[42] - (xx[352] * xx[40] + xx[41] * xx[356]) *
+    xx[19]) - (xx[39] + xx[19] * (xx[352] * xx[41] - xx[40] * xx[356])) * xx[399]
     - xx[666] * xx[237];
-  xx[975] = xx[290] * xx[29] - (xx[501] + xx[34] + xx[19] * (xx[522] - xx[308] *
-    xx[30]) + xx[516] + xx[253] + xx[265] + xx[204] + xx[19] * (xx[672] - xx[249]
-    * xx[163]) + xx[422] - (xx[426] * xx[441] + xx[461] * xx[430]) + (xx[19] *
+  xx[735] = xx[290] * xx[29] - (xx[501] + xx[34] + xx[19] * (xx[522] - xx[308] *
+    xx[30]) + xx[516] + xx[253] + xx[265] + xx[204] + xx[19] * (xx[672] - xx[240]
+    * xx[163]) + xx[419] - (xx[426] * xx[441] + xx[499] * xx[430]) + (xx[19] *
     (xx[760] - xx[270] * xx[163]) - xx[287] + xx[259]) * xx[19] - (xx[820] + xx
-    [826] + xx[499] + xx[19] * (xx[857] + xx[705] * xx[264]) + xx[508] * ((xx
-    [703] * xx[510] + xx[520]) * xx[19] - xx[16]) - (xx[567] * xx[505] + xx[533]
+    [826] + xx[495] + xx[19] * (xx[857] + xx[705] * xx[264]) + xx[508] * ((xx
+    [703] * xx[510] + xx[520]) * xx[19] - xx[16]) - (xx[565] * xx[505] + xx[567]
     * xx[584]) + (xx[629] + (xx[922] - xx[705] * xx[607]) * xx[19] + xx[659] +
                   xx[19] * (xx[880] + xx[705] * xx[643])) * xx[19]) + (xx[865] +
     xx[19] * (xx[957] - xx[448] * xx[163]) - xx[430] + xx[664]) * inputDdot[6])
     - xx[771] * xx[9] - xx[263] * xx[257] - xx[173] * xx[323] - xx[554] * xx[431]
     - xx[186] * xx[555] - xx[250] * xx[556] + xx[312] * xx[557] - xx[242] * xx
     [682] + (xx[1223] + xx[584] + (xx[1303] - xx[705] * xx[234]) * xx[19] + xx
-             [19] * (xx[703] * xx[519] - xx[543])) * inputDdot[8] - xx[907] *
+             [19] * (xx[703] * xx[519] - xx[539])) * inputDdot[8] - xx[907] *
     xx[676] + xx[661] * xx[449] + xx[139] * xx[675] + xx[702] * xx[708];
-  xx[976] = xx[953] * xx[29] - (xx[502] + xx[199] + (xx[308] * xx[209] + xx[523])
-    * xx[19] + xx[517] + xx[254] + xx[266] + xx[192] + (xx[256] * xx[163] + xx
-    [673]) * xx[19] - (xx[709] + xx[426] * xx[166] + xx[197] * xx[430]) + (xx
+  xx[736] = xx[29] * xx[953] - (xx[502] + xx[165] + (xx[308] * xx[199] + xx[523])
+    * xx[19] + xx[517] + xx[254] + xx[266] + xx[192] + (xx[249] * xx[163] + xx
+    [673]) * xx[19] - (xx[709] + xx[426] * xx[166] + xx[206] * xx[430]) + (xx
     [321] + xx[19] * (xx[761] - xx[275] * xx[163]) + xx[260]) * xx[19] - (xx[821]
-    + xx[827] + xx[269] + (xx[858] - xx[705] * xx[313]) * xx[19] + (xx[543] +
-    xx[510] * xx[689]) * xx[19] * xx[508] - (xx[158] * xx[584] - xx[567] * xx
-    [160]) + ((xx[923] - xx[705] * xx[610]) * xx[19] - xx[539] + xx[642] + (xx
+    + xx[827] + xx[457] + (xx[858] - xx[705] * xx[313]) * xx[19] + xx[508] *
+    (xx[539] + xx[510] * xx[689]) * xx[19] - (xx[158] * xx[584] - xx[565] * xx
+    [160]) + ((xx[923] - xx[705] * xx[610]) * xx[19] - xx[533] + xx[642] + (xx
     [881] - xx[705] * xx[658]) * xx[19]) * xx[19]) + (xx[866] + xx[426] + xx[19]
-    * (xx[958] - xx[451] * xx[163]) - xx[20] + xx[16]) * inputDdot[6]) - xx[1008]
+    * (xx[958] - xx[455] * xx[163]) - xx[20] + xx[16]) * inputDdot[6]) - xx[1008]
     * xx[9] - xx[1042] * xx[257] - xx[1077] * xx[323] - xx[996] * xx[431] - xx
     [997] * xx[555] - xx[1009] * xx[556] + xx[281] * xx[557] - xx[288] * xx[682]
-    + (xx[1224] + (xx[1304] - xx[705] * xx[457]) * xx[19] - (xx[567] - (xx[520]
+    + (xx[1224] + (xx[1304] - xx[705] * xx[269]) * xx[19] - (xx[565] - (xx[520]
          + xx[519] * xx[689]) * xx[19]) - xx[16]) * inputDdot[8] - xx[929] * xx
     [676] + xx[236] * xx[449] + xx[998] * xx[675] + xx[1001] * xx[708];
-  xx[977] = xx[225] * xx[29] - (xx[503] + (xx[308] * xx[218] + xx[524]) * xx[19]
-    + xx[518] + xx[255] + xx[267] + (xx[163] * xx[271] + xx[674]) * xx[19] + xx
-    [410] - (xx[426] * xx[222] + xx[223] * xx[430]) + ((xx[315] * xx[163] + xx
+  xx[737] = xx[29] * xx[225] - (xx[503] + (xx[308] * xx[209] + xx[524]) * xx[19]
+    + xx[518] + xx[255] + xx[267] + (xx[256] * xx[163] + xx[674]) * xx[19] + xx
+    [400] - (xx[426] * xx[222] + xx[223] * xx[430]) + ((xx[315] * xx[163] + xx
     [762]) * xx[19] + xx[261]) * xx[19] - (xx[822] + xx[828] + (xx[859] - xx[705]
-    * xx[495]) * xx[19] + xx[19] * (xx[766] - xx[514] * xx[689]) * xx[508] -
-    (xx[567] * xx[587] - xx[604] * xx[584]) + (xx[19] * (xx[924] - xx[705] * xx
+    * xx[466]) * xx[19] + xx[19] * (xx[766] - xx[514] * xx[689]) * xx[508] -
+    (xx[565] * xx[587] - xx[604] * xx[584]) + (xx[19] * (xx[924] - xx[705] * xx
     [634]) + (xx[882] - xx[705] * xx[662]) * xx[19]) * xx[19]) + (xx[867] + (xx
-    [455] * xx[163] + xx[959]) * xx[19] + xx[391]) * inputDdot[6]) - xx[294] *
+    [461] * xx[163] + xx[959]) * xx[19] + xx[271]) * inputDdot[6]) - xx[294] *
     xx[9] - xx[548] * xx[257] - xx[549] * xx[323] - xx[283] * xx[431] - xx[289] *
     xx[555] - xx[295] * xx[556] + xx[226] * xx[557] - xx[227] * xx[682] + (xx
-    [1225] + xx[19] * (xx[1305] - xx[705] * xx[463]) + (xx[705] * xx[519] + xx
-    [703] * xx[514]) * xx[19]) * inputDdot[8] - xx[676] * xx[319] + xx[155] *
+    [1225] + xx[19] * (xx[1305] - xx[705] * xx[451]) + (xx[705] * xx[519] + xx
+    [703] * xx[514]) * xx[19]) * inputDdot[8] - xx[319] * xx[676] + xx[155] *
     xx[449] + xx[293] * xx[675] + xx[318] * xx[708];
-  xx[978] = xx[29] * xx[911] - (xx[572] + xx[578] + xx[575] + xx[631] + xx[646]
-    + xx[17] + xx[19] * (xx[823] - xx[194] * xx[163]) + xx[422] - (xx[212] * xx
-    [441] + xx[461] * xx[438]) + (xx[19] * (xx[794] - xx[601] * xx[163]) - xx
+  xx[738] = xx[29] * xx[911] - (xx[572] + xx[578] + xx[575] + xx[631] + xx[646]
+    + xx[17] + xx[19] * (xx[823] - xx[194] * xx[163]) + xx[419] - (xx[212] * xx
+    [441] + xx[499] * xx[438]) + (xx[19] * (xx[794] - xx[601] * xx[163]) - xx
     [622] + xx[808]) * xx[19] - (xx[935] + xx[950] + xx[566] + xx[19] * (xx[954]
-    - xx[211] * xx[154]) + xx[581] * ((xx[625] * xx[1133] + xx[716]) * xx[19] -
+    - xx[161] * xx[154]) + xx[581] * ((xx[625] * xx[1133] + xx[716]) * xx[19] -
     xx[614]) - (xx[786] * xx[635] + xx[787] * xx[803]) + (xx[19] * (xx[1011] -
     xx[722] * xx[154]) - xx[868] + xx[926] + xx[19] * (xx[972] - xx[904] * xx
     [154])) * xx[19]) + (xx[969] + xx[19] * (xx[1014] - xx[636] * xx[163]) - xx
     [438] + xx[664]) * inputDdot[6]) - xx[1111] * xx[9] - xx[802] * xx[257] -
     xx[789] * xx[323] - xx[1115] * xx[431] - xx[700] * xx[555] - xx[650] * xx
-    [556] + xx[557] * xx[944] + xx[900] * xx[912] + (xx[901] + xx[19] * (xx[1017]
+    [556] + xx[944] * xx[557] + xx[912] * xx[900] + (xx[901] + xx[19] * (xx[1017]
     - xx[711] * xx[154]) - xx[803] + xx[19] * (xx[772] * xx[1133] - xx[788])) *
-    inputDdot[11] - xx[1556] * xx[862] + xx[148] * xx[4] + xx[162] * xx[480] +
+    inputDdot[11] - xx[862] * xx[1556] + xx[148] * xx[4] + xx[162] * xx[507] +
     xx[1504] * xx[960];
-  xx[979] = xx[29] * xx[1086] - (xx[573] + xx[579] + xx[576] + xx[632] + xx[647]
+  xx[739] = xx[1086] * xx[29] - (xx[573] + xx[579] + xx[576] + xx[632] + xx[647]
     + xx[150] + (xx[200] * xx[163] + xx[824]) * xx[19] - (xx[709] + xx[212] *
-    xx[166] + xx[197] * xx[438]) + (xx[621] + xx[19] * (xx[795] - xx[619] * xx
-    [163]) + xx[809]) * xx[19] - (xx[936] + xx[951] + xx[475] + (xx[507] * xx
+    xx[166] + xx[206] * xx[438]) + (xx[621] + xx[19] * (xx[795] - xx[619] * xx
+    [163]) + xx[809]) * xx[19] - (xx[936] + xx[951] + xx[480] + (xx[475] * xx
     [154] + xx[955]) * xx[19] - ((xx[788] + xx[1085] * xx[625]) * xx[19] * xx
-    [581] + xx[786] * xx[161] + xx[649] * xx[803]) + (xx[833] + xx[19] * (xx
+    [581] + xx[786] * xx[211] + xx[649] * xx[803]) + (xx[833] + xx[19] * (xx
     [1012] - xx[804] * xx[154]) + xx[869] + (xx[925] * xx[154] + xx[973]) * xx
     [19]) * xx[19]) + (xx[970] + xx[212] + xx[19] * (xx[1015] - xx[714] * xx[163])
                        - xx[20] + xx[16]) * inputDdot[6]) - xx[1161] * xx[9] -
     xx[1177] * xx[257] - xx[1178] * xx[323] - xx[1158] * xx[431] - xx[1159] *
-    xx[555] - xx[1162] * xx[556] + xx[557] * xx[1163] + xx[900] * xx[840] + (xx
+    xx[555] - xx[1162] * xx[556] + xx[1163] * xx[557] + xx[840] * xx[900] + (xx
     [902] + xx[786] + xx[19] * (xx[1018] - xx[712] * xx[154]) - (xx[716] + xx
     [1085] * xx[772]) * xx[19] + xx[614]) * inputDdot[11] - xx[862] * xx[1172] +
-    xx[906] * xx[4] + xx[1166] * xx[480] + xx[1171] * xx[960];
-  xx[980] = xx[750] * xx[29] - (xx[574] + xx[580] + xx[577] + xx[633] + xx[648]
-    + (xx[163] * xx[208] + xx[825]) * xx[19] + xx[410] - (xx[212] * xx[222] +
+    xx[906] * xx[4] + xx[1166] * xx[507] + xx[1171] * xx[960];
+  xx[740] = xx[750] * xx[29] - (xx[574] + xx[580] + xx[577] + xx[633] + xx[648]
+    + (xx[163] * xx[208] + xx[825]) * xx[19] + xx[400] - (xx[212] * xx[222] +
     xx[223] * xx[438]) + ((xx[620] * xx[163] + xx[796]) * xx[19] + xx[810]) *
     xx[19] - (xx[937] + xx[952] + (xx[568] * xx[154] + xx[956]) * xx[19] + xx[19]
               * (xx[1029] - xx[1085] * xx[637]) * xx[581] - (xx[786] * xx[797] +
     xx[798] * xx[803]) + ((xx[832] * xx[154] + xx[1013]) * xx[19] + (xx[928] *
     xx[154] + xx[974]) * xx[19]) * xx[19]) + (xx[971] + (xx[718] * xx[163] + xx
-    [1016]) * xx[19] + xx[391]) * inputDdot[6]) - xx[949] * xx[9] - xx[1103] *
+    [1016]) * xx[19] + xx[271]) * inputDdot[6]) - xx[949] * xx[9] - xx[1103] *
     xx[257] - xx[1107] * xx[323] - xx[943] * xx[431] - xx[948] * xx[555] - xx
     [1098] * xx[556] + xx[947] * xx[557] + xx[751] * xx[900] + (xx[903] + (xx
     [764] * xx[154] + xx[1019]) * xx[19] + (xx[772] * xx[154] + xx[637] * xx
     [1133]) * xx[19]) * inputDdot[11] - xx[862] * xx[1100] + xx[752] * xx[4] +
-    xx[942] * xx[480] + xx[1099] * xx[960];
-  xx[981] = xx[1190] * xx[29] - (xx[482] + xx[468] + xx[485] + xx[1021] + xx
-    [1024] + xx[339] + xx[19] * (xx[1034] - xx[472] * xx[163]) + xx[422] - (xx
-    [489] * xx[441] + xx[461] * xx[490]) + (xx[19] * (xx[1043] - xx[999] * xx
-    [163]) - xx[1033] + xx[529]) * xx[19] - (xx[1108] + xx[1138] + xx[1039] +
-    xx[19] * (xx[1141] + xx[1628] * xx[478]) + xx[1041] * ((xx[1625] * xx[1047]
-    + xx[1051]) * xx[19] - xx[16]) - (xx[1084] * xx[1046] + xx[1075] * xx[1091])
-    + (xx[1106] + (xx[1149] - xx[1628] * xx[1093]) * xx[19] + xx[1132] + xx[19] *
+    xx[942] * xx[507] + xx[1099] * xx[960];
+  xx[741] = xx[1190] * xx[29] - (xx[482] + xx[468] + xx[485] + xx[1021] + xx
+    [1024] + xx[339] + xx[19] * (xx[1034] - xx[472] * xx[163]) + xx[419] - (xx
+    [489] * xx[441] + xx[499] * xx[490]) + (xx[19] * (xx[1043] - xx[999] * xx
+    [163]) - xx[1033] + xx[529]) * xx[19] - (xx[1112] + xx[1138] + xx[1039] +
+    xx[19] * (xx[1141] + xx[1628] * xx[512]) + xx[1041] * ((xx[1625] * xx[1047]
+    + xx[1051]) * xx[19] - xx[16]) - (xx[1084] * xx[1046] + xx[1075] * xx[1087])
+    + (xx[1110] + (xx[1149] - xx[1628] * xx[1102]) * xx[19] + xx[1132] + xx[19] *
        (xx[1152] + xx[1628] * xx[1128])) * xx[19]) + (xx[1144] + xx[19] * (xx
     [1155] - xx[488] * xx[163]) - xx[490] + xx[664]) * inputDdot[6]) - xx[1245] *
     xx[9] - xx[1137] * xx[257] - xx[1130] * xx[323] - xx[1249] * xx[431] - xx
     [1129] * xx[555] - xx[1135] * xx[556] + xx[1197] * xx[557] + xx[1192] * xx
-    [1054] + (xx[1182] + xx[1091] + (xx[1185] - xx[1628] * xx[790]) * xx[19] -
+    [1054] + (xx[1185] + xx[1087] + (xx[1198] - xx[1628] * xx[790]) * xx[19] -
               xx[19] * (xx[1625] * xx[1050] + xx[1052])) * inputDdot[9] - xx
-    [1088] * xx[1726] + xx[1220] * xx[565] + xx[1272] * xx[1087] + xx[1636] *
-    xx[1116];
-  xx[982] = xx[1221] * xx[29] - (xx[483] + xx[469] + xx[486] + xx[1022] + xx
+    [1726] * xx[1092] + xx[1220] * xx[558] + xx[1272] * xx[1091] + xx[1636] *
+    xx[1120];
+  xx[742] = xx[1221] * xx[29] - (xx[483] + xx[469] + xx[486] + xx[1022] + xx
     [1025] + xx[347] + (xx[473] * xx[163] + xx[1035]) * xx[19] - (xx[709] + xx
-    [489] * xx[166] + xx[197] * xx[490]) + (xx[1032] + xx[19] * (xx[1044] - xx
-    [1007] * xx[163]) + xx[530]) * xx[19] - (xx[1109] + xx[1139] + xx[965] +
-    (xx[1142] - xx[1628] * xx[535]) * xx[19] + (xx[1052] - xx[1047] * xx[1267]) *
-    xx[19] * xx[1041] - (xx[1084] * xx[512] + xx[1049] * xx[1091]) + ((xx[1150]
-    - xx[1628] * xx[1105]) * xx[19] - xx[1076] + xx[1124] + (xx[1153] - xx[1628]
+    [489] * xx[166] + xx[206] * xx[490]) + (xx[1032] + xx[19] * (xx[1044] - xx
+    [1007] * xx[163]) + xx[530]) * xx[19] - (xx[1113] + xx[1139] + xx[535] +
+    (xx[1142] - xx[1628] * xx[967]) * xx[19] + (xx[1052] - xx[1047] * xx[1267]) *
+    xx[19] * xx[1041] - (xx[1084] * xx[478] + xx[1049] * xx[1087]) + ((xx[1150]
+    - xx[1628] * xx[1109]) * xx[19] - xx[1076] + xx[1124] + (xx[1153] - xx[1628]
     * xx[1131]) * xx[19]) * xx[19]) + (xx[1145] + xx[489] + xx[19] * (xx[1156] -
     xx[491] * xx[163]) - xx[20] + xx[16]) * inputDdot[6]) - xx[1302] * xx[9] -
     xx[1311] * xx[257] - xx[1312] * xx[323] - xx[1233] * xx[431] - xx[1293] *
     xx[555] - xx[1306] * xx[556] + xx[1298] * xx[557] + xx[1181] * xx[1054] +
-    (xx[1183] + (xx[1186] - xx[1628] * xx[1037]) * xx[19] - (xx[1084] - (xx[1051]
-       + xx[1050] * xx[1267]) * xx[19]) - xx[16]) * inputDdot[9] - xx[1308] *
-    xx[1088] + xx[1188] * xx[565] + xx[1297] * xx[1087] + xx[1307] * xx[1116];
-  xx[983] = xx[1125] * xx[29] - (xx[484] + xx[470] + xx[487] + xx[1023] + xx
-    [1026] + (xx[163] * xx[476] + xx[1036]) * xx[19] + xx[410] - (xx[489] * xx
+    (xx[1186] + (xx[1199] - xx[1628] * xx[1037]) * xx[19] - (xx[1084] - (xx[1051]
+       + xx[1050] * xx[1267]) * xx[19]) - xx[16]) * inputDdot[9] - xx[1092] *
+    xx[1308] + xx[1188] * xx[558] + xx[1297] * xx[1091] + xx[1307] * xx[1120];
+  xx[743] = xx[29] * xx[1125] - (xx[484] + xx[470] + xx[487] + xx[1023] + xx
+    [1026] + (xx[163] * xx[476] + xx[1036]) * xx[19] + xx[400] - (xx[489] * xx
     [222] + xx[223] * xx[490]) + ((xx[1031] * xx[163] + xx[1045]) * xx[19] + xx
-    [531]) * xx[19] - (xx[1110] + xx[1140] + (xx[1628] * xx[1040] + xx[1143]) *
-                       xx[19] + xx[19] * (xx[1048] * xx[1267] + xx[1170]) * xx
-                       [1041] - (xx[1094] * xx[1091] - xx[1084] * xx[1102]) +
-                       (xx[19] * (xx[1151] - xx[1123] * xx[1628]) + (xx[1628] *
+    [531]) * xx[19] - (xx[1114] + xx[1140] + (xx[1628] * xx[1040] + xx[1143]) *
+                       xx[19] + xx[19] * (xx[1048] * xx[1267] + xx[1176]) * xx
+                       [1041] - (xx[1104] * xx[1087] - xx[1084] * xx[1106]) +
+                       (xx[19] * (xx[1151] - xx[1628] * xx[1119]) + (xx[1628] *
     xx[1134] + xx[1154]) * xx[19]) * xx[19]) + (xx[1146] + (xx[966] * xx[163] +
-    xx[1157]) * xx[19] + xx[391]) * inputDdot[6]) - xx[1218] * xx[9] - xx[1232] *
+    xx[1157]) * xx[19] + xx[271]) * inputDdot[6]) - xx[1218] * xx[9] - xx[1232] *
     xx[257] - xx[1241] * xx[323] - xx[1189] * xx[431] - xx[1216] * xx[555] - xx
-    [1230] * xx[556] + xx[1217] * xx[557] + xx[1126] * xx[1054] + (xx[1184] +
-    xx[19] * (xx[1187] - xx[1038] * xx[1628]) + (xx[1625] * xx[1048] - xx[1628] *
-    xx[1050]) * xx[19]) * inputDdot[9] - xx[1237] * xx[1088] + xx[1127] * xx[565]
-    + xx[1196] * xx[1087] + xx[1236] * xx[1116];
-  xx[984] = xx[1324] * xx[29] - (xx[359] + xx[342] + xx[348] + xx[362] + xx[1193]
-    + xx[207] + xx[19] * (xx[1212] - xx[353] * xx[163]) + xx[422] - (xx[389] *
-    xx[441] + xx[461] * xx[406]) + (xx[19] * (xx[1238] - xx[1160] * xx[163]) -
-    xx[1179] + xx[1242]) * xx[19] - (xx[1246] + xx[1273] + xx[1122] + xx[19] *
-    (xx[1276] - xx[1769] * xx[1]) + xx[1147] * ((xx[1765] * xx[1180] + xx[1200])
-    * xx[19] - xx[16]) - (xx[1226] * xx[1164] - xx[1201] * xx[1229]) + (xx[1258]
-    + (xx[1769] * xx[1235] + xx[1284]) * xx[19] + xx[1270] + xx[19] * (xx[1287]
+    [1230] * xx[556] + xx[1217] * xx[557] + xx[1126] * xx[1054] + (xx[1187] +
+    xx[19] * (xx[1200] - xx[1628] * xx[1038]) + (xx[1625] * xx[1048] - xx[1628] *
+    xx[1050]) * xx[19]) * inputDdot[9] - xx[1092] * xx[1237] + xx[1127] * xx[558]
+    + xx[1196] * xx[1091] + xx[1236] * xx[1120];
+  xx[744] = xx[29] * xx[1324] - (xx[359] + xx[342] + xx[348] + xx[362] + xx[1182]
+    + xx[207] + xx[19] * (xx[1201] - xx[353] * xx[163]) + xx[419] - (xx[389] *
+    xx[441] + xx[499] * xx[406]) + (xx[19] * (xx[1213] - xx[1170] * xx[163]) -
+    xx[1193] + xx[1238]) * xx[19] - (xx[1246] + xx[1273] + xx[1148] + xx[19] *
+    (xx[1276] - xx[1769] * xx[1]) + xx[1164] * ((xx[1765] * xx[1194] + xx[1204])
+    * xx[19] - xx[16]) - (xx[1229] * xx[1173] - xx[1231] * xx[1235]) + (xx[1258]
+    + (xx[1769] * xx[1244] + xx[1284]) * xx[19] + xx[1270] + xx[19] * (xx[1287]
     - xx[1769] * xx[1266])) * xx[19]) + (xx[1280] + xx[19] * (xx[1290] - xx[365]
     * xx[163]) - xx[406] + xx[664]) * inputDdot[6]) - xx[1380] * xx[9] - xx[1271]
     * xx[257] - xx[1264] * xx[323] - xx[1384] * xx[431] - xx[1263] * xx[555] -
-    xx[1269] * xx[556] + xx[1331] * xx[557] + xx[1340] * xx[896] + (xx[1206] +
-    xx[1229] + (xx[1769] * xx[54] + xx[1319]) * xx[19] + xx[19] * (xx[1765] *
-    xx[1199] + xx[1209])) * inputDdot[10] - xx[1250] * xx[1886] + xx[141] * xx
-    [143] + xx[142] * xx[1227] + xx[1403] * xx[1295];
-  xx[985] = xx[1356] * xx[29] - (xx[360] + xx[343] + xx[349] + xx[363] + xx[1194]
-    + xx[345] + (xx[355] * xx[163] + xx[1213]) * xx[19] - (xx[709] + xx[389] *
-    xx[166] + xx[197] * xx[406]) + (xx[1176] + xx[19] * (xx[1239] - xx[1173] *
-    xx[163]) + xx[1243]) * xx[19] - (xx[1247] + xx[1274] + xx[408] + (xx[1769] *
-    xx[53] + xx[1277]) * xx[19] + (xx[1180] * xx[1402] - xx[1209]) * xx[19] *
-    xx[1147] - (xx[1226] * xx[367] + xx[1198] * xx[1229]) + ((xx[1769] * xx[1257]
-    + xx[1285]) * xx[19] - xx[1202] + xx[1265] + (xx[1769] * xx[1268] + xx[1288])
+    xx[1269] * xx[556] + xx[1331] * xx[557] + xx[1340] * xx[896] + (xx[1205] +
+    xx[1235] + (xx[1769] * xx[54] + xx[1319]) * xx[19] + xx[19] * (xx[1765] *
+    xx[1208] + xx[1210])) * inputDdot[10] - xx[1250] * xx[1886] + xx[141] * xx
+    [143] + xx[142] * xx[1228] + xx[1403] * xx[1295];
+  xx[745] = xx[1356] * xx[29] - (xx[360] + xx[343] + xx[349] + xx[363] + xx[1183]
+    + xx[345] + (xx[355] * xx[163] + xx[1202]) * xx[19] - (xx[709] + xx[389] *
+    xx[166] + xx[206] * xx[406]) + (xx[1191] + xx[19] * (xx[1214] - xx[1179] *
+    xx[163]) + xx[1239]) * xx[19] - (xx[1247] + xx[1274] + xx[474] + (xx[1769] *
+    xx[53] + xx[1277]) * xx[19] + (xx[1194] * xx[1402] - xx[1210]) * xx[19] *
+    xx[1164] - (xx[1229] * xx[408] + xx[1212] * xx[1235]) + ((xx[1769] * xx[1257]
+    + xx[1285]) * xx[19] - xx[1211] + xx[1265] + (xx[1769] * xx[1268] + xx[1288])
     * xx[19]) * xx[19]) + (xx[1281] + xx[389] + xx[19] * (xx[1291] - xx[368] *
     xx[163]) - xx[20] + xx[16]) * inputDdot[6]) - xx[1437] * xx[9] - xx[1446] *
     xx[257] - xx[1447] * xx[323] - xx[1368] * xx[431] - xx[1428] * xx[555] - xx
-    [1441] * xx[556] + xx[1433] * xx[557] + xx[1315] * xx[896] + (xx[1207] +
-    (xx[1769] * xx[481] + xx[1320]) * xx[19] - (xx[1226] - (xx[1200] + xx[1199] *
+    [1441] * xx[556] + xx[1433] * xx[557] + xx[1315] * xx[896] + (xx[1206] +
+    (xx[1769] * xx[481] + xx[1320]) * xx[19] - (xx[1229] - (xx[1204] + xx[1208] *
     xx[1402]) * xx[19]) - xx[16]) * inputDdot[10] - xx[1250] * xx[1443] + xx
-    [1322] * xx[143] + xx[1432] * xx[1227] + xx[1442] * xx[1295];
-  xx[986] = xx[1259] * xx[29] - (xx[361] + xx[344] + xx[350] + xx[364] + xx[1195]
-    + (xx[163] * xx[366] + xx[1214]) * xx[19] + xx[410] - (xx[389] * xx[222] +
-    xx[223] * xx[406]) + ((xx[1174] * xx[163] + xx[1240]) * xx[19] + xx[1244]) *
-    xx[19] - (xx[1248] + xx[1275] + (xx[1278] - xx[1769] * xx[1117]) * xx[19] +
-              xx[19] * (xx[1191] * xx[1402] + xx[1317]) * xx[1147] - (xx[1231] *
-    xx[1229] - xx[1226] * xx[1234]) + (xx[19] * (xx[1286] - xx[1262] * xx[1769])
+    [1322] * xx[143] + xx[1432] * xx[1228] + xx[1442] * xx[1295];
+  xx[746] = xx[29] * xx[1259] - (xx[361] + xx[344] + xx[350] + xx[364] + xx[1184]
+    + (xx[366] * xx[163] + xx[1203]) * xx[19] + xx[400] - (xx[389] * xx[222] +
+    xx[223] * xx[406]) + ((xx[1180] * xx[163] + xx[1215]) * xx[19] + xx[1240]) *
+    xx[19] - (xx[1248] + xx[1275] + (xx[1278] - xx[1769] * xx[367]) * xx[19] +
+              xx[19] * (xx[1195] * xx[1402] + xx[1317]) * xx[1164] - (xx[1242] *
+    xx[1235] - xx[1229] * xx[1243]) + (xx[19] * (xx[1286] - xx[1262] * xx[1769])
     + (xx[1289] - xx[1769] * xx[1279]) * xx[19]) * xx[19]) + (xx[1282] + (xx
-    [1118] * xx[163] + xx[1292]) * xx[19] + xx[391]) * inputDdot[6]) - xx[1353] *
+    [1122] * xx[163] + xx[1292]) * xx[19] + xx[271]) * inputDdot[6]) - xx[1353] *
     xx[9] - xx[1367] * xx[257] - xx[1376] * xx[323] - xx[1323] * xx[431] - xx
     [1351] * xx[555] - xx[1365] * xx[556] + xx[1352] * xx[557] + xx[1260] * xx
-    [896] + (xx[1208] + xx[19] * (xx[1321] - xx[651] * xx[1769]) + (xx[1769] *
-              xx[1199] - xx[1765] * xx[1191]) * xx[19]) * inputDdot[10] - xx
-    [1250] * xx[1355] + xx[1261] * xx[143] + xx[1330] * xx[1227] + xx[1371] *
+    [896] + (xx[1207] + xx[19] * (xx[1321] - xx[651] * xx[1769]) + (xx[1769] *
+              xx[1208] - xx[1765] * xx[1195]) * xx[19]) * inputDdot[10] - xx
+    [1250] * xx[1355] + xx[1261] * xx[143] + xx[1330] * xx[1228] + xx[1371] *
     xx[1295];
-  xx[987] = (xx[1341] + xx[1338] + (xx[1357] - xx[2] * xx[1327]) * xx[19] + xx
+  xx[747] = (xx[1341] + xx[1338] + (xx[1357] - xx[2] * xx[1327]) * xx[19] + xx
              [19] * (xx[10] * xx[1347] - xx[1349])) * inputDdot[7] - (xx[31] +
-    xx[153] + xx[19] * (xx[735] - xx[308] * xx[152]) + xx[309] + xx[304] + xx
-    [300] + xx[170] + xx[19] * (xx[296] - xx[165] * xx[163]) + xx[422] - (xx[203]
-    * xx[441] + xx[461] * xx[206]) + (xx[19] * (xx[589] - xx[221] * xx[163]) -
-    xx[274] + xx[652]) * xx[19] - (xx[330] + xx[69] + xx[56] + xx[19] * (xx[132]
-    + xx[2] * xx[49]) + xx[62] * ((xx[10] * xx[75] + xx[76]) * xx[19] - xx[16])
-    - (xx[1344] * xx[219] + xx[238] * xx[1338]) + (xx[126] + (xx[732] - xx[2] *
-    xx[117]) * xx[19] + xx[131] + xx[19] * (xx[738] + xx[2] * xx[129])) * xx[19]))
-    - xx[1919] * xx[13] + xx[147] * xx[5] + xx[933] * xx[25] + xx[57] * xx[26] -
-    (xx[35] + xx[19] * (xx[83] - xx[21] * xx[163]) - xx[206] + xx[664]) *
-    inputDdot[6] + xx[1450] * xx[29] - xx[459] * xx[9] - xx[185] * xx[257] - xx
+    xx[153] + xx[19] * (xx[732] - xx[308] * xx[152]) + xx[196] + xx[219] + xx
+    [300] + xx[170] + xx[19] * (xx[303] - xx[202] * xx[163]) + xx[419] - (xx[218]
+    * xx[441] + xx[499] * xx[224]) + (xx[19] * (xx[334] - xx[297] * xx[163]) -
+    xx[307] + xx[309]) * xx[19] - (xx[74] + xx[69] + xx[56] + xx[19] * (xx[131]
+    + xx[2] * xx[55]) + xx[126] * ((xx[10] * xx[128] + xx[129]) * xx[19] - xx[16])
+    - (xx[1344] * xx[252] + xx[296] * xx[1338]) + (xx[130] + (xx[652] - xx[2] *
+    xx[117]) * xx[19] + xx[157] + xx[19] * (xx[589] + xx[2] * xx[136])) * xx[19]))
+    - xx[13] * xx[1919] + xx[147] * xx[5] + xx[933] * xx[25] + xx[57] * xx[26] -
+    (xx[35] + xx[19] * (xx[83] - xx[21] * xx[163]) - xx[224] + xx[664]) *
+    inputDdot[6] + xx[29] * xx[1450] - xx[459] * xx[9] - xx[185] * xx[257] - xx
     [247] * xx[323] - xx[623] * xx[431] - xx[184] * xx[555] - xx[182] * xx[556]
     + xx[292] * xx[557] + xx[1457] * xx[45];
-  xx[988] = (xx[1342] + (xx[1358] - xx[2] * xx[1345]) * xx[19] - (xx[1344] -
-              (xx[76] + xx[1347] * xx[8]) * xx[19]) - xx[16]) * inputDdot[7] -
-    (xx[32] + xx[167] + (xx[308] * xx[168] + xx[736]) * xx[19] + xx[310] + xx
-     [305] + xx[301] + xx[187] + (xx[196] * xx[163] + xx[297]) * xx[19] - (xx
-      [709] + xx[203] * xx[166] + xx[197] * xx[206]) + (xx[272] + xx[19] * (xx
-       [590] - xx[258] * xx[163]) + xx[653]) * xx[19] - (xx[331] + xx[70] + xx
-      [59] + (xx[133] - xx[2] * xx[55]) * xx[19] + (xx[1349] + xx[75] * xx[8]) *
-      xx[19] * xx[62] - (xx[72] * xx[1338] - xx[1344] * xx[74]) + ((xx[733] -
-        xx[2] * xx[118]) * xx[19] - xx[0] + xx[127] + (xx[739] - xx[2] * xx[130])
-       * xx[19]) * xx[19])) - xx[138] * xx[13] + xx[1483] * xx[5] + xx[1931] *
-    xx[25] + xx[1934] * xx[26] - (xx[36] + xx[203] + xx[19] * (xx[84] - xx[27] *
-    xx[163]) - xx[20] + xx[16]) * inputDdot[6] + xx[29] * xx[612] - xx[1497] *
+  xx[748] = (xx[1342] + (xx[1358] - xx[2] * xx[1345]) * xx[19] - (xx[1344] -
+              (xx[129] + xx[1347] * xx[8]) * xx[19]) - xx[16]) * inputDdot[7] -
+    (xx[32] + xx[167] + (xx[308] * xx[168] + xx[733]) * xx[19] + xx[197] + xx
+     [220] + xx[301] + xx[187] + (xx[203] * xx[163] + xx[304]) * xx[19] - (xx
+      [709] + xx[218] * xx[166] + xx[206] * xx[224]) + (xx[306] + xx[19] * (xx
+       [335] - xx[298] * xx[163]) + xx[310]) * xx[19] - (xx[75] + xx[70] + xx[59]
+      + (xx[132] - xx[2] * xx[61]) * xx[19] + (xx[1349] + xx[128] * xx[8]) * xx
+      [19] * xx[126] - (xx[49] * xx[1338] - xx[1344] * xx[72]) + ((xx[653] - xx
+        [2] * xx[118]) * xx[19] - xx[0] + xx[134] + (xx[590] - xx[2] * xx[137]) *
+       xx[19]) * xx[19])) - xx[13] * xx[138] + xx[1483] * xx[5] + xx[1931] * xx
+    [25] + xx[1934] * xx[26] - (xx[36] + xx[218] + xx[19] * (xx[84] - xx[27] *
+    xx[163]) - xx[20] + xx[16]) * inputDdot[6] + xx[612] * xx[29] - xx[1497] *
     xx[9] - xx[1515] * xx[257] - xx[1537] * xx[323] - xx[1440] * xx[431] - xx
-    [1487] * xx[555] - xx[1498] * xx[556] + xx[557] * xx[613] + xx[1431] * xx[45];
-  xx[989] = (xx[1343] + xx[19] * (xx[1359] - xx[2] * xx[1346]) + (xx[2] * xx
+    [1487] * xx[555] - xx[1498] * xx[556] + xx[613] * xx[557] + xx[1431] * xx[45];
+  xx[749] = (xx[1343] + xx[19] * (xx[1359] - xx[1346] * xx[2]) + (xx[2] * xx
               [1347] + xx[10] * xx[1348]) * xx[19]) * inputDdot[7] - (xx[33] +
-    (xx[308] * xx[169] + xx[737]) * xx[19] + xx[311] + xx[306] + xx[302] + (xx
-    [163] * xx[198] + xx[298]) * xx[19] + xx[410] - (xx[203] * xx[222] + xx[223]
-    * xx[206]) + ((xx[262] * xx[163] + xx[591]) * xx[19] + xx[654]) * xx[19] -
-    (xx[332] + xx[71] + (xx[134] - xx[2] * xx[61]) * xx[19] + xx[19] * (xx[220]
-    - xx[1348] * xx[8]) * xx[62] - (xx[1344] * xx[77] - xx[128] * xx[1338]) +
-     (xx[19] * (xx[734] - xx[2] * xx[119]) + (xx[740] - xx[2] * xx[6]) * xx[19])
-     * xx[19])) - xx[135] * xx[13] + xx[144] * xx[5] + xx[145] * xx[25] + xx[146]
-    * xx[26] - (xx[37] + (xx[38] * xx[163] + xx[85]) * xx[19] + xx[391]) *
-    inputDdot[6] + xx[29] * xx[1394] - xx[782] * xx[9] - xx[784] * xx[257] - xx
+    (xx[308] * xx[169] + xx[734]) * xx[19] + xx[198] + xx[221] + xx[302] + (xx
+    [163] * xx[210] + xx[305]) * xx[19] + xx[400] - (xx[218] * xx[222] + xx[223]
+    * xx[224]) + ((xx[299] * xx[163] + xx[336]) * xx[19] + xx[311]) * xx[19] -
+    (xx[76] + xx[71] + (xx[133] - xx[2] * xx[62]) * xx[19] + xx[19] * (xx[274] -
+    xx[1348] * xx[8]) * xx[126] - (xx[1344] * xx[77] - xx[127] * xx[1338]) +
+     (xx[19] * (xx[654] - xx[119] * xx[2]) + (xx[591] - xx[2] * xx[6]) * xx[19])
+     * xx[19])) - xx[13] * xx[135] + xx[144] * xx[5] + xx[145] * xx[25] + xx[146]
+    * xx[26] - (xx[37] + (xx[38] * xx[163] + xx[85]) * xx[19] + xx[271]) *
+    inputDdot[6] + xx[1394] * xx[29] - xx[782] * xx[9] - xx[784] * xx[257] - xx
     [791] * xx[323] - xx[1424] * xx[431] - xx[1469] * xx[555] - xx[1471] * xx
-    [556] + xx[557] * xx[1395] + xx[1396] * xx[45];
+    [556] + xx[1395] * xx[557] + xx[1396] * xx[45];
   memcpy(xx + 2327, xx + 2102, 225 * sizeof(double));
-  factorAndSolveSymmetric(xx + 2327, 15, xx + 732, ii + 0, xx + 975, xx + 296,
+  factorAndSolveSymmetric(xx + 2327, 15, xx + 808, ii + 0, xx + 735, xx + 296,
     xx + 2552);
   xx[0] = - (xx[48] + xx[147] * xx[308] + xx[1483] * xx[309] + xx[144] * xx[310]);
-  xx[1] = - (xx[136] + xx[933] * xx[308] + xx[1931] * xx[309] + xx[145] * xx[310]);
+  xx[1] = - (xx[159] + xx[933] * xx[308] + xx[1931] * xx[309] + xx[145] * xx[310]);
   xx[2] = - (xx[82] + xx[57] * xx[308] + xx[1934] * xx[309] + xx[146] * xx[310]);
   solveSymmetricPosDef(xx + 100, xx + 0, 3, 1, xx + 4, xx + 8);
   xx[0] = xx[87] + xx[78] * xx[4] + xx[140] * xx[5];
@@ -12170,21 +12170,21 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_quatDeriv(xx + 29, xx + 8, xx + 33);
   xx[8] = xx[15];
   xx[9] = xx[18];
-  xx[10] = xx[159] - xx[0];
+  xx[10] = xx[243] - xx[0];
   pm_math_quatInverseXform(xx + 63, xx + 8, xx + 15);
   pm_math_cross3(xx + 8, xx + 114, xx + 25);
   xx[8] = xx[14] + xx[0] * xx[1907] + xx[46] + xx[25];
-  xx[9] = xx[11] - xx[0] * xx[1906] + xx[213] + xx[26];
+  xx[9] = xx[11] - xx[0] * xx[1906] + xx[272] + xx[26];
   xx[10] = xx[24] + xx[27];
   pm_math_quatInverseXform(xx + 63, xx + 8, xx + 11);
   xx[1] = (xx[1457] * xx[308] + xx[1431] * xx[309] + xx[1396] * xx[310] - xx[418])
     / xx[358];
   xx[2] = xx[550] + xx[357] * xx[1];
-  xx[8] = xx[563] - xx[396] * xx[1];
-  xx[9] = xx[8] * xx[354];
-  xx[10] = xx[2] * xx[354];
-  xx[14] = xx[2] + xx[19] * (xx[352] * xx[9] - xx[10] * xx[354]);
-  xx[2] = xx[8] - (xx[352] * xx[10] + xx[9] * xx[354]) * xx[19];
+  xx[8] = xx[563] - xx[398] * xx[1];
+  xx[9] = xx[8] * xx[356];
+  xx[10] = xx[2] * xx[356];
+  xx[14] = xx[2] + xx[19] * (xx[352] * xx[9] - xx[10] * xx[356]);
+  xx[2] = xx[8] - (xx[352] * xx[10] + xx[9] * xx[356]) * xx[19];
   xx[8] = xx[14];
   xx[9] = xx[2];
   xx[10] = xx[545];
@@ -12239,7 +12239,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[27] = xx[1097] + xx[1175] - xx[52] * xx[1] + xx[26] + xx[39] + xx[31] + xx
     [48] + xx[45] + xx[61] + xx[58] + xx[1496] - xx[52] * xx[18] + xx[76] + xx
     [375];
-  xx[32] = xx[2] + xx[41] + xx[54] + xx[63] + xx[20] + xx[377];
+  xx[32] = xx[2] + xx[41] + xx[54] + xx[63] + xx[20] + xx[384];
   xx[2] = (xx[312] * xx[296] + xx[281] * xx[297] + xx[226] * xx[298] + xx[944] *
            xx[299] + xx[1163] * xx[300] + xx[947] * xx[301] + xx[1197] * xx[302]
            + xx[1298] * xx[303] + xx[1217] * xx[304] + xx[1331] * xx[305] + xx
@@ -12247,22 +12247,22 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
            xx[309] + xx[1395] * xx[310] + xx[21] * xx[195] + xx[27] * xx[201] +
            xx[32] * xx[291]) / xx[456];
   xx[69] = xx[21] + xx[2] * xx[409];
-  xx[70] = xx[1096] + xx[384] + xx[25] + xx[38] + xx[30] + xx[47] + xx[44] + xx
-    [60] + xx[57] + xx[385] + xx[75] + xx[387] + xx[513] * xx[2];
-  xx[71] = xx[27] - xx[376] * xx[2];
+  xx[70] = xx[1096] + xx[387] + xx[25] + xx[38] + xx[30] + xx[47] + xx[44] + xx
+    [60] + xx[57] + xx[391] + xx[75] + xx[395] + xx[513] * xx[2];
+  xx[71] = xx[27] - xx[354] * xx[2];
   pm_math_quatXform(xx + 214, xx + 69, xx + 24);
   xx[29] = xx[14] + xx[40] + xx[53] + xx[62] + xx[49] + xx[329] + xx[392] * xx[2];
   xx[30] = xx[32] + xx[437] * xx[2];
-  xx[31] = xx[545] + xx[42] + xx[55] + xx[64] + xx[1010] + xx[379] + xx[2] * xx
+  xx[31] = xx[545] + xx[42] + xx[55] + xx[64] + xx[1010] + xx[376] + xx[2] * xx
     [424];
   pm_math_quatXform(xx + 214, xx + 29, xx + 37);
   pm_math_cross3(xx + 551, xx + 37, xx + 29);
-  xx[14] = xx[1065] + xx[24] + xx[29] + xx[378];
+  xx[14] = xx[1065] + xx[24] + xx[29] + xx[385];
   xx[20] = xx[38] + xx[388];
-  xx[21] = xx[39] + xx[395];
-  xx[27] = xx[1066] + xx[25] + xx[30] + xx[399];
-  xx[32] = xx[37] + xx[416];
-  xx[24] = xx[1067] + xx[26] + xx[31] + xx[419];
+  xx[21] = xx[39] + xx[410];
+  xx[27] = xx[1066] + xx[25] + xx[30] + xx[417];
+  xx[32] = xx[37] + xx[420];
+  xx[24] = xx[1067] + xx[26] + xx[31] + xx[377];
   xx[29] = xx[554] * xx[296] + xx[996] * xx[297] + xx[283] * xx[298] + xx[1115] *
     xx[299] + xx[1158] * xx[300] + xx[943] * xx[301] + xx[1249] * xx[302] + xx
     [1233] * xx[303] + xx[1189] * xx[304] + xx[1384] * xx[305] + xx[1368] * xx
@@ -12292,11 +12292,11 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[20] = xx[1003] + xx[25] + xx[30] + xx[328];
   xx[21] = xx[40] + xx[322];
   xx[27] = xx[41] + xx[324];
-  xx[32] = xx[42] + xx[398];
+  xx[32] = xx[42] + xx[386];
   xx[40] = xx[21];
   xx[41] = xx[27];
   xx[42] = xx[32];
-  xx[24] = xx[1004] + xx[26] + xx[31] + xx[417];
+  xx[24] = xx[1004] + xx[26] + xx[31] + xx[416];
   xx[29] = xx[771] * xx[296] + xx[1008] * xx[297] + xx[294] * xx[298] + xx[1111]
     * xx[299] + xx[1161] * xx[300] + xx[949] * xx[301] + xx[1245] * xx[302] +
     xx[1302] * xx[303] + xx[1218] * xx[304] + xx[1380] * xx[305] + xx[1437] *
@@ -12356,10 +12356,10 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[53] = state[19];
   xx[54] = state[20];
   xx[55] = state[21];
-  pm_math_quatDeriv(xx + 52, xx + 1167, xx + 56);
-  xx[24] = xx[27] + xx[3] + xx[89] * xx[7] + xx[1080];
-  xx[25] = xx[28] - xx[89] * xx[3] + xx[7] + xx[1081];
-  xx[26] = xx[29] + xx[23] + xx[1082];
+  pm_math_quatDeriv(xx + 52, xx + 1080, xx + 56);
+  xx[24] = xx[27] + xx[3] + xx[89] * xx[7] + xx[1088];
+  xx[25] = xx[28] - xx[89] * xx[3] + xx[7] + xx[1089];
+  xx[26] = xx[29] + xx[23] + xx[1090];
   pm_math_quatInverseXform(xx + 188, xx + 24, xx + 27);
   pm_math_cross3(xx + 24, xx + 444, xx + 30);
   xx[24] = xx[20] + xx[90] * xx[3] - xx[109] * xx[7] - xx[68] * xx[23] + xx[177]
@@ -12374,9 +12374,9 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
     + 20));
   xx[26] = xx[39] - (pm_math_dot3(xx + 844, xx + 27) + pm_math_dot3(xx + 696, xx
     + 20));
-  xx[30] = xx[27] + xx[24] + xx[1203];
-  xx[31] = xx[28] + xx[25] + xx[1204];
-  xx[32] = xx[29] + xx[26] + xx[1205];
+  xx[30] = xx[27] + xx[24] + xx[1167];
+  xx[31] = xx[28] + xx[25] + xx[1168];
+  xx[32] = xx[29] + xx[26] + xx[1169];
   pm_math_quatInverseXform(xx + 214, xx + 30, xx + 27);
   pm_math_cross3(xx + 30, xx + 551, xx + 37);
   xx[30] = xx[20] + xx[230] * xx[25] + xx[229] * xx[26] + xx[314] + xx[37];
@@ -12418,8 +12418,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   pm_math_cross3(xx + 37, xx + 1398, xx + 68);
   xx[22] = xx[29] + xx[68];
   xx[29] = xx[27] + xx[69];
-  xx[27] = xx[29] * xx[354];
-  xx[32] = xx[22] * xx[354];
+  xx[27] = xx[29] * xx[356];
+  xx[32] = xx[22] * xx[356];
   xx[37] = - (xx[961] + xx[148] * xx[299] + xx[906] * xx[300] + xx[752] * xx[301]);
   xx[38] = - (xx[968] + xx[162] * xx[299] + xx[1166] * xx[300] + xx[942] * xx
               [301]);
@@ -12430,7 +12430,7 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[38] = xx[931] - xx[713] * xx[68] + xx[79] * xx[69];
   xx[39] = xx[938] + xx[80] * xx[70];
   pm_math_quatXform(xx + 1520, xx + 37, xx + 74);
-  xx[37] = xx[474] + xx[731] * xx[68] - xx[806] * xx[69] - xx[870] * xx[70];
+  xx[37] = xx[467] + xx[731] * xx[68] - xx[806] * xx[69] - xx[870] * xx[70];
   xx[38] = xx[477] + xx[806] * xx[68] + xx[731] * xx[69] + xx[908] * xx[70];
   xx[39] = xx[932] + xx[909] * xx[68] + xx[927] * xx[69];
   pm_math_quatXform(xx + 1520, xx + 37, xx + 81);
@@ -12469,9 +12469,9 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[40] = xx[679] + xx[909] * xx[88] + xx[927] * xx[89];
   pm_math_quatXform(xx + 889, xx + 38, xx + 103);
   pm_math_cross3(xx + 893, xx + 103, xx + 38);
-  xx[38] = (xx[1461] + xx[102] + xx[40] + xx[466] + (xx[103] + xx[560]) * xx[834]
+  xx[38] = (xx[1461] + xx[102] + xx[40] + xx[463] + (xx[103] + xx[560]) * xx[834]
             - (xx[104] + xx[571]) * xx[856] + xx[907] * xx[296] + xx[929] * xx
-            [297] + xx[319] * xx[298]) / xx[1027] + xx[558];
+            [297] + xx[319] * xx[298]) / xx[1027] + xx[543];
   xx[100] = state[48];
   xx[101] = state[49];
   xx[102] = state[50];
@@ -12489,23 +12489,23 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[40] = xx[667] + xx[38] * xx[856] + xx[710] + xx[109];
   xx[41] = xx[688] + xx[110];
   pm_math_quatInverseXform(xx + 889, xx + 39, xx + 108);
-  xx[39] = - (xx[1120] + xx[1220] * xx[302] + xx[1188] * xx[303] + xx[1127] *
+  xx[39] = - (xx[1136] + xx[1220] * xx[302] + xx[1188] * xx[303] + xx[1127] *
               xx[304]);
-  xx[40] = - (xx[1121] + xx[1272] * xx[302] + xx[1297] * xx[303] + xx[1196] *
+  xx[40] = - (xx[1147] + xx[1272] * xx[302] + xx[1297] * xx[303] + xx[1196] *
               xx[304]);
-  xx[41] = - (xx[1113] + xx[1636] * xx[302] + xx[1307] * xx[303] + xx[1236] *
+  xx[41] = - (xx[1117] + xx[1636] * xx[302] + xx[1307] * xx[303] + xx[1236] *
               xx[304]);
   solveSymmetricPosDef(xx + 1732, xx + 39, 3, 1, xx + 111, xx + 114);
-  xx[39] = xx[1104] + xx[78] * xx[111] + xx[140] * xx[112];
-  xx[40] = xx[1119] - xx[713] * xx[111] + xx[79] * xx[112];
-  xx[41] = xx[1112] + xx[80] * xx[113];
+  xx[39] = xx[1108] + xx[78] * xx[111] + xx[140] * xx[112];
+  xx[40] = xx[1123] - xx[713] * xx[111] + xx[79] * xx[112];
+  xx[41] = xx[1116] + xx[80] * xx[113];
   pm_math_quatXform(xx + 1701, xx + 39, xx + 114);
   xx[39] = xx[532] + xx[731] * xx[111] - xx[806] * xx[112] - xx[870] * xx[113];
   xx[40] = xx[941] + xx[806] * xx[111] + xx[731] * xx[112] + xx[908] * xx[113];
-  xx[41] = xx[1101] + xx[909] * xx[111] + xx[927] * xx[112];
+  xx[41] = xx[1105] + xx[909] * xx[111] + xx[927] * xx[112];
   pm_math_quatXform(xx + 1701, xx + 39, xx + 117);
   pm_math_cross3(xx + 1705, xx + 117, xx + 39);
-  xx[39] = (xx[1211] + xx[116] + xx[41] + xx[967] - ((xx[117] + xx[1005]) * xx
+  xx[39] = (xx[1209] + xx[116] + xx[41] + xx[965] - ((xx[117] + xx[1005]) * xx
              [1715] + (xx[118] + xx[1055]) * xx[1714]) + xx[1726] * xx[302] +
             xx[1308] * xx[303] + xx[1237] * xx[304]) / xx[1776] + xx[1053];
   xx[114] = state[57];
@@ -12516,14 +12516,14 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[119] = state[62];
   xx[120] = state[63];
   pm_math_quatDeriv(xx + 114, xx + 118, xx + 121);
-  xx[114] = xx[1090];
-  xx[115] = xx[1092];
-  xx[116] = xx[1148] - xx[39];
+  xx[114] = xx[1094];
+  xx[115] = xx[1101];
+  xx[116] = xx[1165] - xx[39];
   pm_math_quatInverseXform(xx + 1701, xx + 114, xx + 117);
   pm_math_cross3(xx + 114, xx + 1705, xx + 125);
-  xx[114] = xx[1089] + xx[39] * xx[1715] + xx[1083] + xx[125];
-  xx[115] = xx[1078] + xx[39] * xx[1714] + xx[1165] + xx[126];
-  xx[116] = xx[1114] + xx[127];
+  xx[114] = xx[1093] + xx[39] * xx[1715] + xx[1083] + xx[125];
+  xx[115] = xx[1078] + xx[39] * xx[1714] + xx[1174] + xx[126];
+  xx[116] = xx[1118] + xx[127];
   pm_math_quatInverseXform(xx + 1701, xx + 114, xx + 125);
   xx[114] = - (xx[73] + xx[141] * xx[305] + xx[1322] * xx[306] + xx[1261] * xx
                [307]);
@@ -12541,9 +12541,9 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[93] = xx[407] + xx[909] * xx[71] + xx[927] * xx[72];
   pm_math_quatXform(xx + 1801, xx + 91, xx + 49);
   pm_math_cross3(xx + 1871, xx + 49, xx + 91);
-  xx[40] = (xx[1337] + xx[79] + xx[93] + xx[467] - ((xx[49] + xx[1136]) * xx
-             [1835] + (xx[50] + xx[1215]) * xx[1824]) + xx[1886] * xx[305] + xx
-            [1443] * xx[306] + xx[1355] * xx[307]) / xx[1898] + xx[1210];
+  xx[40] = (xx[1337] + xx[79] + xx[93] + xx[1121] - ((xx[49] + xx[1160]) * xx
+             [1835] + (xx[50] + xx[1222]) * xx[1824]) + xx[1886] * xx[305] + xx
+            [1443] * xx[306] + xx[1355] * xx[307]) / xx[1898] + xx[1219];
   xx[77] = state[66];
   xx[78] = state[67];
   xx[79] = state[68];
@@ -12557,8 +12557,8 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   xx[51] = xx[1309] - xx[40];
   pm_math_quatInverseXform(xx + 1801, xx + 49, xx + 77);
   pm_math_cross3(xx + 49, xx + 1871, xx + 95);
-  xx[49] = xx[1251] + xx[40] * xx[1835] + xx[1219] + xx[95];
-  xx[50] = xx[1222] + xx[40] * xx[1824] + xx[1228] + xx[96];
+  xx[49] = xx[1251] + xx[40] * xx[1835] + xx[1227] + xx[95];
+  xx[50] = xx[1226] + xx[40] * xx[1824] + xx[1234] + xx[96];
   xx[51] = xx[1256] + xx[97];
   pm_math_quatInverseXform(xx + 1801, xx + 49, xx + 95);
   deriv[0] = state[1];
@@ -12602,9 +12602,9 @@ PmfMessageId PlatformAssem_f0ca4364_1_deriv(const double *rtdv, const int
   deriv[33] = state[34];
   deriv[34] = xx[8] - (xx[374] * xx[63] - xx[371] * xx[64] - xx[369] * xx[67]);
   deriv[35] = state[36];
-  deriv[36] = xx[1] - (xx[394] * (xx[22] - (xx[352] * xx[27] + xx[32] * xx[354])
-    * xx[19]) - (xx[29] + xx[19] * (xx[352] * xx[32] - xx[27] * xx[354])) * xx
-                       [397] - xx[666] * xx[2]);
+  deriv[36] = xx[1] - (xx[394] * (xx[22] - (xx[352] * xx[27] + xx[32] * xx[356])
+    * xx[19]) - (xx[29] + xx[19] * (xx[352] * xx[32] - xx[27] * xx[356])) * xx
+                       [399] - xx[666] * xx[2]);
   deriv[37] = state[38];
   deriv[38] = - xx[37];
   deriv[39] = xx[81];
