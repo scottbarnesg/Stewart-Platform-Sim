@@ -17,8 +17,8 @@ function [theta, error_data] = controller_v2(eangles, theta, translation, accele
     % E = zeros(1, 6);
     F = 200*ones(1, 6);
     % F = zeros(1, 6);
-    G = 0.25;
-    H = 10;
+    G = 0;
+    H = 0;
     
     % Proportional Calculations
     d_theta = [A(1)*sin(eangles(3))+B(1)*sin(eangles(1))-C(1)*sin(eangles(2))+D(1)*translation(1)+E(1)*translation(2)-F(1)*translation(3);

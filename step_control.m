@@ -6,11 +6,11 @@ sensor_delay = 0.00; %seconds
 noise_mag = mag2db(0.00); %converts magnitude to dB
 
 % Define Functions for Dynamic Base Position and Orientation
-base_pxf = @(t) 0; %30*10^-3; % 10*10^-3; % -(t+1)^2;
-base_pyf = @(t) 0; %20*10^-3; % (t+1)^2;
-base_pzf = @(t) 0; %10*10^-3;  % (t+2)^2; % (X-Direction)
-base_qxf = @(t) 0; %10*sin(2*pi*t); %in degrees
-base_qyf = @(t) 10; % 10*sin(2*pi*t);
+base_pxf = @(t) t; %30*10^-3; % 10*10^-3; % -(t+1)^2;
+base_pyf = @(t) t; %20*10^-3; % (t+1)^2;
+base_pzf = @(t) t; %10*10^-3;  % (t+2)^2; % (X-Direction)
+base_qxf = @(t) 10*sin(2*pi*t); %in degrees
+base_qyf = @(t) 0; % 10*sin(2*pi*t);
 base_qzf = @(t) 0;
 
 % Set Initial Base Position and Orientation
@@ -78,7 +78,7 @@ while(run_sim == true)
     % Get Platform State
     quat_plat_state = platform_orientation.signals.values(length(platform_orientation.time), :);
     eul_plat_state = quat_to_eangles(quat_plat_state) + wgn(3, 1, noise_mag);
-    trans_plat_state = platform_translation_rel.signals.values(length(platform_translation_rel.time), :) + wgn(1, 3, noise_mag)- platform_translation_rel.signals.values(1, :);
+    trans_plat_state = platform_translation_rel.signals.values(length(platform_translation_rel.time), :) + wgn(1, 3, noise_mag) - platform_translation_rel.signals.values(1, :);
     actuator_states = motor_states.signals.values(length(platform_orientation.time), :)' + wgn(6, 1, noise_mag);   
     accel_plat_state = platform_acceleration.signals.values(length(platform_acceleration.time), :)/1000 + wgn(1, 3, noise_mag);
     % Calculate Controller Input
@@ -89,7 +89,7 @@ while(run_sim == true)
         dt = platform_orientation.time(1);
     end
     % [servo_angles, error_data] = controller_v1(eul_plat_state, actuator_states, trans_plat_state, error_data, dt);
-    % [servo_angles, error_data] = controller_v2(eul_plat_state, actuator_states, trans_plat_state, accel_plat_state, error_data, dt);
+    [servo_angles, error_data] = controller_v2(eul_plat_state, actuator_states, trans_plat_state, accel_plat_state, error_data, dt);
     % Step forward by single time step (determined by solver)
     set_param('PlatformAssem', 'SimulationCommand', 'step');
     % Check for Termination Criteria
@@ -109,9 +109,9 @@ for i = 1:size(platform_orientation.time, 1)
     alpha(i) = eangles(1)*180/pi;
     beta(i) = eangles(2)*180/pi;
     gamma(i) = eangles(3)*180/pi;
-    x(i) = 1000*(platform_translation_abs.signals.values(i, 1)); %-platform_translation.signals.values(1, 1));
-    y(i) = 1000*(platform_translation_abs.signals.values(i, 2)); % - platform_translation_abs.signals.values(1, 2));
-    z(i) = 1000*(platform_translation_abs.signals.values(i, 3)); % - platform_translation_abs.signals.values(1, 3));
+    x(i) = 1000*(platform_translation_rel.signals.values(i, 1) - platform_translation_rel.signals.values(1, 1));
+    y(i) = 1000*(platform_translation_rel.signals.values(i, 2) - platform_translation_rel.signals.values(1, 2));
+    z(i) = 1000*(platform_translation_rel.signals.values(i, 3) - platform_translation_rel.signals.values(1, 3));
     ax(i) = platform_acceleration.signals.values(i, 1);
     ay(i) = platform_acceleration.signals.values(i, 2);
     az(i) = platform_acceleration.signals.values(i, 3);
