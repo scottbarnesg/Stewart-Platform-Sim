@@ -1,7 +1,7 @@
 % Stewart Platform Controller Version 2.0
 % PI Position & Rotation Control
 % P Acceleration Control
-% WARNING: UNSTABLE
+% Verified
 
 function [theta, error_data] = controller_v2(eangles, theta, translation, acceleration, error_data, dt, t)
     % Controller Weights
@@ -18,7 +18,7 @@ function [theta, error_data] = controller_v2(eangles, theta, translation, accele
     F = 200*ones(1, 6);
     % F = zeros(1, 6);
     G = 0.25;
-    H = 10;
+    H = 20;
     
     % Proportional Calculations
     d_theta = [A(1)*sin(eangles(3))+B(1)*sin(eangles(1))-C(1)*sin(eangles(2))+D(1)*translation(1)+E(1)*translation(2)-F(1)*translation(3);
@@ -44,14 +44,14 @@ function [theta, error_data] = controller_v2(eangles, theta, translation, accele
     end
     
     % Acceleration Control
-    if t > 0.1
+    if t > 0.05
         d_theta = d_theta +...
-            H*[0*acceleration(3)-acceleration(2); 
-            -0*acceleration(3)+acceleration(2);
-            -0*acceleration(3)-acceleration(2);
-            -0*acceleration(3)+acceleration(2);
-            0*acceleration(3)-acceleration(2);
-            0*acceleration(3)+acceleration(2)];
+            H*[-0.25*acceleration(3)-acceleration(2); 
+            0.25*acceleration(3)+acceleration(2);
+            acceleration(3)-acceleration(2);
+            acceleration(3)+acceleration(2);
+            -acceleration(3)-acceleration(2);
+            -acceleration(3)+acceleration(2)];
     end
     % Update Motor Angles
     theta = theta + d_theta*dt;

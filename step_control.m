@@ -1,16 +1,16 @@
 clc; clear; close all;
 %% Set Initial Parameters
-t_max = 1.0;
-g = 0; %-9.80665; %gravity
-sensor_delay = 0.00; %seconds
-noise_mag = mag2db(0.00); %converts magnitude to dB
+t_max = 2.0;
+g = 9.80665; %gravity
+sensor_delay = 0.005; %seconds
+noise_mag = mag2db(0.001); %converts magnitude to dB
 
 % Define Functions for Dynamic Base Position and Orientation
-base_pxf = @(t) 0; %30*10^-3; % 10*10^-3; % -(t+1)^2;
-base_pyf = @(t) 0; % (t+1)^4; %20*10^-3; % (t+1)^2;
-base_pzf = @(t) 0; %-(t+1)^2; %10*10^-3;  % (t+2)^2; % (X-Direction)
-base_qxf = @(t) 12*sin(2*pi*t); %in degrees
-base_qyf = @(t) 12*sin(2*pi*t);
+base_pxf = @(t) 0; % Left/Right
+base_pyf = @(t) 0; % Up/Down
+base_pzf = @(t) 0; %(t+1)^2; % Forward/Back
+base_qxf = @(t) 0; %20*sin(2*pi*t); %in degrees
+base_qyf = @(t) 20*sin(2*pi*t);
 base_qzf = @(t) 0;
 
 % Set Initial Base Position and Orientation
@@ -48,7 +48,8 @@ set_param('PlatformAssem', 'SimulationCommand', 'pause');
 step_count = 0;
 tic; % Start Timer
 error_data = []; % Initialize Empty Error Array
-
+delay_check = 0;
+delay_ind = 1;
 %% Run Simulation
 while(run_sim == true)
     % Get Current Simulation Time
@@ -78,9 +79,13 @@ while(run_sim == true)
     % Get Platform State
     quat_plat_state = platform_orientation.signals.values(length(platform_orientation.time), :);
     eul_plat_state = quat_to_eangles(quat_plat_state) + wgn(3, 1, noise_mag);
-    trans_plat_state = platform_translation_rel.signals.values(length(platform_translation_rel.time), :) + wgn(1, 3, noise_mag) - platform_translation_rel.signals.values(1, :);
+    if (platform_translation_rel.time(length(platform_translation_rel.time)) >= sensor_delay) && (delay_check == 0)
+        delay_check = 1;
+        delay_ind = length(platform_translation_rel.time);
+    end
+    trans_plat_state = platform_translation_rel.signals.values(length(platform_translation_rel.time), :) + wgn(1, 3, noise_mag) - platform_translation_rel.signals.values(delay_ind, :);
     actuator_states = motor_states.signals.values(length(platform_orientation.time), :)' + wgn(6, 1, noise_mag);   
-    accel_plat_state = platform_acceleration.signals.values(length(platform_acceleration.time), :)/(1000) + wgn(1, 3, noise_mag)
+    accel_plat_state = platform_acceleration.signals.values(length(platform_acceleration.time), :)/(1000) + wgn(1, 3, noise_mag);
     % Calculate Controller Input
     % servo_angles = controller_v0(eul_plat_state, actuator_states, trans_plat_state);
     if length(platform_orientation.time) > 1
@@ -111,7 +116,7 @@ for i = 1:size(platform_orientation.time, 1)
     gamma(i) = eangles(3)*180/pi;
     x(i) = 1000*(platform_translation_rel.signals.values(i, 1)); % - platform_translation_rel.signals.values(1, 1));
     y(i) = 1000*(platform_translation_rel.signals.values(i, 2)); % - platform_translation_rel.signals.values(1, 2));
-    z(i) = 1000*(platform_translation_rel.signals.values(i, 3) - platform_translation_rel.signals.values(1, 3));
+    z(i) = 1000*(platform_translation_rel.signals.values(i, 3) - platform_translation_rel.signals.values(delay_ind, 3));
     ax(i) = platform_acceleration.signals.values(i, 1)/1000;
     ay(i) = platform_acceleration.signals.values(i, 2)/1000;
     az(i) = platform_acceleration.signals.values(i, 3)/1000;
