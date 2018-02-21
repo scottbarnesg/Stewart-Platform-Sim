@@ -2,9 +2,9 @@ clc; clear; close all;
 %% Set Initial Parameters
 
 % Set Angle Ranges
-min_angle = 90;
-max_angle = 93;
-d_angle = 1;
+min_angle = 100;
+max_angle = 175;
+d_angle = 15;
 
 g = 0;
 sensor_delay = 0;
@@ -49,11 +49,16 @@ run_sim = true;
 set_param('PlatformAssem', 'SimulationCommand', 'start'); 
 % Pause Simulation (Wait for Input)
 set_param('PlatformAssem', 'SimulationCommand', 'pause');
+pause(1);
 count = 0;
 tic; % Start Timer
 error_data = []; % Initialize Empty Error Array
 delay_check = 0;
 delay_ind = 1;
+
+servo_state_theoretical(1, :) = servo_angles;
+servo_state_actual(1, :) = servo_angles;
+
 %% Run Simulation
 for a = min_angle:d_angle:max_angle
     for b = min_angle:d_angle:max_angle
@@ -63,8 +68,9 @@ for a = min_angle:d_angle:max_angle
                     for f = min_angle:d_angle:max_angle
                         % Increment Counter
                         count = count + 1;
+                        
                         % Set Servo Angles
-                        servo_angles = [a, -b, c, -d, e, -f];
+                        servo_angles = [a, -b, c, -d, e, -f]
                         for num = 1:6
                             path = strcat('PlatformAssem/angle',int2str(num));
                             set_param(path, 'Value', num2str(deg2rad(servo_angles(num))));
@@ -73,10 +79,9 @@ for a = min_angle:d_angle:max_angle
                         while (max(abs(servo_angles-rad2deg(motor_states.signals.values(length(platform_orientation.time), :)))) > 0.1)
                             set_param('PlatformAssem', 'SimulationCommand', 'step');
                         end
+                        
                         set_param('PlatformAssem', 'SimulationCommand', 'pause');
                         % Store Servo Angles
-                        servo_state_theoretical(count, :) = servo_angles;
-                        servo_state_actual(count, :) = rad2deg(motor_states.signals.values(length(platform_orientation.time), :)');
                         % Update Platform State
                         quat_plat_state = platform_orientation.signals.values(length(platform_orientation.time), :);
                         eul_plat_state = quat_to_eangles(quat_plat_state);
@@ -90,4 +95,10 @@ for a = min_angle:d_angle:max_angle
     end
 end
 toc
-save 'servo_plat_data.mat';
+
+filename = datestr(datetime('now'));
+filename = strrep(filename,' ','_');
+filename = strrep(filename,':','_');
+filename = strrep(filename,'-','_');
+save(filename);
+
