@@ -3,7 +3,7 @@ clc; clear; close all;
 
 % Set Angle Ranges
 min_angle = 90;
-max_angle = 92;
+max_angle = 93;
 d_angle = 1;
 
 g = 0;
@@ -70,7 +70,7 @@ for a = min_angle:d_angle:max_angle
                             set_param(path, 'Value', num2str(deg2rad(servo_angles(num))));
                         end
                         % Step Simulation Forward
-                        for i = 1:5
+                        while (max(abs(servo_angles-rad2deg(motor_states.signals.values(length(platform_orientation.time), :)))) > 0.1)
                             set_param('PlatformAssem', 'SimulationCommand', 'step');
                         end
                         set_param('PlatformAssem', 'SimulationCommand', 'pause');
@@ -90,3 +90,4 @@ for a = min_angle:d_angle:max_angle
     end
 end
 toc
+save 'servo_plat_data.mat';
