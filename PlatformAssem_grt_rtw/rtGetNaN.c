@@ -8,9 +8,9 @@
  *
  * Code generation for model "PlatformAssem".
  *
- * Model version              : 1.51
+ * Model version              : 1.60
  * Simulink Coder version : 8.13 (R2017b) 24-Jul-2017
- * C source code generated on : Fri Feb 16 16:37:19 2018
+ * C source code generated on : Fri Mar  9 14:35:12 2018
  *
  * Target selection: grt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping

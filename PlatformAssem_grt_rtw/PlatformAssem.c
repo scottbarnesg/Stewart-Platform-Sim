@@ -8,9 +8,9 @@
  *
  * Code generation for model "PlatformAssem".
  *
- * Model version              : 1.51
+ * Model version              : 1.60
  * Simulink Coder version : 8.13 (R2017b) 24-Jul-2017
- * C source code generated on : Fri Feb 16 16:37:19 2018
+ * C source code generated on : Fri Mar  9 14:35:12 2018
  *
  * Target selection: grt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -1981,7 +1981,7 @@ void PlatformAssem_initialize(void)
                     &PlatformAssem_M->intgData);
   rtsiSetSolverName(&PlatformAssem_M->solverInfo,"ode3");
   rtmSetTPtr(PlatformAssem_M, &PlatformAssem_M->Timing.tArray[0]);
-  rtmSetTFinal(PlatformAssem_M, 10.0);
+  rtmSetTFinal(PlatformAssem_M, -1);
   PlatformAssem_M->Timing.stepSize0 = 0.2;
 
   /* Setup for data logging */
@@ -2067,7 +2067,7 @@ void PlatformAssem_initialize(void)
     modelParameters.mUseSimState = false;
     modelParameters.mLinTrimCompile = false;
     modelParameters.mLoggingMode = SSC_LOGGING_NONE;
-    modelParameters.mRTWModifiedTimeStamp = 4.40699812E+8;
+    modelParameters.mRTWModifiedTimeStamp = 4.42506844E+8;
     tmp_1 = 0.001;
     modelParameters.mSolverTolerance = tmp_1;
     tmp_1 = 0.2;
@@ -2159,7 +2159,7 @@ void PlatformAssem_initialize(void)
     modelParameters_0.mUseSimState = false;
     modelParameters_0.mLinTrimCompile = false;
     modelParameters_0.mLoggingMode = SSC_LOGGING_NONE;
-    modelParameters_0.mRTWModifiedTimeStamp = 4.40699812E+8;
+    modelParameters_0.mRTWModifiedTimeStamp = 4.42506844E+8;
     tmp_1 = 0.001;
     modelParameters_0.mSolverTolerance = tmp_1;
     tmp_1 = 0.2;

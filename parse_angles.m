@@ -8,6 +8,7 @@ d_angle = 15;
 
 g = 0;
 sensor_delay = 0;
+t_max = 10;
 
 % Define Functions for Dynamic Base Position and Orientation
 base_pxf = @(t) 0; % Left/Right
@@ -75,13 +76,30 @@ for a = min_angle:d_angle:max_angle
                             path = strcat('PlatformAssem/angle',int2str(num));
                             set_param(path, 'Value', num2str(deg2rad(servo_angles(num))));
                         end
+                        tic;
                         % Step Simulation Forward
                         while (max(abs(servo_angles-rad2deg(motor_states.signals.values(length(platform_orientation.time), :)))) > 0.1)
                             set_param('PlatformAssem', 'SimulationCommand', 'step');
+                            if toc > t_max
+                                break;
+                            end
                         end
-                        
                         set_param('PlatformAssem', 'SimulationCommand', 'pause');
-                        % Store Servo Angles
+                        % Check for Timeout
+                        if (toc > t_max)
+                            disp('Resetting Simulation');
+                            % set_param('PlatformAssem', 'SimulationCommand', 'stop');
+                            % disp('Stopped Simulation');
+                            pause(1);
+                            servo_angles = [100, -100, 100, -100, 100, -100]
+                            for num = 1:6
+                                path = strcat('PlatformAssem/angle',int2str(num));
+                                set_param(path, 'Value', num2str(deg2rad(servo_angles(num))));
+                            end
+                            set_param('PlatformAssem', 'SimulationCommand', 'start');
+                            disp('Starting Simulation');
+                            pause(1);
+                        end
                         % Update Platform State
                         quat_plat_state = platform_orientation.signals.values(length(platform_orientation.time), :);
                         eul_plat_state = quat_to_eangles(quat_plat_state);
