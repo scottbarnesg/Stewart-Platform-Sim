@@ -90,7 +90,6 @@ for a = min_angle:d_angle:max_angle
                             disp('Resetting Simulation');
                             % set_param('PlatformAssem', 'SimulationCommand', 'stop');
                             % disp('Stopped Simulation');
-                            pause(1);
                             servo_angles = [100, -100, 100, -100, 100, -100]
                             for num = 1:6
                                 path = strcat('PlatformAssem/angle',int2str(num));
@@ -98,7 +97,6 @@ for a = min_angle:d_angle:max_angle
                             end
                             set_param('PlatformAssem', 'SimulationCommand', 'start');
                             disp('Starting Simulation');
-                            pause(1);
                         end
                         % Update Platform State
                         quat_plat_state = platform_orientation.signals.values(length(platform_orientation.time), :);
