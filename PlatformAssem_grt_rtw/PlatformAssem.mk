@@ -2,12 +2,12 @@
 ## Makefile generated for Simulink model 'PlatformAssem'. 
 ## 
 ## Makefile     : PlatformAssem.mk
-## Generated on : Thu Feb 15 19:05:26 2018
+## Generated on : Fri Mar 09 17:22:14 2018
 ## MATLAB Coder version: 3.4 (R2017b)
 ## 
 ## Build Info:
 ## 
-## Final product: $(RELATIVE_PATH_TO_ANCHOR)\PlatformAssem.exe
+## Final product: $(RELATIVE_PATH_TO_ANCHOR)/PlatformAssem.exe
 ## Product type : executable
 ## Build type   : Top-Level Standalone Executable
 ## 
@@ -28,11 +28,11 @@
 PRODUCT_NAME              = PlatformAssem
 MAKEFILE                  = PlatformAssem.mk
 COMPUTER                  = PCWIN64
-MATLAB_ROOT               = C:\PROGRA~1\MATLAB\R2017b
-MATLAB_BIN                = C:\PROGRA~1\MATLAB\R2017b\bin
-MATLAB_ARCH_BIN           = $(MATLAB_BIN)\win64
+MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2017b
+MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2017b/bin
+MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
 MASTER_ANCHOR_DIR         = 
-START_DIR                 = C:\Users\scott\DOCUME~1\GW\SENIOR~1\STEWAR~1
+START_DIR                 = E:/Stewart-Platform-Sim
 ARCH                      = win64
 SOLVER                    = 
 SOLVER_OBJ                = 
@@ -42,56 +42,42 @@ MODEL_HAS_DYNAMICALLY_LOADED_SFCNS = 0
 MODELREF_LINK_RSPFILE_NAME = PlatformAssem_ref.rsp
 RELATIVE_PATH_TO_ANCHOR   = ..
 MODELREF_LINK_RSPFILE     = PlatformAssem_ref.rsp
-GEN_LINKER_RESPONSE       = $(MATLAB_ARCH_BIN)\createResponseFile.exe 1 
+GEN_LINKER_RESPONSE       = $(MATLAB_ARCH_BIN)/createResponseFile.exe 1 
 CMD_FILE                  = $(PRODUCT_NAME).rsp
 C_STANDARD_OPTS           = 
 CPP_STANDARD_OPTS         = 
-NODEBUG                   = 1
-LIBSM_SSCI_VCX64_OBJS     = 
-LIBSM_VCX64_OBJS          = 
-LIBPM_MATH_VCX64_OBJS     = 
-LIBSSC_SLI_VCX64_OBJS     = 
-LIBSSC_CORE_VCX64_OBJS    = 
-LIBNE_VCX64_OBJS          = 
-LIBMC_VCX64_OBJS          = 
-LIBEX_VCX64_OBJS          = 
-LIBPM_VCX64_OBJS          = 
+LIBSM_SSCI_LCC_OBJS       = 
+LIBSM_LCC_OBJS            = 
+LIBPM_MATH_LCC_OBJS       = 
+LIBSSC_SLI_LCC_OBJS       = 
+LIBSSC_CORE_LCC_OBJS      = 
+LIBNE_LCC_OBJS            = 
+LIBMC_LCC_OBJS            = 
+LIBEX_LCC_OBJS            = 
+LIBPM_LCC_OBJS            = 
 
 ###########################################################################
 ## TOOLCHAIN SPECIFICATIONS
 ###########################################################################
 
-# Toolchain Name:          Microsoft Visual C++ 2015 v14.0 | nmake (64-bit Windows)
-# Supported Version(s):    14.0
+# Toolchain Name:          LCC-win64 v2.4.1 | gmake (64-bit Windows)
+# Supported Version(s):    2.4.1
 # ToolchainInfo Version:   R2017b
 # Specification Revision:  1.0
 # 
-#-------------------------------------------
-# Macros assumed to be defined elsewhere
-#-------------------------------------------
-
-# NODEBUG
-# cvarsdll
-# cvarsmt
-# conlibsmt
-# ldebug
-# conflags
-# cflags
 
 #-----------
 # MACROS
 #-----------
 
-MEX_OPTS_FILE       = $(MATLAB_ROOT)\bin\$(ARCH)\mexopts\msvc2015.xml
-MW_EXTERNLIB_DIR    = $(MATLAB_ROOT)\extern\lib\win64\microsoft
-MW_LIB_DIR          = $(MATLAB_ROOT)\lib\win64
-MEX_ARCH            = -win64
-CPU                 = AMD64
-APPVER              = 5.02
-CVARSFLAG           = $(cvarsmt)
-CFLAGS_ADDITIONAL   = -D_CRT_SECURE_NO_WARNINGS
-CPPFLAGS_ADDITIONAL = -EHs -D_CRT_SECURE_NO_WARNINGS
-LIBS_TOOLCHAIN      = $(conlibs)
+SHELL              = cmd
+LCC_ROOT           = $(MATLAB_ROOT)/sys/lcc64/lcc64
+LCC_BUILDLIB       = $(LCC_ROOT)/bin/buildlib
+LCC_LIB            = $(LCC_ROOT)/lib64
+MW_EXTERNLIB_DIR   = $(MATLAB_ROOT)/extern/lib/win64/microsoft
+MW_LIB_DIR         = $(MATLAB_ROOT)/lib/win64
+TOOLCHAIN_INCLUDES = -I$(LCC_ROOT)/include64
+MEX_OPTS_FILE      = $(MATLAB_ROOT/rtw/c/tools/lcc-win64.xml
 
 TOOLCHAIN_SRCS = 
 TOOLCHAIN_INCS = 
@@ -101,24 +87,21 @@ TOOLCHAIN_LIBS =
 # BUILD TOOL COMMANDS
 #------------------------
 
-# C Compiler: Microsoft Visual C Compiler
-CC = cl
+# C Compiler: Lcc-win64 C Compiler
+CC_PATH = $(LCC_ROOT)/bin
+CC = "$(CC_PATH)/lcc64"
 
-# Linker: Microsoft Visual C Linker
-LD = link
+# Linker: Lcc-win64 Linker
+LD_PATH = $(LCC_ROOT)/bin
+LD = "$(LD_PATH)/lcclnk64"
 
-# C++ Compiler: Microsoft Visual C++ Compiler
-CPP = cl
-
-# C++ Linker: Microsoft Visual C++ Linker
-CPP_LD = link
-
-# Archiver: Microsoft Visual C/C++ Archiver
-AR = lib
+# Archiver: Lcc-win64 Archiver
+AR_PATH = $(LCC_ROOT)/bin
+AR = "$(AR_PATH)/lcclib64"
 
 # MEX Tool: MEX Tool
 MEX_PATH = $(MATLAB_ARCH_BIN)
-MEX = "$(MEX_PATH)\mex"
+MEX = "$(MEX_PATH)/mex"
 
 # Download: Download
 DOWNLOAD =
@@ -126,52 +109,42 @@ DOWNLOAD =
 # Execute: Execute
 EXECUTE = $(PRODUCT)
 
-# Builder: NMAKE Utility
-MAKE = nmake
+# Builder: GMAKE Utility
+MAKE_PATH = %MATLAB%\bin\win64
+MAKE = "$(MAKE_PATH)/gmake"
 
 
 #-------------------------
 # Directives/Utilities
 #-------------------------
 
-CDEBUG              = -Zi
+CDEBUG              = -g
 C_OUTPUT_FLAG       = -Fo
-LDDEBUG             = /DEBUG
-OUTPUT_FLAG         = -out:
-CPPDEBUG            = -Zi
-CPP_OUTPUT_FLAG     = -Fo
-CPPLDDEBUG          = /DEBUG
-OUTPUT_FLAG         = -out:
+LDDEBUG             =
+OUTPUT_FLAG         = -o
 ARDEBUG             =
-STATICLIB_OUTPUT_FLAG = -out:
+STATICLIB_OUTPUT_FLAG = /out:
 MEX_DEBUG           = -g
-RM                  = @del
+RM                  = @del /F
 ECHO                = @echo
-MV                  = @ren
-RUN                 = @cmd /C
+MV                  = @move
+RUN                 =
 
 #----------------------------------------
 # "Faster Builds" Build Configuration
 #----------------------------------------
 
-ARFLAGS              = /nologo
-CFLAGS               = $(cflags) $(CVARSFLAG) $(CFLAGS_ADDITIONAL) \
-                       /Od /Oy-
-CPPFLAGS             = /TP $(cflags) $(CVARSFLAG) $(CPPFLAGS_ADDITIONAL) \
-                       /Od /Oy-
-CPP_LDFLAGS          = $(ldebug) $(conflags) $(LIBS_TOOLCHAIN)
-CPP_SHAREDLIB_LDFLAGS  = $(ldebug) $(conflags) $(LIBS_TOOLCHAIN) \
-                         -dll -def:$(DEF_FILE)
+ARFLAGS              =
+CFLAGS               = -c -w -noregistrylookup -nodeclspec -I$(LCC_ROOT)/include64
 DOWNLOAD_FLAGS       =
 EXECUTE_FLAGS        =
-LDFLAGS              = $(ldebug) $(conflags) $(LIBS_TOOLCHAIN)
+LDFLAGS              = -s -L$(LCC_LIB) $(LDFLAGS_ADDITIONAL)
 MEX_CPPFLAGS         =
 MEX_CPPLDFLAGS       =
-MEX_CFLAGS           = $(MEX_ARCH) OPTIMFLAGS="/Od /Oy- $(MDFLAG) $(DEFINES)" $(MEX_OPTS_FLAG)
-MEX_LDFLAGS          = LDFLAGS=='$$LDFLAGS'
+MEX_CFLAGS           = -win64 $(MEX_SRC) $(MEX_OPT_FILE)$(INCLUDES) -outdir $(RELATIVE_PATH_TO_ANCHOR)
+MEX_LDFLAGS          = LINKFLAGS="$$LINKFLAGS $(LDFLAGS_ADDITIONAL)"
 MAKE_FLAGS           = -f $(MAKEFILE)
-SHAREDLIB_LDFLAGS    = $(ldebug) $(conflags) $(LIBS_TOOLCHAIN) \
-                       -dll -def:$(DEF_FILE)
+SHAREDLIB_LDFLAGS    = -dll -entry LibMain -s -L$(LCC_LIB) $(LDFLAGS_ADDITIONAL) $(DEF_FILE)
 
 #--------------------
 # File extensions
@@ -180,11 +153,6 @@ SHAREDLIB_LDFLAGS    = $(ldebug) $(conflags) $(LIBS_TOOLCHAIN) \
 H_EXT               = .h
 OBJ_EXT             = .obj
 C_EXT               = .c
-EXE_EXT             = .exe
-SHAREDLIB_EXT       = .dll
-HPP_EXT             = .hpp
-OBJ_EXT             = .obj
-CPP_EXT             = .cpp
 EXE_EXT             = .exe
 SHAREDLIB_EXT       = .dll
 STATICLIB_EXT       = .lib
@@ -196,7 +164,7 @@ MAKE_EXT            = .mk
 ## OUTPUT INFO
 ###########################################################################
 
-PRODUCT = $(RELATIVE_PATH_TO_ANCHOR)\PlatformAssem.exe
+PRODUCT = $(RELATIVE_PATH_TO_ANCHOR)/PlatformAssem.exe
 PRODUCT_TYPE = "executable"
 BUILD_TYPE = "Top-Level Standalone Executable"
 
@@ -204,7 +172,7 @@ BUILD_TYPE = "Top-Level Standalone Executable"
 ## INCLUDE PATHS
 ###########################################################################
 
-INCLUDES_BUILDINFO = $(START_DIR);$(START_DIR)\PlatformAssem_grt_rtw;$(MATLAB_ROOT)\extern\include;$(MATLAB_ROOT)\simulink\include;$(MATLAB_ROOT)\rtw\c\src;$(MATLAB_ROOT)\rtw\c\src\ext_mode\common;$(MATLAB_ROOT)\toolbox\physmod\sm\ssci\c\win64;$(MATLAB_ROOT)\toolbox\physmod\sm\core\c\win64;$(MATLAB_ROOT)\toolbox\physmod\pm_math\c\win64;$(MATLAB_ROOT)\toolbox\physmod\simscape\engine\sli\c\win64;$(MATLAB_ROOT)\toolbox\physmod\simscape\engine\core\c\win64;$(MATLAB_ROOT)\toolbox\physmod\simscape\compiler\core\c\win64;$(MATLAB_ROOT)\toolbox\physmod\network_engine\c\win64;$(MATLAB_ROOT)\toolbox\physmod\common\math\core\c\win64;$(MATLAB_ROOT)\toolbox\physmod\common\lang\core\c\win64;$(MATLAB_ROOT)\toolbox\physmod\common\external\library\c\win64;$(MATLAB_ROOT)\toolbox\physmod\common\foundation\core\c\win64
+INCLUDES_BUILDINFO = -I$(START_DIR) -I$(START_DIR)/PlatformAssem_grt_rtw -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/toolbox/physmod/sm/ssci/c/win64 -I$(MATLAB_ROOT)/toolbox/physmod/sm/core/c/win64 -I$(MATLAB_ROOT)/toolbox/physmod/pm_math/c/win64 -I$(MATLAB_ROOT)/toolbox/physmod/simscape/engine/sli/c/win64 -I$(MATLAB_ROOT)/toolbox/physmod/simscape/engine/core/c/win64 -I$(MATLAB_ROOT)/toolbox/physmod/simscape/compiler/core/c/win64 -I$(MATLAB_ROOT)/toolbox/physmod/network_engine/c/win64 -I$(MATLAB_ROOT)/toolbox/physmod/common/math/core/c/win64 -I$(MATLAB_ROOT)/toolbox/physmod/common/lang/core/c/win64 -I$(MATLAB_ROOT)/toolbox/physmod/common/external/library/c/win64 -I$(MATLAB_ROOT)/toolbox/physmod/common/foundation/core/c/win64
 
 INCLUDES = $(INCLUDES_BUILDINFO)
 
@@ -222,9 +190,9 @@ DEFINES = $(DEFINES_BUILD_ARGS) $(DEFINES_IMPLIED) $(DEFINES_STANDARD)
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = $(START_DIR)\PlatformAssem_grt_rtw\PlatformAssem_f0ca4364_1.c $(START_DIR)\PlatformAssem_grt_rtw\PlatformAssem_f0ca4364_1_create.c $(START_DIR)\PlatformAssem_grt_rtw\PlatformAssem_f0ca4364_1_setParameters.c $(START_DIR)\PlatformAssem_grt_rtw\PlatformAssem_f0ca4364_1_asserts.c $(START_DIR)\PlatformAssem_grt_rtw\PlatformAssem_f0ca4364_1_deriv.c $(START_DIR)\PlatformAssem_grt_rtw\PlatformAssem_f0ca4364_1_checkDynamics.c $(START_DIR)\PlatformAssem_grt_rtw\PlatformAssem_f0ca4364_1_output.c $(START_DIR)\PlatformAssem_grt_rtw\PlatformAssem_f0ca4364_1_assembly.c $(START_DIR)\PlatformAssem_grt_rtw\PlatformAssem_f0ca4364_1_computeConstraintError.c $(START_DIR)\PlatformAssem_grt_rtw\PlatformAssem_f0ca4364_1_gateway.c $(START_DIR)\PlatformAssem_grt_rtw\pm_printf.c $(MATLAB_ROOT)\rtw\c\src\rt_logging.c $(START_DIR)\PlatformAssem_grt_rtw\rt_backsubrr_dbl.c $(START_DIR)\PlatformAssem_grt_rtw\rt_forwardsubrr_dbl.c $(START_DIR)\PlatformAssem_grt_rtw\rt_lu_real.c $(START_DIR)\PlatformAssem_grt_rtw\rt_matrixlib_dbl.c $(START_DIR)\PlatformAssem_grt_rtw\PlatformAssem.c $(START_DIR)\PlatformAssem_grt_rtw\PlatformAssem_data.c $(START_DIR)\PlatformAssem_grt_rtw\rtGetInf.c $(START_DIR)\PlatformAssem_grt_rtw\rtGetNaN.c $(START_DIR)\PlatformAssem_grt_rtw\rt_nonfinite.c
+SRCS = $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_create.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_setParameters.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_asserts.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_deriv.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_checkDynamics.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_output.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_assembly.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_computeConstraintError.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_gateway.c $(START_DIR)/PlatformAssem_grt_rtw/pm_printf.c $(MATLAB_ROOT)/rtw/c/src/rt_logging.c $(START_DIR)/PlatformAssem_grt_rtw/rt_backsubrr_dbl.c $(START_DIR)/PlatformAssem_grt_rtw/rt_forwardsubrr_dbl.c $(START_DIR)/PlatformAssem_grt_rtw/rt_lu_real.c $(START_DIR)/PlatformAssem_grt_rtw/rt_matrixlib_dbl.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_data.c $(START_DIR)/PlatformAssem_grt_rtw/rtGetInf.c $(START_DIR)/PlatformAssem_grt_rtw/rtGetNaN.c $(START_DIR)/PlatformAssem_grt_rtw/rt_nonfinite.c
 
-MAIN_SRC = $(MATLAB_ROOT)\rtw\c\src\common\rt_main.c
+MAIN_SRC = $(MATLAB_ROOT)/rtw/c/src/common/rt_main.c
 
 ALL_SRCS = $(SRCS) $(MAIN_SRC)
 
@@ -248,7 +216,7 @@ PREBUILT_OBJS =
 ## LIBRARIES
 ###########################################################################
 
-LIBS = C:\PROGRA~1\MATLAB\R2017b\toolbox\physmod\sm\ssci\lib\win64\SM083E~1.LIB C:\PROGRA~1\MATLAB\R2017b\toolbox\physmod\sm\core\lib\win64\sm_vcx64.lib C:\PROGRA~1\MATLAB\R2017b\toolbox\physmod\pm_math\lib\win64\PMBBE6~1.LIB C:\PROGRA~1\MATLAB\R2017b\toolbox\physmod\simscape\engine\sli\lib\win64\SS1A7D~1.LIB C:\PROGRA~1\MATLAB\R2017b\toolbox\physmod\simscape\engine\core\lib\win64\SS8E8F~1.LIB C:\PROGRA~1\MATLAB\R2017b\toolbox\physmod\NETWOR~1\lib\win64\ne_vcx64.lib C:\PROGRA~1\MATLAB\R2017b\toolbox\physmod\common\math\core\lib\win64\mc_vcx64.lib C:\PROGRA~1\MATLAB\R2017b\toolbox\physmod\common\external\library\lib\win64\ex_vcx64.lib C:\PROGRA~1\MATLAB\R2017b\toolbox\physmod\common\FOUNDA~1\core\lib\win64\pm_vcx64.lib
+LIBS = C:/PROGRA~1/MATLAB/R2017b/toolbox/physmod/sm/ssci/lib/win64/SM34F0~1.LIB C:/PROGRA~1/MATLAB/R2017b/toolbox/physmod/sm/core/lib/win64/sm_lcc.lib C:/PROGRA~1/MATLAB/R2017b/toolbox/physmod/pm_math/lib/win64/PM964C~1.LIB C:/PROGRA~1/MATLAB/R2017b/toolbox/physmod/simscape/engine/sli/lib/win64/SS6C37~1.LIB C:/PROGRA~1/MATLAB/R2017b/toolbox/physmod/simscape/engine/core/lib/win64/SSB942~1.LIB C:/PROGRA~1/MATLAB/R2017b/toolbox/physmod/NETWOR~1/lib/win64/ne_lcc.lib C:/PROGRA~1/MATLAB/R2017b/toolbox/physmod/common/math/core/lib/win64/mc_lcc.lib C:/PROGRA~1/MATLAB/R2017b/toolbox/physmod/common/external/library/lib/win64/ex_lcc.lib C:/PROGRA~1/MATLAB/R2017b/toolbox/physmod/common/FOUNDA~1/core/lib/win64/pm_lcc.lib
 
 ###########################################################################
 ## SYSTEM LIBRARIES
@@ -264,42 +232,30 @@ SYSTEM_LIBS =
 # C Compiler
 #---------------
 
-CFLAGS_BASIC = $(DEFINES) 
+CFLAGS_BASIC = $(DEFINES) $(INCLUDES)
 
-CFLAGS = $(CFLAGS) $(CFLAGS_BASIC)
-
-#-----------------
-# C++ Compiler
-#-----------------
-
-CPPFLAGS_BASIC = $(DEFINES) 
-
-CPPFLAGS = $(CPPFLAGS) $(CPPFLAGS_BASIC)
+CFLAGS += $(CFLAGS_BASIC)
 
 ###########################################################################
 ## INLINED COMMANDS
 ###########################################################################
 
-
-!include $(MATLAB_ROOT)\rtw\c\tools\vcdefs.mak
-
-
 ###########################################################################
 ## PHONY TARGETS
 ###########################################################################
 
-.PHONY : all build buildobj clean info prebuild download execute set_environment_variables
+.PHONY : all build buildobj clean info prebuild download execute
 
 
 all : build
-	@cmd /C "@echo ### Successfully generated all binary outputs."
+	@echo "### Successfully generated all binary outputs."
 
 
-build : set_environment_variables prebuild $(PRODUCT)
+build : prebuild $(PRODUCT)
 
 
-buildobj : set_environment_variables prebuild $(OBJS) $(PREBUILT_OBJS) $(LIBS)
-	@cmd /C "@echo ### Successfully generated all binary outputs."
+buildobj : prebuild $(OBJS) $(PREBUILT_OBJS) $(LIBS)
+	@echo "### Successfully generated all binary outputs."
 
 
 prebuild : 
@@ -309,14 +265,9 @@ download : build
 
 
 execute : download
-	@cmd /C "@echo ### Invoking postbuild tool "Execute" ..."
+	@echo "### Invoking postbuild tool "Execute" ..."
 	$(EXECUTE) $(EXECUTE_FLAGS)
-	@cmd /C "@echo ### Done invoking postbuild tool."
-
-
-set_environment_variables : 
-	@set INCLUDE=$(INCLUDES);$(INCLUDE)
-	@set LIB=$(LIB)
+	@echo "### Done invoking postbuild tool."
 
 
 ###########################################################################
@@ -328,10 +279,10 @@ set_environment_variables :
 #-------------------------------------------
 
 $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(LIBS) $(MAIN_OBJ)
-	$(GEN_LINKER_RESPONSE) $(CMD_FILE) $(OBJS)
-	@cmd /C "@echo ### Creating standalone executable "$(PRODUCT)" ..."
-	$(LD) $(LDFLAGS) -out:$(PRODUCT) @$(CMD_FILE) $(MAIN_OBJ) $(LIBS) $(SYSTEM_LIBS) $(TOOLCHAIN_LIBS)
-	@cmd /C "@echo ### Created: $(PRODUCT)"
+	$(GEN_LINKER_RESPONSE) $(CMD_FILE) $(subst /,\,$(OBJS))
+	@echo "### Creating standalone executable "$(PRODUCT)" ..."
+	$(LD) $(LDFLAGS) -o $(PRODUCT) @$(CMD_FILE) $(subst /,\,$(subst /,\,$(MAIN_OBJ))) $(subst /,\,$(subst /,\,$(LIBS))) $(subst /,\,$(subst /,\,$(SYSTEM_LIBS))) $(subst /,\,$(subst /,\,$(TOOLCHAIN_LIBS)))
+	@echo "### Created: $(PRODUCT)"
 	$(RM) $(CMD_FILE)
 
 
@@ -343,193 +294,125 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(LIBS) $(MAIN_OBJ)
 # SOURCE-TO-OBJECT
 #---------------------
 
-.c.obj :
-	$(CC) $(CFLAGS) -Fo"$@" "$<"
+%.obj : %.c
+	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
 
 
-.cpp.obj :
-	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+%.obj : $(RELATIVE_PATH_TO_ANCHOR)/%.c
+	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
 
 
-{$(RELATIVE_PATH_TO_ANCHOR)}.c.obj :
-	$(CC) $(CFLAGS) -Fo"$@" "$<"
+%.obj : $(MATLAB_ROOT)/toolbox/physmod/sm/ssci/c/win64/%.c
+	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
 
 
-{$(RELATIVE_PATH_TO_ANCHOR)}.cpp.obj :
-	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+%.obj : $(MATLAB_ROOT)/toolbox/physmod/sm/core/c/win64/%.c
+	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
 
 
-{$(MATLAB_ROOT)\toolbox\physmod\sm\ssci\c\win64}.c.obj :
-	$(CC) $(CFLAGS) -Fo"$@" "$<"
+%.obj : $(MATLAB_ROOT)/toolbox/physmod/pm_math/c/win64/%.c
+	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
 
 
-{$(MATLAB_ROOT)\toolbox\physmod\sm\ssci\c\win64}.cpp.obj :
-	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+%.obj : $(MATLAB_ROOT)/toolbox/physmod/simscape/engine/sli/c/win64/%.c
+	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
 
 
-{$(MATLAB_ROOT)\toolbox\physmod\sm\core\c\win64}.c.obj :
-	$(CC) $(CFLAGS) -Fo"$@" "$<"
+%.obj : $(MATLAB_ROOT)/toolbox/physmod/simscape/engine/core/c/win64/%.c
+	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
 
 
-{$(MATLAB_ROOT)\toolbox\physmod\sm\core\c\win64}.cpp.obj :
-	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+%.obj : $(MATLAB_ROOT)/toolbox/physmod/simscape/compiler/core/c/win64/%.c
+	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
 
 
-{$(MATLAB_ROOT)\toolbox\physmod\pm_math\c\win64}.c.obj :
-	$(CC) $(CFLAGS) -Fo"$@" "$<"
+%.obj : $(MATLAB_ROOT)/toolbox/physmod/network_engine/c/win64/%.c
+	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
 
 
-{$(MATLAB_ROOT)\toolbox\physmod\pm_math\c\win64}.cpp.obj :
-	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+%.obj : $(MATLAB_ROOT)/toolbox/physmod/common/math/core/c/win64/%.c
+	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
 
 
-{$(MATLAB_ROOT)\toolbox\physmod\simscape\engine\sli\c\win64}.c.obj :
-	$(CC) $(CFLAGS) -Fo"$@" "$<"
+%.obj : $(MATLAB_ROOT)/toolbox/physmod/common/lang/core/c/win64/%.c
+	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
 
 
-{$(MATLAB_ROOT)\toolbox\physmod\simscape\engine\sli\c\win64}.cpp.obj :
-	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+%.obj : $(MATLAB_ROOT)/toolbox/physmod/common/external/library/c/win64/%.c
+	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
 
 
-{$(MATLAB_ROOT)\toolbox\physmod\simscape\engine\core\c\win64}.c.obj :
-	$(CC) $(CFLAGS) -Fo"$@" "$<"
+%.obj : $(MATLAB_ROOT)/toolbox/physmod/common/foundation/core/c/win64/%.c
+	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
 
 
-{$(MATLAB_ROOT)\toolbox\physmod\simscape\engine\core\c\win64}.cpp.obj :
-	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+%.obj : $(START_DIR)/%.c
+	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
 
 
-{$(MATLAB_ROOT)\toolbox\physmod\simscape\compiler\core\c\win64}.c.obj :
-	$(CC) $(CFLAGS) -Fo"$@" "$<"
+%.obj : $(START_DIR)/PlatformAssem_grt_rtw/%.c
+	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
 
 
-{$(MATLAB_ROOT)\toolbox\physmod\simscape\compiler\core\c\win64}.cpp.obj :
-	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
+%.obj : $(MATLAB_ROOT)/rtw/c/src/%.c
+	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
 
 
-{$(MATLAB_ROOT)\toolbox\physmod\network_engine\c\win64}.c.obj :
-	$(CC) $(CFLAGS) -Fo"$@" "$<"
+%.obj : $(MATLAB_ROOT)/simulink/src/%.c
+	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
 
 
-{$(MATLAB_ROOT)\toolbox\physmod\network_engine\c\win64}.cpp.obj :
-	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
-
-
-{$(MATLAB_ROOT)\toolbox\physmod\common\math\core\c\win64}.c.obj :
-	$(CC) $(CFLAGS) -Fo"$@" "$<"
-
-
-{$(MATLAB_ROOT)\toolbox\physmod\common\math\core\c\win64}.cpp.obj :
-	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
-
-
-{$(MATLAB_ROOT)\toolbox\physmod\common\lang\core\c\win64}.c.obj :
-	$(CC) $(CFLAGS) -Fo"$@" "$<"
-
-
-{$(MATLAB_ROOT)\toolbox\physmod\common\lang\core\c\win64}.cpp.obj :
-	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
-
-
-{$(MATLAB_ROOT)\toolbox\physmod\common\external\library\c\win64}.c.obj :
-	$(CC) $(CFLAGS) -Fo"$@" "$<"
-
-
-{$(MATLAB_ROOT)\toolbox\physmod\common\external\library\c\win64}.cpp.obj :
-	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
-
-
-{$(MATLAB_ROOT)\toolbox\physmod\common\foundation\core\c\win64}.c.obj :
-	$(CC) $(CFLAGS) -Fo"$@" "$<"
-
-
-{$(MATLAB_ROOT)\toolbox\physmod\common\foundation\core\c\win64}.cpp.obj :
-	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
-
-
-{$(START_DIR)}.c.obj :
-	$(CC) $(CFLAGS) -Fo"$@" "$<"
-
-
-{$(START_DIR)}.cpp.obj :
-	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
-
-
-{$(START_DIR)\PlatformAssem_grt_rtw}.c.obj :
-	$(CC) $(CFLAGS) -Fo"$@" "$<"
-
-
-{$(START_DIR)\PlatformAssem_grt_rtw}.cpp.obj :
-	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
-
-
-{$(MATLAB_ROOT)\rtw\c\src}.c.obj :
-	$(CC) $(CFLAGS) -Fo"$@" "$<"
-
-
-{$(MATLAB_ROOT)\rtw\c\src}.cpp.obj :
-	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
-
-
-{$(MATLAB_ROOT)\simulink\src}.c.obj :
-	$(CC) $(CFLAGS) -Fo"$@" "$<"
-
-
-{$(MATLAB_ROOT)\simulink\src}.cpp.obj :
-	$(CPP) $(CPPFLAGS) -Fo"$@" "$<"
-
-
-{$(MATLAB_ROOT)\rtw\c\src\common}.c.obj :
-	$(CC) $(CFLAGS) -Fo"$@" "$<"
+rt_main.obj : $(MATLAB_ROOT)/rtw/c/src/common/rt_main.c
+	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
 
 
 #------------------------
 # BUILDABLE LIBRARIES
 #------------------------
 
-C:\PROGRA~1\MATLAB\R2017b\toolbox\physmod\sm\ssci\lib\win64\sm_ssci_vcx64.lib : $(LIBSM_SSCI_VCX64_OBJS)
-	@cmd /C "@echo ### Creating static library $@ ..."
-	$(AR) $(ARFLAGS) -out:$@ $(LIBSM_SSCI_VCX64_OBJS)
+C:/PROGRA~1/MATLAB/R2017b/toolbox/physmod/sm/ssci/lib/win64/sm_ssci_lcc.lib : $(LIBSM_SSCI_LCC_OBJS)
+	@echo "### Creating static library $@ ..."
+	$(AR) $(ARFLAGS) /out:$@ $(LIBSM_SSCI_LCC_OBJS)
 
 
-C:\PROGRA~1\MATLAB\R2017b\toolbox\physmod\sm\core\lib\win64\sm_vcx64.lib : $(LIBSM_VCX64_OBJS)
-	@cmd /C "@echo ### Creating static library $@ ..."
-	$(AR) $(ARFLAGS) -out:$@ $(LIBSM_VCX64_OBJS)
+C:/PROGRA~1/MATLAB/R2017b/toolbox/physmod/sm/core/lib/win64/sm_lcc.lib : $(LIBSM_LCC_OBJS)
+	@echo "### Creating static library $@ ..."
+	$(AR) $(ARFLAGS) /out:$@ $(LIBSM_LCC_OBJS)
 
 
-C:\PROGRA~1\MATLAB\R2017b\toolbox\physmod\pm_math\lib\win64\pm_math_vcx64.lib : $(LIBPM_MATH_VCX64_OBJS)
-	@cmd /C "@echo ### Creating static library $@ ..."
-	$(AR) $(ARFLAGS) -out:$@ $(LIBPM_MATH_VCX64_OBJS)
+C:/PROGRA~1/MATLAB/R2017b/toolbox/physmod/pm_math/lib/win64/pm_math_lcc.lib : $(LIBPM_MATH_LCC_OBJS)
+	@echo "### Creating static library $@ ..."
+	$(AR) $(ARFLAGS) /out:$@ $(LIBPM_MATH_LCC_OBJS)
 
 
-C:\PROGRA~1\MATLAB\R2017b\toolbox\physmod\simscape\engine\sli\lib\win64\ssc_sli_vcx64.lib : $(LIBSSC_SLI_VCX64_OBJS)
-	@cmd /C "@echo ### Creating static library $@ ..."
-	$(AR) $(ARFLAGS) -out:$@ $(LIBSSC_SLI_VCX64_OBJS)
+C:/PROGRA~1/MATLAB/R2017b/toolbox/physmod/simscape/engine/sli/lib/win64/ssc_sli_lcc.lib : $(LIBSSC_SLI_LCC_OBJS)
+	@echo "### Creating static library $@ ..."
+	$(AR) $(ARFLAGS) /out:$@ $(LIBSSC_SLI_LCC_OBJS)
 
 
-C:\PROGRA~1\MATLAB\R2017b\toolbox\physmod\simscape\engine\core\lib\win64\ssc_core_vcx64.lib : $(LIBSSC_CORE_VCX64_OBJS)
-	@cmd /C "@echo ### Creating static library $@ ..."
-	$(AR) $(ARFLAGS) -out:$@ $(LIBSSC_CORE_VCX64_OBJS)
+C:/PROGRA~1/MATLAB/R2017b/toolbox/physmod/simscape/engine/core/lib/win64/ssc_core_lcc.lib : $(LIBSSC_CORE_LCC_OBJS)
+	@echo "### Creating static library $@ ..."
+	$(AR) $(ARFLAGS) /out:$@ $(LIBSSC_CORE_LCC_OBJS)
 
 
-C:\PROGRA~1\MATLAB\R2017b\toolbox\physmod\NETWOR~1\lib\win64\ne_vcx64.lib : $(LIBNE_VCX64_OBJS)
-	@cmd /C "@echo ### Creating static library $@ ..."
-	$(AR) $(ARFLAGS) -out:$@ $(LIBNE_VCX64_OBJS)
+C:/PROGRA~1/MATLAB/R2017b/toolbox/physmod/NETWOR~1/lib/win64/ne_lcc.lib : $(LIBNE_LCC_OBJS)
+	@echo "### Creating static library $@ ..."
+	$(AR) $(ARFLAGS) /out:$@ $(LIBNE_LCC_OBJS)
 
 
-C:\PROGRA~1\MATLAB\R2017b\toolbox\physmod\common\math\core\lib\win64\mc_vcx64.lib : $(LIBMC_VCX64_OBJS)
-	@cmd /C "@echo ### Creating static library $@ ..."
-	$(AR) $(ARFLAGS) -out:$@ $(LIBMC_VCX64_OBJS)
+C:/PROGRA~1/MATLAB/R2017b/toolbox/physmod/common/math/core/lib/win64/mc_lcc.lib : $(LIBMC_LCC_OBJS)
+	@echo "### Creating static library $@ ..."
+	$(AR) $(ARFLAGS) /out:$@ $(LIBMC_LCC_OBJS)
 
 
-C:\PROGRA~1\MATLAB\R2017b\toolbox\physmod\common\external\library\lib\win64\ex_vcx64.lib : $(LIBEX_VCX64_OBJS)
-	@cmd /C "@echo ### Creating static library $@ ..."
-	$(AR) $(ARFLAGS) -out:$@ $(LIBEX_VCX64_OBJS)
+C:/PROGRA~1/MATLAB/R2017b/toolbox/physmod/common/external/library/lib/win64/ex_lcc.lib : $(LIBEX_LCC_OBJS)
+	@echo "### Creating static library $@ ..."
+	$(AR) $(ARFLAGS) /out:$@ $(LIBEX_LCC_OBJS)
 
 
-C:\PROGRA~1\MATLAB\R2017b\toolbox\physmod\common\FOUNDA~1\core\lib\win64\pm_vcx64.lib : $(LIBPM_VCX64_OBJS)
-	@cmd /C "@echo ### Creating static library $@ ..."
-	$(AR) $(ARFLAGS) -out:$@ $(LIBPM_VCX64_OBJS)
+C:/PROGRA~1/MATLAB/R2017b/toolbox/physmod/common/FOUNDA~1/core/lib/win64/pm_lcc.lib : $(LIBPM_LCC_OBJS)
+	@echo "### Creating static library $@ ..."
+	$(AR) $(ARFLAGS) /out:$@ $(LIBPM_LCC_OBJS)
 
 
 ###########################################################################
@@ -544,37 +427,34 @@ $(ALL_OBJS) : $(MAKEFILE) rtw_proj.tmw
 ###########################################################################
 
 info : 
-	@cmd /C "@echo ### PRODUCT = $(PRODUCT)"
-	@cmd /C "@echo ### PRODUCT_TYPE = $(PRODUCT_TYPE)"
-	@cmd /C "@echo ### BUILD_TYPE = $(BUILD_TYPE)"
-	@cmd /C "@echo ### INCLUDES = $(INCLUDES)"
-	@cmd /C "@echo ### DEFINES = $(DEFINES)"
-	@cmd /C "@echo ### ALL_SRCS = $(ALL_SRCS)"
-	@cmd /C "@echo ### ALL_OBJS = $(ALL_OBJS)"
-	@cmd /C "@echo ### LIBS = $(LIBS)"
-	@cmd /C "@echo ### MODELREF_LIBS = $(MODELREF_LIBS)"
-	@cmd /C "@echo ### SYSTEM_LIBS = $(SYSTEM_LIBS)"
-	@cmd /C "@echo ### TOOLCHAIN_LIBS = $(TOOLCHAIN_LIBS)"
-	@cmd /C "@echo ### CFLAGS = $(CFLAGS)"
-	@cmd /C "@echo ### LDFLAGS = $(LDFLAGS)"
-	@cmd /C "@echo ### SHAREDLIB_LDFLAGS = $(SHAREDLIB_LDFLAGS)"
-	@cmd /C "@echo ### CPPFLAGS = $(CPPFLAGS)"
-	@cmd /C "@echo ### CPP_LDFLAGS = $(CPP_LDFLAGS)"
-	@cmd /C "@echo ### CPP_SHAREDLIB_LDFLAGS = $(CPP_SHAREDLIB_LDFLAGS)"
-	@cmd /C "@echo ### ARFLAGS = $(ARFLAGS)"
-	@cmd /C "@echo ### MEX_CFLAGS = $(MEX_CFLAGS)"
-	@cmd /C "@echo ### MEX_CPPFLAGS = $(MEX_CPPFLAGS)"
-	@cmd /C "@echo ### MEX_LDFLAGS = $(MEX_LDFLAGS)"
-	@cmd /C "@echo ### MEX_CPPLDFLAGS = $(MEX_CPPLDFLAGS)"
-	@cmd /C "@echo ### DOWNLOAD_FLAGS = $(DOWNLOAD_FLAGS)"
-	@cmd /C "@echo ### EXECUTE_FLAGS = $(EXECUTE_FLAGS)"
-	@cmd /C "@echo ### MAKE_FLAGS = $(MAKE_FLAGS)"
+	@echo "### PRODUCT = $(PRODUCT)"
+	@echo "### PRODUCT_TYPE = $(PRODUCT_TYPE)"
+	@echo "### BUILD_TYPE = $(BUILD_TYPE)"
+	@echo "### INCLUDES = $(INCLUDES)"
+	@echo "### DEFINES = $(DEFINES)"
+	@echo "### ALL_SRCS = $(ALL_SRCS)"
+	@echo "### ALL_OBJS = $(ALL_OBJS)"
+	@echo "### LIBS = $(LIBS)"
+	@echo "### MODELREF_LIBS = $(MODELREF_LIBS)"
+	@echo "### SYSTEM_LIBS = $(SYSTEM_LIBS)"
+	@echo "### TOOLCHAIN_LIBS = $(TOOLCHAIN_LIBS)"
+	@echo "### CFLAGS = $(CFLAGS)"
+	@echo "### LDFLAGS = $(LDFLAGS)"
+	@echo "### SHAREDLIB_LDFLAGS = $(SHAREDLIB_LDFLAGS)"
+	@echo "### ARFLAGS = $(ARFLAGS)"
+	@echo "### MEX_CFLAGS = $(MEX_CFLAGS)"
+	@echo "### MEX_CPPFLAGS = $(MEX_CPPFLAGS)"
+	@echo "### MEX_LDFLAGS = $(MEX_LDFLAGS)"
+	@echo "### MEX_CPPLDFLAGS = $(MEX_CPPLDFLAGS)"
+	@echo "### DOWNLOAD_FLAGS = $(DOWNLOAD_FLAGS)"
+	@echo "### EXECUTE_FLAGS = $(EXECUTE_FLAGS)"
+	@echo "### MAKE_FLAGS = $(MAKE_FLAGS)"
 
 
 clean : 
 	$(ECHO) "### Deleting all derived files..."
-	@if exist $(PRODUCT) $(RM) $(PRODUCT)
-	$(RM) $(ALL_OBJS)
+	$(RM) $(subst /,\,$(PRODUCT))
+	$(RM) $(subst /,\,$(ALL_OBJS))
 	$(ECHO) "### Deleted all derived files."
 
 

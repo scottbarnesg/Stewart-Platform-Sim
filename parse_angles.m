@@ -2,9 +2,9 @@ clc; clear; close all;
 %% Set Initial Parameters
 
 % Set Angle Ranges
-min_angle = 100;
-max_angle = 175;
-d_angle = 15;
+min_angle = 110;
+max_angle = 170;
+d_angle = 10;
 
 g = 0;
 sensor_delay = 0;
@@ -90,7 +90,7 @@ for a = min_angle:d_angle:max_angle
                             disp('Resetting Simulation');
                             % set_param('PlatformAssem', 'SimulationCommand', 'stop');
                             % disp('Stopped Simulation');
-                            pause(1);
+                            %pause(1);
                             servo_angles = [100, -100, 100, -100, 100, -100]
                             for num = 1:6
                                 path = strcat('PlatformAssem/angle',int2str(num));
@@ -98,8 +98,13 @@ for a = min_angle:d_angle:max_angle
                             end
                             set_param('PlatformAssem', 'SimulationCommand', 'start');
                             disp('Starting Simulation');
-                            pause(1);
+                            %pause(1);
                         end
+                        
+                        % Store Servo Angles
+                        servo_state_theoretical(count, :) = servo_angles;
+                        servo_state_actual(count, :) = rad2deg(motor_states.signals.values(length(platform_orientation.time), :)');
+
                         % Update Platform State
                         quat_plat_state = platform_orientation.signals.values(length(platform_orientation.time), :);
                         eul_plat_state = quat_to_eangles(quat_plat_state);

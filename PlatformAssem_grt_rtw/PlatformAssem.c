@@ -8,9 +8,9 @@
  *
  * Code generation for model "PlatformAssem".
  *
- * Model version              : 1.60
+ * Model version              : 1.69
  * Simulink Coder version : 8.13 (R2017b) 24-Jul-2017
- * C source code generated on : Fri Mar  9 14:35:12 2018
+ * C source code generated on : Fri Mar  9 17:22:07 2018
  *
  * Target selection: grt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -1075,7 +1075,7 @@ void PlatformAssem_step(void)
     {
       double locTime = (((PlatformAssem_M->Timing.clockTick1+
                           PlatformAssem_M->Timing.clockTickH1* 4294967296.0)) *
-                        0.2);
+                        1.0E-6);
       ;
       if (rtmIsMajorTimeStep(PlatformAssem_M)) {
         rt_UpdateStructLogVar((StructLogVar *)
@@ -1133,7 +1133,7 @@ void PlatformAssem_step(void)
     {
       double locTime = (((PlatformAssem_M->Timing.clockTick1+
                           PlatformAssem_M->Timing.clockTickH1* 4294967296.0)) *
-                        0.2);
+                        1.0E-6);
       ;
       if (rtmIsMajorTimeStep(PlatformAssem_M)) {
         rt_UpdateStructLogVar((StructLogVar *)
@@ -1221,7 +1221,7 @@ void PlatformAssem_step(void)
     {
       double locTime = (((PlatformAssem_M->Timing.clockTick1+
                           PlatformAssem_M->Timing.clockTickH1* 4294967296.0)) *
-                        0.2);
+                        1.0E-6);
       ;
       if (rtmIsMajorTimeStep(PlatformAssem_M)) {
         rt_UpdateStructLogVar((StructLogVar *)
@@ -1279,7 +1279,7 @@ void PlatformAssem_step(void)
     {
       double locTime = (((PlatformAssem_M->Timing.clockTick1+
                           PlatformAssem_M->Timing.clockTickH1* 4294967296.0)) *
-                        0.2);
+                        1.0E-6);
       ;
       if (rtmIsMajorTimeStep(PlatformAssem_M)) {
         rt_UpdateStructLogVar((StructLogVar *)
@@ -1362,7 +1362,7 @@ void PlatformAssem_step(void)
     {
       double locTime = (((PlatformAssem_M->Timing.clockTick1+
                           PlatformAssem_M->Timing.clockTickH1* 4294967296.0)) *
-                        0.2);
+                        1.0E-6);
       ;
       if (rtmIsMajorTimeStep(PlatformAssem_M)) {
         rt_UpdateStructLogVar((StructLogVar *)
@@ -1675,9 +1675,9 @@ void PlatformAssem_step(void)
     {                                  /* Sample time: [0.0s, 0.0s] */
       if ((rtmGetTFinal(PlatformAssem_M)!=-1) &&
           !((rtmGetTFinal(PlatformAssem_M)-(((PlatformAssem_M->Timing.clockTick1
-               +PlatformAssem_M->Timing.clockTickH1* 4294967296.0)) * 0.2)) >
+               +PlatformAssem_M->Timing.clockTickH1* 4294967296.0)) * 1.0E-6)) >
             (((PlatformAssem_M->Timing.clockTick1+
-               PlatformAssem_M->Timing.clockTickH1* 4294967296.0)) * 0.2) *
+               PlatformAssem_M->Timing.clockTickH1* 4294967296.0)) * 1.0E-6) *
             (DBL_EPSILON))) {
         rtmSetErrorStatus(PlatformAssem_M, "Simulation finished");
       }
@@ -1702,9 +1702,9 @@ void PlatformAssem_step(void)
       (&PlatformAssem_M->solverInfo);
 
     {
-      /* Update absolute timer for sample time: [0.2s, 0.0s] */
+      /* Update absolute timer for sample time: [1.0E-6s, 0.0s] */
       /* The "clockTick1" counts the number of times the code of this task has
-       * been executed. The resolution of this integer timer is 0.2, which is the step size
+       * been executed. The resolution of this integer timer is 1.0E-6, which is the step size
        * of the task. Size of "clockTick1" ensures timer will not overflow during the
        * application lifespan selected.
        * Timer of this task consists of two 32 bit unsigned integers.
@@ -1982,7 +1982,7 @@ void PlatformAssem_initialize(void)
   rtsiSetSolverName(&PlatformAssem_M->solverInfo,"ode3");
   rtmSetTPtr(PlatformAssem_M, &PlatformAssem_M->Timing.tArray[0]);
   rtmSetTFinal(PlatformAssem_M, -1);
-  PlatformAssem_M->Timing.stepSize0 = 0.2;
+  PlatformAssem_M->Timing.stepSize0 = 1.0E-6;
 
   /* Setup for data logging */
   {
@@ -2061,16 +2061,16 @@ void PlatformAssem_initialize(void)
     modelParameters.mSolverType = NE_SOLVER_TYPE_DAE;
     modelParameters.mSolverTolerance = 0.001;
     modelParameters.mVariableStepSolver = false;
-    modelParameters.mFixedStepSize = 0.001;
+    modelParameters.mFixedStepSize = 1.0E-6;
     modelParameters.mStartTime = 0.0;
     modelParameters.mLoadInitialState = false;
     modelParameters.mUseSimState = false;
     modelParameters.mLinTrimCompile = false;
     modelParameters.mLoggingMode = SSC_LOGGING_NONE;
-    modelParameters.mRTWModifiedTimeStamp = 4.42506844E+8;
+    modelParameters.mRTWModifiedTimeStamp = 4.42516917E+8;
     tmp_1 = 0.001;
     modelParameters.mSolverTolerance = tmp_1;
-    tmp_1 = 0.2;
+    tmp_1 = 1.0E-6;
     modelParameters.mFixedStepSize = tmp_1;
     tmp_0 = false;
     modelParameters.mVariableStepSolver = tmp_0;
@@ -2153,16 +2153,16 @@ void PlatformAssem_initialize(void)
     modelParameters_0.mSolverType = NE_SOLVER_TYPE_DAE;
     modelParameters_0.mSolverTolerance = 0.001;
     modelParameters_0.mVariableStepSolver = false;
-    modelParameters_0.mFixedStepSize = 0.001;
+    modelParameters_0.mFixedStepSize = 1.0E-6;
     modelParameters_0.mStartTime = 0.0;
     modelParameters_0.mLoadInitialState = false;
     modelParameters_0.mUseSimState = false;
     modelParameters_0.mLinTrimCompile = false;
     modelParameters_0.mLoggingMode = SSC_LOGGING_NONE;
-    modelParameters_0.mRTWModifiedTimeStamp = 4.42506844E+8;
+    modelParameters_0.mRTWModifiedTimeStamp = 4.42516917E+8;
     tmp_1 = 0.001;
     modelParameters_0.mSolverTolerance = tmp_1;
-    tmp_1 = 0.2;
+    tmp_1 = 1.0E-6;
     modelParameters_0.mFixedStepSize = tmp_1;
     tmp_0 = false;
     modelParameters_0.mVariableStepSolver = tmp_0;
@@ -2276,7 +2276,7 @@ void PlatformAssem_initialize(void)
         1,
         0,
         1,
-        0.2,
+        1.0E-6,
         &rt_ToWksSignalInfo,
         rt_ToWksBlockName);
       if (PlatformAssem_DW.ToWorkspace1_PWORK.LoggedData == (NULL))
@@ -2373,7 +2373,7 @@ void PlatformAssem_initialize(void)
         1,
         0,
         1,
-        0.2,
+        1.0E-6,
         &rt_ToWksSignalInfo,
         rt_ToWksBlockName);
       if (PlatformAssem_DW.ToWorkspace2_PWORK.LoggedData == (NULL))
@@ -2489,7 +2489,7 @@ void PlatformAssem_initialize(void)
         1,
         0,
         1,
-        0.2,
+        1.0E-6,
         &rt_ToWksSignalInfo,
         rt_ToWksBlockName);
       if (PlatformAssem_DW.ToWorkspace_PWORK.LoggedData == (NULL))
@@ -2586,7 +2586,7 @@ void PlatformAssem_initialize(void)
         1,
         0,
         1,
-        0.2,
+        1.0E-6,
         &rt_ToWksSignalInfo,
         rt_ToWksBlockName);
       if (PlatformAssem_DW.ToWorkspace2_PWORK_a.LoggedData == (NULL))
@@ -2693,7 +2693,7 @@ void PlatformAssem_initialize(void)
         1,
         0,
         1,
-        0.2,
+        1.0E-6,
         &rt_ToWksSignalInfo,
         rt_ToWksBlockName);
       if (PlatformAssem_DW.ToWorkspace_PWORK_d.LoggedData == (NULL))
