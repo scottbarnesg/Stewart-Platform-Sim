@@ -744,9 +744,9 @@ PlatformAssemSimulink_PS_ConverteroutputFiltered_3151928255_0 [ 1 ] ) *
 #define MDL_PROJECTION
 static void mdlProjection ( SimStruct * S ) { ssCallAccelRunBlock ( S , 0 ,
 24 , SS_CALL_MDL_PROJECTION ) ; } static void mdlInitializeSizes ( SimStruct
-* S ) { ssSetChecksumVal ( S , 0 , 1272789311U ) ; ssSetChecksumVal ( S , 1 ,
-90180175U ) ; ssSetChecksumVal ( S , 2 , 3288041880U ) ; ssSetChecksumVal ( S
-, 3 , 3140425024U ) ; { mxArray * slVerStructMat = NULL ; mxArray * slStrMat
+* S ) { ssSetChecksumVal ( S , 0 , 326214127U ) ; ssSetChecksumVal ( S , 1 ,
+3240946321U ) ; ssSetChecksumVal ( S , 2 , 935040310U ) ; ssSetChecksumVal (
+S , 3 , 765193808U ) ; { mxArray * slVerStructMat = NULL ; mxArray * slStrMat
 = mxCreateString ( "simulink" ) ; char slVerChar [ 10 ] ; int status =
 mexCallMATLAB ( 1 , & slVerStructMat , 1 , & slStrMat , "ver" ) ; if ( status
 == 0 ) { mxArray * slVerMat = mxGetField ( slVerStructMat , 0 , "Version" ) ;

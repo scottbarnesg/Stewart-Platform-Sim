@@ -5,6 +5,7 @@ clc; clear; close all;
 min_angle = 110;
 max_angle = 170;
 d_angle = 10;
+max_count = ((max_angle-min_angle)/d_angle)^6;
 
 g = 0;
 sensor_delay = 0;
@@ -69,9 +70,12 @@ for a = min_angle:d_angle:max_angle
                     for f = min_angle:d_angle:max_angle
                         % Increment Counter
                         count = count + 1;
-                        
+                        disp(['------------------- Count = ' num2str(count) '-------------------'])
+
                         % Set Servo Angles
-                        servo_angles = [a, -b, c, -d, e, -f]
+                        disp(['Progress: ' num2str((count/max_count)*100) '%'])
+                        servo_angles = [a, -b, c, -d, e, -f];
+                        disp(['Set servo angles: ' num2str(servo_angles)])
                         for num = 1:6
                             path = strcat('PlatformAssem/angle',int2str(num));
                             set_param(path, 'Value', num2str(deg2rad(servo_angles(num))));
@@ -91,7 +95,7 @@ for a = min_angle:d_angle:max_angle
                             % set_param('PlatformAssem', 'SimulationCommand', 'stop');
                             % disp('Stopped Simulation');
                             %pause(1);
-                            servo_angles = [100, -100, 100, -100, 100, -100]
+                            servo_angles = [100, -100, 100, -100, 100, -100];
                             for num = 1:6
                                 path = strcat('PlatformAssem/angle',int2str(num));
                                 set_param(path, 'Value', num2str(deg2rad(servo_angles(num))));
@@ -104,6 +108,7 @@ for a = min_angle:d_angle:max_angle
                         % Store Servo Angles
                         servo_state_theoretical(count, :) = servo_angles;
                         servo_state_actual(count, :) = rad2deg(motor_states.signals.values(length(platform_orientation.time), :)');
+                        disp(['Act servo angles: ' num2str(servo_state_actual(count, :))])
 
                         % Update Platform State
                         quat_plat_state = platform_orientation.signals.values(length(platform_orientation.time), :);
@@ -111,6 +116,8 @@ for a = min_angle:d_angle:max_angle
                         trans_plat_state = platform_translation_rel.signals.values(length(platform_translation_rel.time), :);
                         % Store Platform State
                         plat_state(count, :) = [eul_plat_state', trans_plat_state];
+                        disp(['Platform rotation: ' num2str(eul_plat_state')])
+                        disp(['Platform translation: ' num2str(trans_plat_state)])
                     end
                 end
             end
