@@ -744,14 +744,14 @@ PlatformAssemSimulink_PS_ConverteroutputFiltered_3151928255_0 [ 1 ] ) *
 #define MDL_PROJECTION
 static void mdlProjection ( SimStruct * S ) { ssCallAccelRunBlock ( S , 0 ,
 24 , SS_CALL_MDL_PROJECTION ) ; } static void mdlInitializeSizes ( SimStruct
-* S ) { ssSetChecksumVal ( S , 0 , 326214127U ) ; ssSetChecksumVal ( S , 1 ,
-3240946321U ) ; ssSetChecksumVal ( S , 2 , 935040310U ) ; ssSetChecksumVal (
-S , 3 , 765193808U ) ; { mxArray * slVerStructMat = NULL ; mxArray * slStrMat
-= mxCreateString ( "simulink" ) ; char slVerChar [ 10 ] ; int status =
-mexCallMATLAB ( 1 , & slVerStructMat , 1 , & slStrMat , "ver" ) ; if ( status
-== 0 ) { mxArray * slVerMat = mxGetField ( slVerStructMat , 0 , "Version" ) ;
-if ( slVerMat == NULL ) { status = 1 ; } else { status = mxGetString (
-slVerMat , slVerChar , 10 ) ; } } mxDestroyArray ( slStrMat ) ;
+* S ) { ssSetChecksumVal ( S , 0 , 1826179022U ) ; ssSetChecksumVal ( S , 1 ,
+2026272574U ) ; ssSetChecksumVal ( S , 2 , 4119658112U ) ; ssSetChecksumVal (
+S , 3 , 1177594871U ) ; { mxArray * slVerStructMat = NULL ; mxArray *
+slStrMat = mxCreateString ( "simulink" ) ; char slVerChar [ 10 ] ; int status
+= mexCallMATLAB ( 1 , & slVerStructMat , 1 , & slStrMat , "ver" ) ; if (
+status == 0 ) { mxArray * slVerMat = mxGetField ( slVerStructMat , 0 ,
+"Version" ) ; if ( slVerMat == NULL ) { status = 1 ; } else { status =
+mxGetString ( slVerMat , slVerChar , 10 ) ; } } mxDestroyArray ( slStrMat ) ;
 mxDestroyArray ( slVerStructMat ) ; if ( ( status == 1 ) || ( strcmp (
 slVerChar , "9.0" ) != 0 ) ) { return ; } } ssSetOptions ( S ,
 SS_OPTION_EXCEPTION_FREE_CODE ) ; if ( ssGetSizeofDWork ( S ) != sizeof (

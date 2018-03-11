@@ -204,7 +204,7 @@ void PlatformAssem_f0ca4364_1_computeConstraintError(const void *mech, const
   xx[71] = xx[1];
   xx[72] = xx[2];
   pm_math_cross3(xx + 63, xx + 70, xx + 81);
-  xx[14] = xx[44] + xx[33] + xx[20] + xx[30] - (xx[22] * xx[13] + xx[61]) * xx
+  xx[14] = xx[44] + xx[33] + xx[20] + xx[30] - (xx[13] * xx[22] + xx[61]) * xx
     [42] + 0.02992188481855372;
   xx[19] = xx[45] + xx[34] + xx[21] + xx[31] - xx[42] * (xx[62] + xx[10] * xx[13])
     + 0.1428830924490354;

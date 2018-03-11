@@ -3,13 +3,13 @@ clc; clear; close all;
 
 % Set Angle Ranges
 min_angle = 110;
-max_angle = 170;
+max_angle = 160;
 d_angle = 10;
-max_count = ((max_angle-min_angle)/d_angle)^6;
+max_count = (((max_angle-min_angle)/d_angle)+1)^6;
 
 g = 0;
 sensor_delay = 0;
-t_max = 10;
+t_max = 2;
 
 % Define Functions for Dynamic Base Position and Orientation
 base_pxf = @(t) 0; % Left/Right
@@ -70,7 +70,8 @@ for a = min_angle:d_angle:max_angle
                     for f = min_angle:d_angle:max_angle
                         % Increment Counter
                         count = count + 1;
-                        disp(['------------------- Count = ' num2str(count) '-------------------'])
+                        disp(' ')
+                        disp(['------------------- Count = ' num2str(count) ' -------------------'])
 
                         % Set Servo Angles
                         disp(['Progress: ' num2str((count/max_count)*100) '%'])
@@ -82,7 +83,7 @@ for a = min_angle:d_angle:max_angle
                         end
                         tic;
                         % Step Simulation Forward
-                        while (max(abs(servo_angles-rad2deg(motor_states.signals.values(length(platform_orientation.time), :)))) > 0.1)
+                        while (max(abs(servo_angles-rad2deg(motor_states.signals.values(length(platform_orientation.time), :)))) > 0.5)
                             set_param('PlatformAssem', 'SimulationCommand', 'step');
                             if toc > t_max
                                 break;
@@ -95,14 +96,14 @@ for a = min_angle:d_angle:max_angle
                             % set_param('PlatformAssem', 'SimulationCommand', 'stop');
                             % disp('Stopped Simulation');
                             %pause(1);
-                            servo_angles = [100, -100, 100, -100, 100, -100];
+                            servo_angles = [min_angle, -min_angle, min_angle, -min_angle, min_angle, -min_angle];
                             for num = 1:6
                                 path = strcat('PlatformAssem/angle',int2str(num));
                                 set_param(path, 'Value', num2str(deg2rad(servo_angles(num))));
                             end
                             set_param('PlatformAssem', 'SimulationCommand', 'start');
                             disp('Starting Simulation');
-                            %pause(1);
+                            pause(0.2);
                         end
                         
                         % Store Servo Angles

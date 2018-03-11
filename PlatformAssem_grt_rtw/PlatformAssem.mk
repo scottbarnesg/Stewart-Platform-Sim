@@ -2,7 +2,7 @@
 ## Makefile generated for Simulink model 'PlatformAssem'. 
 ## 
 ## Makefile     : PlatformAssem.mk
-## Generated on : Fri Mar 09 17:22:14 2018
+## Generated on : Sat Mar 10 00:05:38 2018
 ## MATLAB Coder version: 3.4 (R2017b)
 ## 
 ## Build Info:
@@ -36,8 +36,8 @@ START_DIR                 = E:/Stewart-Platform-Sim
 ARCH                      = win64
 SOLVER                    = 
 SOLVER_OBJ                = 
-CLASSIC_INTERFACE         = 0
-TGT_FCN_LIB               = ISO_C
+CLASSIC_INTERFACE         = 1
+TGT_FCN_LIB               = None
 MODEL_HAS_DYNAMICALLY_LOADED_SFCNS = 0
 MODELREF_LINK_RSPFILE_NAME = PlatformAssem_ref.rsp
 RELATIVE_PATH_TO_ANCHOR   = ..
@@ -130,9 +130,9 @@ ECHO                = @echo
 MV                  = @move
 RUN                 =
 
-#----------------------------------------
-# "Faster Builds" Build Configuration
-#----------------------------------------
+#--------------------------------------
+# "Faster Runs" Build Configuration
+#--------------------------------------
 
 ARFLAGS              =
 CFLAGS               = -c -w -noregistrylookup -nodeclspec -I$(LCC_ROOT)/include64
@@ -180,7 +180,7 @@ INCLUDES = $(INCLUDES_BUILDINFO)
 ## DEFINES
 ###########################################################################
 
-DEFINES_BUILD_ARGS = -DMAT_FILE=1 -DINTEGER_CODE=0 -DMT=0 -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DONESTEPFCN=1 -DTERMFCN=1 -DMULTI_INSTANCE_CODE=0
+DEFINES_BUILD_ARGS = -DMAT_FILE=1 -DINTEGER_CODE=0 -DMT=0 -DCLASSIC_INTERFACE=1 -DALLOCATIONFCN=0 -DONESTEPFCN=0 -DTERMFCN=1 -DMULTI_INSTANCE_CODE=0
 DEFINES_IMPLIED = -DTID01EQ=1
 DEFINES_STANDARD = -DMODEL=PlatformAssem -DNUMST=2 -DNCSTATES=97 -DHAVESTDIO -DRT -DUSE_RTMODEL
 
@@ -190,21 +190,17 @@ DEFINES = $(DEFINES_BUILD_ARGS) $(DEFINES_IMPLIED) $(DEFINES_STANDARD)
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_create.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_setParameters.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_asserts.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_deriv.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_checkDynamics.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_output.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_assembly.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_computeConstraintError.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_gateway.c $(START_DIR)/PlatformAssem_grt_rtw/pm_printf.c $(MATLAB_ROOT)/rtw/c/src/rt_logging.c $(START_DIR)/PlatformAssem_grt_rtw/rt_backsubrr_dbl.c $(START_DIR)/PlatformAssem_grt_rtw/rt_forwardsubrr_dbl.c $(START_DIR)/PlatformAssem_grt_rtw/rt_lu_real.c $(START_DIR)/PlatformAssem_grt_rtw/rt_matrixlib_dbl.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_data.c $(START_DIR)/PlatformAssem_grt_rtw/rtGetInf.c $(START_DIR)/PlatformAssem_grt_rtw/rtGetNaN.c $(START_DIR)/PlatformAssem_grt_rtw/rt_nonfinite.c
+SRCS = $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_create.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_setParameters.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_asserts.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_deriv.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_checkDynamics.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_output.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_assembly.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_computeConstraintError.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_f0ca4364_1_gateway.c $(START_DIR)/PlatformAssem_grt_rtw/pm_printf.c $(MATLAB_ROOT)/rtw/c/src/rt_logging.c $(START_DIR)/PlatformAssem_grt_rtw/rt_backsubrr_dbl.c $(START_DIR)/PlatformAssem_grt_rtw/rt_forwardsubrr_dbl.c $(START_DIR)/PlatformAssem_grt_rtw/rt_lu_real.c $(START_DIR)/PlatformAssem_grt_rtw/rt_matrixlib_dbl.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem.c $(START_DIR)/PlatformAssem_grt_rtw/PlatformAssem_data.c $(START_DIR)/PlatformAssem_grt_rtw/rtGetInf.c $(START_DIR)/PlatformAssem_grt_rtw/rtGetNaN.c $(START_DIR)/PlatformAssem_grt_rtw/rt_nonfinite.c $(MATLAB_ROOT)/rtw/c/src/rt_sim.c $(MATLAB_ROOT)/rtw/c/grt/classic_main.c
 
-MAIN_SRC = $(MATLAB_ROOT)/rtw/c/src/common/rt_main.c
-
-ALL_SRCS = $(SRCS) $(MAIN_SRC)
+ALL_SRCS = $(SRCS)
 
 ###########################################################################
 ## OBJECTS
 ###########################################################################
 
-OBJS = PlatformAssem_f0ca4364_1.obj PlatformAssem_f0ca4364_1_create.obj PlatformAssem_f0ca4364_1_setParameters.obj PlatformAssem_f0ca4364_1_asserts.obj PlatformAssem_f0ca4364_1_deriv.obj PlatformAssem_f0ca4364_1_checkDynamics.obj PlatformAssem_f0ca4364_1_output.obj PlatformAssem_f0ca4364_1_assembly.obj PlatformAssem_f0ca4364_1_computeConstraintError.obj PlatformAssem_f0ca4364_1_gateway.obj pm_printf.obj rt_logging.obj rt_backsubrr_dbl.obj rt_forwardsubrr_dbl.obj rt_lu_real.obj rt_matrixlib_dbl.obj PlatformAssem.obj PlatformAssem_data.obj rtGetInf.obj rtGetNaN.obj rt_nonfinite.obj
+OBJS = PlatformAssem_f0ca4364_1.obj PlatformAssem_f0ca4364_1_create.obj PlatformAssem_f0ca4364_1_setParameters.obj PlatformAssem_f0ca4364_1_asserts.obj PlatformAssem_f0ca4364_1_deriv.obj PlatformAssem_f0ca4364_1_checkDynamics.obj PlatformAssem_f0ca4364_1_output.obj PlatformAssem_f0ca4364_1_assembly.obj PlatformAssem_f0ca4364_1_computeConstraintError.obj PlatformAssem_f0ca4364_1_gateway.obj pm_printf.obj rt_logging.obj rt_backsubrr_dbl.obj rt_forwardsubrr_dbl.obj rt_lu_real.obj rt_matrixlib_dbl.obj PlatformAssem.obj PlatformAssem_data.obj rtGetInf.obj rtGetNaN.obj rt_nonfinite.obj rt_sim.obj classic_main.obj
 
-MAIN_OBJ = rt_main.obj
-
-ALL_OBJS = $(OBJS) $(MAIN_OBJ)
+ALL_OBJS = $(OBJS)
 
 ###########################################################################
 ## PREBUILT OBJECT FILES
@@ -278,10 +274,10 @@ execute : download
 # Create a standalone executable            
 #-------------------------------------------
 
-$(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(LIBS) $(MAIN_OBJ)
+$(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(LIBS)
 	$(GEN_LINKER_RESPONSE) $(CMD_FILE) $(subst /,\,$(OBJS))
 	@echo "### Creating standalone executable "$(PRODUCT)" ..."
-	$(LD) $(LDFLAGS) -o $(PRODUCT) @$(CMD_FILE) $(subst /,\,$(subst /,\,$(MAIN_OBJ))) $(subst /,\,$(subst /,\,$(LIBS))) $(subst /,\,$(subst /,\,$(SYSTEM_LIBS))) $(subst /,\,$(subst /,\,$(TOOLCHAIN_LIBS)))
+	$(LD) $(LDFLAGS) -o $(PRODUCT) @$(CMD_FILE) $(subst /,\,$(subst /,\,$(LIBS))) $(subst /,\,$(subst /,\,$(SYSTEM_LIBS))) $(subst /,\,$(subst /,\,$(TOOLCHAIN_LIBS)))
 	@echo "### Created: $(PRODUCT)"
 	$(RM) $(CMD_FILE)
 
@@ -362,7 +358,7 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(LIBS) $(MAIN_OBJ)
 	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
 
 
-rt_main.obj : $(MATLAB_ROOT)/rtw/c/src/common/rt_main.c
+classic_main.obj : $(MATLAB_ROOT)/rtw/c/grt/classic_main.c
 	$(CC) $(CFLAGS) -Fo"$@" $(subst /,\,"$<")
 
 

@@ -8,14 +8,14 @@
  *
  * Code generation for model "PlatformAssem".
  *
- * Model version              : 1.69
+ * Model version              : 1.87
  * Simulink Coder version : 8.13 (R2017b) 24-Jul-2017
- * C source code generated on : Fri Mar  9 17:22:07 2018
+ * C source code generated on : Sat Mar 10 00:06:09 2018
  *
  * Target selection: grt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
  * Embedded hardware selection: Intel->x86-64 (Windows64)
- * Code generation objectives: Unspecified
+ * Code generation objective: Execution efficiency
  * Validation result: Not run
  */
 
@@ -24,27 +24,7 @@
 #include "rtwtypes.h"
 #include "builtin_typeid_types.h"
 #include "multiword_types.h"
-
-/* Private macros used by the generated code to access rtModel */
-#ifndef rtmIsMajorTimeStep
-# define rtmIsMajorTimeStep(rtm)       (((rtm)->Timing.simTimeStep) == MAJOR_TIME_STEP)
-#endif
-
-#ifndef rtmIsMinorTimeStep
-# define rtmIsMinorTimeStep(rtm)       (((rtm)->Timing.simTimeStep) == MINOR_TIME_STEP)
-#endif
-
-#ifndef rtmSetTFinal
-# define rtmSetTFinal(rtm, val)        ((rtm)->Timing.tFinal = (val))
-#endif
-
-#ifndef rtmGetTPtr
-# define rtmGetTPtr(rtm)               ((rtm)->Timing.t)
-#endif
-
-#ifndef rtmSetTPtr
-# define rtmSetTPtr(rtm, val)          ((rtm)->Timing.t = (val))
-#endif
+#include "zero_crossing_types.h"
 
 real_T rt_TDelayInterpolate(
   real_T tMinusDelay,                  /* tMinusDelay = currentSimTime - delay */

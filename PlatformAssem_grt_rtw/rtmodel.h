@@ -8,14 +8,14 @@
  *
  * Code generation for model "PlatformAssem".
  *
- * Model version              : 1.69
+ * Model version              : 1.87
  * Simulink Coder version : 8.13 (R2017b) 24-Jul-2017
- * C source code generated on : Fri Mar  9 17:22:07 2018
+ * C source code generated on : Sat Mar 10 00:06:09 2018
  *
  * Target selection: grt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
  * Embedded hardware selection: Intel->x86-64 (Windows64)
- * Code generation objectives: Unspecified
+ * Code generation objective: Execution efficiency
  * Validation result: Not run
  */
 
@@ -26,5 +26,5 @@
  *  Includes the appropriate headers when we are using rtModel
  */
 #include "PlatformAssem.h"
-#define GRTINTERFACE                   0
+#define GRTINTERFACE                   1
 #endif                                 /* RTW_HEADER_rtmodel_h_ */

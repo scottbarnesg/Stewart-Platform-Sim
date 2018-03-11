@@ -8,14 +8,14 @@
  *
  * Code generation for model "PlatformAssem".
  *
- * Model version              : 1.69
+ * Model version              : 1.87
  * Simulink Coder version : 8.13 (R2017b) 24-Jul-2017
- * C source code generated on : Fri Mar  9 17:22:07 2018
+ * C source code generated on : Sat Mar 10 00:06:09 2018
  *
  * Target selection: grt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
  * Embedded hardware selection: Intel->x86-64 (Windows64)
- * Code generation objectives: Unspecified
+ * Code generation objective: Execution efficiency
  * Validation result: Not run
  */
 
@@ -73,15 +73,15 @@ P_PlatformAssem_T PlatformAssem_P = {
    */
   1.9199,
 
-  /* Expression: -2.2689
+  /* Expression: -2.4435
    * Referenced by: '<Root>/angle4'
    */
-  -2.2689,
+  -2.4435,
 
-  /* Expression: 2.4435
+  /* Expression: 2.618
    * Referenced by: '<Root>/angle5'
    */
-  2.4435,
+  2.618,
 
   /* Expression: -2.618
    * Referenced by: '<Root>/angle6'
