@@ -3,13 +3,13 @@ clc; clear; close all;
 
 % Set Angle Ranges
 min_angle = 110;
-max_angle = 160;
+max_angle = 170;
 d_angle = 10;
 max_count = (((max_angle-min_angle)/d_angle)+1)^6;
 
 g = 0;
 sensor_delay = 0;
-t_max = 2;
+t_max = 3.5;
 
 % Define Functions for Dynamic Base Position and Orientation
 base_pxf = @(t) 0; % Left/Right
@@ -71,7 +71,7 @@ for a = min_angle:d_angle:max_angle
                         % Increment Counter
                         count = count + 1;
                         disp(' ')
-                        disp(['------------------- Count = ' num2str(count) ' -------------------'])
+                        disp(['------------------- Count = ' num2str(count) '/' num2str(max_count) ' -------------------'])
 
                         % Set Servo Angles
                         disp(['Progress: ' num2str((count/max_count)*100) '%'])
@@ -97,6 +97,7 @@ for a = min_angle:d_angle:max_angle
                             % disp('Stopped Simulation');
                             %pause(1);
                             servo_angles = [min_angle, -min_angle, min_angle, -min_angle, min_angle, -min_angle];
+                            %servo_angles = [a, -b, c, -d, e, -f];
                             for num = 1:6
                                 path = strcat('PlatformAssem/angle',int2str(num));
                                 set_param(path, 'Value', num2str(deg2rad(servo_angles(num))));
